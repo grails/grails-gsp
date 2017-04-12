@@ -1,6 +1,0 @@
-dependencies {
-    compile "org.grails:grails-core:$grailsVersion", {
-        exclude group:'org.grails', module:'grails-spring'
-    }
-    compile "org.grails:grails-encoder:$grailsVersion"    
-}

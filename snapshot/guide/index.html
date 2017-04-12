@@ -30,9 +30,23 @@
                     <a href="../guide/index.html" class="button">Table of contents</a>
                     <div id="nav-summary-childs" style="display:none;">
                         
-                        <div class="toc-item" style="margin-left:0"><a href="#gsp"><strong>1</strong><span>Groovy Server Pages</span></a></div>
+                        <div class="toc-item" style="margin-left:0"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
                         
-                        <div class="toc-item" style="margin-left:0"><a href="#taglibs"><strong>2</strong><span>Tag Libraries</span></a></div>
+                        <div class="toc-item" style="margin-left:0"><a href="#GSPBasics"><strong>2</strong><span>GSP Basics</span></a></div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="#tags"><strong>3</strong><span>GSP Tags</span></a></div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="#viewsAndTemplates"><strong>4</strong><span>Views and Templates</span></a></div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="#layouts"><strong>5</strong><span>Layouts with Sitemesh</span></a></div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="#resources"><strong>6</strong><span>Static Resources</span></a></div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="#makingChangesToADeployedApplication"><strong>7</strong><span>Making Changes to a Deployed Application</span></a></div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="#GSPDebugging"><strong>8</strong><span>GSP Debugging</span></a></div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="#taglibs"><strong>9</strong><span>Tag Libraries</span></a></div>
                         
                     </div>
                 </div>
@@ -62,69 +76,69 @@
                 <div id="table-of-content">
                     <h2>Table of Contents</h2>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#gsp"><strong>1</strong><span>Groovy Server Pages</span></a></div>
+                    <div class="toc-item" style="margin-left:0px"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#GSPBasics"><strong>1.1</strong><span>GSP Basics</span></a></div>
+                    <div class="toc-item" style="margin-left:0px"><a href="#GSPBasics"><strong>2</strong><span>GSP Basics</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:20px"><a href="#variablesAndScopes"><strong>1.1.1</strong><span>Variables and Scopes</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#variablesAndScopes"><strong>2.1</strong><span>Variables and Scopes</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:20px"><a href="#logicAndIteration"><strong>1.1.2</strong><span>Logic and Iteration</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#logicAndIteration"><strong>2.2</strong><span>Logic and Iteration</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:20px"><a href="#pageDirectives"><strong>1.1.3</strong><span>Page Directives</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#pageDirectives"><strong>2.3</strong><span>Page Directives</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:20px"><a href="#expressions"><strong>1.1.4</strong><span>Expressions</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#expressions"><strong>2.4</strong><span>Expressions</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#tags"><strong>1.2</strong><span>GSP Tags</span></a></div>
+                    <div class="toc-item" style="margin-left:0px"><a href="#tags"><strong>3</strong><span>GSP Tags</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:20px"><a href="#tagVariablesAndScopes"><strong>1.2.1</strong><span>Variables and Scopes</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#tagVariablesAndScopes"><strong>3.1</strong><span>Variables and Scopes</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:20px"><a href="#tagLogicAndIteration"><strong>1.2.2</strong><span>Logic and Iteration</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#tagLogicAndIteration"><strong>3.2</strong><span>Logic and Iteration</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:20px"><a href="#searchAndFiltering"><strong>1.2.3</strong><span>Search and Filtering</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#searchAndFiltering"><strong>3.3</strong><span>Search and Filtering</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:20px"><a href="#linksAndResources"><strong>1.2.4</strong><span>Links and Resources</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#linksAndResources"><strong>3.4</strong><span>Links and Resources</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:20px"><a href="#formsAndFields"><strong>1.2.5</strong><span>Forms and Fields</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#formsAndFields"><strong>3.5</strong><span>Forms and Fields</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:20px"><a href="#tagsAsMethodCalls"><strong>1.2.6</strong><span>Tags as Method Calls</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#tagsAsMethodCalls"><strong>3.6</strong><span>Tags as Method Calls</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#viewsAndTemplates"><strong>1.3</strong><span>Views and Templates</span></a></div>
+                    <div class="toc-item" style="margin-left:0px"><a href="#viewsAndTemplates"><strong>4</strong><span>Views and Templates</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#layouts"><strong>1.4</strong><span>Layouts with Sitemesh</span></a></div>
+                    <div class="toc-item" style="margin-left:0px"><a href="#layouts"><strong>5</strong><span>Layouts with Sitemesh</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#resources"><strong>1.5</strong><span>Static Resources</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#sitemeshContentBlocks"><strong>5.1</strong><span>Sitemesh Content Blocks</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#sitemeshContentBlocks"><strong>1.6</strong><span>Sitemesh Content Blocks</span></a></div>
+                    <div class="toc-item" style="margin-left:0px"><a href="#resources"><strong>6</strong><span>Static Resources</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#makingChangesToADeployedApplication"><strong>1.7</strong><span>Making Changes to a Deployed Application</span></a></div>
+                    <div class="toc-item" style="margin-left:0px"><a href="#makingChangesToADeployedApplication"><strong>7</strong><span>Making Changes to a Deployed Application</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#GSPDebugging"><strong>1.8</strong><span>GSP Debugging</span></a></div>
+                    <div class="toc-item" style="margin-left:0px"><a href="#GSPDebugging"><strong>8</strong><span>GSP Debugging</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#taglibs"><strong>2</strong><span>Tag Libraries</span></a></div>
+                    <div class="toc-item" style="margin-left:0px"><a href="#taglibs"><strong>9</strong><span>Tag Libraries</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#taglibVariablesAndScopes"><strong>2.1</strong><span>Variables and Scopes</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#taglibVariablesAndScopes"><strong>9.1</strong><span>Variables and Scopes</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#simpleTags"><strong>2.2</strong><span>Simple Tags</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#simpleTags"><strong>9.2</strong><span>Simple Tags</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#logicalTags"><strong>2.3</strong><span>Logical Tags</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#logicalTags"><strong>9.3</strong><span>Logical Tags</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#iterativeTags"><strong>2.4</strong><span>Iterative Tags</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#iterativeTags"><strong>9.4</strong><span>Iterative Tags</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#namespaces"><strong>2.5</strong><span>Tag Namespaces</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#namespaces"><strong>9.5</strong><span>Tag Namespaces</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#usingJSPTagLibraries"><strong>2.6</strong><span>Using JSP Tag Libraries</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#usingJSPTagLibraries"><strong>9.6</strong><span>Using JSP Tag Libraries</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#tagReturnValue"><strong>2.7</strong><span>Tag return value</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#tagReturnValue"><strong>9.7</strong><span>Tag return value</span></a></div>
                     
                     <div style="clear:both" ></div>
                 </div>
                 
                 
 
-<h1 id="gsp">1 Groovy Server Pages</h1>
+<h1 id="introduction">1 Introduction</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/introduction.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -188,10 +202,10 @@ Embedding data received from user input has the risk of making your application 
 </div>
 
 
-<h2 id="GSPBasics">1.1 GSP Basics</h2>
+<h1 id="GSPBasics">2 GSP Basics</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/GSPBasics.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/GSPBasics.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -251,10 +265,10 @@ Embedding data received from user input has the risk of making your application 
 </div>
 
 
-<h2 id="variablesAndScopes">1.1.1 Variables and Scopes</h2>
+<h2 id="variablesAndScopes">2.1 Variables and Scopes</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/GSPBasics/variablesAndScopes.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/GSPBasics/variablesAndScopes.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -315,10 +329,10 @@ Embedding data received from user input has the risk of making your application 
 </div>
 
 
-<h2 id="logicAndIteration">1.1.2 Logic and Iteration</h2>
+<h2 id="logicAndIteration">2.2 Logic and Iteration</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/GSPBasics/logicAndIteration.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/GSPBasics/logicAndIteration.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -355,10 +369,10 @@ Embedding data received from user input has the risk of making your application 
 </div>
 
 
-<h2 id="pageDirectives">1.1.3 Page Directives</h2>
+<h2 id="pageDirectives">2.3 Page Directives</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/GSPBasics/pageDirectives.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/GSPBasics/pageDirectives.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -388,10 +402,10 @@ Embedding data received from user input has the risk of making your application 
 </div>
 
 
-<h2 id="expressions">1.1.4 Expressions</h2>
+<h2 id="expressions">2.4 Expressions</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/GSPBasics/expressions.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/GSPBasics/expressions.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -426,10 +440,10 @@ Embedding data received from user input has the risk of making your application 
 </div>
 
 
-<h2 id="tags">1.2 GSP Tags</h2>
+<h1 id="tags">3 GSP Tags</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/tags.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/tags.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -503,10 +517,10 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 
 
-<h2 id="tagVariablesAndScopes">1.2.1 Variables and Scopes</h2>
+<h2 id="tagVariablesAndScopes">3.1 Variables and Scopes</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/tags/tagVariablesAndScopes.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/tags/tagVariablesAndScopes.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -570,10 +584,10 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 
 
-<h2 id="tagLogicAndIteration">1.2.2 Logic and Iteration</h2>
+<h2 id="tagLogicAndIteration">3.2 Logic and Iteration</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/tags/tagLogicAndIteration.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/tags/tagLogicAndIteration.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -609,10 +623,10 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 
 
-<h2 id="searchAndFiltering">1.2.3 Search and Filtering</h2>
+<h2 id="searchAndFiltering">3.3 Search and Filtering</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/tags/searchAndFiltering.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/tags/searchAndFiltering.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -654,10 +668,10 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 
 
-<h2 id="linksAndResources">1.2.4 Links and Resources</h2>
+<h2 id="linksAndResources">3.4 Links and Resources</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/tags/linksAndResources.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/tags/linksAndResources.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -684,10 +698,10 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 
 
-<h2 id="formsAndFields">1.2.5 Forms and Fields</h2>
+<h2 id="formsAndFields">3.5 Forms and Fields</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/tags/formsAndFields.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/tags/formsAndFields.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -759,10 +773,10 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 
 
-<h2 id="tagsAsMethodCalls">1.2.6 Tags as Method Calls</h2>
+<h2 id="tagsAsMethodCalls">3.6 Tags as Method Calls</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/tags/tagsAsMethodCalls.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/tags/tagsAsMethodCalls.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -827,10 +841,10 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 
 
-<h2 id="viewsAndTemplates">1.3 Views and Templates</h2>
+<h1 id="viewsAndTemplates">4 Views and Templates</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/viewsAndTemplates.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/viewsAndTemplates.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -941,10 +955,10 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 
 
-<h2 id="layouts">1.4 Layouts with Sitemesh</h2>
+<h1 id="layouts">5 Layouts with Sitemesh</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/layouts.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/layouts.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1145,64 +1159,10 @@ The content to apply a layout to
 </div>
 
 
-<h2 id="resources">1.5 Static Resources</h2>
+<h2 id="sitemeshContentBlocks">5.1 Sitemesh Content Blocks</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/resources.adoc"'>
-        <i class='fa fa-pencil-square-o'></i> Improve this doc
-    </button>
-</div>
-
-
-<div class="paragraph">
-<p>Grails 3 integrates with the <a href="http://grails.org/plugin/asset-pipeline">Asset Pipeline plugin</a> to provide sophisticated static asset management. This plugin is installed by default in new Grails applications.</p>
-</div>
-<div class="paragraph">
-<p>The basic way to include a link to a static asset in your application is to use the <a href="../ref/Tags/resource.html">resource</a> tag. This simple approach creates a URI pointing to the file.</p>
-</div>
-<div class="paragraph">
-<p>However modern applications with dependencies on multiple JavaScript and CSS libraries and frameworks (as well as dependencies on multiple Grails plugins) require something more powerful.</p>
-</div>
-<div class="paragraph">
-<p>The issues that the Asset-Pipeline plugin tackles are:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Reduced Dependence - The plugin has compression, minification, and cache-digests built in.</p>
-</li>
-<li>
-<p>Easy Debugging - Makes for easy debugging by keeping files separate in development mode.</p>
-</li>
-<li>
-<p>Asset Bundling using require <a href="http://bertramdev.github.io/asset-pipeline/guide/usage.html#directives">directives</a>.</p>
-</li>
-<li>
-<p>Web application performance tuning is difficult.</p>
-</li>
-<li>
-<p>The need for a standard way to expose static assets in plugins and applications.</p>
-</li>
-<li>
-<p>The need for extensible processing to make languages like LESS or Coffee first class citizens.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The asset-pipeline allows you to define your javascript or css requirements right at the top of the file and they get compiled on War creation.</p>
-</div>
-<div class="paragraph">
-<p>Take a look at the <a href="http://bertramdev.github.io/asset-pipeline">documentation</a> for the asset-pipeline to get started.</p>
-</div>
-<div class="paragraph">
-<p>If you do not want to use the Asset-Pipeline plugin, you can serve the static assets from directories <code>src/main/resources/public</code> or <code>src/main/webapp</code>, but the latter one only gets included in WAR packaging but not in JAR packaging.</p>
-</div>
-
-
-<h2 id="sitemeshContentBlocks">1.6 Sitemesh Content Blocks</h2>
-
-<div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/sitemeshContentBlocks.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/sitemeshContentBlocks.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1263,10 +1223,64 @@ The content to apply a layout to
 </div>
 
 
-<h2 id="makingChangesToADeployedApplication">1.7 Making Changes to a Deployed Application</h2>
+<h1 id="resources">6 Static Resources</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/makingChangesToADeployedApplication.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/resources.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Grails 3 integrates with the <a href="http://grails.org/plugin/asset-pipeline">Asset Pipeline plugin</a> to provide sophisticated static asset management. This plugin is installed by default in new Grails applications.</p>
+</div>
+<div class="paragraph">
+<p>The basic way to include a link to a static asset in your application is to use the <a href="../ref/Tags/resource.html">resource</a> tag. This simple approach creates a URI pointing to the file.</p>
+</div>
+<div class="paragraph">
+<p>However modern applications with dependencies on multiple JavaScript and CSS libraries and frameworks (as well as dependencies on multiple Grails plugins) require something more powerful.</p>
+</div>
+<div class="paragraph">
+<p>The issues that the Asset-Pipeline plugin tackles are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reduced Dependence - The plugin has compression, minification, and cache-digests built in.</p>
+</li>
+<li>
+<p>Easy Debugging - Makes for easy debugging by keeping files separate in development mode.</p>
+</li>
+<li>
+<p>Asset Bundling using require <a href="http://bertramdev.github.io/asset-pipeline/guide/usage.html#directives">directives</a>.</p>
+</li>
+<li>
+<p>Web application performance tuning is difficult.</p>
+</li>
+<li>
+<p>The need for a standard way to expose static assets in plugins and applications.</p>
+</li>
+<li>
+<p>The need for extensible processing to make languages like LESS or Coffee first class citizens.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The asset-pipeline allows you to define your javascript or css requirements right at the top of the file and they get compiled on War creation.</p>
+</div>
+<div class="paragraph">
+<p>Take a look at the <a href="http://bertramdev.github.io/asset-pipeline">documentation</a> for the asset-pipeline to get started.</p>
+</div>
+<div class="paragraph">
+<p>If you do not want to use the Asset-Pipeline plugin, you can serve the static assets from directories <code>src/main/resources/public</code> or <code>src/main/webapp</code>, but the latter one only gets included in WAR packaging but not in JAR packaging.</p>
+</div>
+
+
+<h1 id="makingChangesToADeployedApplication">7 Making Changes to a Deployed Application</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/makingChangesToADeployedApplication.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1356,10 +1370,10 @@ cp -R grails-app/views<span class="comment">/* /var/www/grails/my-app/grails-app
 </div>
 
 
-<h2 id="GSPDebugging">1.8 GSP Debugging</h2>
+<h1 id="GSPDebugging">8 GSP Debugging</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/gsp/GSPDebugging.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/GSPDebugging.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1422,7 +1436,7 @@ The debug templates -feature adds html comments to the output. The comments cont
 </div>
 
 
-<h1 id="taglibs">2 Tag Libraries</h1>
+<h1 id="taglibs">9 Tag Libraries</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs.adoc"'>
@@ -1530,7 +1544,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 
 
-<h2 id="taglibVariablesAndScopes">2.1 Variables and Scopes</h2>
+<h2 id="taglibVariablesAndScopes">9.1 Variables and Scopes</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/taglibVariablesAndScopes.adoc"'>
@@ -1584,7 +1598,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 
 
-<h2 id="simpleTags">2.2 Simple Tags</h2>
+<h2 id="simpleTags">9.2 Simple Tags</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/simpleTags.adoc"'>
@@ -1638,7 +1652,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 
 
-<h2 id="logicalTags">2.3 Logical Tags</h2>
+<h2 id="logicalTags">9.3 Logical Tags</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/logicalTags.adoc"'>
@@ -1672,7 +1686,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 
 
-<h2 id="iterativeTags">2.4 Iterative Tags</h2>
+<h2 id="iterativeTags">9.4 Iterative Tags</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/iterativeTags.adoc"'>
@@ -1759,7 +1773,7 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 </div>
 
 
-<h2 id="namespaces">2.5 Tag Namespaces</h2>
+<h2 id="namespaces">9.5 Tag Namespaces</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/namespaces.adoc"'>
@@ -1806,7 +1820,7 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 </div>
 
 
-<h2 id="usingJSPTagLibraries">2.6 Using JSP Tag Libraries</h2>
+<h2 id="usingJSPTagLibraries">9.6 Using JSP Tag Libraries</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/usingJSPTagLibraries.adoc"'>
@@ -1862,7 +1876,7 @@ This is configured with the <code>grails.gsp.tldScanPattern</code> setting. It a
 </div>
 
 
-<h2 id="tagReturnValue">2.7 Tag return value</h2>
+<h2 id="tagReturnValue">9.7 Tag return value</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/tagReturnValue.adoc"'>

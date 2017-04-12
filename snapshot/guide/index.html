@@ -148,7 +148,28 @@
 <p>Groovy Servers Pages (or GSP for short) is Grails' view technology. It is designed to be familiar for users of technologies such as ASP and JSP, but to be far more flexible and intuitive.</p>
 </div>
 <div class="paragraph">
-<p>GSPs live in the <code>grails-app/views</code> directory and are typically rendered automatically (by convention) or with the <a href="http://docs.grails.org/latest/ref/Controllers/render.html">render</a> method such as:</p>
+<p>GSP used to be part of Grails core, but since version 3.3 it is an independent Grails plugin that can be used by defining the following dependency in your <code>build.gradle</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
+    ...
+    compile "org.grails.plugins:gsp:3.3.0.BUILD-SNAPSHOT"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition for production compilation you should apply the <code>grails-gsp</code> Gradle plugin:</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">apply plugin:"org.grails.grails-gsp"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>GSPs themselves live in the <code>grails-app/views</code> directory and are typically rendered automatically (by convention) or with the <a href="http://docs.grails.org/latest/ref/Controllers/render.html">render</a> method such as:</p>
 </div>
 <div class="listingblock">
 <div class="content">

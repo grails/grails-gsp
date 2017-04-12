@@ -1,9 +1,15 @@
 grails.artefact
 grails.artefact.gsp
 grails.compiler.traits
+grails.core
+grails.core.gsp
 grails.gsp
 grails.gsp.taglib.compiler
 org.grails.compiler.web.taglib
+org.grails.core
+org.grails.core.artefact
+org.grails.core.artefact.gsp
+org.grails.core.gsp
 org.grails.gsp
 org.grails.gsp.compiler
 org.grails.gsp.compiler.tags

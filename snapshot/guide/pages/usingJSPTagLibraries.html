@@ -102,7 +102,22 @@ function addJsClass() {
 
 
 <div class="paragraph">
-<p>In addition to the simplified tag library mechanism provided by GSP, you can also use JSP tags from GSP. To do so simply declare the JSP to use with the <code>taglib</code> directive:</p>
+<p>In addition to the simplified tag library mechanism provided by GSP, you can also use JSP tags from GSP.</p>
+</div>
+<div class="paragraph">
+<p>In order to use JSP support you must ensure you have the <code>grails-web-jsp</code> dependency on your classpath by adding it to your <code>build.gradle</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
+    ...
+    runtime "org.grails:grails-web-jsp:3.3.0.BUILD-SNAPSHOT"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then you will need to declare the JSP to use with the <code>taglib</code> directive at the top of your GSP file:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -114,11 +129,13 @@ function addJsClass() {
 This is configured with the <code>grails.gsp.tldScanPattern</code> setting. It accepts a comma separated String value. Spring&#8217;s PathMatchingResourcePatternResolver is used to resolve the patterns.</p>
 </div>
 <div class="paragraph">
-<p>For example you could scan for all available tld files by adding this to <code>application.groovy</code>:</p>
+<p>For example you could scan for all available tld files by adding this to <code>application.yml</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">grails.gsp.tldScanPattern=<span class="string"><span class="delimiter">'</span><span class="content">classpath*:/META-INF/*.tld,/WEB-INF/tld/*.tld</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">grails</span>:
+    <span class="key">gsp</span>:
+        <span class="error">tldScanPattern:'classpath*:/META-INF/*.tld,/WEB-INF/tld/*.tld'</span></code></pre>
 </div>
 </div>
 <div class="paragraph">

@@ -114,18 +114,22 @@ extends <a href='../../../../org.springframework.web.servlet.FrameworkServlet.ht
     <p> NOTE: Based on work done by on the GSP standalone project (https://gsp.dev.java.net/)
 
  Main servlet class.  Example usage in web.xml:
-     <servlet>
-       <servlet-name>GroovyPagesServlet</servlet-name>
-       <servlet-class>GroovyPagesServlet</servlet-class>
-        <init-param>
-            <param-name>showSource</param-name>
-            <param-value>1</param-value>
-            <description>
+
+ <pre>
+ <CODE>&lt;servlet&gt;
+       &lt;servlet-name&gt;GroovyPagesServlet&lt;/servlet-name&gt;
+       &lt;servlet-class&gt;GroovyPagesServlet&lt;/servlet-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;showSource&lt;/param-name&gt;
+            &lt;param-value&gt;1&lt;/param-value&gt;
+            &lt;description&gt;
              Allows developers to view the intermediade source code, when they pass
                 a showSource argument in the URL (eg /edit/list?showSource=true.
-          </description>
-        </init-param>
-    </servlet>
+          &lt;/description&gt;
+        &lt;/init-param&gt;
+    &lt;/servlet&gt;
+ </CODE>
+ </pre>
  <DL><DT><B>Authors:</B></DT><DD>Troy Heninger</DD><DD>Graeme Rocher
 
  Date: Jan 10, 2004</DD></DL></p>

@@ -332,6 +332,15 @@ public abstract class GroovyPage extends Script {
     public final void invokeTag(String tagName, String tagNamespace, int lineNumber, Map attrs, int bodyClosureIndex) {
         Closure body = getBodyClosure(bodyClosureIndex);
 
+        // See https://github.com/grails/grails-gsp/issues/25
+        Map cleanedAttrs = new LinkedHashMap();
+        for (Object o : attrs.entrySet()) {
+            Map.Entry<String, ?> entry = (Map.Entry) o;
+            String newKey = entry.getKey().replaceAll(",", "").trim();
+            cleanedAttrs.put(newKey, entry.getValue());
+        }
+        attrs = cleanedAttrs;
+
         // TODO custom namespace stuff needs to be generalized and pluggable
         if (tagNamespace.equals(TEMPLATE_NAMESPACE) || tagNamespace.equals(LINK_NAMESPACE)) {
             final String tmpTagName = tagName;

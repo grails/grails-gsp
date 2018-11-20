@@ -2,7 +2,16 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>9 Tag Libraries 3.3.2.BUILD-SNAPSHOT</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script src="/cdn-cgi/apps/head/3cOPSgo5Omz84ycX7CvigfX4cpw.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-82213539-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-82213539-2');
+    </script>
+    <title>9 Tag Libraries 4.0.0.BUILD-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -85,7 +94,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>9 Tag Libraries</h1>
 
-                    <p><strong>Version:</strong> 3.3.2.BUILD-SNAPSHOT</p>
+                    <p><strong>Version:</strong> 4.0.0.BUILD-SNAPSHOT</p>
                 </div>
 
                 
@@ -256,7 +265,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <p><code>out</code> - The response writer for writing to the output stream</p>
 </li>
 <li>
-<p><code>pageScope</code> - A reference to the <a href="#ref-tag-libraries-pageScope">pageScope</a> object used for GSP rendering (i.e. the binding)</p>
+<p><code>pageScope</code> - A reference to the <a href="https://gsp.grails.org/latest/ref/Tag%20Libraries/pageScope.html">pageScope</a> object used for GSP rendering (i.e. the binding)</p>
 </li>
 <li>
 <p><code>params</code> - The <a href="http://docs.grails.org/latest/ref/Controllers/params.html">params</a> object for retrieving request parameters</p>
@@ -522,7 +531,7 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
     ...
-    runtime "org.grails:grails-web-jsp:3.3.2.BUILD-SNAPSHOT"
+    runtime "org.grails:grails-web-jsp:4.0.0.BUILD-SNAPSHOT"
 }</code></pre>
 </div>
 </div>
@@ -594,7 +603,7 @@ that "captures" the output of the taglib call. This buffer is the return value o
 used as a function.</p>
 </div>
 <div class="paragraph">
-<p>If the tag is listed in the library&#8217;s static <code>returnObjectForTags</code> array, then its return value will written to
+<p>If the tag is listed in the library&#8217;s static <code>returnObjectForTags</code> array, then its return value will be written to
 the output when it&#8217;s used as a normal tag. The return value of the tag lib closure will be returned as-is
 if it&#8217;s used as a function in GSP expressions or other taglibs.</p>
 </div>

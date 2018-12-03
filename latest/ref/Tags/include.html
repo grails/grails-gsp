@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>Groovy Server Pages (GSP) 3.3.1</title>
+    <title>Groovy Server Pages (GSP) 3.3.2</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -96,6 +96,18 @@ function addJsClass(el) {
 <div class="paragraph">
 <p>Includes the response of another controller/action or view in the current response</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The  <code>g:include</code> tag will not generate a separate request. The response from the <code>include</code> action will be merged into the response for the original request.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_examples">Examples</h3>
@@ -139,6 +151,27 @@ function addJsClass(el) {
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">def content = g.include(action: <span class="string"><span class="delimiter">'</span><span class="content">list</span><span class="delimiter">'</span></span>, controller: <span class="string"><span class="delimiter">'</span><span class="content">book</span><span class="delimiter">'</span></span>)</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>If using nested includes with params it is advisable to use unique parameter names as they are all attached to the same web request.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;g:include</span> <span class="attribute-name">controller</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">outer</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">list</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">params</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">[outerPage:1, outerSize:5]</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;g:include</span> <span class="attribute-name">controller</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">inner</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">list</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">params</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">[innerPage:2, innerSize:10]</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If non-unique names are used like the following</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;g:include</span> <span class="attribute-name">controller</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">outer</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">list</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">params</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">[page:1, size:5]</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;g:include</span> <span class="attribute-name">controller</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">inner</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">list</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">params</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">[page:2, size:10]</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>request.params will contain a list <code>params.page=[2,1]</code> and <code>params.size=[10,5]</code></p>
 </div>
 </div>
 <div class="sect2">

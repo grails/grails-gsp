@@ -49,7 +49,7 @@ import org.springframework.web.servlet.support.RequestDataValueProcessor
  */
 @TagLib
 @Slf4j
-class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrary, GrailsConfigurationAware {
+class FormTagLib extends ApplicationTagLib implements ApplicationContextAware, InitializingBean, TagLibrary, GrailsConfigurationAware {
 
     private static final DEFAULT_CURRENCY_CODES = ['EUR', 'XCD', 'USD', 'XOF', 'NOK', 'AUD',
                                                    'XAF', 'NZD', 'MAD', 'DKK', 'GBP', 'CHF',

@@ -4,16 +4,21 @@ import com.opensymphony.module.sitemesh.RequestConstants
 import grails.build.support.MetaClassRegistryCleaner
 import grails.core.DefaultGrailsApplication
 import grails.core.GrailsApplication
+import grails.core.GrailsUrlMappingsClass
 import grails.gorm.validation.PersistentEntityValidator
 import grails.plugins.GrailsPluginManager
 import grails.util.GrailsWebMockUtil
 import grails.util.Holders
 import grails.util.Metadata
+import grails.web.mapping.LinkGenerator
+import grails.web.mapping.UrlMappingsFactory
 import grails.web.pages.GroovyPagesUriService
 import org.grails.buffer.FastStringWriter
 import org.grails.config.PropertySourcesConfig
+import org.grails.core.AbstractGrailsClass
 import org.grails.core.artefact.ControllerArtefactHandler
 import org.grails.core.artefact.TagLibArtefactHandler
+import org.grails.core.artefact.UrlMappingsArtefactHandler
 import org.grails.encoder.Encoder
 import org.grails.gsp.GroovyPage
 import org.grails.gsp.GroovyPageMetaInfo
@@ -250,7 +255,7 @@ abstract class AbstractGrailsTagTests extends GroovyTestCase {
         messageSource = ctx.getBean("messageSource", MessageSource)
 
         ctx.beanFactory.registerSingleton("classLoader", gcl)
-        ctx.beanFactory.registerSingleton("grailsLinkGenerator", new DefaultLinkGenerator("http://localhost:8080"))
+        //ctx.beanFactory.registerSingleton("grailsLinkGenerator", new DefaultLinkGenerator("http://localhost:8080"))
         ctx.beanFactory.registerSingleton("manager", mockManager)
         ctx.beanFactory.registerSingleton("conversionService", new DefaultConversionService())
         ctx.beanFactory.registerSingleton(GroovyPagesUriService.BEAN_ID, new DefaultGroovyPagesUriService())
@@ -272,6 +277,8 @@ abstract class AbstractGrailsTagTests extends GroovyTestCase {
         mockManager.registerProvidedArtefacts(grailsApplication)
         def springConfig = new WebRuntimeSpringConfiguration(ctx)
 
+
+
         webRequest = GrailsWebMockUtil.bindMockWebRequest(ctx)
         onInit()
         try {
@@ -288,6 +295,9 @@ abstract class AbstractGrailsTagTests extends GroovyTestCase {
 
         dependentPlugins*.doWithRuntimeConfiguration(springConfig)
 
+        //
+
+
         grailsApplication.mainContext = springConfig.getUnrefreshedApplicationContext()
         appCtx = springConfig.getApplicationContext()
 
@@ -301,6 +311,10 @@ abstract class AbstractGrailsTagTests extends GroovyTestCase {
 
         mockManager.doDynamicMethods()
         initRequestAndResponse()
+
+        def linkGen = appCtx.getBean("grailsLinkGenerator")
+
+        linkGen.urlMappingsHolder = appCtx.getBean("grailsUrlMappingsHolder") // why is urlmappingsplugin making this null?
 
         ga.domainClasses.each { dc ->
             def v = new PersistentEntityValidator()
@@ -339,6 +353,8 @@ abstract class AbstractGrailsTagTests extends GroovyTestCase {
     }
 
     protected void onInit() {
+
+
     }
     protected void onDestroy() {
     }
@@ -516,6 +532,24 @@ abstract class AbstractGrailsTagTests extends GroovyTestCase {
     protected final void assertXPathNotExists(Document doc, String expr) {
         assertFalse xpath.evaluate(expr, doc, XPathConstants.BOOLEAN)
     }
+
+    private static final class MockGrailsUrlMappingsClass extends AbstractGrailsClass implements GrailsUrlMappingsClass {
+        Closure mappingClosure
+        public MockGrailsUrlMappingsClass(Closure mappingClosure) {
+            super(AbstractGrailsTagTests.class, "UrlMappings")
+            this.mappingClosure = mappingClosure
+        }
+        @Override
+        public Closure getMappingsClosure() {
+            return mappingClosure
+        }
+
+        @Override
+        public List getExcludePatterns() {
+            return null
+        }
+    }
+
 }
 
 class MockThemeSource implements ThemeSource {

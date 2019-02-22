@@ -1,11 +1,14 @@
 package org.grails.web.pages
 
 import grails.artefact.Artefact
+import grails.core.GrailsApplication
 import grails.test.AbstractGrailsEnvChangingSpec
 import grails.testing.web.taglib.TagLibUnitTest
 import spock.lang.Unroll
 
 class TagLibMethodMissingSpec extends AbstractGrailsEnvChangingSpec implements TagLibUnitTest<TagLibMethodMissingTagLib> {
+
+    GrailsApplication grailsApplication
 
     def setup() {
         mockArtefact(TagLibMethodMissingBTagLib)

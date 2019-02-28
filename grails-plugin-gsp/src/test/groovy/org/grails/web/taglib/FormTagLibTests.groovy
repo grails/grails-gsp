@@ -1,6 +1,8 @@
 package org.grails.web.taglib
 
+import grails.core.GrailsApplication
 import grails.core.GrailsUrlMappingsClass
+import grails.testing.web.taglib.TagLibUnitTest
 import grails.util.MockRequestDataValueProcessor
 import org.grails.core.AbstractGrailsClass
 import org.grails.core.artefact.UrlMappingsArtefactHandler
@@ -15,6 +17,7 @@ import org.springframework.context.ConfigurableApplicationContext
  * @author Graeme
  */
 class FormTagLibTests extends AbstractGrailsTagTests {
+    //GrailsApplication grailsApplication
 
     @Override
     protected void setUp() {
@@ -65,6 +68,7 @@ class FormTagLibTests extends AbstractGrailsTagTests {
     }
 
     void testFormTagWithAlternativeMethodAndRequestDataValueProcessor() {
+
         def template = '<g:form url="/foo/bar" method="delete"></g:form>'
         assertOutputEquals('<form action="/foo/bar" method="post" ><input type="hidden" name="_method" value="DELETE_PROCESSED_" id="_method" /><input type="hidden" name="requestDataValueProcessorHiddenName" value="hiddenValue" />\n</form>', template)
     }
@@ -144,11 +148,28 @@ class FormTagLibTests extends AbstractGrailsTagTests {
     }
 
     void testTextFieldTagWithRequestDataValueProcessor() {
-        def template = '<g:textField name="testField" value="1" />'
-        assertOutputEquals('<input type="text" name="testField" value="1_PROCESSED_" id="testField" />', template)
+        ConfigurableApplicationContext applicationContext = ctx
+        applicationContext.beanFactory.registerSingleton('requestDataValueProcessor', new MockRequestDataValueProcessor())
 
-        template = '<g:textField name="testField" value="${value}" />'
-        assertOutputEquals('<input type="text" name="testField" value="foo &gt; &quot; &amp; &lt; &#39;_PROCESSED_" id="testField" />', template, [value:/foo > " & < '/])
+        // we have to do this because applyTemplate() doesn't invoke the requestDataValueProcessor
+        StringWriter sw = new StringWriter()
+        withTag("textField", new PrintWriter(sw)) { tag ->
+            // use sorted map to be able to predict the order in which tag attributes are generated
+            def attributes = new TreeMap([name:"testField",value:'1'])
+            tag.call(attributes)
+        }
+
+        assertEquals('<input type="text" name="testField" value="1_PROCESSED_" id="testField" />', sw.toString())
+
+        sw = new StringWriter()
+        withTag("textField", new PrintWriter(sw)) { tag ->
+            // use sorted map to be able to predict the order in which tag attributes are generated
+            def attributes = new TreeMap([name:"testField",value:/foo > " & < \'/])
+            tag.call(attributes)
+        }
+
+        assertEquals('<input type="text" name="testField" value="foo &gt; &quot; &amp; &lt; \\&#39;_PROCESSED_" id="testField" />',sw.toString())
+
     }
 
     void testTextFieldTagWithNonBooleanAttributesAndNoConfig() {
@@ -197,7 +218,16 @@ class FormTagLibTests extends AbstractGrailsTagTests {
 
     void testPasswordTagWithRequestDataValueProcessor() {
         def template = '<g:passwordField name="myPassword" value="foo"/>'
-        assertOutputEquals('<input type="password" name="myPassword" value="foo_PROCESSED_" id="myPassword" />', template)
+        ConfigurableApplicationContext applicationContext = ctx
+        applicationContext.beanFactory.registerSingleton('requestDataValueProcessor', new MockRequestDataValueProcessor())
+
+        StringWriter sw = new StringWriter()
+        withTag("passwordField", new PrintWriter(sw)) { tag ->
+            // use sorted map to be able to predict the order in which tag attributes are generated
+            def attributes = new TreeMap([name:"myPassword",value:'foo'])
+            tag.call(attributes)
+        }
+        assertEquals('<input type="password" name="myPassword" value="foo_PROCESSED_" id="myPassword" />', sw.toString())
     }
 
     void testFormWithURL() {

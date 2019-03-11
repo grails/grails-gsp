@@ -12,9 +12,10 @@ class NamespacedTagLibRenderMethodTests extends AbstractGrailsTagTests {
     protected void onInit() {
         def tagClass = gcl.parseClass('''
 import grails.gsp.*
+import org.grails.plugins.web.taglib.*
 
 @TagLib
-class WithNamespaceTagLib {
+class WithNamespaceTagLib extends RenderTagLib {
 
     static namespace = "ns1"
 
@@ -29,9 +30,10 @@ class WithNamespaceTagLib {
 ''')
        def tagClass2 = gcl.parseClass('''
 import grails.gsp.*
+import org.grails.plugins.web.taglib.*
 
 @TagLib
-class NormalTagLib {
+class NormalTagLib extends RenderTagLib {
 
     Closure tag1 = { attrs, body ->
         out << render(template: "/bug1/t1")

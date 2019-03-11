@@ -75,7 +75,12 @@ class TagLibraryResolverImpl implements ServletContextAware, GrailsApplicationAw
                 patternResolver.getResources(tldResourcePattern).each { Resource resource ->
                     JspTagLib jspTagLib = loadJspTagLib(resource.getInputStream())
                     if(jspTagLib) {
-                        tagLibs[jspTagLib.URI] = jspTagLib
+                        try {
+                            tagLibs[jspTagLib.URI] = jspTagLib
+                        } catch (Throwable t) {
+                            System.out.println("Error resolving taglib${t.message}")
+                            t.printStackTrace()
+                        }
                     }
                 }
             }

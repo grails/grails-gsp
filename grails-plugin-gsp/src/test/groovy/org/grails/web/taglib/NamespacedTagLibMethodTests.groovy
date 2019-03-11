@@ -95,7 +95,7 @@ class SecondTagLib {
 import grails.gsp.*
 
 @TagLib
-class HasErrorTagLib {
+class HasErrorTagLib extends org.grails.plugins.web.taglib.ValidationTagLib {
     Closure tag = { attr, body ->
         out << hasErrors('bean': attr.bean, field: 'bar', 'errors')
     }
@@ -109,7 +109,7 @@ class HasErrorTagLib {
 import grails.gsp.*
 
 @TagLib
-class AlternateTagLib {
+class AlternateTagLib extends org.grails.plugins.web.taglib.ApplicationTagLib {
     static namespace = "alt"
 
     Closure showme = { attrs, body ->

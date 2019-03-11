@@ -27,7 +27,7 @@ import grails.gsp.TagLib
  * @author Marc Palmer (marc@anyware.co.uk)
  */
 @TagLib
-class CountryTagLib implements TagLibrary {
+class CountryTagLib extends FormTagLib implements TagLibrary {
     static final ISO3166_3 = [
         "afg":"Afghanistan",
         "alb":"Albania",

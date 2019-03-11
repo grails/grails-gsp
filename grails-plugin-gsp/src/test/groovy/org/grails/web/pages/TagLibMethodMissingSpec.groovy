@@ -6,7 +6,7 @@ import grails.test.AbstractGrailsEnvChangingSpec
 import grails.testing.web.taglib.TagLibUnitTest
 import spock.lang.Unroll
 
-class TagLibMethodMissingSpec extends AbstractGrailsEnvChangingSpec implements TagLibUnitTest<TagLibMethodMissingTagLib> {
+class TagLibMethodMissingSpec extends AbstractGrailsEnvChangingSpec implements TagLibUnitTest<TagLibMethodMissingBTagLib> {
 
     GrailsApplication grailsApplication
 
@@ -14,7 +14,7 @@ class TagLibMethodMissingSpec extends AbstractGrailsEnvChangingSpec implements T
         mockArtefact(TagLibMethodMissingBTagLib)
     }
 
-    @Unroll("template #template / expected content: #expectedContent / env: #grailsEnv")
+    //@Unroll("template #template / expected content: #expectedContent / env: #grailsEnv")
     def "Test tag library method missing handling"(template, expectedContent, grailsEnv) {
         when:'We call a tag that invokes an existing tag in other TagLib'
             changeGrailsEnv(grailsEnv)
@@ -36,6 +36,9 @@ class TagLibMethodMissingSpec extends AbstractGrailsEnvChangingSpec implements T
             ])
     }
 }
+
+
+/*
 @Artefact("TagLibrary")
 class TagLibMethodMissingTagLib {
     static namespace = "a"
@@ -72,6 +75,7 @@ class TagLibMethodMissingTagLib {
         "Hello $name"
     }
 }
+*/
 
 @Artefact("TagLib")
 class TagLibMethodMissingBTagLib {

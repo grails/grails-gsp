@@ -13,6 +13,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver
 class GroovyPageWithJSPTagsTests extends AbstractGrailsTagTests {
 
     protected void onInit() {
+        super.onInit()
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver()
         GroovySystem.metaClassRegistry.removeMetaClass HttpServletRequest
         GroovySystem.metaClassRegistry.removeMetaClass MockHttpServletRequest

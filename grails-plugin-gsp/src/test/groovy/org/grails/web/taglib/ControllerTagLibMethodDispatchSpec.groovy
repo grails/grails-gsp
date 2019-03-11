@@ -1,7 +1,6 @@
 package org.grails.web.taglib
 
 import grails.artefact.Artefact
-import grails.core.GrailsApplication
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
@@ -11,11 +10,8 @@ import spock.lang.Specification
  */
 class ControllerTagLibMethodDispatchSpec extends Specification implements ControllerUnitTest<TestController> {
 
-    GrailsApplication grailsApplication
-
     void setupSpec() {
         mockTagLibs(MyTagLib, TwoTagLib)
-
     }
 
     void testControllerTagLibMethodDispatch() {

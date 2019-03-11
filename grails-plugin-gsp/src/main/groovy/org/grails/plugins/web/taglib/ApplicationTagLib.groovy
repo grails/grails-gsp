@@ -55,8 +55,8 @@ class ApplicationTagLib implements ApplicationContextAware, InitializingBean, Gr
     GrailsApplication grailsApplication
     UrlMappingsHolder grailsUrlMappingsHolder
 
-
-
+    @Autowired
+    LinkGenerator linkGenerator
 
     RequestDataValueProcessor requestDataValueProcessor
 
@@ -78,7 +78,6 @@ class ApplicationTagLib implements ApplicationContextAware, InitializingBean, Gr
         if (applicationContext.containsBean('requestDataValueProcessor')) {
             requestDataValueProcessor = applicationContext.getBean('requestDataValueProcessor', RequestDataValueProcessor)
         }
-        //linkGenerator = (LinkGenerator)applicationContext.getBean("grailsLinkGenerator")
     }
 
     /**
@@ -463,9 +462,4 @@ class ApplicationTagLib implements ApplicationContextAware, InitializingBean, Gr
         // encoding is handled in GroovyPage.invokeTag and GroovyPage.captureTagOutput
         body()
     }
-
-    LinkGenerator getLinkGenerator() {
-        return applicationContext.getBean("grailsLinkGenerator")
-    }
-
 }

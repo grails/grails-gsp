@@ -41,7 +41,6 @@ import org.springframework.core.convert.ConversionService
 import org.springframework.http.HttpMethod
 import org.springframework.web.servlet.support.RequestContextUtils as RCU
 import org.springframework.web.servlet.support.RequestDataValueProcessor
-
 /**
  * Tags for working with form controls.
  *
@@ -202,7 +201,10 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
 
         if (value == null) value = false
         def hiddenValue = ""
-
+        
+        //escape the name string to avoid potential XSS attacks
+        name =  name.encodeAsHTML()
+        
         def unprocessed = value
         value = processFormFieldValueIfNecessary(name, value,"checkbox")
         hiddenValue = processFormFieldValueIfNecessary("_${name}", hiddenValue, "hidden")

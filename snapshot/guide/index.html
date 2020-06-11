@@ -44,9 +44,7 @@
                         
                         <div class="toc-item" style="margin-left:0"><a href="#makingChangesToADeployedApplication"><strong>7</strong><span>Making Changes to a Deployed Application</span></a></div>
                         
-                        <div class="toc-item" style="margin-left:0"><a href="#GSPDebugging"><strong>8</strong><span>GSP Debugging</span></a></div>
-                        
-                        <div class="toc-item" style="margin-left:0"><a href="#taglibs"><strong>9</strong><span>Tag Libraries</span></a></div>
+                        <div class="toc-item" style="margin-left:0"><a href="#taglibs"><strong>8</strong><span>Tag Libraries</span></a></div>
                         
                     </div>
                 </div>
@@ -112,23 +110,21 @@
                     
                     <div class="toc-item" style="margin-left:0px"><a href="#makingChangesToADeployedApplication"><strong>7</strong><span>Making Changes to a Deployed Application</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#GSPDebugging"><strong>8</strong><span>GSP Debugging</span></a></div>
+                    <div class="toc-item" style="margin-left:0px"><a href="#taglibs"><strong>8</strong><span>Tag Libraries</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#taglibs"><strong>9</strong><span>Tag Libraries</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#taglibVariablesAndScopes"><strong>8.1</strong><span>Variables and Scopes</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#taglibVariablesAndScopes"><strong>9.1</strong><span>Variables and Scopes</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#simpleTags"><strong>8.2</strong><span>Simple Tags</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#simpleTags"><strong>9.2</strong><span>Simple Tags</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#logicalTags"><strong>8.3</strong><span>Logical Tags</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#logicalTags"><strong>9.3</strong><span>Logical Tags</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#iterativeTags"><strong>8.4</strong><span>Iterative Tags</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#iterativeTags"><strong>9.4</strong><span>Iterative Tags</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#namespaces"><strong>8.5</strong><span>Tag Namespaces</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#namespaces"><strong>9.5</strong><span>Tag Namespaces</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#usingJSPTagLibraries"><strong>8.6</strong><span>Using JSP Tag Libraries</span></a></div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#usingJSPTagLibraries"><strong>9.6</strong><span>Using JSP Tag Libraries</span></a></div>
-                    
-                    <div class="toc-item" style="margin-left:10px"><a href="#tagReturnValue"><strong>9.7</strong><span>Tag return value</span></a></div>
+                    <div class="toc-item" style="margin-left:10px"><a href="#tagReturnValue"><strong>8.7</strong><span>Tag return value</span></a></div>
                     
                     <div style="clear:both" ></div>
                 </div>
@@ -1391,73 +1387,7 @@ cp -R grails-app/views<span class="comment">/* /var/www/grails/my-app/grails-app
 </div>
 
 
-<h1 id="GSPDebugging">8 GSP Debugging</h1>
-
-<div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/GSPDebugging.adoc"'>
-        <i class='fa fa-pencil-square-o'></i> Improve this doc
-    </button>
-</div>
-
-
-<div class="sect3">
-<h4 id="_viewing_the_generated_source_code">Viewing the generated source code</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>Adding "?showSource=true" or "&amp;showSource=true" to the url shows the generated Groovy source code for the view instead of rendering it. It won&#8217;t show the source code of included templates. This only works in development mode</p>
-</li>
-<li>
-<p>The saving of all generated source code can be activated by setting the property "grails.views.gsp.keepgenerateddir" (in <code>application.groovy</code>) . It must point to a directory that exists and is writable.</p>
-</li>
-<li>
-<p>During "grails war" gsp pre-compilation, the generated source code is stored in grails.project.work.dir/gspcompile (usually in ~/.grails/(grails_version)/projects/(project name)/gspcompile).</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_debugging_gsp_code_with_a_debugger">Debugging GSP code with a debugger</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>See <a href="http://contraptionsforprogramming.blogspot.com/2010/08/debuggable-gsps-in-springsource-tool.html">Debugging GSP in STS</a></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_viewing_information_about_templates_used_to_render_a_single_url">Viewing information about templates used to render a single url</h4>
-<div class="paragraph">
-<p>GSP templates are reused in large web applications by using the <code>g:render</code> taglib. Several small templates can be used to render a single page.
-It might be hard to find out what GSP template actually renders the html seen in the result.
-The debug templates -feature adds html comments to the output. The comments contain debug information about gsp templates used to render the page.</p>
-</div>
-<div class="paragraph">
-<p>Usage is simple: append "?debugTemplates" or "&amp;debugTemplates" to the url and view the source of the result in your browser.
-"debugTemplates" is restricted to development mode. It won&#8217;t work in production.</p>
-</div>
-<div class="paragraph">
-<p>Here is an example of comments added by debugTemplates :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">&lt;!-- GSP <span class="error">#</span><span class="integer">2</span> START <span class="key">template</span>: <span class="regexp"><span class="delimiter">/</span><span class="content">home</span><span class="delimiter">/</span></span>...<span class="regexp"><span class="delimiter">/</span><span class="content">views</span><span class="delimiter">/</span></span>_carousel.gsp
-     <span class="key">precompiled</span>: <span class="predefined-constant">false</span> <span class="key">lastmodified</span>: ... --&gt;
-.
-.
-.
-&lt;!-- GSP <span class="error">#</span><span class="integer">2</span> END <span class="key">template</span>: <span class="regexp"><span class="delimiter">/</span><span class="content">home</span><span class="delimiter">/</span></span>...<span class="regexp"><span class="delimiter">/</span><span class="content">views</span><span class="delimiter">/</span></span>_carousel.gsp
-     rendering <span class="key">time</span>: <span class="integer">115</span> ms --&gt;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Each comment block has a unique id so that you can find the start &amp; end of each template call.</p>
-</div>
-</div>
-
-
-<h1 id="taglibs">9 Tag Libraries</h1>
+<h1 id="taglibs">8 Tag Libraries</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs.adoc"'>
@@ -1565,7 +1495,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 
 
-<h2 id="taglibVariablesAndScopes">9.1 Variables and Scopes</h2>
+<h2 id="taglibVariablesAndScopes">8.1 Variables and Scopes</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/taglibVariablesAndScopes.adoc"'>
@@ -1619,7 +1549,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 
 
-<h2 id="simpleTags">9.2 Simple Tags</h2>
+<h2 id="simpleTags">8.2 Simple Tags</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/simpleTags.adoc"'>
@@ -1673,7 +1603,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 
 
-<h2 id="logicalTags">9.3 Logical Tags</h2>
+<h2 id="logicalTags">8.3 Logical Tags</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/logicalTags.adoc"'>
@@ -1707,7 +1637,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 
 
-<h2 id="iterativeTags">9.4 Iterative Tags</h2>
+<h2 id="iterativeTags">8.4 Iterative Tags</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/iterativeTags.adoc"'>
@@ -1794,7 +1724,7 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 </div>
 
 
-<h2 id="namespaces">9.5 Tag Namespaces</h2>
+<h2 id="namespaces">8.5 Tag Namespaces</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/namespaces.adoc"'>
@@ -1841,7 +1771,7 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 </div>
 
 
-<h2 id="usingJSPTagLibraries">9.6 Using JSP Tag Libraries</h2>
+<h2 id="usingJSPTagLibraries">8.6 Using JSP Tag Libraries</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/usingJSPTagLibraries.adoc"'>
@@ -1914,7 +1844,7 @@ This is configured with the <code>grails.gsp.tldScanPattern</code> setting. It a
 </div>
 
 
-<h2 id="tagReturnValue">9.7 Tag return value</h2>
+<h2 id="tagReturnValue">8.7 Tag return value</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/master/src/main/docs/guide/taglibs/tagReturnValue.adoc"'>

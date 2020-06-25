@@ -152,6 +152,16 @@ function addJsClass() {
 <div class="paragraph">
 <p>If you do not want to use the Asset-Pipeline plugin, you can serve the static assets from directories <code>src/main/resources/public</code> or <code>src/main/webapp</code>, but the latter one only gets included in WAR packaging but not in JAR packaging.</p>
 </div>
+<div class="paragraph">
+<p>For example, if you had a file stored at <code>/src/main/resources/public/images/example.png</code> and your Grails application was running on port 8080, then you could access the file by navigating to <a href="http://localhost:8080/static/images/example.jpg">http://localhost:8080/static/images/example.jpg</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_cache_configuration_for_static_resources">Cache Configuration for Static Resources</h4>
+<div class="paragraph">
+<p>By default, files under <code>src/main/resources/public</code> or <code>src/main/webapp</code> are served with an HTTP response header of <code>Cache-Control: no-store</code>.
+To have them be cached by the browser, you can set the configuration setting <code>grails.resources.cachePeriod: number</code> in <code>application.yml</code> so that they are served with a response header of <code>Cache-Control: max-age=number</code> indicating to the browser how many seconds the file should be considered fresh.</p>
+</div>
+</div>
 
 
                 <div style="clear:both;margin-top:15px;"></div>

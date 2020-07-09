@@ -322,9 +322,11 @@ if (location.href.indexOf('is-external=true') == -1) {
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/gsp/compiler/GroovyPageCompiler.html#compile()" title="Method in GroovyPageCompiler">compile()</a></span> - Method in <a href="org/grails/gsp/compiler/GroovyPageCompiler.html">GroovyPageCompiler</a>
 </dt><dd> <div class="block">Compiles the given GSP pages and returns a Map of URI to classname mappings</div></dd>
+<dt><span class="strong"><a href="org/grails/web/pages/GroovyPageCompilerForkTask.html#compile(List<File>)" title="Method in GroovyPageCompilerForkTask">compile(List&lt;File&gt;)</a></span> - Method in <a href="org/grails/web/pages/GroovyPageCompilerForkTask.html">GroovyPageCompilerForkTask</a>
+</dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/gsp/compiler/GroovyPageParser.html#COMPILE_STATIC_DIRECTIVE" title="Field in GroovyPageParser">COMPILE_STATIC_DIRECTIVE</a></span> - Field in <a href="org/grails/gsp/compiler/GroovyPageParser.html">GroovyPageParser</a>
 </dt><dd> <div class="block"></div></dd>
-<dt><span class="strong"><a href="org/grails/gsp/compiler/GroovyPageCompiler.html#compileGSP(java.io.File, java.io.File, java.lang.String, java.lang.String)" title="Method in GroovyPageCompiler">compileGSP(File, File, String, String)</a></span> - Method in <a href="org/grails/gsp/compiler/GroovyPageCompiler.html">GroovyPageCompiler</a>
+<dt><span class="strong"><a href="org/grails/gsp/compiler/GroovyPageCompiler.html#compileGSP(java.io.File, java.io.File, java.lang.String, java.lang.String, java.util.Map)" title="Method in GroovyPageCompiler">compileGSP(File, File, String, String, Map)</a></span> - Method in <a href="org/grails/gsp/compiler/GroovyPageCompiler.html">GroovyPageCompiler</a>
 </dt><dd> <div class="block">Compiles an individual GSP file</div></dd>
 <dt><span class="strong"><a href="org/grails/gsp/CompileStaticGroovyPage.html" title="Class in org.grails.gsp">CompileStaticGroovyPage</a></span> - Class in <a href="./org/grails/gsp/package-summary.html">org.grails.gsp</a>
 </dt><dd><div class="block">Base class for staticly compiled GSPs</div></dd>
@@ -424,6 +426,8 @@ if (location.href.indexOf('is-external=true') == -1) {
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/taglib/encoder/WithCodecHelper.html#createOutputStackAttributesBuilder(java.lang.Object, GrailsApplication)" title="Method in WithCodecHelper">createOutputStackAttributesBuilder(Object, GrailsApplication)</a></span> - Method in <a href="org/grails/taglib/encoder/WithCodecHelper.html">WithCodecHelper</a>
 </dt><dd> <div class="block">Creates a builder for building a new <a href='../../../../org/grails/taglib/encoder/OutputEncodingStackAttributes.html' title='OutputEncodingStackAttributes'>OutputEncodingStackAttributes</a> instance</div></dd>
+<dt><span class="strong"><a href="org/grails/web/pages/GroovyPageCompilerForkTask.html#createPageCompiler()" title="Method in GroovyPageCompilerForkTask">createPageCompiler()</a></span> - Method in <a href="org/grails/web/pages/GroovyPageCompilerForkTask.html">GroovyPageCompilerForkTask</a>
+</dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/plugins/web/taglib/RenderTagLib.html#createPageParser(java.lang.String)" title="Method in RenderTagLib">createPageParser(String)</a></span> - Method in <a href="org/grails/plugins/web/taglib/RenderTagLib.html">RenderTagLib</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/web/pages/GroovyPagesServlet.html#createResponseWriter(HttpServletResponse)" title="Method in GroovyPagesServlet">createResponseWriter(HttpServletResponse)</a></span> - Method in <a href="org/grails/web/pages/GroovyPagesServlet.html">GroovyPagesServlet</a>
@@ -1509,7 +1513,7 @@ if (location.href.indexOf('is-external=true') == -1) {
 </dt><dd><div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/web/sitemesh/GrailsRoutablePrintWriter.DestinationFactory.html" title="Interface in org.grails.web.sitemesh.GrailsRoutablePrintWriter">GrailsRoutablePrintWriter.DestinationFactory</a></span> - Interface in <a href="./org/grails/web/sitemesh/package-summary.html">org.grails.web.sitemesh</a>
 </dt><dd><div class="block">Factory to lazily instantiate the destination.</div></dd>
-<dt><span class="strong"><a href="org/grails/web/sitemesh/GrailsRoutablePrintWriter.html#GrailsRoutablePrintWriter(DestinationFactory)" title="Constructor in GrailsRoutablePrintWriter">GrailsRoutablePrintWriter(DestinationFactory)</a></span> - Constructor in <a href="org/grails/web/sitemesh/GrailsRoutablePrintWriter.html">GrailsRoutablePrintWriter</a>
+<dt><span class="strong"><a href="org/grails/web/sitemesh/GrailsRoutablePrintWriter.html#GrailsRoutablePrintWriter(org.grails.web.sitemesh.GrailsRoutablePrintWriter.DestinationFactory)" title="Constructor in GrailsRoutablePrintWriter">GrailsRoutablePrintWriter(GrailsRoutablePrintWriter.DestinationFactory)</a></span> - Constructor in <a href="org/grails/web/sitemesh/GrailsRoutablePrintWriter.html">GrailsRoutablePrintWriter</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/gsp/compiler/tags/GrailsTag.html" title="Interface in org.grails.gsp.compiler.tags">GrailsTag</a></span> - Interface in <a href="./org/grails/gsp/compiler/tags/package-summary.html">org.grails.gsp.compiler.tags</a>
 </dt><dd><div class="block">Allows to tag implementation to be abstracted from the JSP custom tag spec.. hence allowing
@@ -1576,6 +1580,10 @@ if (location.href.indexOf('is-external=true') == -1) {
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/gsp/compiler/GroovyPageCompiler.html" title="Class in org.grails.gsp.compiler">GroovyPageCompiler</a></span> - Class in <a href="./org/grails/gsp/compiler/package-summary.html">org.grails.gsp.compiler</a>
 </dt><dd><div class="block">Used to compile GSP files into a specified target directory.</div></dd>
+<dt><span class="strong"><a href="org/grails/web/pages/GroovyPageCompilerForkTask.html" title="Class in org.grails.web.pages">GroovyPageCompilerForkTask</a></span> - Class in <a href="./org/grails/web/pages/package-summary.html">org.grails.web.pages</a>
+</dt><dd><div class="block">A Forked Compiler Task for use (typically by Gradle)</div></dd>
+<dt><span class="strong"><a href="org/grails/web/pages/GroovyPageCompilerForkTask.html#GroovyPageCompilerForkTask(java.io.File, java.io.File, java.io.File)" title="Constructor in GroovyPageCompilerForkTask">GroovyPageCompilerForkTask(File, File, File)</a></span> - Constructor in <a href="org/grails/web/pages/GroovyPageCompilerForkTask.html">GroovyPageCompilerForkTask</a>
+</dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/web/pages/GroovyPageCompilerTask.html" title="Class in org.grails.web.pages">GroovyPageCompilerTask</a></span> - Class in <a href="./org/grails/web/pages/package-summary.html">org.grails.web.pages</a>
 </dt><dd><div class="block">An Ant task used for compiling GSP sources. </div></dd>
 <dt><span class="strong"><a href="org/grails/gsp/compiler/transform/GroovyPageInjectionOperation.html" title="Class in org.grails.gsp.compiler.transform">GroovyPageInjectionOperation</a></span> - Class in <a href="./org/grails/gsp/compiler/transform/package-summary.html">org.grails.gsp.compiler.transform</a>
@@ -2142,6 +2150,8 @@ if (location.href.indexOf('is-external=true') == -1) {
 <h2 class="title">M</h2>
 <dl>
 
+<dt><span class="strong"><a href="org/grails/web/pages/GroovyPageCompilerForkTask.html#main(java.lang.String)" title="Method in GroovyPageCompilerForkTask">main(String)</a></span> - Method in <a href="org/grails/web/pages/GroovyPageCompilerForkTask.html">GroovyPageCompilerForkTask</a>
+</dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/gsp/GroovyPageTemplate.html#make(java.util.Map)" title="Method in GroovyPageTemplate">make(Map)</a></span> - Method in <a href="org/grails/gsp/GroovyPageTemplate.html">GroovyPageTemplate</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/taglib/encoder/WithCodecHelper.html#makeSettingsCanonical(def)" title="Method in WithCodecHelper">makeSettingsCanonical(def)</a></span> - Method in <a href="org/grails/taglib/encoder/WithCodecHelper.html">WithCodecHelper</a>
@@ -2192,7 +2202,7 @@ if (location.href.indexOf('is-external=true') == -1) {
  to allow namespaced tags to be invoked as methods (eg. g.link(action:'foo')).</div></dd>
 <dt><span class="strong"><a href="org/grails/taglib/NamespacedTagDispatcher.html#NamespacedTagDispatcher(java.lang.String, java.lang.Class, GrailsApplication, org.grails.taglib.TagLibraryLookup)" title="Constructor in NamespacedTagDispatcher">NamespacedTagDispatcher(String, Class, GrailsApplication, TagLibraryLookup)</a></span> - Constructor in <a href="org/grails/taglib/NamespacedTagDispatcher.html">NamespacedTagDispatcher</a>
 </dt><dd> <div class="block"></div></dd>
-<dt><span class="strong"><a href="org/grails/web/sitemesh/GrailsRoutablePrintWriter.html#newInstance(DestinationFactory)" title="Method in GrailsRoutablePrintWriter">newInstance(DestinationFactory)</a></span> - Method in <a href="org/grails/web/sitemesh/GrailsRoutablePrintWriter.html">GrailsRoutablePrintWriter</a>
+<dt><span class="strong"><a href="org/grails/web/sitemesh/GrailsRoutablePrintWriter.html#newInstance(org.grails.web.sitemesh.GrailsRoutablePrintWriter.DestinationFactory)" title="Method in GrailsRoutablePrintWriter">newInstance(GrailsRoutablePrintWriter.DestinationFactory)</a></span> - Method in <a href="org/grails/web/sitemesh/GrailsRoutablePrintWriter.html">GrailsRoutablePrintWriter</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/gsp/jsp/JspWriterDelegate.html#newLine()" title="Method in JspWriterDelegate">newLine()</a></span> - Method in <a href="org/grails/gsp/jsp/JspWriterDelegate.html">JspWriterDelegate</a>
 </dt><dd> <div class="block"></div></dd>
@@ -2524,6 +2534,8 @@ if (location.href.indexOf('is-external=true') == -1) {
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="grails/core/gsp/GrailsTagLibClass.html#RETURN_OBJECT_FOR_TAGS_FIELD_NAME" title="Field in GrailsTagLibClass">RETURN_OBJECT_FOR_TAGS_FIELD_NAME</a></span> - Field in <a href="grails/core/gsp/GrailsTagLibClass.html">GrailsTagLibClass</a>
 </dt><dd> <div class="block"></div></dd>
+<dt><span class="strong"><a href="org/grails/web/pages/GroovyPageCompilerForkTask.html#run(java.lang.String)" title="Method in GroovyPageCompilerForkTask">run(String)</a></span> - Method in <a href="org/grails/web/pages/GroovyPageCompilerForkTask.html">GroovyPageCompilerForkTask</a>
+</dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/gsp/compiler/GroovyPageTypeCheckingExtension.html#run()" title="Method in GroovyPageTypeCheckingExtension">run()</a></span> - Method in <a href="org/grails/gsp/compiler/GroovyPageTypeCheckingExtension.html">GroovyPageTypeCheckingExtension</a>
 </dt><dd> <div class="block"></div></dd>
 </dl>
@@ -2718,7 +2730,7 @@ if (location.href.indexOf('is-external=true') == -1) {
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/gsp/GroovyPageMetaInfo.html#setExpressionCodecName(java.lang.String)" title="Method in GroovyPageMetaInfo">setExpressionCodecName(String)</a></span> - Method in <a href="org/grails/gsp/GroovyPageMetaInfo.html">GroovyPageMetaInfo</a>
 </dt><dd> <div class="block"></div></dd>
-<dt><span class="strong"><a href="org/grails/web/sitemesh/FactoryHolder.html#setFactory(groovy.util.Factory)" title="Method in FactoryHolder">setFactory(Factory)</a></span> - Method in <a href="org/grails/web/sitemesh/FactoryHolder.html">FactoryHolder</a>
+<dt><span class="strong"><a href="org/grails/web/sitemesh/FactoryHolder.html#setFactory(Factory)" title="Method in FactoryHolder">setFactory(Factory)</a></span> - Method in <a href="org/grails/web/sitemesh/FactoryHolder.html">FactoryHolder</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/web/taglib/jsp/JspEachErrorTag.html#setField(java.lang.String)" title="Method in JspEachErrorTag">setField(String)</a></span> - Method in <a href="org/grails/web/taglib/jsp/JspEachErrorTag.html">JspEachErrorTag</a>
 </dt><dd> <div class="block"></div></dd>
@@ -3227,7 +3239,7 @@ if (location.href.indexOf('is-external=true') == -1) {
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/web/pages/GSPResponseWriter.html#unwrap()" title="Method in GSPResponseWriter">unwrap()</a></span> - Method in <a href="org/grails/web/pages/GSPResponseWriter.html">GSPResponseWriter</a>
 </dt><dd> <div class="block"></div></dd>
-<dt><span class="strong"><a href="org/grails/web/sitemesh/GrailsRoutablePrintWriter.html#updateDestination(DestinationFactory)" title="Method in GrailsRoutablePrintWriter">updateDestination(DestinationFactory)</a></span> - Method in <a href="org/grails/web/sitemesh/GrailsRoutablePrintWriter.html">GrailsRoutablePrintWriter</a>
+<dt><span class="strong"><a href="org/grails/web/sitemesh/GrailsRoutablePrintWriter.html#updateDestination(org.grails.web.sitemesh.GrailsRoutablePrintWriter.DestinationFactory)" title="Method in GrailsRoutablePrintWriter">updateDestination(GrailsRoutablePrintWriter.DestinationFactory)</a></span> - Method in <a href="org/grails/web/sitemesh/GrailsRoutablePrintWriter.html">GrailsRoutablePrintWriter</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="org/grails/plugins/web/taglib/UrlMappingTagLib.html" title="Class in org.grails.plugins.web.taglib">UrlMappingTagLib</a></span> - Class in <a href="./org/grails/plugins/web/taglib/package-summary.html">org.grails.plugins.web.taglib</a>
 </dt><dd><div class="block">Tag library with tags that integration with the URL mappings API (paginate, include etc.)</div></dd>

@@ -1348,7 +1348,7 @@ The trailing slash on the  <code>grails.gsp.view.dir</code>  value is important!
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">mkdir -p /var/www/grails/my-app/grails-app/views
+<pre class="CodeRay highlight"><code data-lang="groovy">mkdir -p /<span class="type">var</span>/www/grails/my-app/grails-app/views
 cp -R grails-app/views<span class="comment">/* /var/www/grails/my-app/grails-app/views</span></code></pre>
 </div>
 </div>
@@ -1361,7 +1361,7 @@ cp -R grails-app/views<span class="comment">/* /var/www/grails/my-app/grails-app
 <div class="paragraph">
 <p>There are also some System properties to control GSP reloading:</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1692,9 +1692,9 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">def repeat = { attrs, body -&gt;
-    def var = attrs.var ?: <span class="string"><span class="delimiter">&quot;</span><span class="content">num</span><span class="delimiter">&quot;</span></span>
+    def <span class="type">var</span> = attrs.var ?: <span class="string"><span class="delimiter">&quot;</span><span class="content">num</span><span class="delimiter">&quot;</span></span>
     attrs.times?.toInteger()?.times { num -&gt;
-        out &lt;&lt; body((var):num)
+        out &lt;&lt; body((<span class="type">var</span>):num)
     }
 }</code></pre>
 </div>
@@ -1704,7 +1704,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">out &lt;&lt; body((var):num)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java">out &lt;&lt; body((<span class="type">var</span>):num)</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">

@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>8 Tag Libraries 4.0.3</title>
+    <title>8 Tag Libraries 5.0.0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -91,7 +91,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>8 Tag Libraries</h1>
 
-                    <p><strong>Version:</strong> 4.0.3</p>
+                    <p><strong>Version:</strong> 5.0.0</p>
                 </div>
 
                 
@@ -253,7 +253,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <p><code>controllerName</code> - The currently executing controller name</p>
 </li>
 <li>
-<p><code>flash</code> - The <a href="http://docs.grails.org/latest/ref/Controllers/flash.html">flash</a> object</p>
+<p><code>flash</code> - The <a href="https://docs.grails.org/latest/ref/Controllers/flash.html">flash</a> object</p>
 </li>
 <li>
 <p><code>grailsApplication</code> - The <a href="http://docs.grails.org/latest/api/grails/core/GrailsApplication.html">GrailsApplication</a> instance</p>
@@ -265,7 +265,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <p><code>pageScope</code> - A reference to the <a href="https://gsp.grails.org/latest/ref/Tag%20Libraries/pageScope.html">pageScope</a> object used for GSP rendering (i.e. the binding)</p>
 </li>
 <li>
-<p><code>params</code> - The <a href="http://docs.grails.org/latest/ref/Controllers/params.html">params</a> object for retrieving request parameters</p>
+<p><code>params</code> - The <a href="https://docs.grails.org/latest/ref/Controllers/params.html">params</a> object for retrieving request parameters</p>
 </li>
 <li>
 <p><code>pluginContextPath</code> - The context path to the plugin that contains the tag library</p>
@@ -419,9 +419,9 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">def repeat = { attrs, body -&gt;
-    def var = attrs.var ?: <span class="string"><span class="delimiter">&quot;</span><span class="content">num</span><span class="delimiter">&quot;</span></span>
+    def <span class="type">var</span> = attrs.var ?: <span class="string"><span class="delimiter">&quot;</span><span class="content">num</span><span class="delimiter">&quot;</span></span>
     attrs.times?.toInteger()?.times { num -&gt;
-        out &lt;&lt; body((var):num)
+        out &lt;&lt; body((<span class="type">var</span>):num)
     }
 }</code></pre>
 </div>
@@ -431,7 +431,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">out &lt;&lt; body((var):num)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java">out &lt;&lt; body((<span class="type">var</span>):num)</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -528,7 +528,7 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
     ...
-    runtime "org.grails:grails-web-jsp:4.0.3"
+    runtimeOnly "org.grails:grails-web-jsp:5.0.0"
 }</code></pre>
 </div>
 </div>
@@ -559,8 +559,8 @@ This is configured with the <code>grails.gsp.tldScanPattern</code> setting. It a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">runtime <span class="string"><span class="delimiter">'</span><span class="content">javax.servlet:jstl:1.1.2</span><span class="delimiter">'</span></span>
-        runtime <span class="string"><span class="delimiter">'</span><span class="content">taglibs:standard:1.1.2</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">        runtimeOnly <span class="string"><span class="delimiter">'</span><span class="content">javax.servlet:jstl:1.1.2</span><span class="delimiter">'</span></span>
+        runtimeOnly <span class="string"><span class="delimiter">'</span><span class="content">taglibs:standard:1.1.2</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">

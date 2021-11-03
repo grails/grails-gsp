@@ -4,7 +4,7 @@ import grails.artefact.Artefact
 import grails.testing.web.UrlMappingsUnitTest
 import spock.lang.*
 
-@IgnoreIf({System.getenv('TRAVIS')})
+@IgnoreIf({System.getenv('CI')})
 class FormTagLibResourceTests extends Specification implements UrlMappingsUnitTest<TestFormTagUrlMappings> {
 
 

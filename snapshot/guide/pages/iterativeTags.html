@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>8.4 Iterative Tags 4.0.4.BUILD-SNAPSHOT</title>
+    <title>8.4 Iterative Tags 5.0.1-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -91,7 +91,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>8.4 Iterative Tags</h1>
 
-                    <p><strong>Version:</strong> 4.0.4.BUILD-SNAPSHOT</p>
+                    <p><strong>Version:</strong> 5.0.1-SNAPSHOT</p>
                 </div>
 
                 
@@ -143,9 +143,9 @@ function addJsClass() {
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">def repeat = { attrs, body -&gt;
-    def var = attrs.var ?: <span class="string"><span class="delimiter">&quot;</span><span class="content">num</span><span class="delimiter">&quot;</span></span>
+    def <span class="type">var</span> = attrs.var ?: <span class="string"><span class="delimiter">&quot;</span><span class="content">num</span><span class="delimiter">&quot;</span></span>
     attrs.times?.toInteger()?.times { num -&gt;
-        out &lt;&lt; body((var):num)
+        out &lt;&lt; body((<span class="type">var</span>):num)
     }
 }</code></pre>
 </div>
@@ -155,7 +155,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">out &lt;&lt; body((var):num)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java">out &lt;&lt; body((<span class="type">var</span>):num)</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">

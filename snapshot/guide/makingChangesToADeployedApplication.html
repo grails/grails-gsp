@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>7 Making Changes to a Deployed Application 4.0.4.BUILD-SNAPSHOT</title>
+    <title>7 Making Changes to a Deployed Application 5.0.1-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -93,7 +93,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>7 Making Changes to a Deployed Application</h1>
 
-                    <p><strong>Version:</strong> 4.0.4.BUILD-SNAPSHOT</p>
+                    <p><strong>Version:</strong> 5.0.1-SNAPSHOT</p>
                 </div>
 
                 
@@ -144,7 +144,7 @@ The trailing slash on the  <code>grails.gsp.view.dir</code>  value is important!
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">mkdir -p /var/www/grails/my-app/grails-app/views
+<pre class="CodeRay highlight"><code data-lang="groovy">mkdir -p /<span class="type">var</span>/www/grails/my-app/grails-app/views
 cp -R grails-app/views<span class="comment">/* /var/www/grails/my-app/grails-app/views</span></code></pre>
 </div>
 </div>
@@ -157,7 +157,7 @@ cp -R grails-app/views<span class="comment">/* /var/www/grails/my-app/grails-app
 <div class="paragraph">
 <p>There are also some System properties to control GSP reloading:</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">

@@ -87,10 +87,10 @@ subprojects {
         compileOnly "javax.servlet:javax.servlet-api:$servletApiVersion"
 
         testImplementation "javax.servlet:javax.servlet-api:$servletApiVersion"
-        testImplementation "org.codehaus.groovy:groovy-test-junit5:${groovyVersion}"
-        testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.2"
-        testImplementation "org.junit.platform:junit-platform-runner:1.8.2"
-        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.8.2"
+        testImplementation "org.codehaus.groovy:groovy-test-junit5:$groovyVersion"
+        testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
+        testImplementation "org.junit.platform:junit-platform-runner:$junitPlatformVersion"
+        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
     }
 
     tasks.withType(Test) {

@@ -444,34 +444,40 @@ implements <a href='../../../org.springframework.context.ApplicationContextAware
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
-                            <td class="colLast"><code><strong><a href="#setGroovyPageLocator(org.grails.gsp.io.GroovyPageLocator)">setGroovyPageLocator</a></strong>(<a href='../../../org/grails/gsp/io/GroovyPageLocator.html'>GroovyPageLocator</a> groovyPageLocator)</code><br></td>
+                            <td class="colLast"><code><strong><a href="#setClassLoader(java.lang.ClassLoader)">setClassLoader</a></strong>(java.lang.ClassLoader classLoader)</code><br>Sets the ClassLoader that the TemplateEngine should use to</td>
                         </tr>
                         
                         <tr class="rowColor">
+                            <td class="colFirst"><code></code></td>
+                            <td class="colLast"><code>public&nbsp;void</code></td>
+                            <td class="colLast"><code><strong><a href="#setGroovyPageLocator(org.grails.gsp.io.GroovyPageLocator)">setGroovyPageLocator</a></strong>(<a href='../../../org/grails/gsp/io/GroovyPageLocator.html'>GroovyPageLocator</a> groovyPageLocator)</code><br></td>
+                        </tr>
+                        
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setGroovyPageSourceDecorators(List)">setGroovyPageSourceDecorators</a></strong>(java.util.List&lt;<a href='../../../org/grails/gsp/GroovyPageSourceDecorator.html' title='GroovyPageSourceDecorator'>GroovyPageSourceDecorator</a>&gt; groovyPageSourceDecorators)</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setJspTagLibraryResolver(org.grails.gsp.jsp.TagLibraryResolver)">setJspTagLibraryResolver</a></strong>(<a href='../../../org/grails/gsp/jsp/TagLibraryResolver.html'>TagLibraryResolver</a> jspTagLibraryResolver)</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setReloadEnabled(boolean)">setReloadEnabled</a></strong>(boolean b)</code><br>Sets whether reloading is enabled</td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setResourceLoader(ResourceLoader)">setResourceLoader</a></strong>(<a href='../../../ResourceLoader.html'>ResourceLoader</a> resourceLoader)</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setTagLibraryLookup(org.grails.taglib.TagLibraryLookup)">setTagLibraryLookup</a></strong>(<a href='../../../org/grails/taglib/TagLibraryLookup.html'>TagLibraryLookup</a> tagLibraryLookup)</code><br></td>
@@ -873,6 +879,15 @@ public&nbsp;void <strong>setBeanClassLoader</strong>(java.lang.ClassLoader beanC
                             <li class="blockList">
                                 <h4>public&nbsp;void <strong>setCacheResources</strong>(boolean cacheResources)</h4>
                                 <p></p>
+                            </li>
+                        </ul>
+                    
+                        <a name="setClassLoader(java.lang.ClassLoader)"><!-- --></a>
+                        <ul class="blockListLast">
+                            <li class="blockList">
+                                <h4>public&nbsp;void <strong>setClassLoader</strong>(java.lang.ClassLoader classLoader)</h4>
+                                <p> Sets the ClassLoader that the TemplateEngine should use to
+      <DL><DT><B>Parameters:</B></DT><DD><code>classLoader</code> -  The ClassLoader to use when compilation of Groovy Pages occurs</DD></DL></p>
                             </li>
                         </ul>
                     

@@ -105,6 +105,20 @@ subprojects {
             maxParallelForks = 4
         }
     }
+
+    boolean isCiServer = System.getenv().containsKey("CI")
+    test {
+        retry {
+            if (isCiServer) {
+                maxRetries = 2
+                maxFailures = 20
+            } else {
+                maxRetries = 5
+                maxFailures = 20
+            }
+            failOnPassedAfterRetry = true
+        }
+    }
 }
 
 apply from: "${commonBuild}/common-docs.gradle"

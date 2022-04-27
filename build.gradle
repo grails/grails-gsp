@@ -56,7 +56,7 @@ subprojects {
         apply from: "${commonBuild}/common-project.gradle"
 
         dependencies {
-            documentation "org.codehaus.groovy:groovy-dateutil:$groovyVersion"
+            documentation "org.apache.groovy:groovy-dateutil:$groovyVersion"
         }
     }
 
@@ -82,7 +82,7 @@ subprojects {
         compileOnly "javax.servlet:javax.servlet-api:$servletApiVersion"
 
         testImplementation "javax.servlet:javax.servlet-api:$servletApiVersion"
-        testImplementation "org.codehaus.groovy:groovy-test-junit5:${groovyVersion}"
+        testImplementation "org.apache.groovy:groovy-test-junit5:${groovyVersion}"
         testImplementation "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
         testImplementation "org.junit.platform:junit-platform-runner:${junitPlatformVerison}"
         testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"

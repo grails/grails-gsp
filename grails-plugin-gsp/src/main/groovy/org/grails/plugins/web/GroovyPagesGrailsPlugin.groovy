@@ -299,11 +299,14 @@ class GroovyPagesGrailsPlugin extends Plugin {
 
     @Override
     void onChange(Map<String, Object> event) {
+        if (!(event.source instanceof Class)) {
+            return
+        }
         def application = grailsApplication
         def ctx = applicationContext
 
-        if (application.isArtefactOfType(TagLibArtefactHandler.TYPE, event.source)) {
-            GrailsTagLibClass taglibClass = (GrailsTagLibClass)application.addArtefact(TagLibArtefactHandler.TYPE, event.source)
+        if (application.isArtefactOfType(TagLibArtefactHandler.TYPE, (Class)event.source)) {
+            GrailsTagLibClass taglibClass = (GrailsTagLibClass)application.addArtefact(TagLibArtefactHandler.TYPE, (Class)event.source)
             if (taglibClass) {
                 // replace tag library bean
                 def beanName = taglibClass.fullName

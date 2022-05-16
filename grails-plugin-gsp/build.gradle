@@ -24,7 +24,7 @@ dependencies {
     astCompile "org.grails:grails-web:$grailsVersion"    
     astCompile "org.grails:grails-plugin-controllers:$grailsVersion"
     
-    testCompile 'org.grails:grails-web-testing-support:2.0.0.RC1', {
+    testCompile 'org.grails:grails-web-testing-support:2.5.0-SNAPSHOT', {
         exclude module:'async'
     }
     // testCompile 'org.grails:grails-async:4.0.0.BUILD-SNAPSHOT'

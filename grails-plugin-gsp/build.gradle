@@ -31,7 +31,7 @@ dependencies {
     testCompile 'org.grails:grails-testing-support:2.0.0.RC1', {
         exclude module:'async'
     }
-    testCompile 'org.grails:grails-gorm-testing-support:2.0.0.RC1', {
+    testCompile 'org.grails:grails-gorm-testing-support:2.6.2-SNAPSHOT', {
         exclude module:'async'
     }
 

@@ -6,5 +6,8 @@ updates:
     interval: daily
   open-pull-requests-limit: 10
   target-branch: 4.0.x
+  ignore:
+    - dependency-name: "*"
+      update-types: [ "version-update:semver-major" ]
   labels:
   - "type: dependency upgrade"

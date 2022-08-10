@@ -56,6 +56,9 @@ subprojects {
     apply plugin:'idea'
     apply plugin: 'java-library'
 
+    sourceCompatibility=1.11
+    targetCompatibility=1.11
+
     compileJava {
         options.release = 11
     }

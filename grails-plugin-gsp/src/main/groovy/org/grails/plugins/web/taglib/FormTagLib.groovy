@@ -51,18 +51,20 @@ import org.springframework.web.servlet.support.RequestDataValueProcessor
 @Slf4j
 class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrary, GrailsConfigurationAware {
 
-    private static final DEFAULT_CURRENCY_CODES = ['EUR', 'XCD', 'USD', 'XOF', 'NOK', 'AUD',
-                                                   'XAF', 'NZD', 'MAD', 'DKK', 'GBP', 'CHF',
-                                                   'XPF', 'ILS', 'ROL', 'TRL']
+    private static final List<String> DEFAULT_CURRENCY_CODES = ['EUR', 'XCD', 'USD', 'XOF', 'NOK', 'AUD',
+                                                                'XAF', 'NZD', 'MAD', 'DKK', 'GBP', 'CHF',
+                                                                'XPF', 'ILS', 'ROL', 'TRL']
+
+    private static final List<String> DEFAULT_BOOLEAN_ATTRIBUTES = ['disabled', 'checked', 'readonly', 'required']
 
     ApplicationContext applicationContext
     RequestDataValueProcessor requestDataValueProcessor
     ConversionService conversionService
     GrailsTagDateHelper grailsTagDateHelper
-    
+
     CodecLookup codecLookup
 
-    private List<String> booleanAttributes = ['disabled', 'checked', 'readonly','required']
+    private List<String> booleanAttributes = DEFAULT_BOOLEAN_ATTRIBUTES
 
     void afterPropertiesSet() {
         if (applicationContext.containsBean('requestDataValueProcessor')) {
@@ -345,7 +347,7 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
             if (v != null) {
                 writer << k
                 writer << '="'
-                writer << (htmlEncoder != null ? htmlEncoder.encode(v) : v) 
+                writer << (htmlEncoder != null ? htmlEncoder.encode(v) : v)
                 writer << '" '
             }
         }
@@ -1188,9 +1190,9 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
             // process remaining attributes
             outputAttributes(attrs, radioWriter)
             radioWriter << "/>"
-            
+
             it.radio = raw(radioWriter.buffer)
-            
+
             it.label = labels == null ? 'Radio ' + val : labels[idx]
 
             out << body(it)
@@ -1220,6 +1222,6 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
     void setConfiguration(Config co) {
         // Some attributes can be treated as boolean, but must be converted to the
         // expected value.
-        booleanAttributes = co.getProperty('grails.tags.booleanToAttributes', List, ['disabled', 'checked', 'readonly'])
+        booleanAttributes = co.getProperty('grails.tags.booleanToAttributes', List, DEFAULT_BOOLEAN_ATTRIBUTES)
     }
 }

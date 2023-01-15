@@ -231,18 +231,18 @@ class FormTagLibTests extends Specification implements TagLibUnitTest<FormTagLib
     def testTextFieldTagWithNonBooleanAttributesAndNoConfig() {
         when:
         unRegisterRequestDataValueProcessor()
-        def template = '<g:textField name="testField" value="1" disabled="false" checked="false" readonly="false" required="false" />'
+        def template = '<g:textField name="testField" value="1" disabled="false" checked="false" readonly="false" bogus="false" />'
         String output = applyTemplate(template)
 
         then:
-        output == '<input type="text" name="testField" value="1" required="false" id="testField" />'
+        output == '<input type="text" name="testField" value="1" bogus="false" id="testField" />'
 
         when:
-        template = '<g:textField name="testField" value="1" disabled="true" checked="true" readonly="true" required="true"/>'
+        template = '<g:textField name="testField" value="1" disabled="true" checked="true" readonly="true" required="true" bogus="true" />'
         output = applyTemplate(template)
 
         then:
-        output == '<input type="text" name="testField" value="1" required="true" disabled="disabled" checked="checked" readonly="readonly" id="testField" />'
+        output == '<input type="text" name="testField" value="1" bogus="true" disabled="disabled" checked="checked" readonly="readonly" required="required" id="testField" />'
     }
 
 

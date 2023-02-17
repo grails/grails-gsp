@@ -185,6 +185,7 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
     Closure checkBox = { attrs ->
         def value = attrs.remove('value')
         def name = attrs.remove('name')
+        def formName = attrs.get('form')
 
         if(!name){
             throwTagError("Tag [checkBox] missing required attribute [name]")
@@ -226,6 +227,9 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
         out << "<input type=\"hidden\" name=\"${hiddenFieldName}\""
         if (hiddenValue != "") {
             out << " value=\"${hiddenValue}\""
+        }
+        if (formName) {
+            out << " form=\"${formName}\""
         }
         out << " /><input type=\"checkbox\" name=\"${name}\" "
         if (checkedAttributeWasSpecified) {

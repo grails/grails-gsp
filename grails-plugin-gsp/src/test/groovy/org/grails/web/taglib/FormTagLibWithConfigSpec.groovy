@@ -17,25 +17,24 @@ import spock.lang.Specification
 class FormTagLibWithConfigSpec extends Specification implements TagLibUnitTest<FormTagLib> {
 
     Closure doWithConfig() {{ config ->
-        config.grails.tags.booleanToAttributes = ['disabled','checked','readonly','required']
+        config.grails.tags.booleanToAttributes = ['disabled','checked','readonly','required','bogus']
     }}
 
     def testTextFieldTagWithNonBooleanAttributesAndConfig() {
         when:
 
-        def template = '<g:textField name="testField" value="1" disabled="false" checked="false" readonly="false" required="false" />'
+        def template = '<g:textField name="testField" value="1" disabled="false" checked="false" readonly="false" required="false" bogus="false" />'
         String output = applyTemplate(template)
 
         then:
         assert output == '<input type="text" name="testField" value="1" id="testField" />'
-        //assert output == '<input type="text" name="testField" value="1" required="false" id="testField" />'
 
         when:
-        template = '<g:textField name="testField" value="1" disabled="true" checked="true" readonly="true" required="true"/>'
+        template = '<g:textField name="testField" value="1" disabled="true" checked="true" readonly="true" required="true" bogus="true" />'
         output = applyTemplate(template)
 
         then:
-        assert output == '<input type="text" name="testField" value="1" disabled="disabled" checked="checked" readonly="readonly" required="required" id="testField" />'
+        assert output == '<input type="text" name="testField" value="1" disabled="disabled" checked="checked" readonly="readonly" required="required" bogus="bogus" id="testField" />'
 
     }
 

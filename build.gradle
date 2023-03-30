@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+        mavenCentral()
         maven { url "https://repo.grails.org/grails/core" }
         maven { url "https://plugins.gradle.org/m2/" }
     }
@@ -58,10 +59,6 @@ subprojects {
 
     sourceCompatibility=1.11
     targetCompatibility=1.11
-
-    compileJava {
-        options.release = 11
-    }
 
     configurations.all {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->

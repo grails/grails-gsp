@@ -147,6 +147,11 @@ trait TagLibrary implements WebAttributes, ServletAttributes, TagLibraryInvoker 
 
             if (result != null && !Environment.isDevelopmentMode()) {
                 MetaClass mc = GrailsMetaClassUtils.getExpandoMetaClass(getClass())
+
+                // Register the property for the already-existing singleton instance of the taglib
+                TagLibraryMetaUtils.registerPropertyMissingForTag(this.metaClass, name, result)
+
+                // Register the property for the ExpandoMetaClass so that other tag libs that inherit from it benefit
                 TagLibraryMetaUtils.registerPropertyMissingForTag(mc, name, result);
             }
 

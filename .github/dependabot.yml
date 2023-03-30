@@ -8,6 +8,6 @@ updates:
   target-branch: 4.0.x
   ignore:
     - dependency-name: "*"
-      update-types: [ "version-update:semver-major" ]
+      update-types: ["version-update:semver-minor", "version-update:semver-major"]
   labels:
   - "type: dependency upgrade"

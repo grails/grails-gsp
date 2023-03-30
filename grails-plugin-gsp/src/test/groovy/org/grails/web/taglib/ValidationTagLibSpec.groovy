@@ -270,7 +270,7 @@ class ValidationTagLibSpec extends Specification implements TagLibUnitTest<Valid
         applyTemplate(template, [book:b]) == "1.045,456"
     }
 
-    @IgnoreIf({ jvm.isJava14() || jvm.isJava15() }) // because space is converted to narrow no-break space 8239 and is not encoded
+    @IgnoreIf({ jvm.isJava14() || jvm.isJava15() || jvm.isJava17() }) // because space is converted to narrow no-break space 8239 and is not encoded
     void testFieldValueTagWithFrenchLocaleInTextField() {
         given:
         def b = new ValidationTagLibBook()

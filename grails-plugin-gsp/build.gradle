@@ -35,8 +35,6 @@ dependencies {
 
     testRuntimeOnly "org.grails.plugins:async"
     testImplementation "javax.servlet.jsp:jsp-api:${jspApiVersion}"
-//    testImplementation "org.springframework:spring-test:$springVersion"
-
     testImplementation "taglibs:standard:${jstlVersion}"
     testImplementation "javax.servlet:jstl:${jstlVersion}"
 

@@ -9,6 +9,5 @@ dependencies {
         exclude group:'org.grails', module:'grails-web-common'
     }
 
-//    testImplementation "org.springframework:spring-test:$springVersion"
     testRuntimeOnly "org.grails:grails-spring:$grailsVersion"
 }

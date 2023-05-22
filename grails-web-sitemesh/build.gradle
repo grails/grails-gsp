@@ -3,6 +3,4 @@ dependencies {
     api "org.grails:grails-web-common:$grailsVersion"
 
     api "opensymphony:sitemesh:$sitemeshVersion"
-
-//    testImplementation "org.springframework:spring-test:$springVersion"
 }

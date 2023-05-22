@@ -4,5 +4,5 @@ dependencies {
 
     api "opensymphony:sitemesh:$sitemeshVersion"
 
-//    testImplementation "org.springframework:spring-test:$springVersion"
+    testImplementation "org.springframework:spring-test:$springVersion"
 }

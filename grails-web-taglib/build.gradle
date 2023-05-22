@@ -4,7 +4,7 @@ dependencies {
     api project(":grails-taglib")
 
     testRuntimeOnly "org.grails:grails-spring:$grailsVersion"
-//    testImplementation "org.springframework:spring-test:$springVersion"
+    testImplementation "org.springframework:spring-test:$springVersion"
 }
 
 // TODO: Remove this after update to Grails 5.0.0.M2

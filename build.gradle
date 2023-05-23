@@ -62,20 +62,7 @@ subprojects {
 
     configurations.all {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-            if( details.requested.group == 'org.grails' &&
-                    details.requested.name in ['grails-datastore-core',
-                                               'grails-datastore-async',
-                                               'grails-datastore-gorm',
-                                               'grails-datastore-gorm-async',
-                                               'grails-datastore-gorm-rx',
-                                               'grails-datastore-gorm-support',
-                                               'grails-datastore-gorm-tck',
-                                               'grails-datastore-gorm-test',
-                                               'grails-datastore-gorm-validation',
-                                               'grails-datastore-web']
-            ) {
-                details.useVersion(datastoreVersion)
-            } else if (details.requested.group == "org.spockframework") {
+            if (details.requested.group == "org.spockframework") {
                 details.useVersion(spockVersion)
             }
         }

@@ -66,7 +66,7 @@ class GroovyPagesGrailsPlugin extends Plugin {
     def watchedResources = ["file:./plugins/*/grails-app/taglib/**/*TagLib.groovy",
                             "file:./grails-app/taglib/**/*TagLib.groovy"]
 
-    def grailsVersion = "3.3.0 > *"
+    def grailsVersion = "6.0.0 > *"
     def dependsOn = [core: GrailsUtil.getGrailsVersion(), i18n: GrailsUtil.getGrailsVersion()]
     def observe = ['controllers']
     def loadAfter = ['filters']

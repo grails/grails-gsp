@@ -48,7 +48,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * NOTE: Based on work done by on the GSP standalone project (https://gsp.dev.java.net/)
- *
  * Main servlet class.  Example usage in web.xml:
  *
  * <pre>
@@ -105,7 +104,7 @@ public class GroovyPagesServlet extends FrameworkServlet implements PluginManage
     private GroovyPagesTemplateEngine groovyPagesTemplateEngine;
     private GrailsPluginManager pluginManager;
     @SuppressWarnings("rawtypes")
-    private Map<String, Class> binaryPluginViewsMap = new ConcurrentHashMap<String, Class>();
+    private final Map<String, Class> binaryPluginViewsMap = new ConcurrentHashMap<String, Class>();
 
     @Override
     protected void initFrameworkServlet() throws BeansException {

@@ -38,8 +38,6 @@ import org.grails.gsp.compiler.GroovyPageCompiler
  */
 class GroovyPageCompilerTask extends MatchingTask {
 
-
-
     File destdir
     Path classpath
     Path configs

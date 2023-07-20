@@ -20,9 +20,6 @@ import groovy.transform.CompileStatic
 import org.codehaus.groovy.control.CompilerConfiguration
 import org.grails.gsp.compiler.GroovyPageCompiler
 
-import java.nio.file.Files
-import java.nio.file.Paths
-
 /**
  * A Forked Compiler Task for use (typically by Gradle)
  *
@@ -30,8 +27,12 @@ import java.nio.file.Paths
  */
 
 @CompileStatic
-public class GroovyPageCompilerForkTask {
-	@Delegate CompilerConfiguration configuration = new CompilerConfiguration()
+class GroovyPageCompilerForkTask {
+
+    private static final String fileExtension = '.gsp'
+
+    @Delegate
+    CompilerConfiguration configuration = new CompilerConfiguration()
 
     String packageName = ""
     File sourceDir
@@ -46,41 +47,36 @@ public class GroovyPageCompilerForkTask {
         this.tmpdir = tmpdir
         this.destDir = destDir
         this.sourceDir = sourceDir
-        
+
     }
 
     GroovyPageCompiler createPageCompiler() {
-    	GroovyPageCompiler compiler = new GroovyPageCompiler()
-    	CompilerConfiguration config = new CompilerConfiguration()
+        GroovyPageCompiler compiler = new GroovyPageCompiler()
+        CompilerConfiguration config = new CompilerConfiguration()
 
-
-        if(configs) {
+        if (configs) {
             String[] configPaths = extractValidConfigPaths(configs)
             compiler.setConfigs(configPaths)
         }
-
         if (classpath) {
             config.classpath = classpath.toString()
         }
-
-        if(targetCompatibility) {
-        	config.setTargetBytecode(targetCompatibility)
+        if (targetCompatibility) {
+            config.setTargetBytecode(targetCompatibility)
         }
 
         compiler.compilerConfig = config
-
         compiler.targetDir = destDir
         compiler.viewsDir = sourceDir
 
         if (tmpdir) {
             compiler.generatedGroovyPagesDirectory = tmpdir
         }
-
         if (packageName) {
             compiler.packagePrefix = packageName
         }
         if (serverpath) {
-            compiler.viewPrefix=serverpath
+            compiler.viewPrefix = serverpath
         }
         if (encoding) {
             compiler.encoding = encoding
@@ -106,11 +102,8 @@ public class GroovyPageCompilerForkTask {
         run(args)
     }
 
-
-    static final String fileExtension = '.gsp'
-
     static void run(String[] args) {
-        if(args.length != 8) {
+        if (args.length != 8) {
             System.err.println("Invalid arguments: [${args.join(',')}]")
             System.err.println("""
 Usage: java -cp CLASSPATH GroovyPageCompilerForkTask [srcDir] [destDir] [tmpDir] [targetCompatibility] [packageName] [serverPath] [configFile] [encoding]
@@ -127,28 +120,26 @@ Usage: java -cp CLASSPATH GroovyPageCompilerForkTask [srcDir] [destDir] [tmpDir]
         File configFile = new File(args[6])
         String encoding = args[7] ?: 'UTF-8'
 
-
-        
-        GroovyPageCompilerForkTask compiler = new GroovyPageCompilerForkTask(srcDir,destinationDir,tmpDir)
-        if(configFiles) {
+        GroovyPageCompilerForkTask compiler = new GroovyPageCompilerForkTask(srcDir, destinationDir, tmpDir)
+        if (configFiles) {
             compiler.configs = configFiles
         }
-        if(packageName) {
-        	compiler.packageName = packageName	
+        if (packageName) {
+            compiler.packageName = packageName
         }
-        if(encoding) {
-        	compiler.encoding = encoding
+        if (encoding) {
+            compiler.encoding = encoding
         }
-        if(serverpath) {
-        	compiler.serverpath = serverpath
+        if (serverpath) {
+            compiler.serverpath = serverpath
         }
-       	if(targetCompatibility) {
-       		compiler.targetCompatibility = targetCompatibility
-       	}
+        if (targetCompatibility) {
+            compiler.targetCompatibility = targetCompatibility
+        }
 
         List<File> allFiles = []
         srcDir.eachFileRecurse(FileType.FILES) { File f ->
-            if(f.name.endsWith(fileExtension)) {
+            if (f.name.endsWith(fileExtension)) {
                 allFiles.add(f)
             }
         }

@@ -112,12 +112,8 @@ extends <a href='../../../../org/grails/web/sitemesh/GrailsRoutablePrintWriter.h
 implements <a href='../../../../EncodedAppenderFactory.html'>EncodedAppenderFactory</a>, <a href='../../../../EncoderAware.html'>EncoderAware</a></pre>
 
     <p> NOTE: Based on work done by on the GSP standalone project (https://gsp.dev.java.net/)
-
- A buffered writer that won't commit the response until the buffer has reached the high
- water mark, or until flush() or close() is called.
-
+ A buffered writer that won't commit the response until the buffer has reached the high watermark, or until flush() or close() is called.
  Performance optimizations by Lari Hotari, 13.03.2009
-
  Calculating the Content-Length has been disabled by default since Jetty ignores it (uses Chunked mode anyways).
  Content-Length mode can be enabled with -DGSPResponseWriter.enableContentLength=true system property.
   <DL><DT><B>Authors:</B></DT><DD>Troy Heninger</DD><DD>Graeme Rocher</DD><DD>Lari Hotari, Sagire Software Oy
@@ -206,18 +202,6 @@ implements <a href='../../../../EncodedAppenderFactory.html'>EncodedAppenderFact
                         
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>public&nbsp;java.io.Writer</code></td>
-                            <td class="colLast"><code><strong><a href="#activateDestination()">activateDestination</a></strong>()</code><br></td>
-                        </tr>
-                        
-                        <tr class="rowColor">
-                            <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>public&nbsp;java.io.Writer</code></td>
-                            <td class="colLast"><code><strong><a href="#activateDestination()">activateDestination</a></strong>()</code><br></td>
-                        </tr>
-                        
-                        <tr class="altColor">
-                            <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#close()">close</a></strong>()</code><br>Close the stream.</td>
                         </tr>
@@ -238,18 +222,6 @@ implements <a href='../../../../EncodedAppenderFactory.html'>EncodedAppenderFact
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;static&nbsp;<a href='../../../../org/grails/web/pages/GSPResponseWriter.html'>GSPResponseWriter</a></code></td>
                             <td class="colLast"><code><strong><a href="#getInstance(javax.servlet.ServletResponse)">getInstance</a></strong>(<a href='../../../../javax.servlet.ServletResponse.html'>ServletResponse</a> response)</code><br></td>
-                        </tr>
-                        
-                        <tr class="altColor">
-                            <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>public&nbsp;java.io.Writer</code></td>
-                            <td class="colLast"><code><strong><a href="#getWriter()">getWriter</a></strong>()</code><br></td>
-                        </tr>
-                        
-                        <tr class="rowColor">
-                            <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>public&nbsp;java.io.Writer</code></td>
-                            <td class="colLast"><code><strong><a href="#getWriter()">getWriter</a></strong>()</code><br></td>
                         </tr>
                         
                         <tr class="altColor">
@@ -368,22 +340,6 @@ implements <a href='../../../../EncodedAppenderFactory.html'>EncodedAppenderFact
                 </a>
                     <h3>Method Detail</h3>
                     
-                        <a name="activateDestination()"><!-- --></a>
-                        <ul class="blockListLast">
-                            <li class="blockList">
-                                <h4>public&nbsp;java.io.Writer <strong>activateDestination</strong>()</h4>
-                                <p></p>
-                            </li>
-                        </ul>
-                    
-                        <a name="activateDestination()"><!-- --></a>
-                        <ul class="blockListLast">
-                            <li class="blockList">
-                                <h4>public&nbsp;java.io.Writer <strong>activateDestination</strong>()</h4>
-                                <p></p>
-                            </li>
-                        </ul>
-                    
                         <a name="close()"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
@@ -414,22 +370,6 @@ public&nbsp;void <strong>close</strong>()</h4>
                         <ul class="blockListLast">
                             <li class="blockList">
                                 <h4>public&nbsp;static&nbsp;<a href='../../../../org/grails/web/pages/GSPResponseWriter.html'>GSPResponseWriter</a> <strong>getInstance</strong>(<a href='../../../../javax.servlet.ServletResponse.html'>ServletResponse</a> response)</h4>
-                                <p></p>
-                            </li>
-                        </ul>
-                    
-                        <a name="getWriter()"><!-- --></a>
-                        <ul class="blockListLast">
-                            <li class="blockList">
-                                <h4>public&nbsp;java.io.Writer <strong>getWriter</strong>()</h4>
-                                <p></p>
-                            </li>
-                        </ul>
-                    
-                        <a name="getWriter()"><!-- --></a>
-                        <ul class="blockListLast">
-                            <li class="blockList">
-                                <h4>public&nbsp;java.io.Writer <strong>getWriter</strong>()</h4>
                                 <p></p>
                             </li>
                         </ul>

@@ -29,6 +29,7 @@ import com.opensymphony.module.sitemesh.Decorator;
 import com.opensymphony.sitemesh.Content;
 import com.opensymphony.sitemesh.webapp.SiteMeshWebAppContext;
 import com.opensymphony.sitemesh.webapp.decorator.BaseWebAppDecorator;
+import com.opensymphony.sitemesh.webapp.decorator.NoDecorator;
 
 /**
  * Grails version of Sitemesh's NoDecorator
@@ -41,27 +42,7 @@ import com.opensymphony.sitemesh.webapp.decorator.BaseWebAppDecorator;
  *
  * @author Lari Hotari, Sagire Software Oy
  */
-public class GrailsNoDecorator extends BaseWebAppDecorator implements Decorator{
-
-    @Override
-    protected void render(Content content, HttpServletRequest request, HttpServletResponse response,
-                          ServletContext servletContext, SiteMeshWebAppContext webAppContext)
-            throws IOException, ServletException {
-
-        if (webAppContext.isUsingStream()) {
-            // http://jira.opensymphony.com/browse/SIM-196 , skip setting setContentLength
-            //response.setContentLength(content.originalLength());
-            OutputStream output=response.getOutputStream();
-            PrintWriter writer = new PrintWriter(output);
-            content.writeOriginal(writer);
-            writer.flush();
-        }
-        else {
-            PrintWriter writer = response.getWriter();
-            content.writeOriginal(writer);
-            writer.flush();
-        }
-    }
+public class GrailsNoDecorator extends NoDecorator implements Decorator {
 
     public String getPage() {
         return null;

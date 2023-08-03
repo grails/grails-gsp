@@ -223,14 +223,6 @@ class GroovyPagesGrailsPlugin extends Plugin {
             bean.autowire = true
         }
 
-
-
-        groovyPageLayoutFinder(GroovyPageLayoutFinder) {
-            gspReloadEnabled = enableReload
-            defaultDecoratorName = defaultDecoratorNameSetting ?: null
-            enableNonGspViews = sitemeshEnableNonGspViews
-        }
-
         // Setup the GroovyPagesUriService
         groovyPagesUriService(DefaultGroovyPagesUriService) { bean ->
             bean.lazyInit = true
@@ -258,6 +250,11 @@ class GroovyPagesGrailsPlugin extends Plugin {
         // containsKey check must be made to check existence of boolean false values in ConfigObject
 
         if (enableLayoutViewResolver) {
+            groovyPageLayoutFinder(GroovyPageLayoutFinder) {
+                gspReloadEnabled = enableReload
+                defaultDecoratorName = defaultDecoratorNameSetting ?: null
+                enableNonGspViews = sitemeshEnableNonGspViews
+            }
             grailsLayoutViewResolverPostProcessor(GrailsLayoutViewResolverPostProcessor)
         }
 

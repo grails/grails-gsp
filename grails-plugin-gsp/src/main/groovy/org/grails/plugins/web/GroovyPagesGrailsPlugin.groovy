@@ -113,7 +113,7 @@ class GroovyPagesGrailsPlugin extends Plugin {
         long gspCacheTimeout = config.getProperty(GSP_RELOAD_INTERVAL, Long,  (developmentMode && env == Environment.DEVELOPMENT) ? 0L : 5000L)
         boolean enableCacheResources = !config.getProperty(GroovyPagesTemplateEngine.CONFIG_PROPERTY_DISABLE_CACHING_RESOURCES, Boolean, false)
         String viewsDir = config.getProperty(GSP_VIEWS_DIR, '')
-        def disableLayoutViewResolver = config.getProperty(GSP_VIEW_LAYOUT_RESOLVER_ENABLED, Boolean, true)
+        boolean enableLayoutViewResolver = config.getProperty(GSP_VIEW_LAYOUT_RESOLVER_ENABLED, Boolean, true)
         String defaultDecoratorNameSetting = config.getProperty(SITEMESH_DEFAULT_LAYOUT, '')
         def sitemeshEnableNonGspViews = config.getProperty(SITEMESH_ENABLE_NONGSP, Boolean, false)
 
@@ -257,7 +257,7 @@ class GroovyPagesGrailsPlugin extends Plugin {
         // "grails.gsp.view.layoutViewResolver=false" can be used to disable GrailsLayoutViewResolver
         // containsKey check must be made to check existence of boolean false values in ConfigObject
 
-        if(disableLayoutViewResolver) {
+        if (enableLayoutViewResolver) {
             grailsLayoutViewResolverPostProcessor(GrailsLayoutViewResolverPostProcessor)
         }
 

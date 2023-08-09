@@ -19,17 +19,18 @@ import java.io.IOException;
 import java.io.Writer;
 
 import com.opensymphony.sitemesh.Content;
+import com.opensymphony.module.sitemesh.parser.TokenizedHTMLPage;
 
 final class TokenizedHTMLPage2Content implements Content {
-    private final GrailsTokenizedHTMLPage page;
+    private final TokenizedHTMLPage page;
 
-    TokenizedHTMLPage2Content(GrailsTokenizedHTMLPage page) {
+    TokenizedHTMLPage2Content(TokenizedHTMLPage page) {
         this.page = page;
     }
 
     @Override
     public void writeOriginal(Writer out) throws IOException {
-        out.write(page.getData());
+        page.writePage(out);
     }
 
     @Override
@@ -67,7 +68,7 @@ final class TokenizedHTMLPage2Content implements Content {
         page.addProperty(name, value);                    
     }
 
-    public GrailsTokenizedHTMLPage getPage() {
+    public TokenizedHTMLPage getPage() {
         return page;
     }
 }

@@ -234,6 +234,7 @@ class GroovyPagesGrailsPlugin extends Plugin {
         abstractViewResolver {
             prefix = GrailsApplicationAttributes.PATH_TO_VIEWS
             suffix = jstlPresent ? GroovyPageViewResolver.JSP_SUFFIX : GroovyPageViewResolver.GSP_SUFFIX
+            resolveJspView = jstlPresent
             templateEngine = groovyPagesTemplateEngine
             groovyPageLocator = groovyPageLocator
             if (enableReload) {

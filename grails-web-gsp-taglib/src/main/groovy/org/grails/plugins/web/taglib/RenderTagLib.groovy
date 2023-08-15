@@ -16,7 +16,6 @@
 package org.grails.plugins.web.taglib
 
 import com.opensymphony.module.sitemesh.*
-import com.opensymphony.module.sitemesh.parser.AbstractHTMLPage
 import grails.artefact.TagLibrary
 import grails.core.GrailsApplication
 import grails.core.support.GrailsApplicationAware
@@ -121,7 +120,7 @@ class RenderTagLib implements RequestConstants, TagLibrary, GrailsApplicationAwa
                     content = bodyClosure()
                 }
                 if (content instanceof StreamCharBuffer) {
-                    gspSiteMeshPage.setPageBuffer(content)
+                    gspSiteMeshPage.setPageBuffer((StreamCharBuffer) content)
                     gspSiteMeshPage.setUsed(isSitemeshPreprocessMode())
                 }
                 else if (content != null) {
@@ -284,7 +283,7 @@ class RenderTagLib implements RequestConstants, TagLibrary, GrailsApplicationAwa
             def propertyValue = null
             if (htmlPage instanceof GSPSitemeshPage) {
                 // check if there is an component content buffer
-                propertyValue = htmlPage.getContentBuffer(propertyName)
+                propertyValue = ((GSPSitemeshPage) htmlPage).getContentBuffer(propertyName)
             }
 
             if (!propertyValue) {

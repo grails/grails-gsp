@@ -15,30 +15,12 @@
  */
 package org.grails.web.sitemesh;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.Iterator;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.opensymphony.module.sitemesh.Decorator;
-import com.opensymphony.sitemesh.Content;
-import com.opensymphony.sitemesh.webapp.SiteMeshWebAppContext;
-import com.opensymphony.sitemesh.webapp.decorator.BaseWebAppDecorator;
 import com.opensymphony.sitemesh.webapp.decorator.NoDecorator;
 
 /**
  * Grails version of Sitemesh's NoDecorator
- *
- * original version always calls response.setContentLength which would require the calculation of
- * resulting bytes. Calculation would be extra overhead.
- *
- * bug exists for OutputStream / byte version: http://jira.opensymphony.com/browse/SIM-196
- * skip setting ContentLength because of that bug.
  *
  * @author Lari Hotari, Sagire Software Oy
  */

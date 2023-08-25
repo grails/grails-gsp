@@ -112,12 +112,6 @@ extends <a href='../../../../com.opensymphony.sitemesh.webapp.decorator.NoDecora
 implements <a href='../../../../Decorator.html'>Decorator</a></pre>
 
     <p> Grails version of Sitemesh's NoDecorator
-
- original version always calls response.setContentLength which would require the calculation of
- resulting bytes. Calculation would be extra overhead.
-
- bug exists for OutputStream / byte version: http://jira.opensymphony.com/browse/SIM-196
- skip setting ContentLength because of that bug.
   <DL><DT><B>Authors:</B></DT><DD>Lari Hotari, Sagire Software Oy</DD></DL></p>
 
           </li>

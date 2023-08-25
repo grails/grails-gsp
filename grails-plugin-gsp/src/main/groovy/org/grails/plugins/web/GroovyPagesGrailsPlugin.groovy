@@ -201,7 +201,7 @@ class GroovyPagesGrailsPlugin extends Plugin {
         }
 
         // Setup the main templateEngine used to render GSPs
-        groovyPagesTemplateEngine(GroovyPagesTemplateEngine) { bean ->
+        groovyPagesTemplateEngine(GroovyPagesTemplateEngine) {
             classLoader = ref("classLoader")
             groovyPageLocator = groovyPageLocator
             if (enableReload) {
@@ -221,6 +221,9 @@ class GroovyPagesGrailsPlugin extends Plugin {
 
         groovyPagesTemplateRenderer(GroovyPagesTemplateRenderer) { bean ->
             bean.autowire = true
+            if (enableReload) {
+                reloadEnabled = enableReload
+            }
         }
 
         // Setup the GroovyPagesUriService

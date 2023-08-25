@@ -86,7 +86,15 @@ public class GroovyPagesTemplateRenderer implements InitializingBean {
             generateViewMethod = ReflectionUtils.findMethod(scaffoldingTemplateGenerator.getClass(), "generateView", new Class<?>[] {
                 GrailsDomainClass.class, String.class, Writer.class});
         }
-        reloadEnabled = groovyPagesTemplateEngine.isReloadEnabled();
+    }
+
+    /**
+     * Sets whether reloading is enabled
+     *
+     * @param reloadEnabled True if it is enabled
+     */
+    public void setReloadEnabled(boolean reloadEnabled) {
+        this.reloadEnabled = reloadEnabled;
     }
 
     public void clearCache() {

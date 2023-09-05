@@ -28,7 +28,7 @@ import org.grails.plugins.BinaryGrailsPlugin;
 import org.grails.gsp.io.GroovyPageCompiledScriptSource;
 import org.grails.gsp.io.GroovyPageScriptSource;
 import org.grails.web.servlet.mvc.GrailsWebRequest;
-import org.grails.web.sitemesh.GrailsLayoutDecoratorMapper;
+import org.grails.web.sitemesh.GroovyPageLayoutFinder;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.web.context.WebApplicationContext;
@@ -216,7 +216,7 @@ public class GroovyPagesServlet extends FrameworkServlet implements PluginManage
      */
     protected void renderPageWithEngine(GroovyPagesTemplateEngine engine, HttpServletRequest request,
             HttpServletResponse response, GroovyPageScriptSource scriptSource) throws Exception {
-        request.setAttribute(GrailsLayoutDecoratorMapper.RENDERING_VIEW, Boolean.TRUE);
+        request.setAttribute(GroovyPageLayoutFinder.RENDERING_VIEW_ATTRIBUTE, Boolean.TRUE);
         GSPResponseWriter out = createResponseWriter(response);
         try {
             Template template = engine.createTemplate(scriptSource);

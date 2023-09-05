@@ -93,7 +93,7 @@ public class SpringMVCViewDecorator extends DefaultDecorator implements com.open
 
     private void cleanRequestAttributes(HttpServletRequest request) {
         request.removeAttribute(GrailsApplicationAttributes.PAGE_SCOPE);
-        request.removeAttribute(GrailsLayoutDecoratorMapper.LAYOUT_ATTRIBUTE);
+        request.removeAttribute(GroovyPageLayoutFinder.LAYOUT_ATTRIBUTE);
     }
 
     public View getView() {

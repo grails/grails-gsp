@@ -34,7 +34,7 @@ import org.grails.gsp.GroovyPageTemplate;
 import org.grails.gsp.GroovyPagesTemplateEngine;
 import org.grails.gsp.GroovyPagesException;
 import org.grails.web.servlet.mvc.GrailsWebRequest;
-import org.grails.web.sitemesh.GrailsLayoutDecoratorMapper;
+import org.grails.web.sitemesh.GroovyPageLayoutFinder;
 import org.springframework.core.io.Resource;
 import org.springframework.scripting.ScriptSource;
 
@@ -67,7 +67,7 @@ public class GroovyPageView extends AbstractGrailsView {
     @Override
     protected void renderTemplate(Map<String, Object> model, GrailsWebRequest webRequest, HttpServletRequest request,
             HttpServletResponse response) {
-        request.setAttribute(GrailsLayoutDecoratorMapper.RENDERING_VIEW, Boolean.TRUE);
+        request.setAttribute(GroovyPageLayoutFinder.RENDERING_VIEW_ATTRIBUTE, Boolean.TRUE);
         GSPResponseWriter out = null;
         try {
             out = createResponseWriter(webRequest, response);

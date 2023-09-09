@@ -30,7 +30,7 @@ class Sitemesh2GrailsPlugin extends Plugin {
     def grailsVersion = "6.0.0 > *"
     def dependsOn = [core: GrailsUtil.getGrailsVersion(), i18n: GrailsUtil.getGrailsVersion()]
     def observe = ['controllers']
-    def loadBefore = ['gsp']
+    def loadBefore = ['groovyPages']
 
     def providedArtefacts = [
         RenderSitemeshTagLib,

@@ -5,7 +5,7 @@ dependencies {
     api "org.grails:grails-web-common:$grailsVersion"
     api project(":grails-web-taglib")
 
-    api project(":grails-web-sitemesh"), {
+    compileOnly project(":grails-web-sitemesh"), {
         exclude group:'org.grails', module:'grails-web-common'
     }
 

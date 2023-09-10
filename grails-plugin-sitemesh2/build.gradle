@@ -1,0 +1,30 @@
+ext {
+    isCiBuild = System.getenv().get("TRAVIS") == 'true' || System.getenv().get("CI") as Boolean
+}
+configurations.all {
+    resolutionStrategy.dependencySubstitution.all { DependencySubstitution dependency ->
+        if (dependency.requested instanceof ModuleComponentSelector) {
+            if (group == 'org.grails' || group == 'org.grails.plugins') {
+                def targetProject = findProject(":${dependency.requested.module}")
+                if (targetProject != null) {
+                    dependency.useTarget targetProject
+                }
+            }
+        }
+    }
+}
+dependencies {
+    runtimeOnly(project(":grails-web-jsp"))
+    api "org.grails:grails-plugin-codecs:$grailsVersion"
+    astImplementation "org.grails:grails-web:$grailsVersion"
+    astImplementation "org.grails:grails-plugin-controllers:$grailsVersion"
+
+    implementation project(":grails-web-sitemesh"), {
+        exclude group:'org.grails', module:'grails-web-common'
+    }
+}
+// disable main class
+bootJar {
+    mainClass.set('dummy.Application')
+}
+findMainClass.onlyIf { false }

@@ -196,7 +196,7 @@ public class ParseTests {
         }
 
         InputStream gspIn = new ByteArrayInputStream(gsp.getBytes(enc.toString()));
-        GroovyPageParser parse = new GroovyPageParser(uri, uri, uri, gspIn, enc.toString(), "HTML");
+        GroovyPageParser parse = new GroovyPageParser(uri, uri, uri, gspIn, enc.toString(), "HTML", null);
 
         InputStream in = parse.parse();
         ParsedResult result = new ParsedResult();

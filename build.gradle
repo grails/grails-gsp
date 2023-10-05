@@ -64,6 +64,10 @@ subprojects {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
             if (details.requested.group == "org.spockframework") {
                 details.useVersion(spockVersion)
+            } else if (details.requested.group == "org.junit.jupiter") {
+                details.useVersion(junitJupiterVersion)
+            } else if (details.requested.group == "org.junit.platform") {
+                details.useVersion(junitPlatformVerison)
             }
         }
     }
@@ -73,9 +77,9 @@ subprojects {
 
         testImplementation "javax.servlet:javax.servlet-api:$servletApiVersion"
         testImplementation "org.codehaus.groovy:groovy-test-junit5:${groovyVersion}"
-        testImplementation "org.junit.jupiter:junit-jupiter-api:5.10.0"
-        testImplementation "org.junit.platform:junit-platform-runner:1.10.0"
-        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.10.0"
+        testImplementation "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
+        testImplementation "org.junit.platform:junit-platform-runner:${junitPlatformVerison}"
+        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
     }
 
     tasks.withType(Test) {

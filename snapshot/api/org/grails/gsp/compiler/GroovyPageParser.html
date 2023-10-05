@@ -317,26 +317,26 @@ if (location.href.indexOf('is-external=true') == -1) {
                         
                         <tr class="altColor">
                             <td class="colFirst">
-                                <code><a href="#GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.io.InputStream, java.lang.String, java.lang.String)">GroovyPageParser</a>
-                                (java.lang.String name, java.lang.String uri, java.lang.String filename, java.io.InputStream in, java.lang.String encoding, java.lang.String expressionCodecName)</code><br></td>
+                                <code><a href="#GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.io.InputStream, java.lang.String, java.lang.String, grails.config.ConfigMap)">GroovyPageParser</a>
+                                (java.lang.String name, java.lang.String uri, java.lang.String filename, java.io.InputStream in, java.lang.String encoding, java.lang.String expressionCodecName, <a href='../../../../grails.config.ConfigMap.html'>ConfigMap</a> configMap)</code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
                             <td class="colFirst">
-                                <code><a href="#GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.lang.String)">GroovyPageParser</a>
-                                (java.lang.String name, java.lang.String uri, java.lang.String filename, java.lang.String gspSource)</code><br></td>
+                                <code><a href="#GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, grails.config.ConfigMap)">GroovyPageParser</a>
+                                (java.lang.String name, java.lang.String uri, java.lang.String filename, java.lang.String gspSource, <a href='../../../../grails.config.ConfigMap.html'>ConfigMap</a> configMap)</code><br></td>
                         </tr>
                         
                         <tr class="altColor">
                             <td class="colFirst">
-                                <code><a href="#GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">GroovyPageParser</a>
-                                (java.lang.String name, java.lang.String uri, java.lang.String filename, java.lang.String gspSource, java.lang.String expressionCodecName)</code><br></td>
+                                <code><a href="#GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.io.InputStream, grails.config.ConfigMap)">GroovyPageParser</a>
+                                (java.lang.String name, java.lang.String uri, java.lang.String filename, java.io.InputStream in, <a href='../../../../grails.config.ConfigMap.html'>ConfigMap</a> configMap)</code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
                             <td class="colFirst">
-                                <code><a href="#GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.io.InputStream)">GroovyPageParser</a>
-                                (java.lang.String name, java.lang.String uri, java.lang.String filename, java.io.InputStream in)</code><br></td>
+                                <code><a href="#GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, grails.config.ConfigMap)">GroovyPageParser</a>
+                                (java.lang.String name, java.lang.String uri, java.lang.String filename, java.lang.String gspSource, java.lang.String expressionCodecName, <a href='../../../../grails.config.ConfigMap.html'>ConfigMap</a> configMap)</code><br></td>
                         </tr>
                         
                     </table>
@@ -363,214 +363,208 @@ if (location.href.indexOf('is-external=true') == -1) {
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
-                            <td class="colLast"><code><strong><a href="#configure(grails.config.ConfigMap)">configure</a></strong>(<a href='../../../../grails.config.ConfigMap.html'>ConfigMap</a> config)</code><br>Configures the parser for the given Config map</td>
-                        </tr>
-                        
-                        <tr class="rowColor">
-                            <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#flushTagBuffering()">flushTagBuffering</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#generateGsp(java.io.Writer)">generateGsp</a></strong>(java.io.Writer target)</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#generateGsp(java.io.Writer, boolean)">generateGsp</a></strong>(java.io.Writer target, boolean precompileMode)</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.lang.String</code></td>
                             <td class="colLast"><code><strong><a href="#getClassName()">getClassName</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.lang.String</code></td>
                             <td class="colLast"><code><strong><a href="#getContentType()">getContentType</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;int</code></td>
                             <td class="colLast"><code><strong><a href="#getCurrentOutputLineNumber()">getCurrentOutputLineNumber</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.lang.String</code></td>
                             <td class="colLast"><code><strong><a href="#getExpressionCodecDirectiveValue()">getExpressionCodecDirectiveValue</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.lang.String</code></td>
                             <td class="colLast"><code><strong><a href="#getExpressionText(java.lang.String)">getExpressionText</a></strong>(java.lang.String text)</code><br>Returns an expression text for the given expression</td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.lang.String</code></td>
                             <td class="colLast"><code><strong><a href="#getExpressionText(java.lang.String, boolean)">getExpressionText</a></strong>(java.lang.String text, boolean _safeDereference)</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;static&nbsp;java.lang.String</code></td>
                             <td class="colLast"><code><strong><a href="#getGspEncoding()">getGspEncoding</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.util.List&lt;java.lang.String&gt;</code></td>
                             <td class="colLast"><code><strong><a href="#getHtmlParts()">getHtmlParts</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.lang.String[]</code></td>
                             <td class="colLast"><code><strong><a href="#getHtmlPartsArray()">getHtmlPartsArray</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.util.Map&lt;java.lang.String, java.lang.String&gt;</code></td>
                             <td class="colLast"><code><strong><a href="#getJspTags()">getJspTags</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;long</code></td>
                             <td class="colLast"><code><strong><a href="#getLastModified()">getLastModified</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;int[]</code></td>
                             <td class="colLast"><code><strong><a href="#getLineNumberMatrix()">getLineNumberMatrix</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.lang.String</code></td>
                             <td class="colLast"><code><strong><a href="#getOutCodecDirectiveValue()">getOutCodecDirectiveValue</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.lang.String</code></td>
                             <td class="colLast"><code><strong><a href="#getPackageName()">getPackageName</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.lang.String</code></td>
                             <td class="colLast"><code><strong><a href="#getPageName()">getPageName</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.lang.String</code></td>
                             <td class="colLast"><code><strong><a href="#getStaticCodecDirectiveValue()">getStaticCodecDirectiveValue</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.lang.String</code></td>
                             <td class="colLast"><code><strong><a href="#getTaglibCodecDirectiveValue()">getTaglibCodecDirectiveValue</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;boolean</code></td>
                             <td class="colLast"><code><strong><a href="#isCompileStaticMode()">isCompileStaticMode</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;boolean</code></td>
                             <td class="colLast"><code><strong><a href="#isInClosure()">isInClosure</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;boolean</code></td>
                             <td class="colLast"><code><strong><a href="#isModelFieldsMode()">isModelFieldsMode</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;java.io.InputStream</code></td>
                             <td class="colLast"><code><strong><a href="#parse()">parse</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setClassName(java.lang.String)">setClassName</a></strong>(java.lang.String className)</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setEnableSitemeshPreprocessing(boolean)">setEnableSitemeshPreprocessing</a></strong>(boolean enableSitemeshPreprocessing)</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setExpressionCodecDirectiveValue(java.lang.String)">setExpressionCodecDirectiveValue</a></strong>(java.lang.String expressionCodecDirectiveValue)</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setKeepGeneratedDirectory(java.io.File)">setKeepGeneratedDirectory</a></strong>(java.io.File keepGeneratedDirectory)</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setLastModified(long)">setLastModified</a></strong>(long lastModified)</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setOutCodecDirectiveValue(java.lang.String)">setOutCodecDirectiveValue</a></strong>(java.lang.String outCodecDirectiveValue)</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setPackageName(java.lang.String)">setPackageName</a></strong>(java.lang.String packageName)</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setStaticCodecDirectiveValue(java.lang.String)">setStaticCodecDirectiveValue</a></strong>(java.lang.String staticCodecDirectiveValue)</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#setTaglibCodecDirectiveValue(java.lang.String)">setTaglibCodecDirectiveValue</a></strong>(java.lang.String taglibCodecDirectiveValue)</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#writeHtmlParts(java.io.File)">writeHtmlParts</a></strong>(java.io.File filename)</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#writeLineNumbers(java.io.File)">writeLineNumbers</a></strong>(java.io.File filename)</code><br></td>
@@ -833,34 +827,34 @@ if (location.href.indexOf('is-external=true') == -1) {
                 </a>
                     <h3>Constructor Detail</h3>
                     
-                        <a name="GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.io.InputStream, java.lang.String, java.lang.String)"><!-- --></a>
+                        <a name="GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.io.InputStream, java.lang.String, java.lang.String, grails.config.ConfigMap)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>public&nbsp;<strong>GroovyPageParser</strong>(java.lang.String name, java.lang.String uri, java.lang.String filename, java.io.InputStream in, java.lang.String encoding, java.lang.String expressionCodecName)</h4>
+                                <h4>public&nbsp;<strong>GroovyPageParser</strong>(java.lang.String name, java.lang.String uri, java.lang.String filename, java.io.InputStream in, java.lang.String encoding, java.lang.String expressionCodecName, <a href='../../../../grails.config.ConfigMap.html'>ConfigMap</a> configMap)</h4>
                                 <p></p>
                             </li>
                         </ul>
                     
-                        <a name="GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.lang.String)"><!-- --></a>
+                        <a name="GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, grails.config.ConfigMap)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>public&nbsp;<strong>GroovyPageParser</strong>(java.lang.String name, java.lang.String uri, java.lang.String filename, java.lang.String gspSource)</h4>
+                                <h4>public&nbsp;<strong>GroovyPageParser</strong>(java.lang.String name, java.lang.String uri, java.lang.String filename, java.lang.String gspSource, <a href='../../../../grails.config.ConfigMap.html'>ConfigMap</a> configMap)</h4>
                                 <p></p>
                             </li>
                         </ul>
                     
-                        <a name="GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)"><!-- --></a>
+                        <a name="GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.io.InputStream, grails.config.ConfigMap)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>public&nbsp;<strong>GroovyPageParser</strong>(java.lang.String name, java.lang.String uri, java.lang.String filename, java.lang.String gspSource, java.lang.String expressionCodecName)</h4>
+                                <h4>public&nbsp;<strong>GroovyPageParser</strong>(java.lang.String name, java.lang.String uri, java.lang.String filename, java.io.InputStream in, <a href='../../../../grails.config.ConfigMap.html'>ConfigMap</a> configMap)</h4>
                                 <p></p>
                             </li>
                         </ul>
                     
-                        <a name="GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.io.InputStream)"><!-- --></a>
+                        <a name="GroovyPageParser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, grails.config.ConfigMap)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>public&nbsp;<strong>GroovyPageParser</strong>(java.lang.String name, java.lang.String uri, java.lang.String filename, java.io.InputStream in)</h4>
+                                <h4>public&nbsp;<strong>GroovyPageParser</strong>(java.lang.String name, java.lang.String uri, java.lang.String filename, java.lang.String gspSource, java.lang.String expressionCodecName, <a href='../../../../grails.config.ConfigMap.html'>ConfigMap</a> configMap)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -877,15 +871,6 @@ if (location.href.indexOf('is-external=true') == -1) {
                     <!--   -->
                 </a>
                     <h3>Method Detail</h3>
-                    
-                        <a name="configure(grails.config.ConfigMap)"><!-- --></a>
-                        <ul class="blockListLast">
-                            <li class="blockList">
-                                <h4>public&nbsp;void <strong>configure</strong>(<a href='../../../../grails.config.ConfigMap.html'>ConfigMap</a> config)</h4>
-                                <p> Configures the parser for the given Config map
-      <DL><DT><B>Parameters:</B></DT><DD><code>config</code> -  The config map</DD></DL></p>
-                            </li>
-                        </ul>
                     
                         <a name="flushTagBuffering()"><!-- --></a>
                         <ul class="blockListLast">

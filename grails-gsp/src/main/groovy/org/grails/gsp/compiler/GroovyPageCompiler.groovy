@@ -206,13 +206,10 @@ class GroovyPageCompiler {
             // gspgroovyfile.getParentFile().mkdirs()
 
             gspfile.withInputStream { InputStream gspinput ->
-                GroovyPageParser gpp = new GroovyPageParser(viewuri - '.gsp', viewuri, gspfile.absolutePath, gspinput, encoding, expressionCodec)
+                GroovyPageParser gpp = new GroovyPageParser(viewuri - '.gsp', viewuri, gspfile.absolutePath, gspinput, encoding, expressionCodec, configMap)
                 gpp.packageName = packageName
                 gpp.className = className
                 gpp.lastModified = gspfile.lastModified()
-                if(configMap) {
-                    gpp.configure(configMap)
-                }
                 StringWriter gsptarget = new StringWriter()
                 gpp.generateGsp(gsptarget)
                 gsptarget.flush()

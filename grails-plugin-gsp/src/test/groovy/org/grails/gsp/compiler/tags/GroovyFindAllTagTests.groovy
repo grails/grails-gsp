@@ -20,7 +20,7 @@ class GroovyFindAllTagTests {
     protected void setUp() {
         Map context = new HashMap();
         context.put(GroovyPage.OUT, new PrintWriter(sw));
-        GroovyPageParser parser=new GroovyPageParser("test", "test", "test", new ByteArrayInputStream([] as byte[]));
+        GroovyPageParser parser=new GroovyPageParser("test", "test", "test", new ByteArrayInputStream([] as byte[]), null);
         context.put(GroovyPageParser.class, parser);
         tag.init(context);
     }

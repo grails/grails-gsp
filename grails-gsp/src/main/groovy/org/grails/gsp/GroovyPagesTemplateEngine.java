@@ -528,12 +528,8 @@ public class GroovyPagesTemplateEngine extends ResourceAwareTemplateEngine imple
         String path = getPathForResource(res);
         try {
         	String gspSource = IOUtils.toString(inputStream, getGspEncoding());
-            parser = new GroovyPageParser(name, path, path, decorateGroovyPageSource(new StringBuilder(gspSource)).toString());
-
-            if (grailsApplication != null) {
-                Config config = grailsApplication.getConfig();
-                parser.configure(config);
-            }
+            parser = new GroovyPageParser(name, path, path, decorateGroovyPageSource(new StringBuilder(gspSource)).toString(),
+                    grailsApplication != null? grailsApplication.getConfig() : null);
         }
         catch (IOException e) {
             throw new GroovyPagesException("I/O parsing Groovy page ["+(res != null ? res.getDescription() : name)+"]: " + e.getMessage(),e);

@@ -18,7 +18,7 @@ class GroovyGrepTagTests {
     protected void setUp() throws Exception {
         Map context = new HashMap();
         context.put(GroovyPage.OUT, new PrintWriter(sw));
-        GroovyPageParser parser=new GroovyPageParser("test", "test", "test", new ByteArrayInputStream(new byte[]{}));
+        GroovyPageParser parser=new GroovyPageParser("test", "test", "test", new ByteArrayInputStream(new byte[]{}), null);
         context.put(GroovyPageParser.class, parser);
         tag.init(context);
     }

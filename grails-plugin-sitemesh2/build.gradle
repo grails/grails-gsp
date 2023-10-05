@@ -19,7 +19,7 @@ dependencies {
     astImplementation "org.grails:grails-web:$grailsVersion"
     astImplementation "org.grails:grails-plugin-controllers:$grailsVersion"
 
-    implementation project(":grails-web-sitemesh"), {
+    api project(":grails-web-sitemesh"), {
         exclude group:'org.grails', module:'grails-web-common'
     }
 }

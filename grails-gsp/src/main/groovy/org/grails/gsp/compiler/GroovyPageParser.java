@@ -15,6 +15,7 @@
  */
 package org.grails.gsp.compiler;
 
+import grails.config.Config;
 import grails.config.ConfigMap;
 import grails.io.IOUtils;
 import grails.util.Environment;
@@ -211,24 +212,29 @@ public class GroovyPageParser implements Tokens {
         }
     }
 
-    public GroovyPageParser(String name, String uri, String filename, InputStream in, String encoding, String expressionCodecName) throws IOException {
-    	this(name, uri, filename, readStream(in, encoding), expressionCodecName);
+    public GroovyPageParser(String name, String uri, String filename, InputStream in, String encoding, String expressionCodecName, ConfigMap configMap) throws IOException {
+        this(name, uri, filename, readStream(in, encoding), expressionCodecName, configMap);
     }
 
-    public GroovyPageParser(String name, String uri, String filename, String gspSource) throws IOException {
-    	this(name, uri, filename, gspSource, null);
+    public GroovyPageParser(String name, String uri, String filename, String gspSource, ConfigMap configMap) throws IOException {
+        this(name, uri, filename, gspSource, null, configMap);
     }
 
-    public GroovyPageParser(String name, String uri, String filename, String gspSource, String expressionCodecName) throws IOException {
+    public GroovyPageParser(String name, String uri, String filename, InputStream in, ConfigMap configMap) throws IOException {
+        this(name, uri, filename, in, null, null, configMap);
+    }
 
-
+    public GroovyPageParser(String name, String uri, String filename, String gspSource, String expressionCodecName, ConfigMap configMap) throws IOException {
         this.expressionCodecDirectiveValue = expressionCodecName;
         if (expressionCodecDirectiveValue == null) {
             expressionCodecDirectiveValue = OutputEncodingSettings.getDefaultValue(OutputEncodingSettings.EXPRESSION_CODEC_NAME);
         }
 
-        Map<String, String> directives = parseDirectives(gspSource);
+        if (configMap != null) {
+            configure(configMap);
+        }
 
+        Map<String, String> directives = parseDirectives(gspSource);
         if (isSitemeshPreprocessingEnabled(directives.get(SITEMESH_PREPROCESS_DIRECTIVE))) {
             // GSP preprocessing for direct sitemesh integration: replace head -> g:captureHead, title -> g:captureTitle, meta -> g:captureMeta, body -> g:captureBody
             gspSource = sitemeshPreprocessor.addGspSitemeshCapturing(gspSource);
@@ -241,18 +247,12 @@ public class GroovyPageParser implements Tokens {
         makeSourceName(filename);
     }
 
-
-
-    public GroovyPageParser(String name, String uri, String filename, InputStream in) throws IOException {
-        this(name, uri, filename, in, null, null);
-    }
-
     /**
      * Configures the parser for the given Config map
      *
      * @param config The config map
      */
-    public void configure(ConfigMap config) {
+    private void configure(ConfigMap config) {
         compileStaticMode = config.getProperty(GroovyPageParser.CONFIG_PROPERTY_GSP_COMPILESTATIC, Boolean.class);
 
         Object allowedTagLibsConfigValue = config.getProperty(CONFIG_PROPERTY_GSP_ALLOWED_TAGLIB_NAMESPACES, Object.class);

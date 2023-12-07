@@ -112,9 +112,9 @@ class GroovyPageCompiler {
                 for(int index = 0; index < collatedSrcFiles.size(); index++) {        
                     def gspFiles = collatedSrcFiles[index]
                     
-                    futures << completionService.submit({ ->
+                    futures.add(completionService.submit({ ->
                         def results = [:]
-                        for(int gspIndex=0;gspIndex < gspFiles.size();gspIndex++) {
+                        for(int gspIndex = 0; gspIndex < gspFiles.size(); gspIndex++) {
                             File gsp = gspFiles[gspIndex]
                             try {
                                 compileGSP(viewsDir, gsp, viewPrefix, packagePrefix, results)    
@@ -124,7 +124,7 @@ class GroovyPageCompiler {
                             }
                         }
                         return results 
-                    } as Callable)
+                    } as Callable) as Future<Map>)
                 }
 
                 int pending = futures.size()

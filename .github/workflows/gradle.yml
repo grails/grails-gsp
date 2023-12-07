@@ -37,7 +37,7 @@ jobs:
         if: steps.build.outcome == 'success' && matrix.java == '11'
         uses: actions/upload-artifact@v3
         with:
-          name: grails-gsp.zip
+          name: grails-gsp.jar
           path: build/libs/grails-gsp-*.jar
   publish:
     if: github.event_name == 'push'

@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: grails-gsp.zip
-          path: build/libs/grails-gsp-*.zip
+          path: build/libs/grails-gsp-*.jar
   publish:
     if: github.event_name == 'push'
     needs: build

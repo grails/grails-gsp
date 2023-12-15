@@ -35,7 +35,7 @@ jobs:
           arguments: build
       - name: Upload Artifacts
         if: steps.build.outcome == 'success' && matrix.java == '11'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: grails-gsp.jar
           path: build/libs/grails-gsp-*.jar

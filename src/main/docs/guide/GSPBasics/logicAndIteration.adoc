@@ -1,6 +1,6 @@
 Using the `<% %>` syntax you can embed loops and so on using this syntax:
 
-[source,xml]
+[,xml]
 ----
 <html>
    <body>
@@ -13,7 +13,7 @@ Using the `<% %>` syntax you can embed loops and so on using this syntax:
 
 As well as logical branching:
 
-[source,xml]
+[,xml]
 ----
 <html>
    <body>

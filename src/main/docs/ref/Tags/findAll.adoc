@@ -12,7 +12,7 @@ Uses the Groovy JDK `findAll` method to iterate over each element of the specifi
 === Examples
 
 
-[source,xml]
+[,xml]
 ----
 Stephen King's Books:
 <g:findAll in="${books}" expr="it.author == 'Stephen King'">

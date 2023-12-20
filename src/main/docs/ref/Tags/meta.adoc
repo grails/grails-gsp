@@ -12,7 +12,7 @@ Renders application metadata properties.
 === Examples
 
 
-[source,xml]
+[,xml]
 ----
 Version <g:meta name="info.app.version"/>
 Built with Grails <g:meta name="info.app.grailsVersion"/>

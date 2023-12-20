@@ -12,7 +12,7 @@ Executes a condition in a loop until the condition returns `false`
 === Examples
 
 
-[source,xml]
+[,xml]
 ----
 <g:while test="${i < 5}">
     <%i++%>

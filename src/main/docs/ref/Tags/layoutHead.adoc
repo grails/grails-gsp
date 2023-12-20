@@ -1,4 +1,3 @@
-
 == layoutHead
 
 
@@ -14,12 +13,12 @@ Used in layouts to render the contents of the head tag of the decorated page. Eq
 
 Example decorated page:
 
-[source,xml]
+[source,html]
 ----
 <html>
    <head>
         <meta name="layout" content="myLayout" />
-        <script src="myscript.js" />
+        <script src="myscript.js"></script>
    </head>
    <body>Page to be decorated</body>
 </html>
@@ -27,11 +26,11 @@ Example decorated page:
 
 Example decorator layout:
 
-[source,xml]
+[source,html]
 ----
 <html>
    <head>
-        <script src="global.js" />
+        <script src="global.js" /></script>
         <g:layoutHead />
    </head>
    <body><g:layoutBody /></body>
@@ -40,12 +39,12 @@ Example decorator layout:
 
 Results in:
 
-[source,xml]
+[source,html]
 ----
 <html>
    <head>
-        <script src="global.js" />
-        <script src="myscript.js" />
+        <script src="global.js"></script>
+        <script src="myscript.js"></script>
    </head>
    <body>Page to be decorated</body>
 </html>

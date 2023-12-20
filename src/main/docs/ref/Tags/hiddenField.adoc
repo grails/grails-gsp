@@ -6,7 +6,7 @@
 === Purpose
 
 
-Creates a input of type 'hidden' (a hidden field). All the usual HTML elements apply.
+Creates an input of type 'hidden' (a hidden field). All the usual HTML elements apply.
 
 
 === Examples

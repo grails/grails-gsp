@@ -13,7 +13,7 @@ specified "filter" attribute. The filter can be different instances such as clas
 === Examples
 
 
-[source,xml]
+[,xml]
 ----
 Stephen King's non-fiction Books:
 <g:grep in="${books}" filter="NonFictionBooks.class">

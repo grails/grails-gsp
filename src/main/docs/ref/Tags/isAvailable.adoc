@@ -12,7 +12,7 @@ Renders its body if and only if a named plugin is installed in the current proje
 === Examples
 
 
-[source,xml]
+[,xml]
 ----
 <plugin:isAvailable name="spring-security-core">
 You have Spring Security installed!
@@ -27,7 +27,7 @@ You have Spring Security installed!
 === Description
 
 
-Sometimes you want to only display something in a view if a plugin is installed, particularly if you're developing another plugin and you can't know whether another plugin is installed or not. For example, your plugin may provide a tag cloud and you want it to integrate with, but not require, the Taggable plugin. In that case, you can use this tag to selectively include code or markup in your views, partial templates, etc.
+Sometimes you want to only display something in a view if a plugin is installed, particularly if you're developing another plugin, and you can't know whether another plugin is installed or not. For example, your plugin may provide a tag cloud, and you want it to integrate with, but not require, the Taggable plugin. In that case, you can use this tag to selectively include code or markup in your views, partial templates, etc.
 
 Attributes
 

@@ -12,7 +12,7 @@ Outputs the given boolean as the specified text label.
 === Examples
 
 
-[source,xml]
+[,xml]
 ----
 <g:formatBoolean boolean="${myBoolean}" />
 <g:formatBoolean boolean="${myBoolean}" true="True!" false="False!" />

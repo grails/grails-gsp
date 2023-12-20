@@ -14,23 +14,23 @@ Used in layouts to output the contents a property of the decorated page. Equival
 
 Example decorated page:
 
-[source,xml]
+[source,html]
 ----
 <html>
-   <head>
+    <head>
         <meta name="layout" content="myLayout" />
-        <script src="myscript.js" />
-   </head>
-   <body onload="alert('hello');">Page to be decorated</body>
+        <script src="myscript.js"></script>
+    </head>
+    <body onload="alert('hello');">Page to be decorated</body>
 </html>
 ----
 Example decorator layout:
 
-[source,xml]
+[source,html]
 ----
 <html>
    <head>
-        <script src="global.js" />
+        <script src="global.js"></script>
         <g:layoutHead />
    </head>
    <body onload="${pageProperty(name:'body.onload')}"><g:layoutBody /></body>
@@ -38,12 +38,12 @@ Example decorator layout:
 ----
 Results in:
 
-[source,xml]
+[source,html]
 ----
 <html>
    <head>
-        <script src="global.js" />
-        <script src="myscript.js" />
+        <script src="global.js"></script>
+        <script src="myscript.js"></script>
    </head>
    <body onload="alert('hello');">Page to be decorated</body>
 </html>

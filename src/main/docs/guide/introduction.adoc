@@ -6,22 +6,22 @@ GSP was previously part of Grails core, but since version 3.3 it is an independe
 .build.gradle
 ----
 dependencies {
-    ...
+    //...
     implementation "org.grails.plugins:gsp:{version}"
 }
 ----
 
-In addition for production compilation you should apply the `grails-gsp` Gradle plugin:
+In addition, for production compilation you should apply the `grails-gsp` Gradle plugin:
 
-[source,groovy,subs="attributes"]
+[source,groovy]
 .build.gradle
 ----
-apply plugin:"org.grails.grails-gsp"
+apply plugin: "org.grails.grails-gsp"
 ----
 
-GSPs themselves live in the `grails-app/views` directory and are typically rendered automatically (by convention) or with the link:{controllersRef}/render.html[render] method such as:
+GSPs themselves live in the `grails-app/views` directory and are typically rendered automatically (by convention) or with the {controllersRef}/render.html[render] method such as:
 
-[source,java]
+[source,groovy]
 ----
 render(view: "index")
 ----
@@ -32,7 +32,7 @@ NOTE: Although it is possible to have Groovy logic embedded in your GSP and doin
 
 A GSP typically has a "model" which is a set of variables that are used for view rendering. The model is passed to the GSP view from a controller. For example consider the following controller action:
 
-[source,java]
+[source,groovy]
 ----
 def show() {
     [book: Book.get(params.id)]
@@ -41,9 +41,9 @@ def show() {
 
 This action will look up a `Book` instance and create a model that contains a key called `book`. This key can then be referenced within the GSP view using the name `book`:
 
-[source,groovy]
+[source,gsp]
 ----
 ${book.title}
 ----
 
-WARNING: Embedding data received from user input has the risk of making your application vulnerable to an Cross Site Scripting (XSS) attack. Please read the documentation on link:https://docs.grails.org/latest/guide/security.html#xssPrevention[XSS prevention] for information on how to prevent XSS attacks.
+WARNING: Embedding data received from user input has the risk of making your application vulnerable to a Cross Site Scripting (XSS) attack. Please read the documentation on {grailsdocs}guide/security.html#xssPrevention[XSS prevention] for information on how to prevent XSS attacks.

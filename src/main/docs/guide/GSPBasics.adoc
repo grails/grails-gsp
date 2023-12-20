@@ -2,7 +2,7 @@ In the next view sections we'll go through the basics of GSP and what is availab
 
 GSP supports the usage of `<% %>` scriptlet blocks to embed Groovy code (again this is discouraged):
 
-[source,xml]
+[,xml]
 ----
 <html>
    <body>
@@ -13,7 +13,7 @@ GSP supports the usage of `<% %>` scriptlet blocks to embed Groovy code (again t
 
 You can also use the `<%= %>` syntax to output values:
 
-[source,xml]
+[,xml]
 ----
 <html>
    <body>
@@ -24,7 +24,7 @@ You can also use the `<%= %>` syntax to output values:
 
 GSP also supports JSP-style server-side comments (which are not rendered in the HTML response) as the following example demonstrates:
 
-[source,xml]
+[,xml]
 ----
 <html>
    <body>
@@ -34,4 +34,4 @@ GSP also supports JSP-style server-side comments (which are not rendered in the 
 </html>
 ----
 
-WARNING: Embedding data received from user input has the risk of making your application vulnerable to an Cross Site Scripting (XSS) attack. Please read the documentation on link:security.html#xssPrevention[XSS prevention] for information on how to prevent XSS attacks.
+WARNING: Embedding data received from user input has the risk of making your application vulnerable to an Cross Site Scripting (XSS) attack. Please read the documentation on {grailsdocs}guide/security.html#xssPrevention[XSS prevention] for information on how to prevent XSS attacks.

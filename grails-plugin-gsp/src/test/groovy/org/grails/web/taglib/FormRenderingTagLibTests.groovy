@@ -10,7 +10,7 @@ class FormRenderingTagLibTests extends AbstractGrailsTagTests {
 
     @Test
     void testTimeZoneSelect() {
-        def template = '<g:timeZoneSelect name="foo"/>'
+        def template = '<g:timeZoneSelect name="foo" locale="en_US"/>'
 
         def engine = appCtx.groovyPagesTemplateEngine
 

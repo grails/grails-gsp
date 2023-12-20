@@ -15,7 +15,7 @@ class RestfulReverseUrlRenderingTests extends Specification implements UrlMappin
     def testLinkTagRendering() {
         when:
         def template = '<g:link controller="restfulBook">create</g:link>'
-        String output = applyTemplate(template,[namespace:'g'])
+        String output = applyTemplate(template)
 
         then:
         output == '<a href="/book">create</a>'
@@ -44,10 +44,7 @@ class RestfulReverseUrlRenderingTests extends Specification implements UrlMappin
 @Artefact("UrlMappings")
 class RestfulReverseUrlMappings {
     static mappings = {
-        "/book/" (controller: "restfulBook") {
-            action = [GET: "create", POST: "save"]
-        }
-
+        "/book" (controller: "restfulBook", action: [GET: "create", POST: "save"])
     }
 }
 

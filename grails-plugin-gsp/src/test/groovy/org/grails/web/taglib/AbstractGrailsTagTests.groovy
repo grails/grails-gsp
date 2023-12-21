@@ -414,7 +414,7 @@ info.app.name: ${getClass().name}
      * string. The default transform simply converts the contents of the
      * writer to a string.
      */
-    void assertOutputEquals(expected, template, params = [:], Closure transform = { it.toString() }) {
+    void assertOutputEquals(String expected, String template, Map params = [:], Closure transform = { it.toString() }) {
 
         GroovyPageTemplate t = createTemplate(template)
 
@@ -437,7 +437,7 @@ info.app.name: ${getClass().name}
         return t
     }
 
-    protected def assertTemplateOutputEquals(String expected, GroovyPageTemplate template, params = [:], Closure transform = { it.toString() }) {
+    protected def assertTemplateOutputEquals(String expected, GroovyPageTemplate template, Map params = [:], Closure transform = { it.toString() }) {
         def w = template.make(params)
 
         MockHttpServletResponse mockResponse = new MockHttpServletResponse()

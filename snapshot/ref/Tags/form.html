@@ -110,13 +110,13 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">Book</span> {
-    def list() {
-        [books: <span class="predefined-type">Book</span>.list(params)]
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">Book</span> {
+    <span class="keyword">def</span> <span class="function">list</span>() {
+        [<span class="key">books</span>: <span class="predefined-type">Book</span>.list(params)]
     }
 
-    def show() {
-        [book: <span class="predefined-type">Book</span>.get(params.id)]
+    <span class="keyword">def</span> <span class="function">show</span>() {
+        [<span class="key">book</span>: <span class="predefined-type">Book</span>.get(params.id)]
     }
 }</code></pre>
 </div>
@@ -165,7 +165,7 @@ results in:
 <p><code>fragment</code> (optional) - The link fragment (often called anchor tag) to use</p>
 </li>
 <li>
-<p><code>mapping</code> (optional) - The <a href="#namedMappings">named URL mapping</a> to use to rewrite the link</p>
+<p><code>mapping</code> (optional) - The <a href="https://docs.grails.org/6.1.1/guide/theWebLayer.html#namedMappings">named URL mapping</a> to use to rewrite the link</p>
 </li>
 <li>
 <p><code>params</code> (optional) - A Map of request parameters</p>
@@ -177,7 +177,7 @@ results in:
 <p><code>relativeUri</code> (optional) - Used to specify a uri relative to the current path.</p>
 </li>
 <li>
-<p><code>absolute</code> (optional) - If <code>true</code> will prefix the link target address with the value of the <code>grails.serverURL</code> property from <code>application.groovy</code>, or <a href="http://localhost:&lt;port&gt" class="bare">http://localhost:&lt;port&gt</a>; if there is no setting in <code>application.groovy</code> and not running in production.</p>
+<p><code>absolute</code> (optional) - If <code>true</code> will prefix the link target address with the value of the <code>grails.serverURL</code> property from the application configuration, or <a href="http://localhost:&lt;port&gt" class="bare">http://localhost:&lt;port&gt</a>; if there is no setting in the config and not running in production.</p>
 </li>
 <li>
 <p><code>base</code> (optional) - Sets the prefix to be added to the link target address, typically an absolute server URL. This overrides the behaviour of the <code>absolute</code> property, if both are specified.</p>
@@ -186,7 +186,7 @@ results in:
 <p><code>name</code> (optional) - A value to use for both the name and id attribute of the form tag</p>
 </li>
 <li>
-<p><code>useToken</code> (optional) - Set whether to send a token in the request to handle duplicate form submissions. See <a href="#formtokens">Handling Duplicate Form Submissions</a></p>
+<p><code>useToken</code> (optional) - Set whether to send a token in the request to handle duplicate form submissions. See <a href="https://docs.grails.org/6.1.1/guide/theWebLayer.html#formtokens">Handling Duplicate Form Submissions</a></p>
 </li>
 <li>
 <p><code>method</code> (optional) - The form method to use, either <code>POST</code> or <code>GET</code>; defaults to <code>POST</code></p>

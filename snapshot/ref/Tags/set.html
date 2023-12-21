@@ -130,7 +130,7 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">&lt;g:set <span class="type">var</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>&gt;Hello!&lt;/g:set&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;g:set</span> <span class="attribute-name">var</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Hello!<span class="tag">&lt;/g:set&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -138,7 +138,7 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">&lt;g:set <span class="type">var</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bookService</span><span class="delimiter">&quot;</span></span> bean=<span class="string"><span class="delimiter">&quot;</span><span class="content">bookService</span><span class="delimiter">&quot;</span></span>/&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;g:set</span> <span class="attribute-name">var</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bookService</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">bean</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bookService</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -146,8 +146,8 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">&lt;%<span class="error">@</span> page <span class="keyword">import</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.springframework.context.MessageSource</span><span class="delimiter">&quot;</span></span> %&gt;
-&lt;<span class="include">g</span>:<span class="include">set</span> <span class="include">var</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">messageSource</span><span class="delimiter">&quot;</span></span> <span class="include">bean</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${MessageSource}</span><span class="delimiter">&quot;</span></span>/&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="error">&lt;</span>%@ page import=&quot;org.springframework.context.MessageSource&quot; %<span class="error">&gt;</span>
+<span class="tag">&lt;g:set</span> <span class="attribute-name">var</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">messageSource</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">bean</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${MessageSource}</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
 </div>
 </div>
 </div>

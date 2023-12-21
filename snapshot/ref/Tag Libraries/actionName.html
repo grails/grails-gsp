@@ -107,11 +107,11 @@ function addJsClass(el) {
 <h3 id="_examples">Examples</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">BookController</span> {
-    def list() {
-        log.info <span class="string"><span class="delimiter">&quot;</span><span class="content">Executing action $actionName</span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">BookController</span> {
+    <span class="keyword">def</span> <span class="function">list</span>() {
+        log.info <span class="string"><span class="delimiter">&quot;</span><span class="content">Executing action </span><span class="inline"><span class="inline-delimiter">$</span>actionName</span><span class="delimiter">&quot;</span></span>
 
-        render(view: actionName)
+        render(<span class="key">view</span>: actionName)
     }
 }</code></pre>
 </div>

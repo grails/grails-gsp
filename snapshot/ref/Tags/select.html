@@ -107,36 +107,40 @@ function addJsClass(el) {
 <h3 id="_examples">Examples</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml">// create a select from a range
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- create a select from a range --&gt;</span>
 <span class="tag">&lt;g:select</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">user.age</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">from</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${18..65}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${age}</span><span class="delimiter">&quot;</span></span>
-          <span class="attribute-name">noSelection</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">['':'-Choose your age-']</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+          <span class="attribute-name">noSelection</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">['':'-Choose your age-']</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
-// use a no selection with a nullable Object property (use 'null' as key)
+<span class="comment">&lt;!-- use a no selection with a nullable Object property (use 'null' as key) --&gt;</span>
 <span class="tag">&lt;g:select</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">'</span><span class="content">type.id</span><span class="delimiter">'</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${person?.type?.id}</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">noSelection</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${['null':'Select One...']}</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">from</span>=<span class="string"><span class="delimiter">'</span><span class="content">${PersonType.list()}</span><span class="delimiter">'</span></span>
-    <span class="attribute-name">optionKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">optionValue</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/g:select&gt;</span>
+    <span class="attribute-name">optionKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">optionValue</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
-// create select from a list of companies
-// note the 'optionKey' is set to the id of each company element
+<span class="comment">&lt;!--
+create select from a list of companies
+note the 'optionKey' is set to the id of each company element
+--&gt;</span>
 <span class="tag">&lt;g:select</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">user.company.id</span><span class="delimiter">&quot;</span></span>
           <span class="attribute-name">from</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${Company.list()}</span><span class="delimiter">&quot;</span></span>
           <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${user?.company.id}</span><span class="delimiter">&quot;</span></span>
           <span class="attribute-name">optionKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
-// create multiple select
+<span class="comment">&lt;!-- create multiple select --&gt;</span>
 <span class="tag">&lt;g:select</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">cars</span><span class="delimiter">&quot;</span></span>
           <span class="attribute-name">from</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${Car.list()}</span><span class="delimiter">&quot;</span></span>
           <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${person?.cars*.id}</span><span class="delimiter">&quot;</span></span>
           <span class="attribute-name">optionKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>
           <span class="attribute-name">multiple</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
-// create select with internationalized labels (this is
-// useful for small static lists and the inList constraint).
-// expected properties in messages.properties:
-// book.category.M=Mystery
-// book.category.T=Thriller
-// book.category.F=Fantasy
+<span class="comment">&lt;!--
+create select with internationalized labels (this is
+useful for small static lists and the inList constraint).
+expected properties in messages.properties:
+book.category.M=Mystery
+book.category.T=Thriller
+book.category.F=Fantasy
+--&gt;</span>
 <span class="tag">&lt;g:select</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">book.category</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">from</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${['M', 'T', 'F']}</span><span class="delimiter">&quot;</span></span>
           <span class="attribute-name">valueMessagePrefix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">book.category</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
 </div>
@@ -146,7 +150,7 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml">${select(from:aList,value:aValue)}</code></pre>
+<pre class="CodeRay highlight"><code data-lang="gsp">${select(from:aList, value:aValue)}</code></pre>
 </div>
 </div>
 </div>
@@ -176,7 +180,7 @@ function addJsClass(el) {
 <p><code>keys</code> (optional) - A list of values to be used for the value attribute of each <code>option</code> element.</p>
 </li>
 <li>
-<p><code>noSelection</code> (optional) - A single-entry Map detailing the key and value to use for the "no selection made" choice in the select box. If there is no current selection this will be shown as it is first in the list, and if submitted with this selected, the key that you provide will be submitted. Typically this will be blank - but you can also use 'null' in the case that you&#8217;re passing the ID of an object</p>
+<p><code>noSelection</code> (optional) - A single-entry Map detailing the key and value to use for the "no selection made" choice in the select box. If there is no current selection this will be shown as it is first in the list, and if submitted with this selected, the key that you provide will be submitted. Typically, this will be blank - but you can also use 'null' in the case that you&#8217;re passing the ID of an object</p>
 </li>
 <li>
 <p><code>valueMessagePrefix</code> (Optional) - By default, the value of the <code>option</code> element will be the result of a <code>toString()</code> call on each element in the <code>from</code> attribute list. Setting this allows the value to be resolved from the i18n messages. The <code>valueMessagePrefix</code> will be suffixed with a dot ('.') and then the value attribute of the option to resolve the message. If the message could not be resolved, the value is presented.</p>
@@ -186,6 +190,9 @@ function addJsClass(el) {
 </li>
 <li>
 <p><code>dataAttrs</code> (optional) - a Map that adds <code>"data-*</code> attributes to the <code>&lt;option&gt;</code> elements. Map&#8217;s keys will be used as names of the <code>data-\*</code> attributes like so: <code>data-${key}="value V"</code> (i.e. with a "data-" prefix). The object belonging to a key determines the value V of the <code>data-\*</code> attribute. It can be a string referring to a property of beans in <code>from</code>, a Closure that accepts an item from <code>from</code> and returns the value, or a List that contains a value for each of the `&lt;option&gt;`s.</p>
+</li>
+<li>
+<p><code>locale</code> (optional) - The <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Locale.html">Locale</a> to use when resolving messages. If not specified, the current request locale is used.</p>
 </li>
 </ul>
 </div>
@@ -197,8 +204,8 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">&lt;<span class="key">g</span>:select optionKey=<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> optionValue=<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>
-          name=<span class="string"><span class="delimiter">&quot;</span><span class="content">book.title</span><span class="delimiter">&quot;</span></span> from=<span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>bookList<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span> /&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;g:select</span> <span class="attribute-name">optionKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">optionValue</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>
+          <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">book.title</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">from</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${bookList}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -206,17 +213,17 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">&lt;<span class="key">g</span>:select optionKey=<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> optionValue=<span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>{<span class="local-variable">it</span>.title?.toUpperCase()}<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-          name=<span class="string"><span class="delimiter">&quot;</span><span class="content">book.title</span><span class="delimiter">&quot;</span></span> from=<span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>bookList<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span> /&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;g:select</span> <span class="attribute-name">optionKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">optionValue</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${{it.title?.toUpperCase()}}</span><span class="delimiter">&quot;</span></span>
+          <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">book.title</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">from</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${bookList}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If you specify an <code>optionKey</code> then be aware that you should use that property in the <code>value</code> attribute in order to pre-select an item in the drop down list. For example, let&#8217;s say we have a <code>favoriteBook</code> that we want to pre-select in a list of books:</p>
+<p>If you specify an <code>optionKey</code> then be aware that you should use that property in the <code>value</code> attribute in order to pre-select an item in the drop-down list. For example, let&#8217;s say we have a <code>favoriteBook</code> that we want to pre-select in a list of books:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">&lt;<span class="key">g</span>:select optionKey=<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> value=<span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>favoriteBook.id<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-          name=<span class="string"><span class="delimiter">&quot;</span><span class="content">book</span><span class="delimiter">&quot;</span></span> from=<span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>bookList<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span> /&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;g:select</span> <span class="attribute-name">optionKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${favoriteBook.id}</span><span class="delimiter">&quot;</span></span>
+          <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">book</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">from</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${bookList}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">

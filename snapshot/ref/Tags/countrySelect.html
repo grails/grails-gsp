@@ -107,23 +107,25 @@ function addJsClass(el) {
 <h3 id="_examples">Examples</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml">// create a select for all countries
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- create a select for all countries --&gt;</span>
 <span class="tag">&lt;g:countrySelect</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">user.country</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${country}</span><span class="delimiter">&quot;</span></span>
                  <span class="attribute-name">noSelection</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">['':'-Choose your country-']</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-// create select from a list of ISO3166_3 country codes
+<span class="comment">&lt;!-- create select from a list of ISO3166_3 country codes --&gt;</span>
 <span class="tag">&lt;g:countrySelect</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">user.country</span><span class="delimiter">&quot;</span></span>
                  <span class="attribute-name">from</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">['gbr', 'usa', 'deu']</span><span class="delimiter">&quot;</span></span>
                  <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${user?.country}</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-// create country select with internationalized labels
-// expected properties in messages.properties:
-// countryname.gbr=My United Kingdom
-// countryname.usa=Home of the brave
-// countryname.deu=Germany
+<span class="comment">&lt;!--
+create country select with internationalized labels
+expected properties in messages.properties:
+countryname.gbr=My United Kingdom
+countryname.usa=Home of the brave
+countryname.deu=Germany
+--&gt;</span>
 <span class="tag">&lt;g:countrySelect</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">user.country</span><span class="delimiter">&quot;</span></span>
-                 <span class="attribute-name">from</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">['gbr', 'usa', 'deu']</span>
-                 <span class="content">valueMessagePrefix=</span><span class="delimiter">&quot;</span></span><span class="attribute-name">countryname</span><span class="error">&quot;</span> <span class="tag">/&gt;</span></code></pre>
+                 <span class="attribute-name">from</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">['gbr', 'usa', 'deu']</span><span class="delimiter">&quot;</span></span>
+                 <span class="attribute-name">valueMessagePrefix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">countryname</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -150,7 +152,7 @@ function addJsClass(el) {
 <p><code>default</code> (optional) - The ISO code of the default country to display if <code>value</code> is not set</p>
 </li>
 <li>
-<p><code>noSelection</code> (optional) - A single-entry Map detailing the key and value to use for the "no selection made" choice in the select box. If there is no current selection this will be shown as it is first in the list, and if submitted with this selected, the key that you provide will be submitted. Typically this will be blank - but you can also use 'null' in the case that you&#8217;re passing the ID of an object</p>
+<p><code>noSelection</code> (optional) - A single-entry Map detailing the key and value to use for the "no selection made" choice in the select box. If there is no current selection this will be shown as it is first in the list, and if submitted with this selected, the key that you provide will be submitted. Typically, this will be blank - but you can also use 'null' in the case that you&#8217;re passing the ID of an object</p>
 </li>
 <li>
 <p><code>valueMessagePrefix</code> (optional) - By default the value "option" element will be the internal English name of the country according to the ISO3166_3 standard. Setting this allows the value to be resolved from the I18n messages. The valueMessagePrefix will be suffixed with a dot ('.') and then the country code of the option to resolve the message. If the message could not be resolved, the prefix plus country code is presented.</p>

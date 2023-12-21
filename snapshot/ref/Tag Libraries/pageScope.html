@@ -100,22 +100,22 @@ function addJsClass(el) {
 <div class="sect2">
 <h3 id="_purpose">Purpose</h3>
 <div class="paragraph">
-<p>A reference to the binding of the GSP that the tag library is being executed within. Allows access to variables set with the <a href="../ref/Tags/set.html">set</a> tag and those passed to the page from the controller model.</p>
+<p>A reference to the binding of the GSP that the tag library is being executed within. Allows access to variables set with the <a href="../Tags/set.html">set</a> tag and those passed to the page from the controller model.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_examples">Examples</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">BookTagLib</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">BookTagLib</span> {
 
-   def parent = { attrs, body -&gt;
+   <span class="keyword">def</span> parent = { attrs, body -&gt;
        pageScope.parent = <span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>
        out &lt;&lt; body()
    }
 
-   def child = { attrs, body -&gt;
-       out &lt;&lt; <span class="string"><span class="delimiter">&quot;</span><span class="content">My parent is ${pageScope.parent}</span><span class="delimiter">&quot;</span></span>
+   <span class="keyword">def</span> child = { attrs, body -&gt;
+       out &lt;&lt; <span class="string"><span class="delimiter">&quot;</span><span class="content">My parent is </span><span class="inline"><span class="inline-delimiter">${</span>pageScope.parent<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
    }
 }</code></pre>
 </div>

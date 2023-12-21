@@ -100,7 +100,7 @@ function addJsClass(el) {
 <div class="sect2">
 <h3 id="_purpose">Purpose</h3>
 <div class="paragraph">
-<p>Formats a number using the patterns defined by the <a href="https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html">DecimalFormat</a> class. Also supports attributes used in the JSTL <code>formatNumber</code> tag.</p>
+<p>Formats a number using the patterns defined by the <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/text/DecimalFormat.html">DecimalFormat</a> class. Also supports attributes used in the JSTL <code>formatNumber</code> tag.</p>
 </div>
 </div>
 <div class="sect2">
@@ -127,7 +127,7 @@ function addJsClass(el) {
 </div>
 </div>
 <div class="paragraph">
-<p>For USD, the currency symbol will be based on the locale of the request. For the "en_US" locale, the result is "$123.45" and for "fi_FI" locale, the formatting is "123,45 USD". The formatting rules come from the <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Currency.html">Currency</a> class.</p>
+<p>For USD, the currency symbol will be based on the locale of the request. For the "en_US" locale, the result is "$123.45" and for "fi_FI" locale, the formatting is "123,45 USD". The formatting rules come from the <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Currency.html">Currency</a> class.</p>
 </div>
 <div class="paragraph">
 <p>Example of left padding a number with zeros:</p>
@@ -166,7 +166,7 @@ function addJsClass(el) {
 <p><code>number</code> (required) - The number object to format</p>
 </li>
 <li>
-<p><code>format</code> (optional) - The formatting pattern to use for the number, see <a href="https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html">DecimalFormat</a></p>
+<p><code>format</code> (optional) - The formatting pattern to use for the number, see <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/text/DecimalFormat.html">DecimalFormat</a></p>
 </li>
 <li>
 <p><code>formatName</code> (optional) - Look up <code>format</code> from the default MessageSource / ResourceBundle (i18n/<strong>.properties file) with this key. Look up <code>format</code> from the default MessageSource / ResourceBundle (i18n/</strong>.properties file) with this key. If <code>format</code> and <code>formatName</code> are empty, <code>format</code> is looked up with &#8216;default.number.format&#8217; key. If the key is missing, '0' formatting pattern is used.</p>
@@ -175,7 +175,7 @@ function addJsClass(el) {
 <p><code>type</code> (optional) - The type of formatter to use: 'number', 'currency' or 'percent' . <code>format</code> or <code>formatName</code> aren&#8217;t used when <code>type</code> is specified.</p>
 </li>
 <li>
-<p><code>locale</code> (optional) - Override the locale of the request , String or <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html">Locale</a> value</p>
+<p><code>locale</code> (optional) - Override the locale of the request , String or <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Locale.html">Locale</a> value</p>
 </li>
 <li>
 <p><code>groupingUsed</code> (optional) - Set whether grouping will be used in this format.</p>
@@ -196,10 +196,10 @@ function addJsClass(el) {
 <p><code>currencyCode</code> (optional) - The standard currency code ('EUR', 'USD', etc.), uses formatting settings for the currency. type='currency' attribute is recommended.</p>
 </li>
 <li>
-<p><code>currencySymbol</code> (optional) - Force the currency symbol to some symbol, recommended way is to use <code>currencyCode</code> attribute instead (takes symbol information from <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Currency.html">Currency</a>)</p>
+<p><code>currencySymbol</code> (optional) - Force the currency symbol to some symbol, recommended way is to use <code>currencyCode</code> attribute instead (takes symbol information from <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Currency.html">Currency</a>)</p>
 </li>
 <li>
-<p><code>roundingMode</code> (optional) - Sets the <a href="https://docs.oracle.com/javase/8/docs/api/java/math/RoundingMode.html">RoundingMode</a> used in this DecimalFormat. Usual values: <code>HALF_UP</code>, <code>HALF_DOWN</code>. If roundingMode is <code>UNNECESSARY</code> and an <code>ArithemeticException</code> occurs, the original number formatted with default number formatting will be returned.</p>
+<p><code>roundingMode</code> (optional) - Sets the <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/RoundingMode.html">RoundingMode</a> used in this DecimalFormat. Usual values: <code>HALF_UP</code>, <code>HALF_DOWN</code>. If roundingMode is <code>UNNECESSARY</code> and an <code>ArithemeticException</code> occurs, the original number formatted with default number formatting will be returned.</p>
 </li>
 </ul>
 </div>

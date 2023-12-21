@@ -97,11 +97,11 @@ function addJsClass(el) {
                 <div class="sect2">
 <h3 id="_tag_library_usage">Tag Library Usage</h3>
 <div class="paragraph">
-<p>A tag library fulfills role of "view helper" in the Model View Controller (MVC) pattern and helps with GSP rendering. In Grails a tag library is a class with a name that ends in the convention "TagLib" and lives in the <code>grails-app/taglib</code> directory. Use the <a href="https://docs.grails.org/latest/ref/Command%20Line/create-taglib.html">create-taglib</a> command to create a tag library:</p>
+<p>A tag library fulfills role of "view helper" in the Model View Controller (MVC) pattern and helps with GSP rendering. In Grails a tag library is a class with a name that ends in the convention "TagLib" and lives in the <code>grails-app/taglib</code> directory. Use the <a href="https://docs.grails.org/6.1.1/ref/Command%20Line/create-taglib.html">create-taglib</a> command to create a tag library:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">grails create-taglib format</code></pre>
+<pre>grails create-taglib format</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -109,11 +109,11 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">java.text.SimpleDateFormat</span>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">import</span> <span class="include">java.text.SimpleDateFormat</span>
 
-<span class="include">class</span> <span class="include">FormatTagLib</span> {
-    <span class="include">def</span> <span class="include">dateFormat</span> = { <span class="include">attrs</span>, <span class="include">body</span> -&gt;
-        <span class="include">out</span> &lt;&lt; <span class="include">new</span> <span class="include">SimpleDateFormat</span>(<span class="include">attrs.format</span>).<span class="include">format</span>(<span class="include">attrs.value</span>)
+<span class="type">class</span> <span class="class">FormatTagLib</span> {
+    <span class="keyword">def</span> dateFormat = { attrs, body -&gt;
+        out &lt;&lt; <span class="keyword">new</span> <span class="predefined-type">SimpleDateFormat</span>(attrs.format).format(attrs.value)
     }
 }</code></pre>
 </div>

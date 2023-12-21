@@ -112,8 +112,8 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def isAdmin = { attrs, body -&gt;
-    def user = attrs.user
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> isAdmin = { attrs, body -&gt;
+    <span class="keyword">def</span> user = attrs.user
     <span class="keyword">if</span> (user &amp;&amp; checkUserPrivs(user)) {
         out &lt;&lt; body()
     }

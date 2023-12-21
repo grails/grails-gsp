@@ -112,11 +112,11 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
     <span class="directive">static</span> namespace = <span class="string"><span class="delimiter">&quot;</span><span class="content">my</span><span class="delimiter">&quot;</span></span>
 
-    def example = { attrs -&gt;
-        ...
+    <span class="keyword">def</span> example = { attrs -&gt;
+        <span class="comment">//...</span>
     }
 }</code></pre>
 </div>
@@ -137,7 +137,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">out &lt;&lt; my.example(name:<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">out &lt;&lt; my.example(<span class="key">name</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
 <div class="paragraph">

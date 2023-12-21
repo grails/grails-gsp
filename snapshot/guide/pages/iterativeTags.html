@@ -112,7 +112,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def repeat = { attrs, body -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> repeat = { attrs, body -&gt;
     attrs.times?.toInteger()?.times { num -&gt;
         out &lt;&lt; body(num)
     }
@@ -134,7 +134,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">out &lt;&lt; body(num)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">out &lt;&lt; body(num)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -142,8 +142,8 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def repeat = { attrs, body -&gt;
-    def <span class="type">var</span> = attrs.var ?: <span class="string"><span class="delimiter">&quot;</span><span class="content">num</span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> repeat = { attrs, body -&gt;
+    <span class="keyword">def</span> <span class="type">var</span> = attrs.var ?: <span class="string"><span class="delimiter">&quot;</span><span class="content">num</span><span class="delimiter">&quot;</span></span>
     attrs.times?.toInteger()?.times { num -&gt;
         out &lt;&lt; body((<span class="type">var</span>):num)
     }
@@ -155,7 +155,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">out &lt;&lt; body((<span class="type">var</span>):num)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">out &lt;&lt; body((<span class="type">var</span>):num)</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">

@@ -110,7 +110,7 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">Book</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">Book</span> {
     <span class="predefined-type">String</span> title
     <span class="predefined-type">String</span> author
 }</code></pre>
@@ -121,12 +121,12 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">&lt;p&gt;<span class="error">$</span>{it.title}&lt;/p&gt;
-&lt;p&gt;<span class="error">$</span>{it.author}&lt;/p&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;p&gt;</span>${it.title}<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;p&gt;</span>${it.author}<span class="tag">&lt;/p&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This template can now be reused whether you have a <code>List</code> of <code>Book`s or a single `Book</code>. For a <code>List</code> the template will be repeated for each instance:</p>
+<p>This template can now be reused whether you have a <code>List</code> of <code>Book</code>s or a single <code>Book</code>. For a <code>List</code> the template will be repeated for each instance:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -169,8 +169,8 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">&lt;p&gt;<span class="error">$</span>{myBook.title}&lt;/p&gt;
-&lt;p&gt;<span class="error">$</span>{myBook.author}&lt;/p&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;p&gt;</span>${myBook.title}<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;p&gt;</span>${myBook.author}<span class="tag">&lt;/p&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -185,7 +185,7 @@ function addJsClass(el) {
 <div class="sect2">
 <h3 id="_description">Description</h3>
 <div class="paragraph">
-<p>Note that if the value of the template attribute starts with a '/' it will be resolved relative to the views directory. This is useful for sharing templates between views. Without the leading '/' it will be first be resolved relative to the current controller&#8217;s view directory then, failing that, the top level views directory. In either case the template file must be named with a leading underscore ('_') but referenced in the template attribute without that underscore or the '.gsp' suffix.</p>
+<p>Note that if the value of the template attribute starts with a '/' it will be resolved relative to the <code>views</code> directory. This is useful for sharing templates between views. Without the leading '/' it will be first be resolved relative to the current controller&#8217;s view directory then, failing that, the top level views directory. In either case the template file must be named with a leading underscore ('_') but referenced in the template attribute without that underscore or the '.gsp' suffix.</p>
 </div>
 <div class="paragraph">
 <p>Attributes</p>
@@ -216,7 +216,7 @@ function addJsClass(el) {
 </ul>
 </div>
 <div class="paragraph">
-<p>See <a href="https://docs.grails.org/latest/ref/Controllers/render.html">render</a> in the user guide for more information.</p>
+<p>See <a href="https://docs.grails.org/6.1.1/ref/Controllers/render.html">render</a> in the Grails user guide for more information.</p>
 </div>
 </div>
 </div>

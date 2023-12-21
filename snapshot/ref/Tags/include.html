@@ -122,13 +122,13 @@ The  <code>g:include</code> tag will not generate a separate request. The respon
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">BookController</span> {
-    def list() {
-        [books: <span class="predefined-type">Book</span>.list(params)]
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">BookController</span> {
+    <span class="keyword">def</span> <span class="function">list</span>() {
+        [<span class="key">books</span>: <span class="predefined-type">Book</span>.list(params)]
     }
 
-    def show() {
-        [book: <span class="predefined-type">Book</span>.get(params.id)]
+    <span class="keyword">def</span> <span class="function">show</span>() {
+        [<span class="key">book</span>: <span class="predefined-type">Book</span>.get(params.id)]
     }
 }</code></pre>
 </div>
@@ -155,7 +155,7 @@ The  <code>g:include</code> tag will not generate a separate request. The respon
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def content = g.include(action: <span class="string"><span class="delimiter">'</span><span class="content">list</span><span class="delimiter">'</span></span>, controller: <span class="string"><span class="delimiter">'</span><span class="content">book</span><span class="delimiter">'</span></span>)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> content = g.include(<span class="key">action</span>: <span class="string"><span class="delimiter">'</span><span class="content">list</span><span class="delimiter">'</span></span>, <span class="key">controller</span>: <span class="string"><span class="delimiter">'</span><span class="content">book</span><span class="delimiter">'</span></span>)</code></pre>
 </div>
 </div>
 <div class="paragraph">

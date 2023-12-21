@@ -150,26 +150,26 @@
 <div class="title">build.gradle</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
-    ...
+    //...
     implementation "org.grails.plugins:gsp:6.1.3-SNAPSHOT"
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In addition for production compilation you should apply the <code>grails-gsp</code> Gradle plugin:</p>
+<p>In addition, for production compilation you should apply the <code>grails-gsp</code> Gradle plugin:</p>
 </div>
 <div class="listingblock">
 <div class="title">build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">apply plugin:"org.grails.grails-gsp"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.grails.grails-gsp</span><span class="delimiter">&quot;</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>GSPs themselves live in the <code>grails-app/views</code> directory and are typically rendered automatically (by convention) or with the <a href="https://docs.grails.org/latest/ref/Controllers/render.html">render</a> method such as:</p>
+<p>GSPs themselves live in the <code>grails-app/views</code> directory and are typically rendered automatically (by convention) or with the <a href="https://docs.grails.org/6.1.1/ref/Controllers/render.html">render</a> method such as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">render(view: <span class="string"><span class="delimiter">&quot;</span><span class="content">index</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">render(<span class="key">view</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">index</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -192,8 +192,8 @@ Although it is possible to have Groovy logic embedded in your GSP and doing this
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def show() {
-    [book: <span class="predefined-type">Book</span>.get(params.id)]
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> <span class="function">show</span>() {
+    [<span class="key">book</span>: <span class="predefined-type">Book</span>.get(params.id)]
 }</code></pre>
 </div>
 </div>
@@ -202,7 +202,7 @@ Although it is possible to have Groovy logic embedded in your GSP and doing this
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="error">$</span>{book.title}</code></pre>
+<pre class="CodeRay highlight"><code data-lang="gsp">${book.title}</code></pre>
 </div>
 </div>
 <div class="admonitionblock warning">
@@ -212,7 +212,7 @@ Although it is possible to have Groovy logic embedded in your GSP and doing this
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Embedding data received from user input has the risk of making your application vulnerable to an Cross Site Scripting (XSS) attack. Please read the documentation on <a href="https://docs.grails.org/latest/guide/security.html#xssPrevention">XSS prevention</a> for information on how to prevent XSS attacks.
+Embedding data received from user input has the risk of making your application vulnerable to a Cross Site Scripting (XSS) attack. Please read the documentation on <a href="https://docs.grails.org/6.1.1/guide/security.html#xssPrevention">XSS prevention</a> for information on how to prevent XSS attacks.
 </td>
 </tr>
 </table>
@@ -275,7 +275,7 @@ Embedding data received from user input has the risk of making your application 
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Embedding data received from user input has the risk of making your application vulnerable to an Cross Site Scripting (XSS) attack. Please read the documentation on <a href="security.html#xssPrevention">XSS prevention</a> for information on how to prevent XSS attacks.
+Embedding data received from user input has the risk of making your application vulnerable to an Cross Site Scripting (XSS) attack. Please read the documentation on <a href="https://docs.grails.org/6.1.1/guide/security.html#xssPrevention">XSS prevention</a> for information on how to prevent XSS attacks.
 </td>
 </tr>
 </table>
@@ -296,7 +296,7 @@ Embedding data received from user input has the risk of making your application 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="error">&lt;</span>% now = new Date() %<span class="error">&gt;</span></code></pre>
+<pre>&lt;% now = new Date() %&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -304,7 +304,7 @@ Embedding data received from user input has the risk of making your application 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="error">&lt;</span>%=now%<span class="error">&gt;</span></code></pre>
+<pre>&lt;%=now%&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -313,34 +313,34 @@ Embedding data received from user input has the risk of making your application 
 <div class="ulist">
 <ul>
 <li>
-<p><code>application</code> - The <a href="http://docs.oracle.com/javaee/1.4/api/javax/servlet/ServletContext.html">javax.servlet.ServletContext</a> instance</p>
+<p><code>application</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/ServletContext.html">javax.servlet.ServletContext</a> instance</p>
 </li>
 <li>
-<p><code>applicationContext</code> The Spring <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/ApplicationContext.html">ApplicationContext</a> instance</p>
+<p><code>applicationContext</code> The Spring <a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/ApplicationContext.html">ApplicationContext</a> instance</p>
 </li>
 <li>
-<p><code>flash</code> - The <a href="https://docs.grails.org/latest/ref/Controllers/flash.html">flash</a> object</p>
+<p><code>flash</code> - The <a href="https://docs.grails.org/6.1.1/ref/Controllers/flash.html">flash</a> object</p>
 </li>
 <li>
-<p><code>grailsApplication</code> - The <a href="http://docs.grails.org/latest/api/grails/core/GrailsApplication.html">GrailsApplication</a> instance</p>
+<p><code>grailsApplication</code> - The <a href="https://docs.grails.org/6.1.1/api/grails/core/GrailsApplication.html">GrailsApplication</a> instance</p>
 </li>
 <li>
 <p><code>out</code> - The response writer for writing to the output stream</p>
 </li>
 <li>
-<p><code>params</code> - The <a href="https://docs.grails.org/latest/ref/Controllers/params.html">params</a> object for retrieving request parameters</p>
+<p><code>params</code> - The <a href="https://docs.grails.org/6.1.1/ref/Controllers/params.html">params</a> object for retrieving request parameters</p>
 </li>
 <li>
-<p><code>request</code> - The <a href="http://docs.oracle.com/javaee/1.4/api/javax/servlet/http/HttpServletRequest.html">HttpServletRequest</a> instance</p>
+<p><code>request</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletRequest.html">HttpServletRequest</a> instance</p>
 </li>
 <li>
-<p><code>response</code> - The <a href="http://docs.oracle.com/javaee/1.4/api/javax/servlet/http/HttpServletResponse.html">HttpServletResponse</a> instance</p>
+<p><code>response</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletResponse.html">HttpServletResponse</a> instance</p>
 </li>
 <li>
-<p><code>session</code> - The <a href="http://docs.oracle.com/javaee/1.4/api/javax/servlet/http/HttpSession.html">HttpSession</a> instance</p>
+<p><code>session</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpSession.html">HttpSession</a> instance</p>
 </li>
 <li>
-<p><code>webRequest</code> - The <a href="http://docs.grails.org/latest/api/org/grails/web/servlet/mvc/GrailsWebRequest.html">GrailsWebRequest</a> instance</p>
+<p><code>webRequest</code> - The <a href="https://docs.grails.org/6.1.1/api/org/grails/web/servlet/mvc/GrailsWebRequest.html">GrailsWebRequest</a> instance</p>
 </li>
 </ul>
 </div>
@@ -399,7 +399,7 @@ Embedding data received from user input has the risk of making your application 
 <p>GSP also supports a few JSP-style page directives.</p>
 </div>
 <div class="paragraph">
-<p>The import directive lets you import classes into the page. However, it is rarely needed due to Groovy&#8217;s default imports and <a href="#tags">GSP Tags</a>:</p>
+<p>The import directive lets you import classes into the page. However, it is rarely needed due to Groovy&#8217;s default imports and <a href="tags.html">GSP Tags</a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -450,7 +450,7 @@ Embedding data received from user input has the risk of making your application 
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Embedding data received from user input has the risk of making your application vulnerable to an Cross Site Scripting (XSS) attack. Please read the documentation on <a href="security.html#xssPrevention">XSS prevention</a> for information on how to prevent XSS attacks.
+Embedding data received from user input has the risk of making your application vulnerable to a Cross Site Scripting (XSS) attack. Please read the documentation on <a href="https://docs.grails.org/6.1.1/guide/security.html#xssPrevention">XSS prevention</a> for information on how to prevent XSS attacks.
 </td>
 </tr>
 </table>
@@ -476,7 +476,7 @@ Embedding data received from user input has the risk of making your application 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own custom tag libraries.
+The section on <a href="taglibs.html">Tag Libraries</a> covers how to add your own custom tag libraries.
 </td>
 </tr>
 </table>
@@ -581,7 +581,7 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 <p><code>request</code> - Scoped to the current request</p>
 </li>
 <li>
-<p><code>flash</code> - Placed within <a href="https://docs.grails.org/latest/ref/Controllers/flash.html">flash</a> scope and hence available for the next request</p>
+<p><code>flash</code> - Placed within <a href="https://docs.grails.org/6.1.1/ref/Controllers/flash.html">flash</a> scope and hence available for the next request</p>
 </li>
 <li>
 <p><code>session</code> - Scoped for the user session</p>
@@ -624,7 +624,7 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 </div>
 <div class="paragraph">
-<p>Use the <a href="../ref/Tags/each.html">each</a> and <a href="../ref/Tags/while.html">while</a> tags for iteration:</p>
+<p>Use <a href="../ref/Tags/each.html">each</a> and <a href="../ref/Tags/while.html">while</a> tags for iteration:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -695,7 +695,7 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 
 
 <div class="paragraph">
-<p>GSP also features tags to help you manage linking to controllers and actions. The <a href="../ref/Tags/link.html">link</a> tag lets you specify controller and action name pairing and it will automatically work out the link based on the <a href="#urlmappings">URL Mappings</a>, even if you change them! For example:</p>
+<p>GSP also features tags to help you manage linking to controllers and actions. The <a href="../ref/Tags/link.html">link</a> tag lets you specify controller and action name pairing and it will automatically work out the link based on the <a href="https://docs.grails.org/6.1.1/guide/theWebLayer#urlmappings">URL Mappings</a>, even if you change them! For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -735,7 +735,7 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 </div>
 <div class="paragraph">
-<p>In this case we create a form called <code>myForm</code> that submits to the <code>BookController&#8217;s `list</code> action. Beyond that all of the usual HTML attributes apply.</p>
+<p>In this case we create a form called <code>myForm</code> that submits to the <code>BookController</code>'s <code>list</code> action. Beyond that, all the usual HTML attributes apply.</p>
 </div>
 </div>
 <div class="sect3">
@@ -780,7 +780,7 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 <div class="sect3">
 <h4 id="_multiple_submit_buttons">Multiple Submit Buttons</h4>
 <div class="paragraph">
-<p>The age old problem of dealing with multiple submit buttons is also handled elegantly with Grails using the <a href="../ref/Tags/actionSubmit.html">actionSubmit</a> tag. It is just like a regular submit, but lets you specify an alternative action to submit to:</p>
+<p>The age-old problem of dealing with multiple submit buttons is also handled elegantly with Grails using the <a href="../ref/Tags/actionSubmit.html">actionSubmit</a> tag. It is just like a regular submit, but lets you specify an alternative action to submit to:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -799,8 +799,8 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 
 
-<div class="paragraph">
-<p>One major different between GSP tags and other tagging technologies is that GSP tags can be called as either regular tags or as method calls from <a href="#controllers">controllers</a>, <a href="#taglibs">tag libraries</a> or GSP views.</p>
+<div id="tagsAsMethodCalls" class="paragraph">
+<p>One major different between GSP tags and other tagging technologies is that GSP tags can be called as either regular tags or as method calls from <a href="https://docs.grails.org/6.1.1/guide/theWebLayer.html#controllers">controllers</a>, <a href="taglibs.html">tag libraries</a> or GSP views.</p>
 </div>
 <div class="sect3">
 <h4 id="_tags_as_method_calls_from_gsps">Tags as method calls from GSPs</h4>
@@ -809,7 +809,7 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml">Static Resource: ${createLinkTo(dir: &quot;images&quot;, file: &quot;logo.jpg&quot;)}</code></pre>
+<pre class="CodeRay highlight"><code data-lang="gsp">Static Resource: ${createLinkTo(dir: &quot;images&quot;, file: &quot;logo.jpg&quot;)}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -821,11 +821,11 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 </div>
 <div class="paragraph">
-<p>In view technologies that don&#8217;t support this feature you have to nest tags within tags, which becomes messy quickly and often has an adverse effect of WYSIWYG tools such as Dreamweaver that attempt to render the mark-up as it is not well-formed:</p>
+<p>In view technologies that don&#8217;t support this feature you have to nest tags within tags, which becomes messy quickly and often has an adverse effect of WYSIWYG tools that attempt to render the mark-up as it is not well-formed:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;g:createLinkTo dir=</span><span class="delimiter">&quot;</span></span><span class="attribute-name">images</span><span class="error">&quot;</span> <span class="attribute-name">file</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">logo.jpg</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>&quot; /<span class="error">&gt;</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;g:createLinkTo dir='images' file='logo.jpg'/</span></span><span class="error">&gt;</span>&quot; /<span class="error">&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -836,7 +836,7 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def imageLocation = createLinkTo(dir:<span class="string"><span class="delimiter">&quot;</span><span class="content">images</span><span class="delimiter">&quot;</span></span>, file:<span class="string"><span class="delimiter">&quot;</span><span class="content">logo.jpg</span><span class="delimiter">&quot;</span></span>).toString()</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> imageLocation = createLinkTo(<span class="key">dir</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">images</span><span class="delimiter">&quot;</span></span>, <span class="key">file</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">logo.jpg</span><span class="delimiter">&quot;</span></span>).toString()</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -844,15 +844,15 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def imageLocation = g.createLinkTo(dir:<span class="string"><span class="delimiter">&quot;</span><span class="content">images</span><span class="delimiter">&quot;</span></span>, file:<span class="string"><span class="delimiter">&quot;</span><span class="content">logo.jpg</span><span class="delimiter">&quot;</span></span>).toString()</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> imageLocation = g.createLinkTo(<span class="key">dir</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">images</span><span class="delimiter">&quot;</span></span>, <span class="key">file</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">logo.jpg</span><span class="delimiter">&quot;</span></span>).toString()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For tags that use a <a href="#namespaces">custom namespace</a>, use that prefix for the method call. For example (from the <a href="http://grails.org/plugin/fckeditor">FCK Editor plugin</a>):</p>
+<p>For tags that use a <a href="#namespaces">custom namespace</a>, use that prefix for the method call. For example (from the <a href="https://github.com/stefanogualdi/grails-ckeditor">CK Editor plugin</a>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def editor = fckeditor.editor(name: <span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span>, width: <span class="string"><span class="delimiter">&quot;</span><span class="content">100%</span><span class="delimiter">&quot;</span></span>, height: <span class="string"><span class="delimiter">&quot;</span><span class="content">400</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> editor = ckeditor.editor(<span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span>, <span class="key">width</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">100%</span><span class="delimiter">&quot;</span></span>, <span class="key">height</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">400</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
 </div>
@@ -944,30 +944,30 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 <div class="sect3">
 <h4 id="_templates_in_controllers_and_tag_libraries">Templates in Controllers and Tag Libraries</h4>
 <div class="paragraph">
-<p>You can also render templates from controllers using the <a href="https://docs.grails.org/latest/ref/Controllers/render.html">render</a> controller method. This is useful for JavaScript heavy applications where you generate small HTML or data responses to partially update the current page instead of performing new request:</p>
+<p>You can also render templates from controllers using the <a href="https://docs.grails.org/6.1.1/ref/Controllers/render.html">render</a> controller method. This is useful for JavaScript heavy applications where you generate small HTML or data responses to partially update the current page instead of performing new request:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def bookData() {
-    def b = <span class="predefined-type">Book</span>.get(params.id)
-    render(template:<span class="string"><span class="delimiter">&quot;</span><span class="content">bookTemplate</span><span class="delimiter">&quot;</span></span>, model:[book:b])
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> <span class="function">bookData</span>() {
+    <span class="keyword">def</span> b = <span class="predefined-type">Book</span>.get(params.id)
+    render(<span class="key">template</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">bookTemplate</span><span class="delimiter">&quot;</span></span>, <span class="key">model</span>:[<span class="key">book</span>:b])
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <a href="https://docs.grails.org/latest/ref/Controllers/render.html">render</a> controller method writes directly to the response, which is the most common behaviour. To instead obtain the result of template as a String you can use the <a href="../ref/Tags/render.html">render</a> tag:</p>
+<p>The <a href="https://docs.grails.org/6.1.1/ref/Controllers/render.html">render</a> controller method writes directly to the response, which is the most common behaviour. To instead obtain the result of template as a String you can use the <a href="../ref/Tags/render.html">render</a> tag:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def bookData() {
-    def b = <span class="predefined-type">Book</span>.get(params.id)
-    <span class="predefined-type">String</span> content = g.render(template:<span class="string"><span class="delimiter">&quot;</span><span class="content">bookTemplate</span><span class="delimiter">&quot;</span></span>, model:[book:b])
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> <span class="function">bookData</span>() {
+    <span class="keyword">def</span> b = <span class="predefined-type">Book</span>.get(params.id)
+    <span class="predefined-type">String</span> content = g.render(<span class="key">template</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">bookTemplate</span><span class="delimiter">&quot;</span></span>, <span class="key">model</span>:[<span class="key">book</span>:b])
     render content
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Notice the usage of the <code>g</code> namespace which tells Grails we want to use the <a href="#tagsAsMethodCalls">tag as method call</a> instead of the <a href="https://docs.grails.org/latest/ref/Controllers/render.html">render</a> method.</p>
+<p>Notice the usage of the <code>g</code> namespace which tells Grails we want to use the <a href="#tagsAsMethodCalls">tag as method call</a> instead of the <a href="https://docs.grails.org/6.1.1/ref/Controllers/render.html">render</a> method.</p>
 </div>
 </div>
 
@@ -984,7 +984,7 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 <div class="sect3">
 <h4 id="_creating_layouts">Creating Layouts</h4>
 <div class="paragraph">
-<p>Grails leverages <a href="http://sitemesh.org">Sitemesh</a>, a decorator engine, to support view layouts. Layouts are located in the <code>grails-app/views/layouts</code> directory. A typical layout can be seen below:</p>
+<p>Grails leverages <a href="https://github.com/sitemesh">Sitemesh</a>, a decorator engine, to support view layouts. Layouts are located in the <code>grails-app/views/layouts</code> directory. A typical layout can be seen below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1039,7 +1039,7 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 </div>
 <div class="paragraph">
-<p>In this case a layout called <code>grails-app/views/layouts/main.gsp</code> will be used to layout the page. If we were to use the layout from the previous section the output would resemble this:</p>
+<p>In this case a layout called <code>grails-app/views/layouts/main.gsp</code> will be used to lay out the page. If we were to use the layout from the previous section the output would resemble this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1064,22 +1064,22 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">BookController</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">BookController</span> {
     <span class="directive">static</span> layout = <span class="string"><span class="delimiter">'</span><span class="content">customer</span><span class="delimiter">'</span></span>
 
-    def list() { ... }
+    <span class="keyword">def</span> <span class="function">list</span>() { <span class="comment">/*...*/</span> }
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can create a layout called <code>grails-app/views/layouts/customer.gsp</code> which will be applied to all views that the <code>BookController</code> delegates to.  The value of the "layout" property may contain a directory structure relative to the <code>grails-app/views/layouts/</code> directory.  For example:</p>
+<p>You can create a layout called <code>grails-app/views/layouts/customer.gsp</code> which will be applied to all views that the <code>BookController</code> delegates to.  The value of the <code>layout</code> property may contain a directory structure relative to the <code>grails-app/views/layouts/</code> directory.  For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">BookController</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">BookController</span> {
     <span class="directive">static</span> layout = <span class="string"><span class="delimiter">'</span><span class="content">custom/customer</span><span class="delimiter">'</span></span>
 
-    def list() { ... }
+    <span class="keyword">def</span> <span class="function">list</span>() { <span class="comment">/*...*/</span> }
 }</code></pre>
 </div>
 </div>
@@ -1094,8 +1094,8 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">BookController</span> {
-    def list() { ... }
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">BookController</span> {
+    <span class="keyword">def</span> <span class="function">list</span>() { <span class="comment">/*...*/</span> }
 }</code></pre>
 </div>
 </div>
@@ -1106,16 +1106,17 @@ The section on <a href="#taglibs">Tag Libraries</a> covers how to add your own c
 <p>Alternatively, you can create a layout called <code>grails-app/views/layouts/book/list.gsp</code> which will only be applied to the <code>list</code> action within the <code>BookController</code>.</p>
 </div>
 <div class="paragraph">
-<p>If you have both the above mentioned layouts in place the layout specific to the action will take precedence when the list action is executed.</p>
+<p>If you have both the above-mentioned layouts in place the layout specific to the action will take precedence when the list action is executed.</p>
 </div>
 <div class="paragraph">
-<p>If a layout may not be located using any of those conventions, the convention of last resort is to look for the application default layout which
-is <code>grails-app/views/layouts/application.gsp</code>.  The name of the application default layout may be changed by defining a property
-in <code>grails-app/conf/application.groovy</code> as follows:</p>
+<p>If a layout is not located using any of those conventions, the convention of last resort is to look for the application default layout which
+is <code>grails-app/views/layouts/application.gsp</code>.  The name of the application default layout may be changed by defining the property <code>grails.sitemesh.default.layout</code>
+in the application configuration as follows:</p>
 </div>
 <div class="listingblock">
+<div class="title">grails-app/conf/application.yml</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">grails.sitemesh.default.layout = <span class="string"><span class="delimiter">'</span><span class="content">myLayoutName</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">grails.sitemesh.default.layout</span>: <span class="string"><span class="content">myLayoutName</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1134,7 +1135,7 @@ in <code>grails-app/conf/application.groovy</code> as follows:</p>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;g:applyLayout</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myLayout</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">template</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bookTemplate</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">collection</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${books}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
-<span class="tag">&lt;g:applyLayout</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myLayout</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">url</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.google.com</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;g:applyLayout</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myLayout</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">url</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://www.google.com</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
 <span class="tag">&lt;g:applyLayout</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myLayout</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 The content to apply a layout to
@@ -1167,7 +1168,7 @@ The content to apply a layout to
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def content = include(controller:<span class="string"><span class="delimiter">&quot;</span><span class="content">book</span><span class="delimiter">&quot;</span></span>, action:<span class="string"><span class="delimiter">&quot;</span><span class="content">list</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> content = include(<span class="key">controller</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">book</span><span class="delimiter">&quot;</span></span>, <span class="key">action</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">list</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1250,13 +1251,13 @@ The content to apply a layout to
 
 
 <div class="paragraph">
-<p>Grails 3 integrates with the <a href="http://grails.org/plugin/asset-pipeline">Asset Pipeline plugin</a> to provide sophisticated static asset management. This plugin is installed by default in new Grails applications.</p>
+<p>Since version 3, Grails integrates with the <a href="https://github.com/bertramdev/asset-pipeline">Asset Pipeline plugin</a> to provide sophisticated static asset management. This plugin is installed by default in new Grails applications.</p>
 </div>
 <div class="paragraph">
 <p>The basic way to include a link to a static asset in your application is to use the <a href="../ref/Tags/resource.html">resource</a> tag. This simple approach creates a URI pointing to the file.</p>
 </div>
 <div class="paragraph">
-<p>However modern applications with dependencies on multiple JavaScript and CSS libraries and frameworks (as well as dependencies on multiple Grails plugins) require something more powerful.</p>
+<p>However, modern applications with dependencies on multiple JavaScript and CSS libraries and frameworks (as well as dependencies on multiple Grails plugins) require something more powerful.</p>
 </div>
 <div class="paragraph">
 <p>The issues that the Asset-Pipeline plugin tackles are:</p>
@@ -1270,7 +1271,7 @@ The content to apply a layout to
 <p>Easy Debugging - Makes for easy debugging by keeping files separate in development mode.</p>
 </li>
 <li>
-<p>Asset Bundling using require <a href="http://bertramdev.github.io/asset-pipeline/guide/usage.html#directives">directives</a>.</p>
+<p>Asset Bundling using require <a href="http://asset-pipeline.com/manual/index.html#directives">directives</a>.</p>
 </li>
 <li>
 <p>Web application performance tuning is difficult.</p>
@@ -1284,10 +1285,10 @@ The content to apply a layout to
 </ul>
 </div>
 <div class="paragraph">
-<p>The asset-pipeline allows you to define your javascript or css requirements right at the top of the file and they get compiled on War creation.</p>
+<p>The asset-pipeline allows you to define your javascript or css requirements right at the top of the file, and they get compiled on War creation.</p>
 </div>
 <div class="paragraph">
-<p>Take a look at the <a href="http://bertramdev.github.io/asset-pipeline">documentation</a> for the asset-pipeline to get started.</p>
+<p>Take a look at the <a href="http://asset-pipeline.com/manual">documentation</a> for the asset-pipeline to get started.</p>
 </div>
 <div class="paragraph">
 <p>If you do not want to use the Asset-Pipeline plugin, you can serve the static assets from directories <code>src/main/resources/public</code> or <code>src/main/webapp</code>, but the latter one only gets included in WAR packaging but not in JAR packaging.</p>
@@ -1314,19 +1315,20 @@ To have them be cached by the browser, you can set the configuration setting <co
 
 
 <div class="paragraph">
-<p>One of the main issues with deploying a Grails application (or typically any servlet-based one) is that any change to the views requires that you redeploy your whole application. If all you want to do is fix a typo on a page, or change an image link, it can seem like a lot of unnecessary work. For such simple requirements, Grails does have a solution: the  <code>grails.gsp.view.dir</code>  configuration setting.</p>
+<p>One of the main issues with deploying a Grails application (or typically any servlet-based application) is that any change to the views requires that you redeploy your whole application. If all you want to do is fix a typo on a page, or change an image link, it can seem like a lot of unnecessary work. For such simple requirements, Grails does have a solution: the  <code>grails.gsp.view.dir</code>  configuration setting.</p>
 </div>
 <div class="paragraph">
-<p>How does this work? The first step is to decide where the GSP files should go. Let&#8217;s say we want to keep them unpacked in a  <code>/var/www/grails/my-app</code>  directory. We add these two lines to  <code>grails-app/conf/application.groovy</code> :</p>
+<p>How does this work? The first step is to decide where the GSP files should go. Let&#8217;s say we want to keep them unpacked in a  <code>/var/www/grails/my-app</code>  directory. We add these two properties to the application configuration:</p>
 </div>
 <div class="listingblock">
+<div class="title">grails-app/conf/application.yml</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">grails.gsp.enable.reload = <span class="predefined-constant">true</span>
-grails.gsp.view.dir = <span class="string"><span class="delimiter">&quot;</span><span class="content">/var/www/grails/my-app/</span><span class="delimiter">&quot;</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">grails.gsp.enable.reload</span>: <span class="string"><span class="content">true</span></span>
+<span class="key">grails.gsp.view.dir</span>: <span class="string"><span class="content">/var/www/grails/my-app/</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The first line tells Grails that modified GSP files should be reloaded at runtime. If you don&#8217;t have this setting, you can make as many changes as you like but they won&#8217;t be reflected in the running application until you restart. The second line tells Grails where to load the views and layouts from.</p>
+<p>The first line tells Grails that modified GSP files should be reloaded at runtime. If you don&#8217;t have this setting, you can make as many changes as you like, but they won&#8217;t be reflected in the running application until you restart. The second line tells Grails where to load the views and layouts from.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1341,15 +1343,15 @@ The trailing slash on the  <code>grails.gsp.view.dir</code>  value is important!
 </table>
 </div>
 <div class="paragraph">
-<p>Setting "grails.gsp.view.dir" is optional. If it&#8217;s not specified, you can update files directly to the application server&#8217;s deployed war directory. Depending on the application server, these files might get overwritten when the server is restarted. Most application servers support "exploded war deployment" which is recommended in this case.</p>
+<p>Setting <code>grails.gsp.view.dir</code> is optional. If it&#8217;s not specified, you can update files directly to the application server&#8217;s deployed war directory. Depending on the application server, these files might get overwritten when the server is restarted. Most application servers support "exploded war deployment" which is recommended in this case.</p>
 </div>
 <div class="paragraph">
 <p>With those settings in place, all you need to do is copy the views from your web application to the external directory. On a Unix-like system, this would look something like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">mkdir -p /<span class="type">var</span>/www/grails/my-app/grails-app/views
-cp -R grails-app/views<span class="comment">/* /var/www/grails/my-app/grails-app/views</span></code></pre>
+<pre>mkdir -p /var/www/grails/my-app/grails-app/views
+cp -R grails-app/views/* /var/www/grails/my-app/grails-app/views</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1359,7 +1361,7 @@ cp -R grails-app/views<span class="comment">/* /var/www/grails/my-app/grails-app
 <p>One thing to bear in mind with this technique is that every time you modify a GSP, it uses up permgen space. So at some point you will eventually hit "out of permgen space" errors unless you restart the server. So this technique is not recommended for frequent or large changes to the views.</p>
 </div>
 <div class="paragraph">
-<p>There are also some System properties to control GSP reloading:</p>
+<p>There are also some system properties to control GSP reloading:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1369,20 +1371,20 @@ cp -R grails-app/views<span class="comment">/* /var/www/grails/my-app/grails-app
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Default</strong></th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">grails.gsp.enable.reload</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alternative system property for enabling the GSP reload mode without changing <code>application.groovy</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">grails.gsp.reload.interval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">system property for enabling the GSP reload mode (alternative to adding it in the file-based application configuration</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">interval between checking the lastmodified time of the gsp source file</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">unit is milliseconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">grails.gsp.reload.interval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">interval between checking the lastmodified time of the gsp source file, unit is milliseconds</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5000</p></td>
 </tr>
 <tr>
@@ -1393,7 +1395,7 @@ cp -R grails-app/views<span class="comment">/* /var/www/grails/my-app/grails-app
 </tbody>
 </table>
 <div class="paragraph">
-<p>GSP reloading is supported for precompiled GSPs since Grails 1.3.5 .</p>
+<p>GSP reloading is supported for precompiled GSPs since Grails 1.3.5.</p>
 </div>
 
 
@@ -1407,14 +1409,14 @@ cp -R grails-app/views<span class="comment">/* /var/www/grails/my-app/grails-app
 
 
 <div class="paragraph">
-<p>Like <a href="http://www.oracle.com/technetwork/java/javaee/jsp/index.html">Java Server Pages</a> (JSP), GSP supports the concept of custom tag libraries. Unlike JSP, Grails' tag library mechanism is simple, elegant and completely reloadable at runtime.</p>
+<p>Like <a href="https://www.oracle.com/java/technologies/jspt.html">Java Server Pages</a> (JSP), GSP supports the concept of custom tag libraries. Unlike JSP, Grails' tag library mechanism is simple, elegant and completely reloadable at runtime.</p>
 </div>
 <div class="paragraph">
 <p>Quite simply, to create a tag library create a Groovy class that ends with the convention <code>TagLib</code> and place it within the <code>grails-app/taglib</code> directory:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
 
 }</code></pre>
 </div>
@@ -1424,8 +1426,8 @@ cp -R grails-app/views<span class="comment">/* /var/www/grails/my-app/grails-app
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
-    def simple = { attrs, body -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
+    <span class="keyword">def</span> simple = { attrs, body -&gt;
 
     }
 }</code></pre>
@@ -1436,8 +1438,8 @@ cp -R grails-app/views<span class="comment">/* /var/www/grails/my-app/grails-app
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
-    def emoticon = { attrs, body -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
+    <span class="keyword">def</span> emoticon = { attrs, body -&gt;
        out &lt;&lt; body() &lt;&lt; (attrs.happy == <span class="string"><span class="delimiter">'</span><span class="content">true</span><span class="delimiter">'</span></span> ? <span class="string"><span class="delimiter">&quot;</span><span class="content"> :-)</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content"> :-(</span><span class="delimiter">&quot;</span></span>)
     }
 }</code></pre>
@@ -1468,7 +1470,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
 
     <span class="comment">/**
      * Renders the body with an emoticon.
@@ -1476,7 +1478,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
      * @attr happy whether to show a happy emoticon ('true') or
      * a sad emoticon ('false')
      */</span>
-    def emoticon = { attrs, body -&gt;
+    <span class="keyword">def</span> emoticon = { attrs, body -&gt;
        out &lt;&lt; body() &lt;&lt; (attrs.happy == <span class="string"><span class="delimiter">'</span><span class="content">true</span><span class="delimiter">'</span></span> ? <span class="string"><span class="delimiter">&quot;</span><span class="content"> :-)</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content"> :-(</span><span class="delimiter">&quot;</span></span>)
     }
 }</code></pre>
@@ -1487,7 +1489,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
 
     <span class="comment">/**
      * Creates a new password field.
@@ -1495,7 +1497,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
      * @attr name REQUIRED the field name
      * @attr value the field value
      */</span>
-    def passwordField = { attrs -&gt;
+    <span class="keyword">def</span> passwordField = { attrs -&gt;
         attrs.type = <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>
         attrs.tagName = <span class="string"><span class="delimiter">&quot;</span><span class="content">passwordField</span><span class="delimiter">&quot;</span></span>
         fieldImpl(out, attrs)
@@ -1526,34 +1528,34 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <p><code>controllerName</code> - The currently executing controller name</p>
 </li>
 <li>
-<p><code>flash</code> - The <a href="https://docs.grails.org/latest/ref/Controllers/flash.html">flash</a> object</p>
+<p><code>flash</code> - The <a href="https://docs.grails.org/6.1.1/ref/Controllers/flash.html">flash</a> object</p>
 </li>
 <li>
-<p><code>grailsApplication</code> - The <a href="http://docs.grails.org/latest/api/grails/core/GrailsApplication.html">GrailsApplication</a> instance</p>
+<p><code>grailsApplication</code> - The <a href="https://docs.grails.org/6.1.1/api/grails/core/GrailsApplication.html">GrailsApplication</a> instance</p>
 </li>
 <li>
 <p><code>out</code> - The response writer for writing to the output stream</p>
 </li>
 <li>
-<p><code>pageScope</code> - A reference to the <a href="https://gsp.grails.org/latest/ref/Tag%20Libraries/pageScope.html">pageScope</a> object used for GSP rendering (i.e. the binding)</p>
+<p><code>pageScope</code> - A reference to the <a href="../ref/Tag%20Libraries/pageScope.html">pageScope</a> object used for GSP rendering (i.e. the binding)</p>
 </li>
 <li>
-<p><code>params</code> - The <a href="https://docs.grails.org/latest/ref/Controllers/params.html">params</a> object for retrieving request parameters</p>
+<p><code>params</code> - The <a href="https://docs.grails.org/6.1.1/ref/Controllers/params.html">params</a> object for retrieving request parameters</p>
 </li>
 <li>
 <p><code>pluginContextPath</code> - The context path to the plugin that contains the tag library</p>
 </li>
 <li>
-<p><code>request</code> - The <a href="http://docs.oracle.com/javaee/1.4/api/javax/servlet/http/HttpServletRequest.html">HttpServletRequest</a> instance</p>
+<p><code>request</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletRequest.html">HttpServletRequest</a> instance</p>
 </li>
 <li>
-<p><code>response</code> - The <a href="http://docs.oracle.com/javaee/1.4/api/javax/servlet/http/HttpServletResponse.html">HttpServletResponse</a> instance</p>
+<p><code>response</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletResponse.html">HttpServletResponse</a> instance</p>
 </li>
 <li>
-<p><code>servletContext</code> - The <a href="http://docs.oracle.com/javaee/1.4/api/javax/servlet/ServletContext.html">javax.servlet.ServletContext</a> instance</p>
+<p><code>servletContext</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/ServletContext.html">javax.servlet.ServletContext</a> instance</p>
 </li>
 <li>
-<p><code>session</code> - The <a href="http://docs.oracle.com/javaee/1.4/api/javax/servlet/http/HttpSession.html">HttpSession</a> instance</p>
+<p><code>session</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpSession.html">HttpSession</a> instance</p>
 </li>
 </ul>
 </div>
@@ -1573,7 +1575,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def dateFormat = { attrs, body -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> dateFormat = { attrs, body -&gt;
     out &lt;&lt; <span class="keyword">new</span> java.text.SimpleDateFormat(attrs.format).format(attrs.date)
 }</code></pre>
 </div>
@@ -1591,9 +1593,9 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def formatBook = { attrs, body -&gt;
-    out &lt;&lt; <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;div id=</span><span class="char">\&quot;</span><span class="content">${attrs.book.id}</span><span class="char">\&quot;</span><span class="content">&gt;</span><span class="delimiter">&quot;</span></span>
-    out &lt;&lt; <span class="string"><span class="delimiter">&quot;</span><span class="content">Title : ${attrs.book.title}</span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> formatBook = { attrs, body -&gt;
+    out &lt;&lt; <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;div id=</span><span class="char">\&quot;</span><span class="inline"><span class="inline-delimiter">${</span>attrs.book.id<span class="inline-delimiter">}</span></span><span class="char">\&quot;</span><span class="content">&gt;</span><span class="delimiter">&quot;</span></span>
+    out &lt;&lt; <span class="string"><span class="delimiter">&quot;</span><span class="content">Title : </span><span class="inline"><span class="inline-delimiter">${</span>attrs.book.title<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
     out &lt;&lt; <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;/div&gt;</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
@@ -1603,8 +1605,8 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def formatBook = { attrs, body -&gt;
-    out &lt;&lt; render(template: <span class="string"><span class="delimiter">&quot;</span><span class="content">bookTemplate</span><span class="delimiter">&quot;</span></span>, model: [book: attrs.book])
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> formatBook = { attrs, body -&gt;
+    out &lt;&lt; render(<span class="key">template</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">bookTemplate</span><span class="delimiter">&quot;</span></span>, <span class="key">model</span>: [<span class="key">book</span>: attrs.book])
 }</code></pre>
 </div>
 </div>
@@ -1627,8 +1629,8 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def isAdmin = { attrs, body -&gt;
-    def user = attrs.user
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> isAdmin = { attrs, body -&gt;
+    <span class="keyword">def</span> user = attrs.user
     <span class="keyword">if</span> (user &amp;&amp; checkUserPrivs(user)) {
         out &lt;&lt; body()
     }
@@ -1661,7 +1663,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def repeat = { attrs, body -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> repeat = { attrs, body -&gt;
     attrs.times?.toInteger()?.times { num -&gt;
         out &lt;&lt; body(num)
     }
@@ -1683,7 +1685,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">out &lt;&lt; body(num)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">out &lt;&lt; body(num)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1691,8 +1693,8 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def repeat = { attrs, body -&gt;
-    def <span class="type">var</span> = attrs.var ?: <span class="string"><span class="delimiter">&quot;</span><span class="content">num</span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> repeat = { attrs, body -&gt;
+    <span class="keyword">def</span> <span class="type">var</span> = attrs.var ?: <span class="string"><span class="delimiter">&quot;</span><span class="content">num</span><span class="delimiter">&quot;</span></span>
     attrs.times?.toInteger()?.times { num -&gt;
         out &lt;&lt; body((<span class="type">var</span>):num)
     }
@@ -1704,7 +1706,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">out &lt;&lt; body((<span class="type">var</span>):num)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">out &lt;&lt; body((<span class="type">var</span>):num)</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1748,11 +1750,11 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">SimpleTagLib</span> {
     <span class="directive">static</span> namespace = <span class="string"><span class="delimiter">&quot;</span><span class="content">my</span><span class="delimiter">&quot;</span></span>
 
-    def example = { attrs -&gt;
-        ...
+    <span class="keyword">def</span> example = { attrs -&gt;
+        <span class="comment">//...</span>
     }
 }</code></pre>
 </div>
@@ -1773,7 +1775,7 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">out &lt;&lt; my.example(name:<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">out &lt;&lt; my.example(<span class="key">name</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1800,13 +1802,13 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 <div class="title">build.gradle</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
-    ...
+    //...
     runtimeOnly "org.grails:grails-web-jsp:6.1.3-SNAPSHOT"
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then you will need to declare the JSP to use with the <code>taglib</code> directive at the top of your GSP file:</p>
+<p>Then you will need to declare the JSP taglib to use with the <code>taglib</code> directive at the top of your GSP file:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1818,22 +1820,27 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 This is configured with the <code>grails.gsp.tldScanPattern</code> setting. It accepts a comma separated String value. Spring&#8217;s PathMatchingResourcePatternResolver is used to resolve the patterns.</p>
 </div>
 <div class="paragraph">
-<p>For example you could scan for all available tld files by adding this to <code>application.yml</code>:</p>
+<p>For example, you could scan for all available tld files by adding this to <code>application.yml</code>:</p>
 </div>
 <div class="listingblock">
+<div class="title">grails-app/conf/application.yml</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">grails</span>:
     <span class="key">gsp</span>:
-        <span class="error">tldScanPattern:'classpath*:/META-INF/*.tld,/WEB-INF/tld/*.tld'</span></code></pre>
+        <span class="key">tldScanPattern</span>: <span class="string"><span class="content">'classpath*:/META-INF/*.tld,/WEB-INF/tld/*.tld'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>JSTL standard library is no longer added as a dependency by default. In case you are using JSTL, you should also add these dependencies to <code>build.gradle</code>:</p>
 </div>
 <div class="listingblock">
+<div class="title">build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">        runtimeOnly <span class="string"><span class="delimiter">'</span><span class="content">javax.servlet:jstl:1.1.2</span><span class="delimiter">'</span></span>
-        runtimeOnly <span class="string"><span class="delimiter">'</span><span class="content">taglibs:standard:1.1.2</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
+    <span class="comment">//...</span>
+    runtimeOnly <span class="string"><span class="delimiter">'</span><span class="content">javax.servlet:jstl:1.1.2</span><span class="delimiter">'</span></span>
+    runtimeOnly <span class="string"><span class="delimiter">'</span><span class="content">taglibs:standard:1.1.2</span><span class="delimiter">'</span></span>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1849,7 +1856,7 @@ This is configured with the <code>grails.gsp.tldScanPattern</code> setting. It a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="error">$</span>{fmt.formatNumber(value:<span class="integer">10</span>, pattern:<span class="string"><span class="delimiter">&quot;</span><span class="content">.00</span><span class="delimiter">&quot;</span></span>)}</code></pre>
+<pre class="CodeRay highlight"><code data-lang="gsp">${fmt.formatNumber(value:10, pattern:&quot;.00&quot;)}</code></pre>
 </div>
 </div>
 
@@ -1864,7 +1871,7 @@ This is configured with the <code>grails.gsp.tldScanPattern</code> setting. It a
 
 
 <div class="paragraph">
-<p>A taglib can be used in a GSP as an ordinary tag or it might be used as a function in other taglibs or GSP expressions.</p>
+<p>A taglib can be used in a GSP as an ordinary tag, or it might be used as a function in other taglibs or GSP expressions.</p>
 </div>
 <div class="paragraph">
 <p>Internally Grails intercepts calls to taglib closures.
@@ -1886,18 +1893,18 @@ Using "out" to write output in returnObjectForTags is not supported.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">ObjectReturningTagLib</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">ObjectReturningTagLib</span> {
         <span class="directive">static</span> namespace = <span class="string"><span class="delimiter">&quot;</span><span class="content">cms</span><span class="delimiter">&quot;</span></span>
         <span class="directive">static</span> returnObjectForTags = [<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>]
 
-        def content = { attrs, body -&gt;
+        <span class="keyword">def</span> content = { attrs, body -&gt;
                 CmsContent.findByCode(attrs.code)?.content
     }
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Given this example cms.content(code:'something') call in another taglib or GSP expression would return the value "CmsContent.content" directly to the caller without
+<p>Given this example <code>cms.content(code: 'something')</code> call in another taglib or GSP expression would return the value <code>CmsContent.content</code> directly to the caller without
 wrapping the return value in a buffer. It might be worth doing so also because of performance optimization reasons. There is no need to wrap the
 tag return value in an output buffer in such cases.</p>
 </div>

@@ -110,16 +110,16 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">BookController</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">BookController</span> {
 
     <span class="directive">static</span> defaultAction = <span class="string"><span class="delimiter">&quot;</span><span class="content">list</span><span class="delimiter">&quot;</span></span>
 
-    def list() {
-        [books: <span class="predefined-type">Book</span>.list(params)]
+    <span class="keyword">def</span> <span class="function">list</span>() {
+        [<span class="key">books</span>: <span class="predefined-type">Book</span>.list(params)]
     }
 
-    def show() {
-        [book: <span class="predefined-type">Book</span>.get(params.id)]
+    <span class="keyword">def</span> <span class="function">show</span>() {
+        [<span class="key">book</span>: <span class="predefined-type">Book</span>.get(params.id)]
     }
 }</code></pre>
 </div>
@@ -129,31 +129,31 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml">// generates &quot;/shop/book/show/1&quot;
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- generates &quot;/shop/book/show/1&quot; --&gt;</span>
 <span class="tag">&lt;g:createLink</span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">show</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
-// generates &quot;/shop/book/show?foo=bar<span class="error">&amp;</span>boo=far&quot;
+<span class="comment">&lt;!-- generates &quot;/shop/book/show?foo=bar&amp;boo=far&quot; --&gt;</span>
 <span class="tag">&lt;g:createLink</span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">show</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">params</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">[foo: 'bar', boo: 'far']</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-// generates &quot;/shop/book&quot;
+<span class="comment">&lt;!-- generates &quot;/shop/book&quot; --&gt;</span>
 <span class="tag">&lt;g:createLink</span> <span class="attribute-name">controller</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">book</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
-// generates &quot;/shop/book/list&quot;
+<span class="comment">&lt;!-- generates &quot;/shop/book/list&quot; --&gt;</span>
 <span class="tag">&lt;g:createLink</span> <span class="attribute-name">controller</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">book</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">list</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
-// generates &quot;/shop/book/list&quot;
+<span class="comment">&lt;!-- generates &quot;/shop/book/list&quot; --&gt;</span>
 <span class="tag">&lt;g:createLink</span> <span class="attribute-name">url</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">[action:'list',controller:'book']</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
-// generates a link tot he book controller in the publishing namespace
+<span class="comment">&lt;!-- generates a link tot he book controller in the publishing namespace --&gt;</span>
 <span class="tag">&lt;g:createLink</span> <span class="attribute-name">controller</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">book</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">namespace</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">publishing</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-// generates &quot;http://portal.mygreatsite.com/book&quot;
+<span class="comment">&lt;!-- generates &quot;http://portal.mygreatsite.com/book&quot; --&gt;</span>
 <span class="tag">&lt;g:createLink</span> <span class="attribute-name">controller</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">book</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">absolute</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-// generates &quot;http://admin.mygreatsite.com/book&quot;
+<span class="comment">&lt;!-- generates &quot;http://admin.mygreatsite.com/book&quot; --&gt;</span>
 <span class="tag">&lt;g:createLink</span> <span class="attribute-name">controller</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">book</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">base</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://admin.mygreatsite.com</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-// generates &quot;/shop/book/list/1?title=The+Shining<span class="error">&amp;</span>author=Stephen+King&quot;
+<span class="comment">&lt;!-- generates &quot;/shop/book/list/1?title=The+Shining&amp;author=Stephen+King&quot; --&gt;</span>
 <span class="tag">&lt;g:createLink</span> <span class="attribute-name">controller</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">book</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">list</span><span class="delimiter">&quot;</span></span>
               <span class="attribute-name">params</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">[title: 'The Shining', author: 'Stephen King', id: '1']</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
 </div>
@@ -163,7 +163,7 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">&lt;a href=<span class="string"><span class="delimiter">&quot;</span><span class="content">${createLink(action: 'list')}</span><span class="delimiter">&quot;</span></span>&gt;my link&lt;/a&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${createLink(action: 'list')}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>my link<span class="tag">&lt;/a&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -201,7 +201,7 @@ function addJsClass(el) {
 <p><code>fragment</code> (optional) - The link fragment (often called anchor tag) to use</p>
 </li>
 <li>
-<p><code>mapping</code> (optional) - The <a href="#namedMappings">named URL mapping</a> to use to rewrite the link</p>
+<p><code>mapping</code> (optional) - The <a href="https://docs.grails.org/6.1.1/guide/theWebLayer.html#namedMappings">named URL mapping</a> to use to rewrite the link</p>
 </li>
 <li>
 <p><code>method</code> (optional) - The HTTP method specified in the corresponding URL mapping</p>
@@ -219,7 +219,7 @@ function addJsClass(el) {
 <p><code>relativeUri</code> (optional) - Used to specify a uri relative to the current path.</p>
 </li>
 <li>
-<p><code>absolute</code> (optional) - If <code>true</code> will prefix the link target address with the value of the <code>grails.serverURL</code> property from <code>application.groovy</code>, or <a href="http://localhost:&lt;port&gt" class="bare">http://localhost:&lt;port&gt</a>; if there is no setting in <code>application.groovy</code> and not running in production.</p>
+<p><code>absolute</code> (optional) - If <code>true</code> will prefix the link target address with the value of the <code>grails.serverURL</code> property from the application configuration, or <a href="http://localhost:&lt;port&gt" class="bare">http://localhost:&lt;port&gt</a>; if there is no setting in the config and not running in production.</p>
 </li>
 <li>
 <p><code>base</code> (optional) - Sets the prefix to be added to the link target address, typically an absolute server URL. This overrides the behaviour of the <code>absolute</code> property if both are specified.</p>

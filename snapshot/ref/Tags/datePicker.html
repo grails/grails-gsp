@@ -138,7 +138,7 @@ function addJsClass(el) {
 <p><code>value</code> (optional) - The current value of the date picker; defaults to either the value specified by the <code>default</code> attribute or <em>now</em> if no <code>default</code> is set.</p>
 </li>
 <li>
-<p><code>default</code> (optional) - A <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html">Date</a> or parsable date string (see <a href="https://docs.oracle.com/javase/8/docs/api/java/text/DateFormat.html">DateFormat</a>) that will be used if there is no <code>value</code></p>
+<p><code>default</code> (optional) - A <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Date.html">Date</a> or parsable date string (see <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/text/DateFormat.html">DateFormat</a>) that will be used if there is no <code>value</code></p>
 </li>
 <li>
 <p><code>precision</code> (optional) - The desired granularity of the date to be rendered</p>
@@ -173,13 +173,16 @@ function addJsClass(el) {
 </div>
 </li>
 <li>
-<p><code>noSelection</code> (optional) - A single-entry Map detailing the key and value to use for the "no selection made" choice in the select box. If there is no current selection this will be shown as it is first in the list, and if submitted with this selected, the key that you provide will be submitted. Typically this will be blank.</p>
+<p><code>noSelection</code> (optional) - A single-entry Map detailing the key and value to use for the "no selection made" choice in the select box. If there is no current selection this will be shown as it is first in the list, and if submitted with this selected, the key that you provide will be submitted. Typically, this will be blank.</p>
 </li>
 <li>
 <p><code>years</code> (optional) - A list or range of years to display, in the order specified. i.e. specify 2007..1900 for a reverse order list going back to 1900. If this attribute is not specified, a range of years from the current year + 100 to current year - 100 will be shown.</p>
 </li>
 <li>
 <p><code>relativeYears</code> (optional) - A range of int representing  values relative to <code>value</code>.  For example, a <code>relativeYears</code> of [-2..7] and a <code>value</code> of today will render a list of 10 years starting with 2 years ago through 7 years in the future.  This can be useful for things like credit card expiration dates or birth dates which should be bound relative to today.</p>
+</li>
+<li>
+<p><code>locale</code> (optional) - The locale to use for display formatting. Defaults to the locale of the current request. If no request locale is specified, it will then fall back to the system&#8217;s default locale. A <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Locale.html">Locale</a> or parsable locale String ('en_US') value.</p>
 </li>
 </ul>
 </div>

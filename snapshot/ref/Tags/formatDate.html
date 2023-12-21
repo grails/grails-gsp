@@ -100,7 +100,7 @@ function addJsClass(el) {
 <div class="sect2">
 <h3 id="_purpose">Purpose</h3>
 <div class="paragraph">
-<p>Formats <code>java.util.Date</code>, <code>java.time.LocalDate</code>, and <code>java.time.LocalDateTime</code> instances using the patterns defined by the <a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html">SimpleDateFormat</a> class.</p>
+<p>Formats <code>java.util.Date</code>, <code>java.time.LocalDate</code>, and <code>java.time.LocalDateTime</code> instances using the patterns defined by the <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/text/SimpleDateFormat.html">SimpleDateFormat</a> class.</p>
 </div>
 </div>
 <div class="sect2">
@@ -137,7 +137,7 @@ function addJsClass(el) {
 <p><code>date</code> (required) - The date object to format. It could be the instance of <code>java.util.Date</code>, <code>java.time.LocalDate</code>, <code>java.time.LocalDateTime</code>.</p>
 </li>
 <li>
-<p><code>format</code> (optional) - The formatting pattern to use for the date, see <a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html">SimpleDateFormat</a></p>
+<p><code>format</code> (optional) - The formatting pattern to use for the date, see <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/text/SimpleDateFormat.html">SimpleDateFormat</a></p>
 </li>
 <li>
 <p><code>formatName</code> (optional) - Look up <code>format</code> from the default MessageSource / ResourceBundle (i18n/*.properties file) with this key. If <code>format</code> and <code>formatName</code> are empty, <code>format</code> is looked up with &#8216;default.date.format&#8217; key. Defaults to 'yyyy-MM-dd HH:mm:ss z' if the key not specified</p>
@@ -146,13 +146,13 @@ function addJsClass(el) {
 <p><code>type</code> (optional) - The type of format to use for the date / time. <code>format</code> or <code>formatName</code> aren&#8217;t used when <code>type</code> is specified. Possible values: 'date' - shows only date part, 'time' - shows only time part, 'both'/'datetime' - shows date and time</p>
 </li>
 <li>
-<p><code>timeZone</code> (optional) - Sets the time zone for formatting. See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/TimeZone.html">TimeZone</a> class.</p>
+<p><code>timeZone</code> (optional) - Sets the time zone for formatting. See <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/TimeZone.html">TimeZone</a> class.</p>
 </li>
 <li>
 <p><code>locale</code> (optional) - Force the locale for formatting.</p>
 </li>
 <li>
-<p><code>style</code> (optional) - Use default date/time formatting of the country specified by the locale. Possible values: SHORT (default), MEDIUM, LONG, FULL . See <a href="https://docs.oracle.com/javase/8/docs/api/java/text/DateFormat.html">DateFormat</a> for explanation.</p>
+<p><code>style</code> (optional) - Use default date/time formatting of the country specified by the locale. Possible values: SHORT (default), MEDIUM, LONG, FULL . See <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/text/DateFormat.html">DateFormat</a> for explanation.</p>
 </li>
 <li>
 <p><code>dateStyle</code> (optional) - Set separate <code>style</code> for the date part.</p>

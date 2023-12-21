@@ -110,12 +110,12 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">BookController</span> {
-    def list() {
-        [books: <span class="predefined-type">Book</span>.list(params)]
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">BookController</span> {
+    <span class="keyword">def</span> <span class="function">list</span>() {
+        [<span class="key">books</span>: <span class="predefined-type">Book</span>.list(params)]
     }
 
-    def show() {
+    <span class="keyword">def</span> <span class="function">show</span>() {
         [book : <span class="predefined-type">Book</span>.get(params.id)]
     }
 }</code></pre>
@@ -155,8 +155,8 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">static</span> mappings = {
-    <span class="string"><span class="delimiter">&quot;</span><span class="content">/books</span><span class="delimiter">&quot;</span></span>(resources: <span class="string"><span class="delimiter">'</span><span class="content">book</span><span class="delimiter">'</span></span>)
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="directive">static</span> mappings = {
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">/books</span><span class="delimiter">&quot;</span></span>(<span class="key">resources</span>: <span class="string"><span class="delimiter">'</span><span class="content">book</span><span class="delimiter">'</span></span>)
 }</code></pre>
 </div>
 </div>
@@ -172,7 +172,7 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">&lt;%= link(action:<span class="string"><span class="delimiter">'</span><span class="content">list</span><span class="delimiter">'</span></span>,controller:<span class="string"><span class="delimiter">'</span><span class="content">book</span><span class="delimiter">'</span></span>) { <span class="string"><span class="delimiter">'</span><span class="content">Book List</span><span class="delimiter">'</span></span> }%&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="gsp">&lt;%= link(action:'list',controller:'book') { 'Book List' }%&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -216,7 +216,7 @@ function addJsClass(el) {
 <p><code>fragment</code> (optional) - The link fragment (often called anchor tag) to use</p>
 </li>
 <li>
-<p><code>mapping</code> (optional) - The <a href="#namedMappings">named URL mapping</a> to use to rewrite the link</p>
+<p><code>mapping</code> (optional) - The <a href="https://docs.grails.org/6.1.1/guide/theWebLayer.html#namedMappings">named URL mapping</a> to use to rewrite the link</p>
 </li>
 <li>
 <p><code>method</code> (optional) - The HTTP method specified in the corresponding URL mapping</p>
@@ -234,7 +234,7 @@ function addJsClass(el) {
 <p><code>url</code> (optional) - a Map containing the action, controller, id etc.</p>
 </li>
 <li>
-<p><code>absolute</code> (optional) - If <code>true</code> will prefix the link target address with the value of the <code>grails.serverURL</code> property from <code>application.groovy</code>, or <a href="http://localhost:&lt;port&gt" class="bare">http://localhost:&lt;port&gt</a>; if there is no setting in <code>application.groovy</code> and not running in production.</p>
+<p><code>absolute</code> (optional) - If <code>true</code> will prefix the link target address with the value of the <code>grails.serverURL</code> property from the application configuration, or <a href="http://localhost:&lt;port&gt" class="bare">http://localhost:&lt;port&gt</a>; if there is no setting in the config and not running in production.</p>
 </li>
 <li>
 <p><code>base</code> (optional) - Sets the prefix to be added to the link target address, typically an absolute server URL. This overrides the behaviour of the <code>absolute</code> property, if both are specified.</p>

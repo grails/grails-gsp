@@ -12,7 +12,7 @@ Generates a radio button
 === Examples
 
 
-[source,xml]
+[,xml]
 ----
 <g:radio name="myGroup" value="1"/>
 <g:radio name="myGroup" value="2" checked="true"/>
@@ -20,7 +20,7 @@ Generates a radio button
 
 results in:
 
-[source,xml]
+[source,html]
 ----
 <input type="radio" name="myGroup" value="1" />
 <input type="radio" name="myGroup" checked="checked" value="2" />

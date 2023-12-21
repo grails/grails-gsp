@@ -1,15 +1,15 @@
 GSP also supports a few JSP-style page directives.
 
-The import directive lets you import classes into the page. However, it is rarely needed due to Groovy's default imports and <<tags,GSP Tags>>:
+The import directive lets you import classes into the page. However, it is rarely needed due to Groovy's default imports and xref:tags.adoc[GSP Tags]:
 
-[source,xml]
+[,xml]
 ----
 <%@ page import="java.awt.*" %>
 ----
 
 GSP also supports the contentType directive:
 
-[source,xml]
+[,xml]
 ----
 <%@ page contentType="application/json" %>
 ----

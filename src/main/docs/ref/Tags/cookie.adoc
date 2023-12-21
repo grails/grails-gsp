@@ -14,7 +14,7 @@ Obtains the value of a named cookie
 
 Reading a cookie's value:
 
-[source,xml]
+[,xml]
 ----
 Hello <g:cookie name="myCookie" />
 ----

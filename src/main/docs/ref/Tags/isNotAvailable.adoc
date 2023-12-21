@@ -12,7 +12,7 @@ Renders its body if and only if a named plugin is _not_ installed in the current
 === Examples
 
 
-[source,xml]
+[,xml]
 ----
 <plugin:isNotAvailable name="spring-security-core">
 You don't have Spring Security installed!
@@ -27,7 +27,7 @@ You don't have Spring Security installed!
 === Description
 
 
-Sometimes you want to only display something in a view if a plugin is not installed, particularly if you're developing another plugin and you can't know whether another plugin is installed or not. For example, your plugin may provide a tag cloud and you want it to integrate with, but not require, the Taggable plugin. In that case, you can use this tag to provide default code or markup in your views, partial templates, etc. that is used if Taggable isn't installed.
+Sometimes you want to only display something in a view if a plugin is not installed, particularly if you're developing another plugin, and you can't know whether another plugin is installed or not. For example, your plugin may provide a tag cloud, and you want it to integrate with, but not require, the Taggable plugin. In that case, you can use this tag to provide default code or markup in your views, partial templates, etc. that is used if Taggable isn't installed.
 
 Attributes
 

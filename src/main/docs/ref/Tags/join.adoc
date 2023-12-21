@@ -3,7 +3,7 @@
 === Purpose
 
 
-Uses the Groovy JDK http://groovy.codehaus.org/groovy-jdk/java/util/Collection.html#join(java.lang.String)[join] method to concatenate the `toString()` representation of each item in this collection with the given separator.
+Uses the Groovy JDK {groovyjdk}java/lang/Iterable.html#join(java.lang.String)[join] method to concatenate the `toString()` representation of each item in this collection with the given separator.
 
 
 === Examples
@@ -16,7 +16,6 @@ Uses the Groovy JDK http://groovy.codehaus.org/groovy-jdk/java/util/Collection.h
 
 That would result in output like this:
 
-[source,groovy]
 ----
 Grails_Groovy_Gradle
 ----

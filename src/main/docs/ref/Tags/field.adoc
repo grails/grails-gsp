@@ -6,13 +6,13 @@
 === Purpose
 
 
-Specifies an input field where the user can enter data.  An implicit "id" attribute is given the same value as the name unless you explicitly specify one.
+Specifies an input field where the user can enter data.  An implicit `id` attribute is given the same value as the name unless you explicitly specify one.
 
 
 === Examples
 
 
-[source,xml]
+[,xml]
 ----
 <g:field type="number" name="isbn" min="5" max="10" required="" value="${bookInstance?.isbn}"/>
 

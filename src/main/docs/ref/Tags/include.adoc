@@ -16,7 +16,7 @@ NOTE: The  `g:include` tag will not generate a separate request. The response fr
 
 Example controller for an application called "shop":
 
-[source,java]
+[source,groovy]
 ----
 class BookController {
     def list() {
@@ -31,7 +31,7 @@ class BookController {
 
 Example usages for above controller:
 
-[source,xml]
+[,xml]
 ----
 <g:include action="show" id="1" />
 
@@ -47,19 +47,19 @@ Example usages for above controller:
 
 Example as a method call in a controller, tag library or GSP:
 
-[source,java]
+[source,groovy]
 ----
 def content = g.include(action: 'list', controller: 'book')
 ----
 
 If using nested includes with params it is advisable to use unique parameter names as they are all attached to the same web request.
-[source,xml]
+[,xml]
 ----
 <g:include controller="outer" action="list" params="[outerPage:1, outerSize:5]"/>
 <g:include controller="inner" action="list" params="[innerPage:2, innerSize:10]"/>
 ----
 If non-unique names are used like the following
-[source,xml]
+[,xml]
 ----
 <g:include controller="outer" action="list" params="[page:1, size:5]"/>
 <g:include controller="inner" action="list" params="[page:2, size:10]"/>

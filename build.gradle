@@ -99,6 +99,17 @@ subprojects {
 apply from: "${commonBuild}/common-docs.gradle"
 apply from: "${commonBuild}/common-publishing.gradle"
 
+tasks.named('publishGuide') {
+    // Override value defined in grails/grails-common-build/common-docs.gradle
+    it.properties['commandLineRef'] = "https://docs.grails.org/$grailsVersion/ref/Command%20Line"
+    it.properties['controllersRef'] = "https://docs.grails.org/$grailsVersion/ref/Controllers"
+    it.properties['grailsapi']      = "https://docs.grails.org/$grailsVersion/api/"
+    it.properties['grailsdocs']     = "https://docs.grails.org/$grailsVersion/"
+    it.properties['groovyapi']      = "https://docs.groovy-lang.org/$groovyVersion/html/gapi/"
+    it.properties['groovyjdk']      = "https://docs.groovy-lang.org/$groovyVersion/html/groovy-jdk/"
+    it.properties['javase']         = 'https://docs.oracle.com/en/java/javase/11/docs/api/'
+}
+
 boolean isNonStable(String version) {
     version ==~ /(?i).+(-|\.?)(b|M|RC|Dev)\d?.*/ ||
             ['alpha', 'beta', 'milestone', 'rc', 'cr', 'm', 'preview', 'b', 'ea'].any { qualifier ->

@@ -12,7 +12,7 @@ Loops through each error of the specified bean or model. If no arguments are spe
 === Examples
 
 
-Loop through each error in the "book" bean:
+Loop through each error in the `book` bean:
 
 [source,xml]
 ----
@@ -21,7 +21,7 @@ Loop through each error in the "book" bean:
 </g:eachError>
 ----
 
-Loop through each error in the title field of the "book" bean:
+Loop through each error in the title field of the `book` bean:
 
 [source,xml]
 ----

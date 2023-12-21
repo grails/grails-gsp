@@ -1,4 +1,4 @@
-A taglib can be used in a GSP as an ordinary tag or it might be used as a function in other taglibs or GSP expressions.
+A taglib can be used in a GSP as an ordinary tag, or it might be used as a function in other taglibs or GSP expressions.
 
 Internally Grails intercepts calls to taglib closures.
 The "out" that is available in a taglib is mapped to a `java.io.Writer` implementation that writes to a buffer
@@ -13,7 +13,7 @@ If the tag is not included in the returnObjectForTags array, then its return val
 Using "out" to write output in returnObjectForTags is not supported. 
 
 Example:
-[source,java]
+[source,groovy]
 ----
 class ObjectReturningTagLib {
 	static namespace = "cms"
@@ -25,6 +25,6 @@ class ObjectReturningTagLib {
 }
 ----
 
-Given this example cms.content(code:'something') call in another taglib or GSP expression would return the value "CmsContent.content" directly to the caller without 
+Given this example `cms.content(code: 'something')` call in another taglib or GSP expression would return the value `CmsContent.content` directly to the caller without
 wrapping the return value in a buffer. It might be worth doing so also because of performance optimization reasons. There is no need to wrap the 
 tag return value in an output buffer in such cases.

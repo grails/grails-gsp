@@ -1,6 +1,6 @@
-If you have collections of objects you often need to sort and filter them. Use the link:../ref/Tags/findAll.html[findAll] and link:../ref/Tags/grep.html[grep] tags for these tasks:
+If you have collections of objects you often need to sort and filter them. Use the xref:../ref/Tags/findAll.adoc[findAll] and xref:../ref/Tags/grep.adoc[grep] tags for these tasks:
 
-[source,xml]
+[,xml]
 ----
 Stephen King's Books:
 <g:findAll in="${books}" expr="it.author == 'Stephen King'">
@@ -8,7 +8,7 @@ Stephen King's Books:
 </g:findAll>
 ----
 
-The `expr` attribute contains a Groovy expression that can be used as a filter. The link:../ref/Tags/grep.html[grep] tag does a similar job, for example filtering by class:
+The `expr` attribute contains a Groovy expression that can be used as a filter. The xref:../ref/Tags/grep.adoc[grep] tag does a similar job, for example filtering by class:
 
 [source,xml]
 ----

@@ -12,7 +12,7 @@ Sets the value of a variable accessible with the GSP page.
 === Examples
 
 
-[source,xml]
+[,xml]
 ----
 <g:set var="tomorrow" value="${new Date() + 1}" />
 
@@ -25,7 +25,7 @@ Sets the value of a variable accessible with the GSP page.
 
 Using scopes:
 
-[source,xml]
+[,xml]
 ----
 <g:set var="foo" value="${new Date()}" scope="page" />
 <g:set var="bar" value="${new Date() - 7}" scope="session" />
@@ -33,21 +33,21 @@ Using scopes:
 
 Using the body contents:
 
-[source,java]
+[source,xml]
 ----
 <g:set var="foo">Hello!</g:set>
 ----
 
 Get a bean from the applicationContext by name:
 
-[source,java]
+[source,xml]
 ----
 <g:set var="bookService" bean="bookService"/>
 ----
 
 Get a bean from the applicationContext by type:
 
-[source,java]
+[,xml]
 ----
 <%@ page import="org.springframework.context.MessageSource" %>
 <g:set var="messageSource" bean="${MessageSource}"/>

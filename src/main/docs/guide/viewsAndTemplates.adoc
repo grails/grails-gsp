@@ -14,7 +14,7 @@ Grails uses the convention of placing an underscore before the name of a view to
 </div>
 ----
 
-Use the link:../ref/Tags/render.html[render] tag to render this template from one of the views in `grails-app/views/book`:
+Use the xref:../ref/Tags/render.adoc[render] tag to render this template from one of the views in `grails-app/views/book`:
 
 [source,xml]
 ----
@@ -72,7 +72,7 @@ This can be expressed with the `tmpl` namespace as follows:
 
 You can also render templates from controllers using the link:{controllersRef}/render.html[render] controller method. This is useful for JavaScript heavy applications where you generate small HTML or data responses to partially update the current page instead of performing new request:
 
-[source,java]
+[source,groovy]
 ----
 def bookData() {
     def b = Book.get(params.id)
@@ -80,9 +80,9 @@ def bookData() {
 }
 ----
 
-The link:{controllersRef}/render.html[render] controller method writes directly to the response, which is the most common behaviour. To instead obtain the result of template as a String you can use the link:../ref/Tags/render.html[render] tag:
+The link:{controllersRef}/render.html[render] controller method writes directly to the response, which is the most common behaviour. To instead obtain the result of template as a String you can use the xref:../ref/Tags/render.adoc[render] tag:
 
-[source,java]
+[source,groovy]
 ----
 def bookData() {
     def b = Book.get(params.id)
@@ -91,4 +91,4 @@ def bookData() {
 }
 ----
 
-Notice the usage of the `g` namespace which tells Grails we want to use the <<tagsAsMethodCalls,tag as method call>> instead of the link:{controllersRef}/render.html[render] method.
+Notice the usage of the `g` namespace which tells Grails we want to use the xref:tagsAsMethodCalls[tag as method call] instead of the {controllersRef}/render.html[render] method.

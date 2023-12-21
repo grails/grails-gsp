@@ -6,7 +6,7 @@
 === Purpose
 
 
-Generates an HTML select tag with currency symbols (e.g. 'EUR', 'USD', etc.).
+Generates an HTML select tag with currency symbols (e.g. 'EUR', 'USD', etc.)
 
 
 === Examples
@@ -24,5 +24,5 @@ Generates an HTML select tag with currency symbols (e.g. 'EUR', 'USD', etc.).
 Attributes
 
 * `from` (optional) - The currency symbols to select from, defaults to the major ones if not specified
-* `value` (optional) - The currency value as the currency code. Defaults to the currency for the current Locale if not specified
+* `value` (optional) - The currency value as the currency code. Defaults to the currency for the current {javase}java.base/java/util/Locale.html[Locale] if not specified
 

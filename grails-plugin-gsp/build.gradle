@@ -19,7 +19,7 @@ dependencies {
     api project(":grails-plugin-sitemesh2")
 
     runtimeOnly(project(":grails-web-jsp"))
-    api "commons-lang:commons-lang:2.6"
+    api "commons-lang:commons-lang:20030203.000129"
     api "org.grails:grails-plugin-codecs:$grailsVersion"
     astImplementation "org.grails:grails-web:$grailsVersion"
     astImplementation "org.grails:grails-plugin-controllers:$grailsVersion"

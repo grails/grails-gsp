@@ -12,6 +12,7 @@ buildscript {
 }
 
 repositories {
+    mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
 }
 
@@ -33,6 +34,7 @@ subprojects {
         userOrg = "grails"
         isGrailsPlugin = name.startsWith('grails-plugin')
         isBuildSnapshot = version.toString().endsWith("-SNAPSHOT")
+        groovyVersion = System.getenv('CI_GROOVY_VERSION') ?: project.groovyVersion
     }
 
     if (isGrailsPlugin) {
@@ -40,9 +42,12 @@ subprojects {
     } else {
         group "org.grails"
     }
+
     repositories {
+        mavenLocal()
         maven { url "https://repo.grails.org/grails/core" }
     }
+
     if (it.name.startsWith("examples")) {
         apply plugin: "org.grails.grails-web"
     } else if (isGrailsPlugin) {

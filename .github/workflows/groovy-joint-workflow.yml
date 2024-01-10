@@ -20,10 +20,10 @@ name: "Grails Joint Validation Build"
 on:
   push:
     branches:
-      - '[4-9]+.[0-9]+.x'
+      - '[6-9]+.[1-9]+.x'
   pull_request:
     branches:
-      - '[4-9]+.[0-9]+.x'
+      - '[6-9]+.[1-9]+.x'
   workflow_dispatch:
 permissions:
   contents: read

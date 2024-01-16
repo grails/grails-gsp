@@ -2,33 +2,55 @@ name: Release
 on:
   release:
     types: [published]
+env:
+  GIT_USER_NAME: puneetbehl
+  GIT_USER_EMAIL: behlp@unityfoundation.io
 jobs:
-  release:
+  publish:
+    outputs:
+      release_version: ${{ steps.release_version.outputs.value }}
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        java: ['11']
-    env:
-      GIT_USER_NAME: puneetbehl
-      GIT_USER_EMAIL: behlp@objectcomputing.com
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_TOKEN }}
-      - uses: gradle/wrapper-validation-action@v1
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'adopt'
-          java-version: ${{ matrix.java }}
+          java-version: 11
       - name: Set the current release version
         id: release_version
-        run: echo "release_version=${GITHUB_REF:11}" >> $GITHUB_OUTPUT
+        run: echo "value=${GITHUB_REF:11}" >> $GITHUB_OUTPUT
       - name: Run pre-release
         uses: micronaut-projects/github-actions/pre-release@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Assemble
+        if: success()
+        id: assemble
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: assemble
+        env:
+          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
+          GRADLE_ENTERPRISE_BUILD_CACHE_NODE_USER: ${{ secrets.GRADLE_ENTERPRISE_BUILD_CACHE_NODE_USER }}
+          GRADLE_ENTERPRISE_BUILD_CACHE_NODE_KEY: ${{ secrets.GRADLE_ENTERPRISE_BUILD_CACHE_NODE_KEY }}
+      - name: Upload Distribution
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: grails-gsp-${{ steps.release_version.outputs.value }}.zip
+          path: build/distributions/grails-gsp-${{ steps.release_version.outputs.value }}.zip
+      - name: Upload artifacts to the Github release
+        if: success()
+        id: upload_artifact
+        uses: Roang-zero1/github-upload-release-artifacts-action@master
+        with:
+          args: build/distributions/grails-gsp-${{ steps.release_version.outputs.value }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Generate secring file
         env:
           SECRING_FILE: ${{ secrets.SECRING_FILE }}
@@ -48,29 +70,6 @@ jobs:
           SECRING_FILE: ${{ secrets.SECRING_FILE }}
         with:
           arguments: -Psigning.secretKeyRingFile=${{ github.workspace }}/secring.gpg publishToSonatype closeAndReleaseSonatypeStagingRepository
-      - name: Publish Documentation
-        id: docs
-        if: steps.publish.outcome == 'success'
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: docs
-        env:
-          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
-          GRADLE_ENTERPRISE_BUILD_CACHE_NODE_USER: ${{ secrets.GRADLE_ENTERPRISE_BUILD_CACHE_NODE_USER }}
-          GRADLE_ENTERPRISE_BUILD_CACHE_NODE_KEY: ${{ secrets.GRADLE_ENTERPRISE_BUILD_CACHE_NODE_KEY }}
-      - name: Export Gradle Properties
-        uses: micronaut-projects/github-actions/export-gradle-properties@master
-      - name: Publish to Github Pages
-        if: steps.docs.outcome == 'success'
-        uses: micronaut-projects/github-pages-deploy-action@grails
-        env:
-          BETA: ${{ contains(steps.release_version.outputs.release_version, 'M') }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build/docs
-          VERSION: ${{ steps.release_version.outputs.release_version }}
-          COMMIT_EMAIL: ${{ env.GIT_USER_EMAIL }}
-          COMMIT_NAME: ${{ env.GIT_USER_NAME }}
       - name: Run post-release
         if: success()
         uses: micronaut-projects/github-actions/post-release@master
@@ -78,4 +77,40 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
         env:
           SNAPSHOT_SUFFIX: -SNAPSHOT
-
+  docs:
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          ref: v${{ needs.publish.outputs.release_version }}
+      - name: Publish Documentation
+        id: docs
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: docs
+        env:
+          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
+          GRADLE_ENTERPRISE_BUILD_CACHE_NODE_USER: ${{ secrets.GRADLE_ENTERPRISE_BUILD_CACHE_NODE_USER }}
+          GRADLE_ENTERPRISE_BUILD_CACHE_NODE_KEY: ${{ secrets.GRADLE_ENTERPRISE_BUILD_CACHE_NODE_KEY }}
+      - name: Publish to Github Pages
+        if: success()
+        uses: micronaut-projects/github-pages-deploy-action@grails
+        env:
+          BETA: ${{ contains(needs.publish.outputs.release_version, 'M') }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build/docs
+          VERSION: ${{ needs.publish.outputs.release_version }}
+          COMMIT_EMAIL: ${{ env.GIT_USER_EMAIL }}
+          COMMIT_NAME: ${{ env.GIT_USER_NAME }}

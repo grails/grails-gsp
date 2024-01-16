@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>Groovy Server Pages (GSP) 6.1.1</title>
+    <title>Groovy Server Pages (GSP) 6.1.3</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -110,13 +110,13 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;html&gt;</span>
-   <span class="tag">&lt;head&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;html&gt;</span>
+    <span class="tag">&lt;head&gt;</span>
         <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">layout</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myLayout</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
-        <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myscript.js</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
-<span class="inline">   &lt;<span class="regexp"><span class="delimiter">/</span><span class="content">head&gt;
-   &lt;body onload=&quot;alert('hello');&quot;&gt;Page to be decorated&lt;</span><span class="delimiter">/</span></span>body&gt;
-&lt;<span class="regexp"><span class="delimiter">/</span><span class="content">html&gt;</span></span></span></code></pre>
+        <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myscript.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+    <span class="tag">&lt;/head&gt;</span>
+    <span class="tag">&lt;body</span> <span class="attribute-name">onload</span>=<span class="string"><span class="delimiter">&quot;</span>alert(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>);<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Page to be decorated<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -124,13 +124,13 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;html&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;html&gt;</span>
    <span class="tag">&lt;head&gt;</span>
-        <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">global.js</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
-<span class="inline">        <span class="tag">&lt;g:layoutHead</span> <span class="tag">/&gt;</span>
-   &lt;<span class="regexp"><span class="delimiter">/</span><span class="content">head&gt;
-   &lt;body onload=&quot;${pageProperty(name:'body.onload')}&quot;&gt;&lt;g:layoutBody </span><span class="delimiter">/</span></span>&gt;&lt;<span class="regexp"><span class="delimiter">/</span><span class="content">body&gt;
-&lt;</span><span class="delimiter">/</span></span>html&gt;</span></code></pre>
+        <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">global.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+        <span class="tag">&lt;g:layoutHead</span> <span class="tag">/&gt;</span>
+   <span class="tag">&lt;/head&gt;</span>
+   <span class="tag">&lt;body</span> <span class="attribute-name">onload</span>=<span class="string"><span class="delimiter">&quot;</span><span class="predefined">$</span>{pageProperty(name:<span class="string"><span class="delimiter">'</span><span class="content">body.onload</span><span class="delimiter">'</span></span>)}<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;g:layoutBody</span> <span class="tag">/&gt;</span><span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -138,13 +138,13 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;html&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;html&gt;</span>
    <span class="tag">&lt;head&gt;</span>
-        <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">global.js</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
-<span class="inline">        <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myscript.js</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
-   &lt;<span class="regexp"><span class="delimiter">/</span><span class="content">head&gt;
-   &lt;body onload=&quot;alert('hello');&quot;&gt;Page to be decorated&lt;</span><span class="delimiter">/</span></span>body&gt;
-&lt;<span class="regexp"><span class="delimiter">/</span><span class="content">html&gt;</span></span></span></code></pre>
+        <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">global.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+        <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myscript.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+   <span class="tag">&lt;/head&gt;</span>
+   <span class="tag">&lt;body</span> <span class="attribute-name">onload</span>=<span class="string"><span class="delimiter">&quot;</span>alert(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>);<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Page to be decorated<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">

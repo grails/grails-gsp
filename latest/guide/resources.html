@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>6 Static Resources 6.1.1</title>
+    <title>6 Static Resources 6.1.3</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -93,7 +93,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>6 Static Resources</h1>
 
-                    <p><strong>Version:</strong> 6.1.1</p>
+                    <p><strong>Version:</strong> 6.1.3</p>
                 </div>
 
                 
@@ -110,13 +110,13 @@ function addJsClass() {
 
 
 <div class="paragraph">
-<p>Grails 3 integrates with the <a href="http://grails.org/plugin/asset-pipeline">Asset Pipeline plugin</a> to provide sophisticated static asset management. This plugin is installed by default in new Grails applications.</p>
+<p>Since version 3, Grails integrates with the <a href="https://github.com/bertramdev/asset-pipeline">Asset Pipeline plugin</a> to provide sophisticated static asset management. This plugin is installed by default in new Grails applications.</p>
 </div>
 <div class="paragraph">
 <p>The basic way to include a link to a static asset in your application is to use the <a href="../ref/Tags/resource.html">resource</a> tag. This simple approach creates a URI pointing to the file.</p>
 </div>
 <div class="paragraph">
-<p>However modern applications with dependencies on multiple JavaScript and CSS libraries and frameworks (as well as dependencies on multiple Grails plugins) require something more powerful.</p>
+<p>However, modern applications with dependencies on multiple JavaScript and CSS libraries and frameworks (as well as dependencies on multiple Grails plugins) require something more powerful.</p>
 </div>
 <div class="paragraph">
 <p>The issues that the Asset-Pipeline plugin tackles are:</p>
@@ -130,7 +130,7 @@ function addJsClass() {
 <p>Easy Debugging - Makes for easy debugging by keeping files separate in development mode.</p>
 </li>
 <li>
-<p>Asset Bundling using require <a href="http://bertramdev.github.io/asset-pipeline/guide/usage.html#directives">directives</a>.</p>
+<p>Asset Bundling using require <a href="http://asset-pipeline.com/manual/index.html#directives">directives</a>.</p>
 </li>
 <li>
 <p>Web application performance tuning is difficult.</p>
@@ -144,10 +144,10 @@ function addJsClass() {
 </ul>
 </div>
 <div class="paragraph">
-<p>The asset-pipeline allows you to define your javascript or css requirements right at the top of the file and they get compiled on War creation.</p>
+<p>The asset-pipeline allows you to define your javascript or css requirements right at the top of the file, and they get compiled on War creation.</p>
 </div>
 <div class="paragraph">
-<p>Take a look at the <a href="http://bertramdev.github.io/asset-pipeline">documentation</a> for the asset-pipeline to get started.</p>
+<p>Take a look at the <a href="http://asset-pipeline.com/manual">documentation</a> for the asset-pipeline to get started.</p>
 </div>
 <div class="paragraph">
 <p>If you do not want to use the Asset-Pipeline plugin, you can serve the static assets from directories <code>src/main/resources/public</code> or <code>src/main/webapp</code>, but the latter one only gets included in WAR packaging but not in JAR packaging.</p>

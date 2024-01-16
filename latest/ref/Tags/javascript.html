@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>Groovy Server Pages (GSP) 6.1.1</title>
+    <title>Groovy Server Pages (GSP) 6.1.3</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -107,7 +107,7 @@ function addJsClass(el) {
 <h3 id="_examples">Examples</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml">// actually imports '/app/js/myscript.js'
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- actually imports '/app/js/myscript.js' --&gt;</span>
 <span class="tag">&lt;g:javascript</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myscript.js</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
 <span class="tag">&lt;g:javascript&gt;</span>alert('hello')<span class="tag">&lt;/g:javascript&gt;</span></code></pre>
@@ -120,7 +120,7 @@ function addJsClass(el) {
 <p>If you do not include a "src" attribute but instead provide a body, the result is an inline script.</p>
 </div>
 <div class="paragraph">
-<p>If you use this tag to render inline JavaScript code, it is recommended that you use the Resources plugin&#8217;s &lt;r:script&gt; tag to produce inline script that is included at the end of the body, or in the head if necessary - rather than inline. For more control use the Resources plugin&#8217;s <a href="http://grails-plugins.github.com/grails-resources/ref/Tags/script.html">&lt;r:script&gt;</a> tag directly.</p>
+<p>If you use this tag to render inline JavaScript code, it is recommended that you use the Resources plugin&#8217;s <code>&lt;r:script&gt;</code> tag to produce inline script that is included at the end of the body, or in the head if necessary - rather than inline. For more control use the Resources plugin&#8217;s &lt;r:script&gt; tag directly.</p>
 </div>
 <div class="paragraph">
 <p>Attributes</p>

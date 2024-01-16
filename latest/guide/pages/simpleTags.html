@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>8.2 Simple Tags 6.1.1</title>
+    <title>8.2 Simple Tags 6.1.3</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -91,7 +91,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>8.2 Simple Tags</h1>
 
-                    <p><strong>Version:</strong> 6.1.1</p>
+                    <p><strong>Version:</strong> 6.1.3</p>
                 </div>
 
                 
@@ -112,7 +112,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def dateFormat = { attrs, body -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> dateFormat = { attrs, body -&gt;
     out &lt;&lt; <span class="keyword">new</span> java.text.SimpleDateFormat(attrs.format).format(attrs.date)
 }</code></pre>
 </div>
@@ -130,9 +130,9 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def formatBook = { attrs, body -&gt;
-    out &lt;&lt; <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;div id=</span><span class="char">\&quot;</span><span class="content">${attrs.book.id}</span><span class="char">\&quot;</span><span class="content">&gt;</span><span class="delimiter">&quot;</span></span>
-    out &lt;&lt; <span class="string"><span class="delimiter">&quot;</span><span class="content">Title : ${attrs.book.title}</span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> formatBook = { attrs, body -&gt;
+    out &lt;&lt; <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;div id=</span><span class="char">\&quot;</span><span class="inline"><span class="inline-delimiter">${</span>attrs.book.id<span class="inline-delimiter">}</span></span><span class="char">\&quot;</span><span class="content">&gt;</span><span class="delimiter">&quot;</span></span>
+    out &lt;&lt; <span class="string"><span class="delimiter">&quot;</span><span class="content">Title : </span><span class="inline"><span class="inline-delimiter">${</span>attrs.book.title<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
     out &lt;&lt; <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;/div&gt;</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
@@ -142,8 +142,8 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def formatBook = { attrs, body -&gt;
-    out &lt;&lt; render(template: <span class="string"><span class="delimiter">&quot;</span><span class="content">bookTemplate</span><span class="delimiter">&quot;</span></span>, model: [book: attrs.book])
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> formatBook = { attrs, body -&gt;
+    out &lt;&lt; render(<span class="key">template</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">bookTemplate</span><span class="delimiter">&quot;</span></span>, <span class="key">model</span>: [<span class="key">book</span>: attrs.book])
 }</code></pre>
 </div>
 </div>

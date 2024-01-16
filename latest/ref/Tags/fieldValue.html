@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>Groovy Server Pages (GSP) 6.1.1</title>
+    <title>Groovy Server Pages (GSP) 6.1.3</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -100,7 +100,7 @@ function addJsClass(el) {
 <div class="sect2">
 <h3 id="_purpose">Purpose</h3>
 <div class="paragraph">
-<p>Inspects a bean which has been the subject of <a href="theWebLayer.html#dataBinding">data binding</a> and obtains the value of the field. If the bean had <code>errors</code> during data binding then the originally submitted value is returned from the bean&#8217;s <code>errors</code> object else the value from the bean&#8217;s property is returned. The value returned will be HTML-encoded.</p>
+<p>Inspects a bean which has been the subject of <a href="https://docs.grails.org/6.1.1/guide/theWebLayer.html#dataBinding">data binding</a> and obtains the value of the field. If the bean had <code>errors</code> during data binding then the originally submitted value is returned from the bean&#8217;s <code>errors</code> object else the value from the bean&#8217;s property is returned. The value returned will be HTML-encoded.</p>
 </div>
 </div>
 <div class="sect2">
@@ -109,7 +109,7 @@ function addJsClass(el) {
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;g:fieldValue</span> <span class="attribute-name">bean</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${book}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">field</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
-// or as a method
+<span class="comment">&lt;!-- or as a method --&gt;</span>
 <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${fieldValue(bean: book, field: 'title')}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
 </div>
 </div>

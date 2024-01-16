@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>5 Layouts with Sitemesh 6.1.1</title>
+    <title>5 Layouts with Sitemesh 6.1.3</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -93,7 +93,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>5 Layouts with Sitemesh</h1>
 
-                    <p><strong>Version:</strong> 6.1.1</p>
+                    <p><strong>Version:</strong> 6.1.3</p>
                 </div>
 
                 
@@ -120,7 +120,7 @@ function addJsClass() {
 <div class="sect3">
 <h4 id="_creating_layouts">Creating Layouts</h4>
 <div class="paragraph">
-<p>Grails leverages <a href="http://sitemesh.org">Sitemesh</a>, a decorator engine, to support view layouts. Layouts are located in the <code>grails-app/views/layouts</code> directory. A typical layout can be seen below:</p>
+<p>Grails leverages <a href="https://github.com/sitemesh">Sitemesh</a>, a decorator engine, to support view layouts. Layouts are located in the <code>grails-app/views/layouts</code> directory. A typical layout can be seen below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -175,7 +175,7 @@ function addJsClass() {
 </div>
 </div>
 <div class="paragraph">
-<p>In this case a layout called <code>grails-app/views/layouts/main.gsp</code> will be used to layout the page. If we were to use the layout from the previous section the output would resemble this:</p>
+<p>In this case a layout called <code>grails-app/views/layouts/main.gsp</code> will be used to lay out the page. If we were to use the layout from the previous section the output would resemble this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -200,22 +200,22 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">BookController</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">BookController</span> {
     <span class="directive">static</span> layout = <span class="string"><span class="delimiter">'</span><span class="content">customer</span><span class="delimiter">'</span></span>
 
-    def list() { ... }
+    <span class="keyword">def</span> <span class="function">list</span>() { <span class="comment">/*...*/</span> }
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can create a layout called <code>grails-app/views/layouts/customer.gsp</code> which will be applied to all views that the <code>BookController</code> delegates to.  The value of the "layout" property may contain a directory structure relative to the <code>grails-app/views/layouts/</code> directory.  For example:</p>
+<p>You can create a layout called <code>grails-app/views/layouts/customer.gsp</code> which will be applied to all views that the <code>BookController</code> delegates to.  The value of the <code>layout</code> property may contain a directory structure relative to the <code>grails-app/views/layouts/</code> directory.  For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">BookController</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">BookController</span> {
     <span class="directive">static</span> layout = <span class="string"><span class="delimiter">'</span><span class="content">custom/customer</span><span class="delimiter">'</span></span>
 
-    def list() { ... }
+    <span class="keyword">def</span> <span class="function">list</span>() { <span class="comment">/*...*/</span> }
 }</code></pre>
 </div>
 </div>
@@ -230,8 +230,8 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">BookController</span> {
-    def list() { ... }
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">BookController</span> {
+    <span class="keyword">def</span> <span class="function">list</span>() { <span class="comment">/*...*/</span> }
 }</code></pre>
 </div>
 </div>
@@ -242,16 +242,17 @@ function addJsClass() {
 <p>Alternatively, you can create a layout called <code>grails-app/views/layouts/book/list.gsp</code> which will only be applied to the <code>list</code> action within the <code>BookController</code>.</p>
 </div>
 <div class="paragraph">
-<p>If you have both the above mentioned layouts in place the layout specific to the action will take precedence when the list action is executed.</p>
+<p>If you have both the above-mentioned layouts in place the layout specific to the action will take precedence when the list action is executed.</p>
 </div>
 <div class="paragraph">
-<p>If a layout may not be located using any of those conventions, the convention of last resort is to look for the application default layout which
-is <code>grails-app/views/layouts/application.gsp</code>.  The name of the application default layout may be changed by defining a property
-in <code>grails-app/conf/application.groovy</code> as follows:</p>
+<p>If a layout is not located using any of those conventions, the convention of last resort is to look for the application default layout which
+is <code>grails-app/views/layouts/application.gsp</code>.  The name of the application default layout may be changed by defining the property <code>grails.sitemesh.default.layout</code>
+in the application configuration as follows:</p>
 </div>
 <div class="listingblock">
+<div class="title">grails-app/conf/application.yml</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">grails.sitemesh.default.layout = <span class="string"><span class="delimiter">'</span><span class="content">myLayoutName</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">grails.sitemesh.default.layout</span>: <span class="string"><span class="content">myLayoutName</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -270,7 +271,7 @@ in <code>grails-app/conf/application.groovy</code> as follows:</p>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;g:applyLayout</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myLayout</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">template</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bookTemplate</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">collection</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${books}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
-<span class="tag">&lt;g:applyLayout</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myLayout</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">url</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.google.com</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;g:applyLayout</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myLayout</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">url</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://www.google.com</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
 <span class="tag">&lt;g:applyLayout</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myLayout</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 The content to apply a layout to
@@ -303,7 +304,7 @@ The content to apply a layout to
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def content = include(controller:<span class="string"><span class="delimiter">&quot;</span><span class="content">book</span><span class="delimiter">&quot;</span></span>, action:<span class="string"><span class="delimiter">&quot;</span><span class="content">list</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> content = include(<span class="key">controller</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">book</span><span class="delimiter">&quot;</span></span>, <span class="key">action</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">list</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
 <div class="paragraph">

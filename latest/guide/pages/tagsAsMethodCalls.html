@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>3.6 Tags as Method Calls 6.1.1</title>
+    <title>3.6 Tags as Method Calls 6.1.3</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -93,7 +93,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>3.6 Tags as Method Calls</h1>
 
-                    <p><strong>Version:</strong> 6.1.1</p>
+                    <p><strong>Version:</strong> 6.1.3</p>
                 </div>
 
                 
@@ -109,8 +109,8 @@ function addJsClass() {
 </div>
 
 
-<div class="paragraph">
-<p>One major different between GSP tags and other tagging technologies is that GSP tags can be called as either regular tags or as method calls from <a href="#controllers">controllers</a>, <a href="#taglibs">tag libraries</a> or GSP views.</p>
+<div id="tagsAsMethodCalls" class="paragraph">
+<p>One major different between GSP tags and other tagging technologies is that GSP tags can be called as either regular tags or as method calls from <a href="https://docs.grails.org/6.1.1/guide/theWebLayer.html#controllers">controllers</a>, <a href="taglibs.html">tag libraries</a> or GSP views.</p>
 </div>
 <div class="sect3">
 <h4 id="_tags_as_method_calls_from_gsps">Tags as method calls from GSPs</h4>
@@ -119,7 +119,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml">Static Resource: ${createLinkTo(dir: &quot;images&quot;, file: &quot;logo.jpg&quot;)}</code></pre>
+<pre class="CodeRay highlight"><code data-lang="gsp">Static Resource: ${createLinkTo(dir: &quot;images&quot;, file: &quot;logo.jpg&quot;)}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -131,11 +131,11 @@ function addJsClass() {
 </div>
 </div>
 <div class="paragraph">
-<p>In view technologies that don&#8217;t support this feature you have to nest tags within tags, which becomes messy quickly and often has an adverse effect of WYSIWYG tools such as Dreamweaver that attempt to render the mark-up as it is not well-formed:</p>
+<p>In view technologies that don&#8217;t support this feature you have to nest tags within tags, which becomes messy quickly and often has an adverse effect of WYSIWYG tools that attempt to render the mark-up as it is not well-formed:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;g:createLinkTo dir=</span><span class="delimiter">&quot;</span></span><span class="attribute-name">images</span><span class="error">&quot;</span> <span class="attribute-name">file</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">logo.jpg</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>&quot; /<span class="error">&gt;</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;g:createLinkTo dir='images' file='logo.jpg'/</span></span><span class="error">&gt;</span>&quot; /<span class="error">&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -146,7 +146,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def imageLocation = createLinkTo(dir:<span class="string"><span class="delimiter">&quot;</span><span class="content">images</span><span class="delimiter">&quot;</span></span>, file:<span class="string"><span class="delimiter">&quot;</span><span class="content">logo.jpg</span><span class="delimiter">&quot;</span></span>).toString()</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> imageLocation = createLinkTo(<span class="key">dir</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">images</span><span class="delimiter">&quot;</span></span>, <span class="key">file</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">logo.jpg</span><span class="delimiter">&quot;</span></span>).toString()</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -154,15 +154,15 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def imageLocation = g.createLinkTo(dir:<span class="string"><span class="delimiter">&quot;</span><span class="content">images</span><span class="delimiter">&quot;</span></span>, file:<span class="string"><span class="delimiter">&quot;</span><span class="content">logo.jpg</span><span class="delimiter">&quot;</span></span>).toString()</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> imageLocation = g.createLinkTo(<span class="key">dir</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">images</span><span class="delimiter">&quot;</span></span>, <span class="key">file</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">logo.jpg</span><span class="delimiter">&quot;</span></span>).toString()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For tags that use a <a href="#namespaces">custom namespace</a>, use that prefix for the method call. For example (from the <a href="http://grails.org/plugin/fckeditor">FCK Editor plugin</a>):</p>
+<p>For tags that use a <a href="#namespaces">custom namespace</a>, use that prefix for the method call. For example (from the <a href="https://github.com/stefanogualdi/grails-ckeditor">CK Editor plugin</a>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">def editor = fckeditor.editor(name: <span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span>, width: <span class="string"><span class="delimiter">&quot;</span><span class="content">100%</span><span class="delimiter">&quot;</span></span>, height: <span class="string"><span class="delimiter">&quot;</span><span class="content">400</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> editor = ckeditor.editor(<span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span>, <span class="key">width</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">100%</span><span class="delimiter">&quot;</span></span>, <span class="key">height</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">400</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
 </div>

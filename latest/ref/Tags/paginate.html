@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>Groovy Server Pages (GSP) 6.1.1</title>
+    <title>Groovy Server Pages (GSP) 6.1.3</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -110,7 +110,7 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">Book</span> {
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">Book</span> {
     <span class="predefined-type">String</span> title
     <span class="predefined-type">String</span> author
 }</code></pre>
@@ -121,9 +121,9 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">BookController</span> {
-    def list() {
-        [books: <span class="predefined-type">Book</span>.list(params), bookCount: <span class="predefined-type">Book</span>.count()]
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">BookController</span> {
+    <span class="keyword">def</span> <span class="function">list</span>() {
+        [<span class="key">books</span>: <span class="predefined-type">Book</span>.list(params), <span class="key">bookCount</span>: <span class="predefined-type">Book</span>.count()]
     }
 }</code></pre>
 </div>
@@ -194,7 +194,7 @@ function addJsClass(el) {
 <p><code>maxsteps</code> (optional) - The number of steps displayed for pagination (defaults to 10). Used ONLY if <code>params.maxsteps</code> is empty</p>
 </li>
 <li>
-<p><code>mapping</code> (optional) - The <a href="#namedMappings">named URL mapping</a> to use to rewrite the link</p>
+<p><code>mapping</code> (optional) - The <a href="https://docs.grails.org/6.1.1/guide/theWebLayer.html#namedMappings">named URL mapping</a> to use to rewrite the link</p>
 </li>
 <li>
 <p><code>offset</code> (optional) - Used ONLY if <code>params.offset</code> is empty</p>

@@ -15,8 +15,6 @@ jobs:
     strategy:
       matrix:
         java: ['11', '14', '17']
-    env:
-      WORKSPACE: ${{ github.workspace }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK
@@ -33,12 +31,12 @@ jobs:
           GRADLE_ENTERPRISE_BUILD_CACHE_NODE_KEY: ${{ secrets.GRADLE_ENTERPRISE_BUILD_CACHE_NODE_KEY }}
         with:
           arguments: build
-      - name: Upload Artifacts
-        if: steps.build.outcome == 'success' && matrix.java == '11'
+      - name: Upload Distribution
+        if: success() && matrix.java == '11'
         uses: actions/upload-artifact@v4
         with:
-          name: grails-gsp.jar
-          path: build/libs/grails-gsp-*.jar
+          name: grails-gsp-SNAPSHOT.zip
+          path: ./**/build/libs/*
   publish:
     if: github.event_name == 'push'
     needs: build

@@ -42,15 +42,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: grails-gsp-${{ steps.release_version.outputs.value }}.zip
-          path: build/distributions/grails-gsp-${{ steps.release_version.outputs.value }}.zip
-      - name: Upload artifacts to the Github release
-        if: success()
-        id: upload_artifact
-        uses: Roang-zero1/github-upload-release-artifacts-action@master
-        with:
-          args: build/distributions/grails-gsp-${{ steps.release_version.outputs.value }}.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: ./**/build/libs/*
       - name: Generate secring file
         env:
           SECRING_FILE: ${{ secrets.SECRING_FILE }}
@@ -69,7 +61,34 @@ jobs:
           SIGNING_PASSPHRASE: ${{ secrets.SIGNING_PASSPHRASE }}
           SECRING_FILE: ${{ secrets.SECRING_FILE }}
         with:
-          arguments: -Psigning.secretKeyRingFile=${{ github.workspace }}/secring.gpg publishToSonatype closeAndReleaseSonatypeStagingRepository
+          arguments: |
+            -Psigning.secretKeyRingFile=${{ github.workspace }}/secring.gpg 
+            publishToSonatype 
+            closeSonatypeStagingRepository
+  release:
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          ref: v${{ needs.publish.outputs.release_version }}
+      - name: Nexus Staging Close And Release
+        uses: gradle/gradle-build-action@v2
+        env:
+          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
+          GRADLE_ENTERPRISE_BUILD_CACHE_NODE_USER: ${{ secrets.GRADLE_ENTERPRISE_BUILD_CACHE_NODE_USER }}
+          GRADLE_ENTERPRISE_BUILD_CACHE_NODE_KEY: ${{ secrets.GRADLE_ENTERPRISE_BUILD_CACHE_NODE_KEY }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          SONATYPE_STAGING_PROFILE_ID: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
+        with:
+          arguments: |
+            findSonatypeStagingRepository
+            releaseSonatypeStagingRepository
       - name: Run post-release
         if: success()
         uses: micronaut-projects/github-actions/post-release@master
@@ -83,17 +102,16 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'adopt'
-          java-version: '11'
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_TOKEN }}
           ref: v${{ needs.publish.outputs.release_version }}
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: '11'
       - name: Publish Documentation
         id: docs
         uses: gradle/gradle-build-action@v2
@@ -113,4 +131,4 @@ jobs:
           FOLDER: build/docs
           VERSION: ${{ needs.publish.outputs.release_version }}
           COMMIT_EMAIL: ${{ env.GIT_USER_EMAIL }}
-          COMMIT_NAME: ${{ env.GIT_USER_NAME }}
+          COMMIT_NAME: "Puneet Behl"

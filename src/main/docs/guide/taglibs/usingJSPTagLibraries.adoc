@@ -6,15 +6,15 @@ In order to use JSP support you must ensure you have the `grails-web-jsp` depend
 .build.gradle
 ----
 dependencies {
-    ...
+    //...
     runtimeOnly "org.grails:grails-web-jsp:{version}"
 }
 ----
 
 
-Then you will need to declare the JSP to use with the `taglib` directive at the top of your GSP file:
+Then you will need to declare the JSP taglib to use with the `taglib` directive at the top of your GSP file:
 
-[source,xml]
+[,xml]
 ----
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 ----
@@ -22,20 +22,25 @@ Then you will need to declare the JSP to use with the `taglib` directive at the 
 Besides this you have to configure Grails to scan for the JSP tld files.
 This is configured with the `grails.gsp.tldScanPattern` setting. It accepts a comma separated String value. Spring's PathMatchingResourcePatternResolver is used to resolve the patterns.
 
-For example you could scan for all available tld files by adding this to `application.yml`:
+For example, you could scan for all available tld files by adding this to `application.yml`:
 
 [source,yaml]
+.grails-app/conf/application.yml
 ----
 grails:
     gsp:
-        tldScanPattern:'classpath*:/META-INF/*.tld,/WEB-INF/tld/*.tld'
+        tldScanPattern: 'classpath*:/META-INF/*.tld,/WEB-INF/tld/*.tld'
 ----
 
 JSTL standard library is no longer added as a dependency by default. In case you are using JSTL, you should also add these dependencies to `build.gradle`:
 [source,groovy]
+.build.gradle
 ----
-        runtimeOnly 'javax.servlet:jstl:1.1.2'
-        runtimeOnly 'taglibs:standard:1.1.2'
+dependencies {
+    //...
+    runtimeOnly 'javax.servlet:jstl:1.1.2'
+    runtimeOnly 'taglibs:standard:1.1.2'
+}
 ----
 
 Then you can use JSP tags like any other tag:
@@ -47,7 +52,7 @@ Then you can use JSP tags like any other tag:
 
 With the added bonus that you can invoke JSP tags like methods:
 
-[source,java]
+[source,gsp]
 ----
 ${fmt.formatNumber(value:10, pattern:".00")}
 ----

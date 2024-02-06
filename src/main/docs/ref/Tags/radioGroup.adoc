@@ -14,14 +14,14 @@ Generates radio button groups
 
 [source,xml]
 ----
-<g:radioGroup name="myGroup" values="[1,2,3]" value="1" >
+<g:radioGroup name="myGroup" values="[1,2,3]" value="1">
 <p><g:message code="${it.label}" />: ${it.radio}</p>
 </g:radioGroup>
 ----
 
 results in:
 
-[source,xml]
+[source,html]
 ----
 <p>Radio 1: <input type="radio" name="myGroup" value="1" checked="checked" /></p>
 <p>Radio 2: <input type="radio" name="myGroup" value="2" /></p>
@@ -39,7 +39,7 @@ results in:
 
 results in:
 
-[source,xml]
+[source,html]
 ----
 <p>Yes! <input type="radio" name="lovesGrails" value="1" /></p>
 <p>Of course! <input type="radio" name="lovesGrails" value="2" /></p>

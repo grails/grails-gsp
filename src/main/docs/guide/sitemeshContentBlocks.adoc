@@ -1,6 +1,6 @@
 Although it is useful to decorate an entire page sometimes you may find the need to decorate independent sections of your site. To do this you can use content blocks. To get started, partition the page to be decorated using the `<content>` tag:
 
-[source,xml]
+[,xml]
 ----
 <content tag="navbar">
 ... draw the navbar here...

@@ -2,7 +2,7 @@
 
 === Purpose
 
-Uses a "for(var in collection)" loop to iterate over each element of the specified object.
+Uses a `for(var in collection)` loop to iterate over each element of the specified object.
 
 === Examples
 

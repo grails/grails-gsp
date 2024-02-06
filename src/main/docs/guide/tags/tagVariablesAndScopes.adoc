@@ -1,4 +1,4 @@
-Variables can be defined within a GSP using the link:../ref/Tags/set.html[set] tag:
+Variables can be defined within a GSP using the xref:../ref/Tags/set.adoc[set] tag:
 
 [source,xml]
 ----
@@ -25,7 +25,7 @@ Variables can also be placed in one of the following scopes:
 
 * `page` - Scoped to the current page (default)
 * `request` - Scoped to the current request
-* `flash` - Placed within link:{controllersRef}/flash.html[flash] scope and hence available for the next request
+* `flash` - Placed within {controllersRef}/flash.html[flash] scope and hence available for the next request
 * `session` - Scoped for the user session
 * `application` - Application-wide scope.
 

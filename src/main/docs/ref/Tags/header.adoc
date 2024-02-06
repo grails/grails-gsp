@@ -14,9 +14,9 @@ Obtains the value of a named header
 
 Reading a header's value:
 
-[source,xml]
+[,xml]
 ----
-Format? <g:header name="Content-Type" />
+Format: <g:header name="Content-Type" />
 ----
 
 Or testing for existence:

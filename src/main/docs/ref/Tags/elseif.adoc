@@ -12,7 +12,7 @@ The logical elseif tag
 === Examples
 
 
-[source,xml]
+[,xml]
 ----
 <g:if test="${name == 'fred'}">
     Hello Fred!

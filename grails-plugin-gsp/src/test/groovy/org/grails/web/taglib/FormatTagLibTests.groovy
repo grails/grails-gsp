@@ -302,8 +302,9 @@ class FormatTagLibTests extends AbstractGrailsTagTests {
     @Test
     void testFormatNumberNaN() {
         def number = Double.NaN
-        def template = '<g:formatNumber number="${number}"/>'
-        assertOutputEquals(new DecimalFormatSymbols().getNaN(), template, [number: number])
+        def locale = new Locale('en', 'US')
+        def template = '<g:formatNumber number="${number}" locale="${locale}"/>'
+        assertOutputEquals(new DecimalFormatSymbols(locale).getNaN(), template, [number: number, locale: locale])
     }
 
     @Test

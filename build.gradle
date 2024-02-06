@@ -12,14 +12,16 @@ buildscript {
 }
 
 repositories {
+    mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
 }
 
 version project.projectVersion
 
 ext {
+    groovyVersion = System.getenv('CI_GROOVY_VERSION') ?: project.groovyVersion
     isCiBuild = System.getenv().get("TRAVIS") == 'true' || (System.getenv().get("CI") as Boolean)
-    commonBuild = 'https://raw.githubusercontent.com/grails/grails-common-build/master'
+    commonBuild = 'https://raw.githubusercontent.com/grails/grails-common-build/v2.0.3'
 }
 
 apply plugin:'idea'
@@ -32,6 +34,7 @@ subprojects {
         userOrg = "grails"
         isGrailsPlugin = name.startsWith('grails-plugin')
         isBuildSnapshot = version.toString().endsWith("-SNAPSHOT")
+        groovyVersion = System.getenv('CI_GROOVY_VERSION') ?: project.groovyVersion
     }
 
     if (isGrailsPlugin) {
@@ -39,9 +42,12 @@ subprojects {
     } else {
         group "org.grails"
     }
+
     repositories {
+        mavenLocal()
         maven { url "https://repo.grails.org/grails/core" }
     }
+
     if (it.name.startsWith("examples")) {
         apply plugin: "org.grails.grails-web"
     } else if (isGrailsPlugin) {
@@ -98,6 +104,17 @@ subprojects {
 
 apply from: "${commonBuild}/common-docs.gradle"
 apply from: "${commonBuild}/common-publishing.gradle"
+
+tasks.named('publishGuide') {
+    // Override value defined in grails/grails-common-build/common-docs.gradle
+    it.properties['commandLineRef'] = "https://docs.grails.org/$grailsVersion/ref/Command%20Line"
+    it.properties['controllersRef'] = "https://docs.grails.org/$grailsVersion/ref/Controllers"
+    it.properties['grailsapi']      = "https://docs.grails.org/$grailsVersion/api/"
+    it.properties['grailsdocs']     = "https://docs.grails.org/$grailsVersion/"
+    it.properties['groovyapi']      = "https://docs.groovy-lang.org/$groovyVersion/html/gapi/"
+    it.properties['groovyjdk']      = "https://docs.groovy-lang.org/$groovyVersion/html/groovy-jdk/"
+    it.properties['javase']         = 'https://docs.oracle.com/en/java/javase/11/docs/api/'
+}
 
 boolean isNonStable(String version) {
     version ==~ /(?i).+(-|\.?)(b|M|RC|Dev)\d?.*/ ||

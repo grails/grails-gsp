@@ -12,7 +12,7 @@ Uses the Groovy JDK `collect` method to iterate over each element of the specifi
 === Examples
 
 
-[source,xml]
+[,xml]
 ----
 Books titles:
 <g:collect in="${books}" expr="it.title">

@@ -28,4 +28,4 @@ Attributes
 * `src` - The source of the image to use
 * `action` (optional) - The name of the action to be executed
 
-WARNING: You cannot use multiple actionSubmitImage tags within the same form and have it work in Internet Explorer 6 or 7 unless you add some custom JavaScript. See http://www.quirksmode.org/bugreports/archives/2006/07/Namevalue_pairs_arent_submitted_for_image_submit_b.html[this page] for a bit more information and a workaround.
+WARNING: You cannot use multiple actionSubmitImage tags within the same form and have it work in Internet Explorer 6 or 7 unless you add some custom JavaScript. See https://www.quirksmode.org/bugreports/archives/2006/07/Namevalue_pairs_arent_submitted_for_image_submit_b.html[this page] for a bit more information and a workaround.

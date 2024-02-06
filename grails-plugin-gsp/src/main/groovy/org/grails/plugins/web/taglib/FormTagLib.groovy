@@ -586,6 +586,7 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
      * @attr id the DOM element id
      * @attr disabled Makes the resulting inputs and selects to be disabled. Is treated as a Groovy Truth.
      * @attr readonly Makes the resulting inputs and selects to be made read only. Is treated as a Groovy Truth.
+     * @attr locale The locale to use for display formatting. Defaults to the current request locale and then the system default locale if not specified.
      */
     Closure datePicker = { attrs ->
         def out = out // let x = x ?
@@ -647,7 +648,7 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
         def year
         def hour
         def minute
-        def dfs = new DateFormatSymbols(RCU.getLocale(request))
+        def dfs = new DateFormatSymbols(FormatTagLib.resolveLocale(attrs.remove('locale')))
 
         def c = null
         if (value instanceof Calendar) {
@@ -846,17 +847,19 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
      *
      * @attr name REQUIRED The name of the select
      * @attr value An instance of java.util.TimeZone. Defaults to the time zone for the current Locale if not specified
+     * @attr locale The locale to use for formatting the time zone names. Defaults to the current request locale and then system default locale if not specified
      */
     Closure timeZoneSelect = { attrs ->
         attrs.from = TimeZone.getAvailableIDs()
         attrs.value = (attrs.value ? attrs.value.ID : TimeZone.getDefault().ID)
         def date = new Date()
+        def locale = FormatTagLib.resolveLocale(attrs.locale)
 
         // set the option value as a closure that formats the TimeZone for display
         attrs.optionValue = {
             TimeZone tz = TimeZone.getTimeZone(it)
-            def shortName = tz.getDisplayName(tz.inDaylightTime(date), TimeZone.SHORT)
-            def longName = tz.getDisplayName(tz.inDaylightTime(date), TimeZone.LONG)
+            def shortName = tz.getDisplayName(tz.inDaylightTime(date), TimeZone.SHORT, locale)
+            def longName = tz.getDisplayName(tz.inDaylightTime(date), TimeZone.LONG, locale)
 
             def offset = tz.rawOffset
             def hour = offset / (60 * 60 * 1000)
@@ -878,6 +881,7 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
      *
      * @attr name REQUIRED The name of the select
      * @attr value The set locale, defaults to the current request locale if not specified
+     * @attr locale The locale to use for formatting the locale names. Defaults to the current request locale and then the system default locale if not specified
      */
     Closure localeSelect = { attrs ->
         attrs.from = Locale.getAvailableLocales()
@@ -938,6 +942,7 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
      * @attr disabled boolean value indicating whether the select is disabled or enabled (defaults to false - enabled)
      * @attr readonly boolean value indicating whether the select is read only or editable (defaults to false - editable)
      * @attr dataAttrs a Map that adds data-* attributes to the &lt;option&gt; elements. Map's keys will be used as names of the data-* attributes like so: data-${key} (i.e. with a "data-" prefix). The object belonging to a Map's key determines the value of the data-* attribute. It can be a string referring to a property of beans in {@code from}, a Closure that accepts an item from {@code from} and returns the value or a List that contains a value for each of the &lt;option&gt;s.
+     * @attr locale The locale to use for formatting. Defaults to the current request locale and then the system default locale if not specified
      */
     Closure select = { attrs ->
         if (!attrs.name) {
@@ -947,7 +952,7 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
             throwTagError("Tag [select] is missing required attribute [from]")
         }
         def messageSource = grailsAttributes.getApplicationContext().getBean("messageSource")
-        def locale = RCU.getLocale(request)
+        def locale = FormatTagLib.resolveLocale(attrs.remove('locale'))
         def writer = out
         def from = attrs.remove('from')
         def keys = attrs.remove('keys')

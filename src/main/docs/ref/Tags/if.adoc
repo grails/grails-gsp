@@ -12,7 +12,7 @@ The logical if tag to switch on an expression and/or current environment.
 === Examples
 
 
-[source,xml]
+[,xml]
 ----
 <g:if test="${name == 'fred'}">
      Hello ${name}!

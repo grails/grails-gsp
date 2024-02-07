@@ -1,4 +1,4 @@
-= Groovy Server Pages (GSP) image:https://github.com/grails/grails-gsp/workflows/Java%20CI/badge.svg[Java CI]
+= Groovy Server Pages (GSP) [![Java CI](https://github.com/grails/grails-gsp/actions/workflows/gradle.yml/badge.svg)](https://github.com/grails/grails-gsp/actions/workflows/gradle.yml)
 
 This project contains the sources for GSP, the server-side view rendering technology used in http://grails.org[Grails].
 

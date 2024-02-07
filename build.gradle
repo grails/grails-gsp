@@ -21,7 +21,7 @@ version project.projectVersion
 ext {
     groovyVersion = System.getenv('CI_GROOVY_VERSION') ?: project.groovyVersion
     isCiBuild = System.getenv().get("TRAVIS") == 'true' || (System.getenv().get("CI") as Boolean)
-    commonBuild = 'https://raw.githubusercontent.com/grails/grails-common-build/v2.0.3'
+    commonBuild = 'https://raw.githubusercontent.com/grails/grails-common-build/3.0.x'
 }
 
 apply plugin:'idea'

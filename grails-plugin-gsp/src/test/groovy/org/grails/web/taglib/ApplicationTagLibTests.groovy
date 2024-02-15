@@ -5,7 +5,7 @@ import grails.util.GrailsUtil
 import grails.util.Holders
 import grails.util.Metadata
 import grails.util.MockRequestDataValueProcessor
-import groovy.transform.NotYetImplemented
+import groovy.test.NotYetImplemented
 import org.grails.gsp.GroovyPageBinding
 import org.grails.plugins.web.taglib.ApplicationTagLib
 import org.grails.plugins.web.taglib.FormTagLib

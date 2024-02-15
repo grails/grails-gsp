@@ -6,6 +6,7 @@ import grails.plugins.metadata.GrailsPlugin
 import grails.util.GrailsUtil
 import grails.util.GrailsWebMockUtil
 import groovy.xml.XmlSlurper
+import groovy.xml.slurpersupport.GPathResult
 import org.grails.core.io.SimpleMapResourceLoader
 import org.grails.gsp.compiler.GroovyPageParser
 import org.grails.gsp.io.GroovyPageCompiledScriptSource
@@ -211,7 +212,7 @@ class GrailsConventionGroovyPageLocatorSpec extends Specification {
 </plugin>
 '''
 
-        def xml = new XmlSlurper().parseText(str)
+        GPathResult xml = new XmlSlurper().parseText(str)
 
         def resource = new MockBinaryPluginResource(str.bytes)
         def descriptor = new BinaryGrailsPluginDescriptor(resource, ['org.grails.web.gsp.io.TestBinaryResource'])

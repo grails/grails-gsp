@@ -67,6 +67,14 @@ subprojects {
     targetCompatibility=1.17
 
     configurations.all {
+        resolutionStrategy.dependencySubstitution {
+            substitute(platform(module('org.apache.groovy:groovy-bom:3.0.13'))).
+                    using module('org.apache.groovy:groovy-bom:4.0.12')
+        }
+    }
+
+    configurations.all {
+        exclude group: "org.codehaus.groovy", module: "groovy-bom" // we need to explicitly as groovy-bom as platform because overriding the version didn't say anything about importing it as a platform.
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
             if (details.requested.group == "org.spockframework") {
                 details.useVersion(spockVersion)
@@ -74,8 +82,8 @@ subprojects {
                 details.useVersion(junitJupiterVersion)
             } else if (details.requested.group == "org.junit.platform") {
                 details.useVersion(junitPlatformVerison)
-            } else if (details.requested.group == "org.codehaus.groovy") {
-                details.useTarget(group: "org.apache.groovy", name: details.requested.name, version: details.requested.version)
+            } else if (details.requested.group == "org.codehaus.groovy" && details.requested.name != 'groovy-bom') {
+                details.useTarget(group: "org.apache.groovy", name: details.requested.name, version: groovyVersion)
                 details.because "The dependency coordinates are changed in Apache Groovy 4"
             }
         }

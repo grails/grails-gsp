@@ -16,6 +16,7 @@ repositories {
     maven { url "https://repo.grails.org/grails/core" }
 }
 
+group = "org.grails"
 version project.projectVersion
 
 ext {

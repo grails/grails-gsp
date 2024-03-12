@@ -21,7 +21,7 @@ version project.projectVersion
 ext {
     groovyVersion = System.getenv('CI_GROOVY_VERSION') ?: project.groovyVersion
     isCiBuild = System.getenv().get("TRAVIS") == 'true' || (System.getenv().get("CI") as Boolean)
-    commonBuild = 'https://raw.githubusercontent.com/grails/grails-common-build/v2.0.3'
+    commonBuild = 'https://raw.githubusercontent.com/grails/grails-common-build/3.0.x'
 }
 
 apply plugin:'idea'
@@ -56,7 +56,7 @@ subprojects {
         apply from: "${commonBuild}/common-project.gradle"
 
         dependencies {
-            documentation "org.codehaus.groovy:groovy-dateutil:$groovyVersion"
+            documentation "org.apache.groovy:groovy-dateutil:$groovyVersion"
         }
     }
 
@@ -67,6 +67,14 @@ subprojects {
     targetCompatibility=1.17
 
     configurations.all {
+        resolutionStrategy.dependencySubstitution {
+            substitute(platform(module('org.apache.groovy:groovy-bom:3.0.13'))).
+                    using module('org.apache.groovy:groovy-bom:4.0.12')
+        }
+    }
+
+    configurations.all {
+        exclude group: "org.codehaus.groovy", module: "groovy-bom" // we need to explicitly as groovy-bom as platform because overriding the version didn't say anything about importing it as a platform.
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
             if (details.requested.group == "org.spockframework") {
                 details.useVersion(spockVersion)
@@ -74,21 +82,30 @@ subprojects {
                 details.useVersion(junitJupiterVersion)
             } else if (details.requested.group == "org.junit.platform") {
                 details.useVersion(junitPlatformVerison)
+            } else if (details.requested.group == "org.codehaus.groovy" && details.requested.name != 'groovy-bom') {
+                details.useTarget(group: "org.apache.groovy", name: details.requested.name, version: groovyVersion)
+                details.because "The dependency coordinates are changed in Apache Groovy 4"
             }
         }
     }
 
     dependencies {
+        api platform("org.apache.groovy:groovy-bom:$groovyVersion")
         compileOnly "javax.servlet:javax.servlet-api:$servletApiVersion"
 
         testImplementation "javax.servlet:javax.servlet-api:$servletApiVersion"
-        testImplementation "org.codehaus.groovy:groovy-test-junit5:${groovyVersion}"
+        testImplementation "org.apache.groovy:groovy-test-junit5:${groovyVersion}"
         testImplementation "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
         testImplementation "org.junit.platform:junit-platform-runner:${junitPlatformVerison}"
         testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
     }
 
+    tasks.named("compileTestGroovy") {
+        options.forkOptions.jvmArgs += ["-Dspock.iKnowWhatImDoing.disableGroovyVersionCheck=true"]
+    }
+
     tasks.withType(Test) {
+        systemProperty 'spock.iKnowWhatImDoing.disableGroovyVersionCheck', 'true'
         useJUnitPlatform()
         testLogging {
             showStandardStreams = true

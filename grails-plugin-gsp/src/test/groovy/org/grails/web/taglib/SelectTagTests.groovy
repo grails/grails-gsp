@@ -1,14 +1,13 @@
 package org.grails.web.taglib
 
+import groovy.xml.XmlSlurper
 import org.apache.commons.lang.WordUtils
 import org.junit.jupiter.api.Test
 import org.springframework.context.MessageSourceResolvable
 import org.springframework.web.servlet.support.RequestContextUtils as RCU
 import org.w3c.dom.Document
 
-import static org.junit.jupiter.api.Assertions.assertEquals
-import static org.junit.jupiter.api.Assertions.assertNotNull
-import static org.junit.jupiter.api.Assertions.assertTrue
+import static org.junit.jupiter.api.Assertions.*
 
 /**
  * @author Graeme Rocher

@@ -102,7 +102,7 @@ class GroovyPageCompiler {
             compilerConfig.setSourceEncoding(encoding)
             ExecutorService threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()*2)
             CompletionService completionService = new ExecutorCompletionService(threadPool);
-            List<Future<Map>> futures = []
+            List<Future<?>> futures = []
             try {
                 Integer collationLevel = Runtime.getRuntime().availableProcessors()*2
                 if(srcFiles.size() < collationLevel) {

@@ -24,7 +24,7 @@ jobs:
           ref: v${{ github.event.inputs.version }}
       - name: Publish Documentation
         id: docs
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: docs
         env:

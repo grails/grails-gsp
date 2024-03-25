@@ -19,7 +19,7 @@ Take a look at the http://asset-pipeline.com/manual[documentation] for the asset
 
 If you do not want to use the Asset-Pipeline plugin, you can serve the static assets from directories `src/main/resources/public` or `src/main/webapp`, but the latter one only gets included in WAR packaging but not in JAR packaging.
 
-For example, if you had a file stored at `/src/main/resources/public/images/example.png` and your Grails application was running on port 8080, then you could access the file by navigating to http://localhost:8080/static/images/example.jpg[http://localhost:8080/static/images/example.jpg].
+For example, if you had a file stored at `/src/main/resources/public/images/example.jpg` and your Grails application was running on port 8080, then you could access the file by navigating to http://localhost:8080/static/images/example.jpg[http://localhost:8080/static/images/example.jpg].
 
 ==== Cache Configuration for Static Resources
 

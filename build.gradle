@@ -22,7 +22,7 @@ version project.projectVersion
 ext {
     groovyVersion = System.getenv('CI_GROOVY_VERSION') ?: project.groovyVersion
     isCiBuild = System.getenv().get("TRAVIS") == 'true' || (System.getenv().get("CI") as Boolean)
-    commonBuild = 'https://raw.githubusercontent.com/grails/grails-common-build/v2.0.3'
+    commonBuild = 'https://raw.githubusercontent.com/grails/grails-common-build/master'
 }
 
 apply plugin:'idea'
@@ -64,8 +64,10 @@ subprojects {
     apply plugin:'idea'
     apply plugin: 'java-library'
 
-    sourceCompatibility=1.11
-    targetCompatibility=1.11
+    java {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
 
     configurations.all {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->

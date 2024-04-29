@@ -20,7 +20,6 @@ public String getGroovyPageFileName() { "myTest" }
 public Object run() {
 Writer out = getOut()
 Writer expressionOut = getExpressionOut()
-registerSitemeshPreprocessMode()
 
 printHtmlPart(0)
 for( t in evaluate('"blah"', 2, it) { return "blah" } ) {
@@ -43,7 +42,6 @@ public String getGroovyPageFileName() { "myTest" }
 public Object run() {
 Writer out = getOut()
 Writer expressionOut = getExpressionOut()
-registerSitemeshPreprocessMode()
 
 printHtmlPart(0)
 for( t in evaluate('"blah"', 1, it) { return "blah" } ) {
@@ -66,7 +64,6 @@ public String getGroovyPageFileName() { "myTest2" }
 public Object run() {
 Writer out = getOut()
 Writer expressionOut = getExpressionOut()
-registerSitemeshPreprocessMode()
 
 printHtmlPart(0)
 loop:{

@@ -16,7 +16,6 @@ configurations.all {
 dependencies {
     compileOnly "javax.servlet:javax.servlet-api:$servletApiVersion"
     api project(":grails-web-gsp-taglib")
-    api project(":grails-plugin-sitemesh2")
 
     runtimeOnly(project(":grails-web-jsp"))
     api "commons-lang:commons-lang:2.6"

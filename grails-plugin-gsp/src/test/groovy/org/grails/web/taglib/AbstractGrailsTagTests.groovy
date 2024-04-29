@@ -1,6 +1,5 @@
 package org.grails.web.taglib
 
-import com.opensymphony.module.sitemesh.RequestConstants
 import grails.build.support.MetaClassRegistryCleaner
 import grails.core.DefaultGrailsApplication
 import grails.core.GrailsApplication
@@ -19,7 +18,6 @@ import org.grails.gsp.GroovyPage
 import org.grails.gsp.GroovyPageMetaInfo
 import org.grails.gsp.GroovyPageTemplate
 import org.grails.gsp.GroovyPagesTemplateEngine
-import org.grails.gsp.compiler.SitemeshPreprocessor
 import org.grails.plugins.DefaultGrailsPlugin
 import org.grails.plugins.MockGrailsPluginManager
 import org.grails.taglib.GroovyPageAttributes
@@ -33,9 +31,6 @@ import org.grails.web.pages.DefaultGroovyPagesUriService
 import org.grails.web.pages.GSPResponseWriter
 import org.grails.web.servlet.context.support.WebRuntimeSpringConfiguration
 import org.grails.web.servlet.mvc.GrailsWebRequest
-import org.grails.web.sitemesh.GSPSitemeshPage
-import org.grails.web.sitemesh.GrailsHTMLPageParser
-import org.grails.web.sitemesh.GrailsLayoutView
 import org.grails.web.util.GrailsApplicationAttributes
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
@@ -270,7 +265,6 @@ info.app.name: ${getClass().name}
         dependantPluginClasses << gcl.loadClass("org.grails.plugins.i18n.I18nGrailsPlugin")
         dependantPluginClasses << gcl.loadClass("org.grails.plugins.web.mapping.UrlMappingsGrailsPlugin")
         dependantPluginClasses << gcl.loadClass("org.grails.plugins.web.controllers.ControllersGrailsPlugin")
-        dependantPluginClasses << gcl.loadClass("org.grails.plugins.web.Sitemesh2GrailsPlugin")
         dependantPluginClasses << gcl.loadClass("org.grails.plugins.web.GroovyPagesGrailsPlugin")
 
         def dependentPlugins = dependantPluginClasses.collect { new DefaultGrailsPlugin(it, grailsApplication)}
@@ -472,38 +466,6 @@ info.app.name: ${getClass().name}
         return target.toString()
     }
 
-    /**
-     * Applies sitemesh preprocessing to a template
-     */
-    String sitemeshPreprocess(String template) {
-        def preprocessor=new SitemeshPreprocessor()
-        preprocessor.addGspSitemeshCapturing(template)
-    }
-    
-    String applyLayout(String layout, String template, Map params=[:]) {
-        def gspSiteMeshPage = new GSPSitemeshPage()
-        request.setAttribute(GrailsLayoutView.GSP_SITEMESH_PAGE, gspSiteMeshPage)
-        def content = applyTemplate(template, params)
-        request.removeAttribute(GrailsLayoutView.GSP_SITEMESH_PAGE)
-
-        def page = null
-        if (!params.parse && gspSiteMeshPage != null && gspSiteMeshPage.isUsed()) {
-            page = gspSiteMeshPage
-        }
-        else {
-            def parser = new GrailsHTMLPageParser()
-            page = parser.parse(content.toCharArray())
-        }
-        try {
-            request.setAttribute(RequestConstants.PAGE, page)
-            request.setAttribute(GrailsLayoutView.GSP_SITEMESH_PAGE, new GSPSitemeshPage())
-            return applyTemplate(layout, params,null, "/layouts/test_"+System.currentTimeMillis())
-        }
-        finally {
-            request.removeAttribute(RequestConstants.PAGE)
-            request.removeAttribute(GrailsLayoutView.GSP_SITEMESH_PAGE)
-        }
-    }
     /**
      * Parses the given XML text and creates a DOM document from it.
      */

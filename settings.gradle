@@ -29,10 +29,8 @@ rootProject.name = "grails-gsp"
 
 include 'grails-gsp'
 include 'grails-plugin-gsp'
-include 'grails-plugin-sitemesh2'
 include 'grails-taglib'
 include 'grails-web-gsp'
 include 'grails-web-gsp-taglib'
 include 'grails-web-jsp'
-include 'grails-web-sitemesh'
 include 'grails-web-taglib'

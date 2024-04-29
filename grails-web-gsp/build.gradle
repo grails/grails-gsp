@@ -4,10 +4,7 @@ dependencies {
     api project(":grails-gsp")
     api "org.grails:grails-web-common:$grailsVersion"
     api project(":grails-web-taglib")
-
-    compileOnly project(":grails-web-sitemesh"), {
-        exclude group:'org.grails', module:'grails-web-common'
-    }
+    api "org.sitemesh:grails-plugin-sitemesh3:6.1.2"
 
     testRuntimeOnly "org.grails:grails-spring:$grailsVersion"
 }

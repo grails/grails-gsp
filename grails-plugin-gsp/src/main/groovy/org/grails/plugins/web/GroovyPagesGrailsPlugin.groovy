@@ -41,7 +41,6 @@ import org.grails.web.pages.DefaultGroovyPagesUriService
 import org.grails.web.pages.FilteringCodecsByContentTypeSettings
 import org.grails.web.pages.GroovyPagesServlet
 import org.grails.web.servlet.view.GroovyPageViewResolver
-import org.grails.web.sitemesh.GroovyPageLayoutFinder
 import org.grails.web.util.GrailsApplicationAttributes
 import org.springframework.beans.factory.config.PropertiesFactoryBean
 import org.springframework.boot.web.servlet.ServletRegistrationBean
@@ -80,8 +79,7 @@ class GroovyPagesGrailsPlugin extends Plugin {
         RenderTagLib,
         UrlMappingTagLib,
         ValidationTagLib,
-        PluginTagLib,
-        SitemeshTagLib
+        PluginTagLib
     ]
 
 
@@ -248,18 +246,6 @@ class GroovyPagesGrailsPlugin extends Plugin {
         jspViewResolver(GroovyPageViewResolver) { bean ->
             bean.lazyInit = true
             bean.parent = "abstractViewResolver"
-        }
-        
-        // "grails.gsp.view.layoutViewResolver=false" can be used to disable GrailsLayoutViewResolver
-        // containsKey check must be made to check existence of boolean false values in ConfigObject
-
-        if (enableLayoutViewResolver) {
-            groovyPageLayoutFinder(GroovyPageLayoutFinder) {
-                gspReloadEnabled = enableReload
-                defaultDecoratorName = defaultDecoratorNameSetting ?: null
-                enableNonGspViews = sitemeshEnableNonGspViews
-            }
-            grailsLayoutViewResolverPostProcessor(GrailsLayoutViewResolverPostProcessor)
         }
 
         // Now go through tag libraries and configure them in Spring too. With AOP proxies and so on

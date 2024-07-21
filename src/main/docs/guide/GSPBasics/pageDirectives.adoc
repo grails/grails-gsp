@@ -7,6 +7,15 @@ The import directive lets you import classes into the page. However, it is rarel
 <%@ page import="java.awt.*" %>
 ----
 
+Separate imports with semicolons `;`. As a convention, you should split a larger number of imports into separate lines for better readability.
+
+[,xml]
+----
+<%@ page import="java.awt.*;
+your.custom.Component;
+" %>
+----
+
 GSP also supports the contentType directive:
 
 [,xml]

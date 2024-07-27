@@ -6,5 +6,6 @@ dependencies {
     api project(":grails-web-taglib")
     api "org.sitemesh:grails-plugin-sitemesh3:6.2.0"
 
+    testImplementation "net.bytebuddy:byte-buddy:$byteBuddyVersion"
     testRuntimeOnly "org.grails:grails-spring:$grailsVersion"
 }

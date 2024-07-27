@@ -38,10 +38,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.FrameworkServlet;
 import org.springframework.web.util.WebUtils;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -159,7 +158,7 @@ public class GroovyPagesServlet extends FrameworkServlet implements PluginManage
     }
 
     protected String getCurrentRequestUri(HttpServletRequest request) {
-        Object includePath = request.getAttribute("javax.servlet.include.servlet_path");
+        Object includePath = request.getAttribute("jakarta.servlet.include.servlet_path");
         if (includePath != null) {
             return (String) includePath;
         }

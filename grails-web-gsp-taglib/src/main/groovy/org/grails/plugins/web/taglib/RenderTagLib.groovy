@@ -73,10 +73,10 @@ class RenderTagLib implements TagLibrary {
         Encoder htmlEncoder = codecLookup.lookupEncoder('HTML')
 
         def currentOut = out
-        int statusCode = request.getAttribute('javax.servlet.error.status_code') as int
+        int statusCode = request.getAttribute('jakarta.servlet.error.status_code') as int
         currentOut << """<h1>Error ${prettyPrintStatus(statusCode)}</h1>
 <dl class="error-details">
-<dt>URI</dt><dd>${htmlEncoder.encode(WebUtils.getForwardURI(request) ?: request.getAttribute('javax.servlet.error.request_uri'))}</dd>
+<dt>URI</dt><dd>${htmlEncoder.encode(WebUtils.getForwardURI(request) ?: request.getAttribute('jakarta.servlet.error.request_uri'))}</dd>
 """
 
         def root = ExceptionUtils.getRootCause(exception)

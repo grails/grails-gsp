@@ -19,10 +19,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.ClassUtils;
 
-import javax.el.*;
-import javax.servlet.jsp.JspApplicationContext;
-import javax.servlet.jsp.el.ImplicitObjectELResolver;
-import javax.servlet.jsp.el.ScopedAttributeELResolver;
+import jakarta.el.*;
+import jakarta.servlet.jsp.JspApplicationContext;
+import jakarta.servlet.jsp.el.ImplicitObjectELResolver;
+import jakarta.servlet.jsp.el.ScopedAttributeELResolver;
 import java.util.Iterator;
 import java.util.LinkedList;
 

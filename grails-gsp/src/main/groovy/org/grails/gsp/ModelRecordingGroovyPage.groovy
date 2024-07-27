@@ -143,10 +143,10 @@ class ModelRecordingCache {
 class ModelEntry {
     // defaults are defined by org.grails.web.taglib.WebRequestTemplateVariableBinding
     static Map<String, String> DEFAULT_TYPES = [webRequest        : 'org.grails.web.servlet.mvc.GrailsWebRequest',
-                                                request           : 'javax.servlet.http.HttpServletRequest',
-                                                response          : 'javax.servlet.http.HttpServletResponse',
+                                                request           : 'jakarta.servlet.http.HttpServletRequest',
+                                                response          : 'jakarta.servlet.http.HttpServletResponse',
                                                 flash             : 'grails.web.mvc.FlashScope',
-                                                application       : 'javax.servlet.ServletContext',
+                                                application       : 'jakarta.servlet.ServletContext',
                                                 applicationContext: 'org.springframework.context.ApplicationContext',
                                                 grailsApplication : 'grails.core.GrailsApplication',
                                                 session           : 'grails.web.servlet.mvc.GrailsHttpSession',
@@ -155,7 +155,7 @@ class ModelEntry {
                                                 controllerName    : 'CharSequence']
 
     Map<String, String> model = Collections.synchronizedMap([:])
-    Set<String> taglibs = Collections.synchronizedSet([] as Set)
+    Set<String> taglibs = Collections.synchronizedSet([] as Set<String>)
     Set<String> defaultTagLibs = new HashSet(GroovyPageParser.DEFAULT_TAGLIB_NAMESPACES)
     int initialSize
 
@@ -184,7 +184,7 @@ class ModelEntry {
                     if(defaultType) {
                         try {
                             // use default field type for if field type is instance of the class
-                            // for example instance of 'org.apache.catalina.core.ApplicationHttpRequest', use 'javax.servlet.http.HttpServletRequest'
+                            // for example instance of 'org.apache.catalina.core.ApplicationHttpRequest', use 'jakarta.servlet.http.HttpServletRequest'
                             Class<?> fieldTypeClass = Class.forName(fieldType)
                             Class<?> defaultTypeClass = Class.forName(defaultType)
                             if (defaultTypeClass.isAssignableFrom(fieldTypeClass)) {

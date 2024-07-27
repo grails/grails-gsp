@@ -30,7 +30,7 @@ import org.grails.web.util.BoundedCharsAsEncodedBytesCounter;
 import org.springframework.objenesis.ObjenesisStd;
 import org.springframework.objenesis.instantiator.ObjectInstantiator;
 
-import javax.servlet.ServletResponse;
+import jakarta.servlet.ServletResponse;
 import java.io.IOException;
 import java.io.Writer;
 

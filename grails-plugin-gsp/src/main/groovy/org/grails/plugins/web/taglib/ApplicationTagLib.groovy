@@ -37,8 +37,8 @@ import org.springframework.context.ApplicationContext
 import org.springframework.context.ApplicationContextAware
 import org.springframework.web.servlet.support.RequestDataValueProcessor
 
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
 
 /**
  * The base application tag library for Grails many of which take inspiration from Rails helpers (thanks guys! :)

@@ -37,7 +37,7 @@ import org.grails.taglib.TagLibraryMetaUtils
 import org.grails.web.util.GrailsApplicationAttributes
 import org.springframework.web.context.request.RequestAttributes
 
-import javax.annotation.PostConstruct
+import jakarta.annotation.PostConstruct
 /**
  * A trait that makes a class into a GSP tag library
  *

@@ -90,9 +90,9 @@ subprojects {
     }
 
     dependencies {
-        compileOnly "javax.servlet:javax.servlet-api:$servletApiVersion"
+        compileOnly "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
 
-        testImplementation "javax.servlet:javax.servlet-api:$servletApiVersion"
+        testImplementation "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
         testImplementation "org.codehaus.groovy:groovy-test-junit5:${groovyVersion}"
         testImplementation "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
         testImplementation "org.junit.platform:junit-platform-runner:${junitPlatformVerison}"

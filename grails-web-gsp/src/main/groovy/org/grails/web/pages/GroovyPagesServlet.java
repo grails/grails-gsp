@@ -1,11 +1,11 @@
 /*
- * Copyright 2004-2005 the original author or authors.
+ * Copyright 2004-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -19,7 +19,6 @@ import grails.plugins.GrailsPlugin;
 import grails.plugins.GrailsPluginManager;
 import grails.plugins.PluginManagerAware;
 import grails.util.GrailsStringUtils;
-import org.grails.web.sitemesh.GroovyPageLayoutFinder;
 import org.grails.web.util.GrailsApplicationAttributes;
 import groovy.text.Template;
 import org.grails.core.io.support.GrailsFactoriesLoader;
@@ -74,6 +73,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class GroovyPagesServlet extends FrameworkServlet implements PluginManagerAware {
 
     private static final long serialVersionUID = -1918149859392123495L;
+
+    public static final String RENDERING_VIEW_ATTRIBUTE = "org.grails.rendering.view";
 
     private static final String WEB_INF = "/WEB-INF";
     private static final String GRAILS_APP = "/grails-app";
@@ -215,7 +216,7 @@ public class GroovyPagesServlet extends FrameworkServlet implements PluginManage
      */
     protected void renderPageWithEngine(GroovyPagesTemplateEngine engine, HttpServletRequest request,
             HttpServletResponse response, GroovyPageScriptSource scriptSource) throws Exception {
-        request.setAttribute(GroovyPageLayoutFinder.RENDERING_VIEW_ATTRIBUTE, Boolean.TRUE);
+        request.setAttribute(RENDERING_VIEW_ATTRIBUTE, Boolean.TRUE);
         GSPResponseWriter out = createResponseWriter(response);
         try {
             Template template = engine.createTemplate(scriptSource);

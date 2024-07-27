@@ -34,9 +34,10 @@ import org.grails.gsp.GroovyPageTemplate;
 import org.grails.gsp.GroovyPagesTemplateEngine;
 import org.grails.gsp.GroovyPagesException;
 import org.grails.web.servlet.mvc.GrailsWebRequest;
-import org.grails.web.sitemesh.GroovyPageLayoutFinder;
 import org.springframework.core.io.Resource;
 import org.springframework.scripting.ScriptSource;
+
+import static org.grails.web.pages.GroovyPagesServlet.RENDERING_VIEW_ATTRIBUTE;
 
 /**
  * A Spring View that renders Groovy Server Pages to the response. It requires an instance
@@ -67,7 +68,7 @@ public class GroovyPageView extends AbstractGrailsView {
     @Override
     protected void renderTemplate(Map<String, Object> model, GrailsWebRequest webRequest, HttpServletRequest request,
             HttpServletResponse response) {
-        request.setAttribute(GroovyPageLayoutFinder.RENDERING_VIEW_ATTRIBUTE, Boolean.TRUE);
+        request.setAttribute(RENDERING_VIEW_ATTRIBUTE, Boolean.TRUE);
         GSPResponseWriter out = null;
         try {
             out = createResponseWriter(webRequest, response);

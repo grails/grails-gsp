@@ -58,9 +58,6 @@ class GroovyPagesGrailsPlugin extends Plugin {
 
     public static final String GSP_RELOAD_INTERVAL = "grails.gsp.reload.interval"
     public static final String GSP_VIEWS_DIR = 'grails.gsp.view.dir'
-    public static final String GSP_VIEW_LAYOUT_RESOLVER_ENABLED = 'grails.gsp.view.layoutViewResolver'
-    public static final String SITEMESH_DEFAULT_LAYOUT = 'grails.sitemesh.default.layout'
-    public static final String SITEMESH_ENABLE_NONGSP = 'grails.sitemesh.enable.nongsp'
 
     def watchedResources = ["file:./plugins/*/grails-app/taglib/**/*TagLib.groovy",
                             "file:./grails-app/taglib/**/*TagLib.groovy"]
@@ -111,15 +108,8 @@ class GroovyPagesGrailsPlugin extends Plugin {
         long gspCacheTimeout = config.getProperty(GSP_RELOAD_INTERVAL, Long,  (developmentMode && env == Environment.DEVELOPMENT) ? 0L : 5000L)
         boolean enableCacheResources = !config.getProperty(GroovyPagesTemplateEngine.CONFIG_PROPERTY_DISABLE_CACHING_RESOURCES, Boolean, false)
         String viewsDir = config.getProperty(GSP_VIEWS_DIR, '')
-        boolean enableLayoutViewResolver = config.getProperty(GSP_VIEW_LAYOUT_RESOLVER_ENABLED, Boolean, true)
-        String defaultDecoratorNameSetting = config.getProperty(SITEMESH_DEFAULT_LAYOUT, '')
-        def sitemeshEnableNonGspViews = config.getProperty(SITEMESH_ENABLE_NONGSP, Boolean, false)
-
-
 
         RuntimeSpringConfiguration spring = springConfig
-
-
 
         // resolves JSP tag libraries
         if(ClassUtils.isPresent("org.grails.gsp.jsp.TagLibraryResolverImpl", application.classLoader)) {

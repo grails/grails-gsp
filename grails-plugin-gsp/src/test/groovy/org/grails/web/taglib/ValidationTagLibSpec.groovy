@@ -3,6 +3,7 @@ package org.grails.web.taglib
 import grails.gorm.annotation.Entity
 import grails.testing.gorm.DataTest
 import grails.testing.web.taglib.TagLibUnitTest
+import groovy.xml.XmlSlurper
 import org.grails.core.io.MockStringResourceLoader
 import org.grails.plugins.web.taglib.ValidationTagLib
 import org.grails.web.util.GrailsApplicationAttributes

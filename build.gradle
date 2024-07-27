@@ -12,7 +12,8 @@ buildscript {
 }
 
 repositories {
-    mavenLocal()
+    //mavenLocal()
+    mavenCentral()
     maven { url "https://repo.grails.org/grails/core" }
 }
 
@@ -45,8 +46,9 @@ subprojects {
     }
 
     repositories {
-        mavenLocal()
-        maven { url "https://repo.grails.org/grails/core" }
+        //mavenLocal()
+        mavenCentral()
+        maven { url = "https://repo.grails.org/grails/core" }
     }
 
     if (it.name.startsWith("examples")) {
@@ -68,6 +70,14 @@ subprojects {
     targetCompatibility=1.17
 
     configurations.all {
+
+        // FORCE UPGRADE OF GROOVY IN DEPENDENCIES TO GROOVY 4
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'org.codehaus.groovy') {
+                details.useTarget(group: 'org.apache.groovy', name: details.requested.name, version: groovyVersion)
+            }
+        }
+
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
             if (details.requested.group == "org.spockframework") {
                 details.useVersion(spockVersion)

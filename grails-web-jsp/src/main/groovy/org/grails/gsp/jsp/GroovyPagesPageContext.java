@@ -1,11 +1,11 @@
 /*
- * Copyright 2004-2005 Graeme Rocher
+ * Copyright 2004-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,30 +16,21 @@
 package org.grails.gsp.jsp;
 
 import groovy.lang.Binding;
-
-import java.io.IOException;
-import java.io.Writer;
-import java.util.*;
-
 import jakarta.el.ELContext;
-
-import jakarta.servlet.GenericServlet;
-import jakarta.servlet.Servlet;
-import jakarta.servlet.ServletConfig;
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
+import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.jsp.*;
 import jakarta.servlet.jsp.tagext.BodyContent;
-
 import org.grails.gsp.GroovyPage;
 import org.grails.web.servlet.mvc.GrailsWebRequest;
 import org.springframework.util.Assert;
 import org.springframework.web.context.request.RequestContextHolder;
+
+import java.io.IOException;
+import java.io.Writer;
+import java.util.*;
 
 /**
  * A JSP PageContext implementation for use with GSP.

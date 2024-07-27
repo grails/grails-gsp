@@ -1,11 +1,11 @@
 /*
- * Copyright 2004-2005 the original author or authors.
+ * Copyright 2004-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -19,18 +19,10 @@ import grails.util.CacheEntry;
 import grails.util.GrailsStringUtils;
 import grails.util.GrailsUtil;
 import groovy.lang.GroovyObject;
-
-import java.util.Locale;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
 import jakarta.servlet.http.HttpServletRequest;
-
-
 import org.grails.gsp.GroovyPagesTemplateEngine;
-import org.grails.web.gsp.io.GrailsConventionGroovyPageLocator;
 import org.grails.gsp.io.GroovyPageScriptSource;
+import org.grails.web.gsp.io.GrailsConventionGroovyPageLocator;
 import org.grails.web.servlet.mvc.GrailsWebRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +34,11 @@ import org.springframework.util.Assert;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.AbstractUrlBasedView;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import java.util.Locale;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 /**
  * Evaluates the existance of a view for different extensions choosing which one to delegate to.

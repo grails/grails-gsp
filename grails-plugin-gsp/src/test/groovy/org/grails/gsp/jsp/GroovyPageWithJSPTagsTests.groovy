@@ -5,8 +5,6 @@ import grails.testing.web.taglib.TagLibUnitTest
 import grails.web.http.HttpHeaders
 import org.grails.plugins.web.taglib.ApplicationTagLib
 import org.grails.web.pages.GroovyPagesServlet
-import org.springframework.context.MessageSource
-import org.springframework.web.servlet.support.JstlUtils
 import spock.lang.*
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.mock.web.MockHttpServletRequest

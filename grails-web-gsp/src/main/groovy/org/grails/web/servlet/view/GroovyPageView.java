@@ -1,11 +1,11 @@
 /*
- * Copyright 2004-2005 Graeme Rocher
+ * Copyright 2004-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,14 +17,13 @@ package org.grails.web.servlet.view;
 
 import grails.util.Environment;
 import grails.util.GrailsUtil;
-import groovy.lang.Writable;
 import groovy.text.Template;
 
 import java.io.IOException;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -34,9 +33,10 @@ import org.grails.gsp.GroovyPageTemplate;
 import org.grails.gsp.GroovyPagesTemplateEngine;
 import org.grails.gsp.GroovyPagesException;
 import org.grails.web.servlet.mvc.GrailsWebRequest;
-import org.grails.web.sitemesh.GroovyPageLayoutFinder;
 import org.springframework.core.io.Resource;
 import org.springframework.scripting.ScriptSource;
+
+import static org.grails.web.pages.GroovyPagesServlet.RENDERING_VIEW_ATTRIBUTE;
 
 /**
  * A Spring View that renders Groovy Server Pages to the response. It requires an instance
@@ -67,7 +67,7 @@ public class GroovyPageView extends AbstractGrailsView {
     @Override
     protected void renderTemplate(Map<String, Object> model, GrailsWebRequest webRequest, HttpServletRequest request,
             HttpServletResponse response) {
-        request.setAttribute(GroovyPageLayoutFinder.RENDERING_VIEW_ATTRIBUTE, Boolean.TRUE);
+        request.setAttribute(RENDERING_VIEW_ATTRIBUTE, Boolean.TRUE);
         GSPResponseWriter out = null;
         try {
             out = createResponseWriter(webRequest, response);

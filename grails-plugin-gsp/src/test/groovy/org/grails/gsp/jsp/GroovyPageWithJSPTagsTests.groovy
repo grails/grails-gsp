@@ -5,10 +5,8 @@ import grails.testing.web.taglib.TagLibUnitTest
 import grails.web.http.HttpHeaders
 import org.grails.plugins.web.taglib.ApplicationTagLib
 import org.grails.web.pages.GroovyPagesServlet
-import org.springframework.context.MessageSource
-import org.springframework.web.servlet.support.JstlUtils
 import spock.lang.*
-import javax.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.mock.web.MockHttpServletRequest
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver
 
@@ -47,7 +45,7 @@ class GroovyPageWithJSPTagsTests extends Specification implements TagLibUnitTest
         when:
         //JstlUtils.exposeLocalizationContext(request, grailsApplication.mainContext.getBean("messageSource", MessageSource))
         def template = '''
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <body>
 <c:forEach var="i" begin="1" end="3"><c:out value="${i}" /> . <c:out value="${i}" /><br/></c:forEach>
@@ -112,7 +110,7 @@ class GroovyPageWithJSPTagsTests extends Specification implements TagLibUnitTest
     def testNestedJSPTags() {
         when:
         def template = '''
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <html>
 <head>
 <title>test</title>
@@ -139,7 +137,7 @@ goodbye
 
     def testGSPCantOverrideDefaultNamespaceWithJSP() {
         when:
-        def template = '<%@ taglib prefix="g" uri="http://java.sun.com/jsp/jstl/fmt" %><g:formatNumber number="10" format=".00"/>'
+        def template = '<%@ taglib prefix="g" uri="jakarta.tags.fmt" %><g:formatNumber number="10" format=".00"/>'
         String output = applyTemplate(template)
 
         then:
@@ -149,7 +147,7 @@ goodbye
     def testGSPWithIterativeJSPTag() {
         when:
         def template = '''
- <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+ <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <g:set var="foo" value="${[1,2,3]}" />
 <c:forEach items="${foo}" var="num"><p>${num}</p></c:forEach>
 '''
@@ -162,7 +160,7 @@ goodbye
 
     def testSimpleTagWithValue() {
         when:
-        def template = '<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><fmt:formatNumber value="${10}" pattern=".00"/>'
+        def template = '<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %><fmt:formatNumber value="${10}" pattern=".00"/>'
         String output = applyTemplate(template)
 
         then:
@@ -171,7 +169,7 @@ goodbye
 
     def testInvokeJspTagAsMethod() {
         when:
-        def template = '<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>${fmt.formatNumber(value:10, pattern:".00")}'
+        def template = '<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>${fmt.formatNumber(value:10, pattern:".00")}'
         String output = applyTemplate(template)
 
         then:
@@ -180,7 +178,7 @@ goodbye
 
     def testInvokeJspTagAsMethodWithBody() {
         when:
-        def template = '<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>${fmt.formatNumber(pattern:".00",10)}'
+        def template = '<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>${fmt.formatNumber(pattern:".00",10)}'
         String output = applyTemplate(template)
 
         then:
@@ -189,7 +187,7 @@ goodbye
 
     def testSimpleTagWithBody() {
         when:
-        def template = '<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><fmt:formatNumber pattern=".00">10</fmt:formatNumber>'
+        def template = '<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %><fmt:formatNumber pattern=".00">10</fmt:formatNumber>'
         String output = applyTemplate(template)
 
         then:

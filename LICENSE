@@ -244,7 +244,6 @@ SECTION 2: Apache License, V2.0
    >>> jansi-1.11
    >>> jsp-api-2.0
    >>> log4j-1.2.17
-   >>> sitemesh-3.1.1
    >>> spring-aop-4.0.4
    >>> spring-aspects-4.0.4
    >>> spring-beans-4.0.4

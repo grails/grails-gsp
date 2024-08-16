@@ -1,4 +1,4 @@
-name: Java CI
+name: "Java CI"
 on:
   push:
     branches:
@@ -11,23 +11,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: readw
+      contents: read
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up JDK
+      - name: "📥 Checkout the repository"
+        uses: actions/checkout@v4
+      - name: "☕️ Setup JDK"
         uses: actions/setup-java@v4
         with:
-          distribution: 'adopt'
+          distribution: 'temurin'
           java-version: '17'
-      - name: Run Build
+      - name: "🐘 Setup Gradle"
+        uses: gradle/actions/setup-gradle@v4
+      - name: "🔨 Run Build"
         id: build
-        uses: gradle/gradle-build-action@v3
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
-        with:
-          arguments: build
-      - name: Upload Distribution
-        if: success() && matrix.java == '11'
+        run: ./gradlew build -x test
+      - name: "📤 Upload Artifact"
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: grails-gsp-SNAPSHOT.zip
@@ -39,20 +40,21 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up JDK
+      - name: "📥 Checkout the repository"
+        uses: actions/checkout@v4
+      - name: "☕️ Setup JDK"
         uses: actions/setup-java@v4
         with:
-          distribution: 'adopt'
-          java-version: '11'
-      - name: Publish to repo.grails.org
-        uses: gradle/gradle-build-action@v3
+          distribution: 'temurin'
+          java-version: '17'
+      - name: "🐘 Setup Gradle"
+        uses: gradle/actions/setup-gradle@v4
+      - name: "📤 Publish Snapshot to repo.grails.org"
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
           ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
           ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
-        with:
-          arguments: publish
+        run: ./gradlew publish
   docs:
     if: github.event_name == 'push'
     needs: build
@@ -60,20 +62,21 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up JDK
+      - name: "📥 Checkout the repository"
+        uses: actions/checkout@v4
+      - name: "☕️ Setup JDK"
         uses: actions/setup-java@v4
         with:
-          distribution: 'adopt'
+          distribution: 'temurin'
           java-version: '17'
-      - name: Build Docs
+      - name: "🐘 Setup Gradle"
+        uses: gradle/actions/setup-gradle@v4
+      - name: "🔨 Build Docs"
         id: docs
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: docs
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
-      - name: Publish to Github Pages
+        run: ./gradlew docs
+      - name: "📤 Publish docs to Github Pages"
         if: steps.docs.outcome == 'success'
         uses: grails/github-pages-deploy-action@v2
         env:
@@ -81,5 +84,5 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           BRANCH: gh-pages
           FOLDER: build/docs
-          COMMIT_EMAIL: behlp@unityfoundation.io
-          COMMIT_NAME: Puneet Behl
+          COMMIT_EMAIL: grails-build@users.noreply.github.com
+          COMMIT_NAME: grails-build

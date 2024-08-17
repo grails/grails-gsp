@@ -12,7 +12,6 @@ buildscript {
 }
 
 repositories {
-    //mavenLocal()
     mavenCentral()
     maven { url "https://repo.grails.org/grails/core" }
 }
@@ -46,7 +45,6 @@ subprojects {
     }
 
     repositories {
-        //mavenLocal()
         mavenCentral()
         maven { url = "https://repo.grails.org/grails/core" }
     }
@@ -75,6 +73,13 @@ subprojects {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
             if (details.requested.group == 'org.codehaus.groovy') {
                 details.useTarget(group: 'org.apache.groovy', name: details.requested.name, version: groovyVersion)
+            }
+        }
+
+        // FORCE UPGRADE OF SPRING BOOT IN DEPENDENCIES TO SPRING BOOT 3
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'org.springframework.boot') {
+                details.useTarget(group: 'org.springframework.boot', name: details.requested.name, version: '3.2.6')
             }
         }
 

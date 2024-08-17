@@ -636,11 +636,10 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
             noSelection = noSelection.entrySet().iterator().next()
         }
 
-        // make below final once GROOVY-8093 is fixed
-        def PRECISION_RANKINGS = ["year": 0, "month": 10, "day": 20, "hour": 30, "minute": 40]
+        final PRECISION_RANKINGS = ['year': 0, 'month': 10, 'day': 20, 'hour': 30, 'minute': 40]
         def precision = (attrs.precision ? PRECISION_RANKINGS[attrs.precision] :
-            (grailsApplication.config.grails.tags.datePicker.default.precision ?
-                PRECISION_RANKINGS["${grailsApplication.config.grails.tags.datePicker.default.precision}"] :
+            (grailsApplication.config.getProperty('grails.tags.datePicker.default.precision', String) ?
+                PRECISION_RANKINGS["${grailsApplication.config.getProperty('grails.tags.datePicker.default.precision', String)}"] :
                 PRECISION_RANKINGS["minute"]))
 
         def day

@@ -140,7 +140,9 @@ public class GroovyPagesJspApplicationContext implements JspApplicationContext {
                 @Override
                 public ValueExpression setVariable(String name, ValueExpression valueExpression) {
                     ValueExpression previous = resolveVariable(name);
-                    pageCtx.setAttribute(name, valueExpression.getValue(GroovyPagesELContext.this));
+                    if (valueExpression != null) {
+                        GroovyPagesELContext.this.pageCtx.setAttribute(name, valueExpression.getValue(GroovyPagesELContext.this));
+                    }
                     return previous;
                 }
             };

@@ -138,7 +138,7 @@ abstract class AbstractGrailsTagTests {
 
             def tagLibrary = grailsApplication.getArtefactForFeature(TagLibArtefactHandler.TYPE, tagNamespace + ':' + tagName)
             if (!tagLibrary) {
-                fail('No tag library found for tag $tagName')
+                fail("No tag library found for tag $tagName")
             }
             def go = tagLibrary.newInstance()
             appCtx.autowireCapableBeanFactory.autowireBeanProperties(go, AutowireCapableBeanFactory.AUTOWIRE_BY_NAME, false)

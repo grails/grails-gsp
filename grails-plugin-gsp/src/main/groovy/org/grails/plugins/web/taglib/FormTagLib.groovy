@@ -637,10 +637,10 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
         }
 
         final PRECISION_RANKINGS = ['year': 0, 'month': 10, 'day': 20, 'hour': 30, 'minute': 40]
-        def precision = (attrs.precision ? PRECISION_RANKINGS[attrs.precision] :
-            (grailsApplication.config.getProperty('grails.tags.datePicker.default.precision', String) ?
-                PRECISION_RANKINGS["${grailsApplication.config.getProperty('grails.tags.datePicker.default.precision', String)}"] :
-                PRECISION_RANKINGS["minute"]))
+        def precision = PRECISION_RANKINGS[
+            attrs.precision ?:
+            grailsApplication.config.getProperty('grails.tags.datePicker.default.precision', 'minute')
+        ]
 
         def day
         def month

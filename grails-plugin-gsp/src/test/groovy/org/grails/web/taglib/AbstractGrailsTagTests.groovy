@@ -9,6 +9,9 @@ import grails.util.GrailsWebMockUtil
 import grails.util.Holders
 import grails.util.Metadata
 import grails.web.pages.GroovyPagesUriService
+import jakarta.servlet.ServletContext
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
 import org.grails.buffer.FastStringWriter
 import org.grails.config.PropertySourcesConfig
 import org.grails.core.artefact.ControllerArtefactHandler
@@ -66,10 +69,11 @@ import javax.xml.xpath.XPathFactory
 import static org.junit.jupiter.api.Assertions.*
 
 abstract class AbstractGrailsTagTests {
-    MockServletContext servletContext
+
+    ServletContext servletContext
     GrailsWebRequest webRequest
-    MockHttpServletRequest request
-    MockHttpServletResponse response
+    HttpServletRequest request
+    HttpServletResponse response
     ApplicationContext ctx
     def originalHandler
     ApplicationContext appCtx
@@ -121,18 +125,18 @@ abstract class AbstractGrailsTagTests {
         println "$name took ${System.currentTimeMillis()-now}ms"
     }
 
-    def withTag(String tagName, Writer out, String tagNamespace="g", Closure callable) {
+    def withTag(String tagName, Writer out, String tagNamespace = 'g', Closure callable) {
         def result = null
         runTest {
             def webRequest = RequestContextHolder.currentRequestAttributes()
             webRequest.out = out
 
-            def mockController = grailsApplication.getControllerClass("MockController").newInstance()
+            def mockController = grailsApplication.getControllerClass('MockController').newInstance()
 
             request.setAttribute(GrailsApplicationAttributes.CONTROLLER, mockController)
             request.setAttribute(DispatcherServlet.LOCALE_RESOLVER_ATTRIBUTE, new AcceptHeaderLocaleResolver())
 
-            def tagLibrary = grailsApplication.getArtefactForFeature(TagLibArtefactHandler.TYPE, tagNamespace + ":" + tagName)
+            def tagLibrary = grailsApplication.getArtefactForFeature(TagLibArtefactHandler.TYPE, tagNamespace + ':' + tagName)
             if (!tagLibrary) {
                 fail("No tag library found for tag $tagName")
             }
@@ -215,70 +219,91 @@ abstract class AbstractGrailsTagTests {
 
     @BeforeEach
     protected void setUp() throws Exception {
+
         GroovySystem.metaClassRegistry.addMetaClassRegistryChangeEventListener(registryCleaner)
         GroovyPageMetaInfo.DEFAULT_PLUGIN_PATH = null
         domBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder()
         xpath = XPathFactory.newInstance().newXPath()
-        originalHandler = GroovySystem.metaClassRegistry.metaClassCreationHandle
+        originalHandler = GroovySystem.metaClassRegistry.metaClassCreationHandler
 
         GroovySystem.metaClassRegistry.metaClassCreationHandle = new ExpandoMetaClassCreationHandle()
         onSetUp()
-        Metadata.getInstance(new ByteArrayInputStream("""
-info.app.name: ${getClass().name}
-""".bytes))
+        Metadata.getInstance(new ByteArrayInputStream("info.app.name: ${getClass().name}".bytes))
         grailsApplication = new DefaultGrailsApplication(gcl.loadedClasses, gcl)
         ga = grailsApplication
-        ga.config.grails.resources.pattern = '/**'
-        ga.config.grails.gsp.tldScanPattern = 'classpath*:/META-INF/spring*.tld,classpath*:/META-INF/fmt.tld,classpath*:/META-INF/c.tld,classpath*:/META-INF/core.tld,classpath*:/META-INF/c-1_0-rt.tld'
+        ga.config.merge(
+            ['grails':
+                 ['resources':
+                      ['pattern': '/**']
+                ]
+            ]
+        )
+        ga.config.merge(
+            ['grails':
+                 ['gsp':
+                      ['tldScanPattern':
+                           [
+                              'classpath*:/META-INF/spring*.tld',
+                              'classpath*:/META-INF/fmt.tld',
+                              'classpath*:/META-INF/c.tld',
+                              'classpath*:/META-INF/core.tld'
+                           ].join(',')
+                      ]
+                ]
+            ]
+        )
         grailsApplication.initialise()
         mockManager = new MockGrailsPluginManager(grailsApplication)
         mockManager.registerProvidedArtefacts(grailsApplication)
 
-        def mockControllerClass = gcl.parseClass("class MockController {  def index = {} } ")
+        def mockControllerClass = gcl.parseClass('class MockController {  def index = {} } ')
         ctx = new AnnotationConfigServletWebServerApplicationContext()
         ctx.setServletContext(new MockServletContext())
-        ctx.registerBeanDefinition("messageSource", new RootBeanDefinition(StaticMessageSource))
+        ctx.registerBeanDefinition('messageSource', new RootBeanDefinition(StaticMessageSource))
         ctx.refresh()
         ctx.servletContext.setAttribute(GrailsApplicationAttributes.APPLICATION_CONTEXT, ctx)
 
         grailsApplication.setApplicationContext(ctx)
 
         ctx.beanFactory.registerSingleton(GrailsApplication.APPLICATION_ID, grailsApplication)
-        ctx.beanFactory.registerSingleton("pluginManager", mockManager)
+        ctx.beanFactory.registerSingleton('pluginManager', mockManager)
 
         grailsApplication.addArtefact(ControllerArtefactHandler.TYPE, mockControllerClass)
 
-        messageSource = ctx.getBean("messageSource", MessageSource)
+        messageSource = ctx.getBean('messageSource', MessageSource)
 
-        ctx.beanFactory.registerSingleton("classLoader", gcl)
-        ctx.beanFactory.registerSingleton("grailsLinkGenerator", new DefaultLinkGenerator("http://localhost:8080"))
-        ctx.beanFactory.registerSingleton("manager", mockManager)
-        ctx.beanFactory.registerSingleton("conversionService", new DefaultConversionService())
+        ctx.beanFactory.registerSingleton('classLoader', gcl)
+        ctx.beanFactory.registerSingleton('grailsLinkGenerator', new DefaultLinkGenerator('http://localhost:8080'))
+        ctx.beanFactory.registerSingleton('manager', mockManager)
+        ctx.beanFactory.registerSingleton('conversionService', new DefaultConversionService())
         ctx.beanFactory.registerSingleton(GroovyPagesUriService.BEAN_ID, new DefaultGroovyPagesUriService())
 
         onInitMockBeans()
 
         def dependantPluginClasses = []
-        dependantPluginClasses << gcl.loadClass("org.grails.plugins.CoreGrailsPlugin")
-        dependantPluginClasses << gcl.loadClass("org.grails.plugins.CodecsGrailsPlugin")
-        dependantPluginClasses << gcl.loadClass("org.grails.plugins.domain.DomainClassGrailsPlugin")
-        dependantPluginClasses << gcl.loadClass("org.grails.plugins.i18n.I18nGrailsPlugin")
-        dependantPluginClasses << gcl.loadClass("org.grails.plugins.web.mapping.UrlMappingsGrailsPlugin")
-        dependantPluginClasses << gcl.loadClass("org.grails.plugins.web.controllers.ControllersGrailsPlugin")
-        dependantPluginClasses << gcl.loadClass("org.grails.plugins.web.GroovyPagesGrailsPlugin")
+        dependantPluginClasses << gcl.loadClass('org.grails.plugins.CoreGrailsPlugin')
+        dependantPluginClasses << gcl.loadClass('org.grails.plugins.CodecsGrailsPlugin')
+        dependantPluginClasses << gcl.loadClass('org.grails.plugins.domain.DomainClassGrailsPlugin')
+        dependantPluginClasses << gcl.loadClass('org.grails.plugins.i18n.I18nGrailsPlugin')
+        dependantPluginClasses << gcl.loadClass('org.grails.plugins.web.mapping.UrlMappingsGrailsPlugin')
+        dependantPluginClasses << gcl.loadClass('org.grails.plugins.web.controllers.ControllersGrailsPlugin')
+        dependantPluginClasses << gcl.loadClass('org.grails.plugins.web.GroovyPagesGrailsPlugin')
 
-        def dependentPlugins = dependantPluginClasses.collect { new DefaultGrailsPlugin(it, grailsApplication)}
+        def dependentPlugins = dependantPluginClasses.collect { new DefaultGrailsPlugin(it as Class<?>, grailsApplication)}
 
-        dependentPlugins.each { mockManager.registerMockPlugin(it); it.manager = mockManager }
+        dependentPlugins.each {
+            (mockManager as MockGrailsPluginManager).registerMockPlugin(it);
+            it.manager = mockManager
+        }
         mockManager.registerProvidedArtefacts(grailsApplication)
         def springConfig = new WebRuntimeSpringConfiguration(ctx)
 
         webRequest = GrailsWebMockUtil.bindMockWebRequest(ctx)
         onInit()
         try {
-            JstlUtils.exposeLocalizationContext webRequest.getRequest(), null
-        } catch (Throwable e) {
-            // ignore
+            JstlUtils.exposeLocalizationContext(webRequest.getRequest(), null)
+        } catch (Throwable ignore) {
+
         }
 
         servletContext = webRequest.servletContext
@@ -296,10 +321,6 @@ info.app.name: ${getClass().name}
 
         servletContext.setAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, appCtx)
         mockManager.applicationContext = appCtx
-
-        //GroovySystem.metaClassRegistry.removeMetaClass(String)
-        //GroovySystem.metaClassRegistry.removeMetaClass(Object)
-
         mockManager.doDynamicMethods()
         initRequestAndResponse()
 
@@ -313,7 +334,7 @@ info.app.name: ${getClass().name}
     private initRequestAndResponse() {
         request = webRequest.currentRequest
         initThemeSource(request, messageSource)
-        request.characterEncoding = "utf-8"
+        request.characterEncoding = 'utf-8'
         response = webRequest.currentResponse
     }
 
@@ -335,7 +356,7 @@ info.app.name: ${getClass().name}
         ga.mainContext.close()
 
         Holders.servletContext = null
-        GroovyPageMetaInfo.DEFAULT_PLUGIN_PATH = ""
+        GroovyPageMetaInfo.DEFAULT_PLUGIN_PATH = ''
         registryCleaner.clean()
         GroovySystem.metaClassRegistry.removeMetaClassRegistryChangeEventListener(registryCleaner)
     }
@@ -365,7 +386,7 @@ info.app.name: ${getClass().name}
         def engine = appCtx.groovyPagesTemplateEngine
 
         assert engine
-        def t = engine.createTemplate(template, "test_"+ System.currentTimeMillis())
+        def t = engine.createTemplate(template, 'test_' + System.currentTimeMillis())
 
         def w = t.make(params)
         w.showSource = true
@@ -426,7 +447,7 @@ info.app.name: ${getClass().name}
         //printCompiledSource(template)
 
         assert engine
-        GroovyPageTemplate t = engine.createTemplate(template, "test_" + System.currentTimeMillis())
+        GroovyPageTemplate t = engine.createTemplate(template, 'test_' + System.currentTimeMillis())
         t.allowSettingContentType = true
         return t
     }
@@ -435,7 +456,7 @@ info.app.name: ${getClass().name}
         def w = template.make(params)
 
         MockHttpServletResponse mockResponse = new MockHttpServletResponse()
-        mockResponse.setCharacterEncoding("UTF-8")
+        mockResponse.setCharacterEncoding('UTF-8')
         GSPResponseWriter writer = GSPResponseWriter.getInstance(mockResponse)
         webRequest.out = writer
         w.writeTo(writer)
@@ -451,7 +472,7 @@ info.app.name: ${getClass().name}
         //printCompiledSource(template)
 
         assert engine
-        def t = engine.createTemplate(template, filename ?: "test_"+ System.currentTimeMillis())
+        def t = engine.createTemplate(template, filename ?: 'test_' + System.currentTimeMillis())
 
         def w = t.make(params)
 
@@ -470,7 +491,7 @@ info.app.name: ${getClass().name}
      * Parses the given XML text and creates a DOM document from it.
      */
     protected final Document parseText(String xml) {
-        return domBuilder.parse(new ByteArrayInputStream(xml.getBytes("UTF-8")))
+        return domBuilder.parse(new ByteArrayInputStream(xml.getBytes('UTF-8')))
     }
 
     /**

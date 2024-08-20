@@ -10,6 +10,8 @@ import org.springframework.core.io.DefaultResourceLoader
 import org.springframework.mock.web.MockServletContext
 import org.springframework.web.context.request.RequestContextHolder
 import org.springframework.web.servlet.support.JstlUtils
+import spock.lang.Shared
+import spock.lang.Specification
 
 import static org.junit.jupiter.api.Assertions.assertEquals
 
@@ -17,42 +19,46 @@ import static org.junit.jupiter.api.Assertions.assertEquals
  * @author Graeme Rocher
  * @since 1.0
  */
-class SimpleJspTagTests {
+class SimpleJspTagTests extends Specification {
 
+    @Shared
     GrailsWebRequest webRequest
 
-    @BeforeEach
-    protected void setUp() {
+    void setup() {
         webRequest = GrailsWebMockUtil.bindMockWebRequest()
         webRequest.getCurrentRequest().setAttribute(GroovyPagesServlet.SERVLET_INSTANCE, new GroovyPagesServlet())
     }
 
-    protected void tearDown() {
+    void cleanup() {
         RequestContextHolder.resetRequestAttributes()
     }
 
-    @Test
     void testSimpleTagUsage() {
-
+        given:
         def resolver = new TagLibraryResolverImpl()
         resolver.servletContext = new MockServletContext()
         resolver.grailsApplication = new DefaultGrailsApplication()
         resolver.tldScanPatterns = ['classpath*:/META-INF/fmt.tld'] as String[]
         resolver.resourceLoader = new DefaultResourceLoader(this.class.classLoader)
         
-        JspTagLib tagLib = resolver.resolveTagLibrary("http://java.sun.com/jsp/jstl/fmt")
+        when:
+        def tagLib = resolver.resolveTagLibrary('jakarta.tags.fmt')
 
-        assert tagLib
+        then:
+        tagLib
 
-        JspTag formatNumberTag = tagLib.getTag("formatNumber")
+        when:
+        def formatNumberTag = tagLib.getTag('formatNumber')
 
-        assert formatNumberTag
+        then:
+        formatNumberTag
 
+        when:
         def writer = new StringWriter()
+        JstlUtils.exposeLocalizationContext(webRequest.getRequest(), null)
+        formatNumberTag.doTag(writer, [value: '10', pattern: '.00'])
 
-        JstlUtils.exposeLocalizationContext webRequest.getRequest(),null
-        formatNumberTag.doTag writer, [value:"10", pattern:".00"]
-
-        assertEquals "10.00", writer.toString()
+        then:
+        writer.toString() == '10.00'
     }
 }

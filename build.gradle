@@ -64,6 +64,9 @@ subprojects { subproject ->
     } else if (isGrailsPlugin) {
         apply plugin: "org.grails.grails-plugin"
     } else {
+        apply plugin: 'groovy'
+        apply plugin: 'java-library'
+
         repositories {
             maven { url "https://repo.grails.org/grails/core" }
         }
@@ -100,6 +103,8 @@ subprojects { subproject ->
     }
 
     apply plugin: 'idea'
+    apply plugin: 'java-library'
+
     java {
         toolchain {
             languageVersion = JavaLanguageVersion.of(17)

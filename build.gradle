@@ -29,9 +29,9 @@ ext {
     isReleaseVersion = !isSnapshot
 }
 
-ext."signing.keyId" = project.hasProperty("signing.keyId") ? project.getProperty('signing.keyId') : System.getenv('SIGNING_KEY')
-ext."signing.secretKeyRingFile" = project.hasProperty("signing.secretKeyRingFile") ? project.getProperty('signing.secretKeyRingFile') : "${System.properties['user.home']}${File.separator}.gnupg${File.separator}secring.gpg"
-ext."signing.password" = project.hasProperty("signing.password") ? project.getProperty('signing.password') : System.getenv('SIGNING_PASSPHRASE')
+ext."signing.keyId" = project.hasProperty("signing.keyId") ?: System.getenv('SIGNING_KEY')
+ext."signing.secretKeyRingFile" = project.hasProperty("signing.secretKeyRingFile") ?: "${System.properties['user.home']}${File.separator}.gnupg${File.separator}secring.gpg"
+ext."signing.password" = project.hasProperty("signing.password") ?: System.getenv('SIGNING_PASSPHRASE')
 
 
 apply plugin: 'idea'
@@ -64,9 +64,6 @@ subprojects { subproject ->
     } else if (isGrailsPlugin) {
         apply plugin: "org.grails.grails-plugin"
     } else {
-        apply plugin: 'groovy'
-        apply plugin: 'java-library'
-
         repositories {
             maven { url "https://repo.grails.org/grails/core" }
         }
@@ -75,19 +72,8 @@ subprojects { subproject ->
             documentation
         }
 
-        configurations {
-            all {
-                resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-                    String group = details.requested.group
-                    if (group == 'org.codehaus.groovy') {
-                        details.useVersion(groovyVersion)
-                    }
-                }
-            }
-        }
-
         dependencies {
-            api "org.codehaus.groovy:groovy:$groovyVersion"
+            api "org.apache.groovy:groovy:$groovyVersion"
             api "org.slf4j:slf4j-api:$slf4jVersion"
 
             testImplementation "org.spockframework:spock-core:${spockVersion}", {
@@ -109,13 +95,11 @@ subprojects { subproject ->
         groovydoc.classpath += (configurations.documentation + configurations.compileClasspath)
 
         dependencies {
-            documentation "org.codehaus.groovy:groovy-dateutil:$groovyVersion"
+            documentation "org.apache.groovy:groovy-dateutil:$groovyVersion"
         }
     }
 
     apply plugin: 'idea'
-    apply plugin: 'java-library'
-
     java {
         toolchain {
             languageVersion = JavaLanguageVersion.of(17)
@@ -154,7 +138,7 @@ subprojects { subproject ->
 
         testImplementation "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
         implementation "jakarta.persistence:jakarta.persistence-api:$jakartaPersistenceVersion"
-        testImplementation "org.codehaus.groovy:groovy-test-junit5:${groovyVersion}"
+        testImplementation "org.apache.groovy:groovy-test-junit5:${groovyVersion}"
         testImplementation "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
         testImplementation "org.junit.platform:junit-platform-runner:${junitPlatformVerison}"
         testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
@@ -182,10 +166,10 @@ subprojects { subproject ->
             documentation "org.fusesource.jansi:jansi:1.18"
             documentation "jline:jline:2.14.6"
             documentation "com.github.javaparser:javaparser-core:3.15.14"
-            documentation "org.codehaus.groovy:groovy:${groovyVersion}"
-            documentation "org.codehaus.groovy:groovy-ant:$groovyVersion"
-            documentation "org.codehaus.groovy:groovy-dateutil:$groovyVersion"
-            documentation "org.codehaus.groovy:groovy-cli-picocli:$groovyVersion"
+            documentation "org.apache.groovy:groovy:${groovyVersion}"
+            documentation "org.apache.groovy:groovy-ant:$groovyVersion"
+            documentation "org.apache.groovy:groovy-dateutil:$groovyVersion"
+            documentation "org.apache.groovy:groovy-cli-picocli:$groovyVersion"
         }
     }
 
@@ -355,9 +339,9 @@ dependencies {
         documentation "org.fusesource.jansi:jansi:1.18"
         documentation "jline:jline:2.14.6"
         documentation "com.github.javaparser:javaparser-core:3.15.14"
-        documentation "org.codehaus.groovy:groovy:${groovyVersion}"
-        documentation "org.codehaus.groovy:groovy-ant:$groovyVersion"
-        documentation "org.codehaus.groovy:groovy-cli-picocli:$groovyVersion"
+        documentation "org.apache.groovy:groovy:${groovyVersion}"
+        documentation "org.apache.groovy:groovy-ant:$groovyVersion"
+        documentation "org.apache.groovy:groovy-cli-picocli:$groovyVersion"
     }
 }
 
@@ -379,7 +363,7 @@ tasks.withType(Groovydoc) {
     destinationDir = project.file("build/docs/api")
     def files = []
     project.rootProject.subprojects
-            .findAll { !it.name != 'docs' && !it.name.startsWith('examples') }
+            .findAll { it.name != 'docs' && !it.name.startsWith('examples') }
             .each { subproject ->
                 if (subproject.file('src/main/groovy').exists()) {
                     files += subproject.files("src/main/groovy")
@@ -410,7 +394,8 @@ task publishGuide(type: grails.doc.gradle.PublishGuide) {
                   'sourceDir': rootProject.projectDir.absolutePath,
                   'sourcedir': rootProject.projectDir.absolutePath,
                   'javaee'   : 'https://docs.oracle.com/javaee/7/api/',
-                  'javase'   : 'https://docs.oracle.com/javase/7/docs/api/',
+                  'jakartaee': 'https://jakarta.ee/specifications/platform/10/apidocs/',
+                  'javase'   : 'https://docs.oracle.com/en/java/javase/17/docs/api/index.html',
                   'groovyapi': 'http://docs.groovy-lang.org/latest/html/gapi/',
                   'grailsapi': 'http://docs.grails.org/latest/api/',
                   'gormapi'  : 'http://gorm.grails.org/latest/api/',

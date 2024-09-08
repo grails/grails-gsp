@@ -18,12 +18,10 @@ package org.grails.web.taglib
 import grails.artefact.Artefact
 import grails.testing.web.UrlMappingsUnitTest
 import grails.util.GrailsUtil
-import org.grails.buffer.FastStringWriter
 import org.grails.core.io.MockStringResourceLoader
 import org.grails.gsp.GroovyPageBinding
 import org.grails.plugins.web.taglib.RenderTagLib
 import org.grails.taglib.GrailsTagException
-import org.grails.web.sitemesh.GSPSitemeshPage
 import org.grails.web.util.GrailsApplicationAttributes
 import org.springframework.web.servlet.support.RequestContextUtils as RCU
 import spock.lang.Specification

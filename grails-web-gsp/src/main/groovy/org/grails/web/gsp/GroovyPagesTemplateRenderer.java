@@ -20,7 +20,6 @@ import grails.util.CacheEntry;
 import grails.util.Environment;
 import grails.util.GrailsNameUtils;
 import grails.util.GrailsStringUtils;
-import groovy.lang.GroovyObject;
 import groovy.text.Template;
 import org.codehaus.groovy.runtime.InvokerHelper;
 import org.grails.buffer.CodecPrintWriter;

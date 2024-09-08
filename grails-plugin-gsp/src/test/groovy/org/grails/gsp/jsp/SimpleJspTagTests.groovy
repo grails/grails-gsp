@@ -4,16 +4,12 @@ import grails.core.DefaultGrailsApplication
 import grails.util.GrailsWebMockUtil
 import org.grails.web.pages.GroovyPagesServlet
 import org.grails.web.servlet.mvc.GrailsWebRequest
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
 import org.springframework.core.io.DefaultResourceLoader
 import org.springframework.mock.web.MockServletContext
 import org.springframework.web.context.request.RequestContextHolder
 import org.springframework.web.servlet.support.JstlUtils
 import spock.lang.Shared
 import spock.lang.Specification
-
-import static org.junit.jupiter.api.Assertions.assertEquals
 
 /**
  * @author Graeme Rocher

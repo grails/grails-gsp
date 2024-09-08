@@ -46,7 +46,6 @@ import org.springframework.context.support.StaticMessageSource
 import org.springframework.core.convert.support.DefaultConversionService
 import org.springframework.core.io.Resource
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver
-import org.springframework.mock.web.MockHttpServletRequest
 import org.springframework.mock.web.MockHttpServletResponse
 import org.springframework.mock.web.MockServletContext
 import org.springframework.ui.context.Theme

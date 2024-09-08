@@ -11,6 +11,13 @@ buildscript {
     }
 }
 
+ext {
+    groovyVersion = System.getenv('CI_GROOVY_VERSION') ?: project.groovyVersion
+    isCiBuild = System.getenv().get("TRAVIS") == 'true' || (System.getenv().get("CI") as Boolean)
+    isSnapshot = project.projectVersion.endsWith('-SNAPSHOT')
+    isReleaseVersion = !isSnapshot
+}
+
 repositories {
     mavenCentral()
     maven { url "https://repo.grails.org/grails/core" }
@@ -27,13 +34,6 @@ version project.projectVersion
 
 apply plugin: 'java-library'
 apply plugin: 'groovy'
-
-ext {
-    groovyVersion = System.getenv('CI_GROOVY_VERSION') ?: project.groovyVersion
-    isCiBuild = System.getenv().get("TRAVIS") == 'true' || (System.getenv().get("CI") as Boolean)
-    isSnapshot = project.projectVersion.endsWith('-SNAPSHOT')
-    isReleaseVersion = !isSnapshot
-}
 
 ext."signing.keyId" = project.hasProperty("signing.keyId") ?: System.getenv('SIGNING_KEY')
 ext."signing.secretKeyRingFile" = project.hasProperty("signing.secretKeyRingFile") ?: "${System.properties['user.home']}${File.separator}.gnupg${File.separator}secring.gpg"

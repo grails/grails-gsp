@@ -16,7 +16,6 @@ package org.grails.web.taglib
 
 import grails.testing.web.taglib.TagLibUnitTest
 import org.grails.plugins.web.taglib.ApplicationTagLib
-
 import spock.lang.Specification
 
 class ApplyCodecTagSpec extends Specification implements TagLibUnitTest<ApplicationTagLib> {

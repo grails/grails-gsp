@@ -396,7 +396,7 @@ tasks.withType(Groovydoc) {
 task publishGuide(type: grails.doc.gradle.PublishGuide) {
     group = DOCUMENTATION_GROUP
     description = 'Generate Guide'
-    dependsOn copyLocalDocResources
+    dependsOn copyLocalDocResources, compileGroovy, groovydoc, compileJava, processResources
 
     targetDir = project.file("${buildDir}/docs")
     sourceRepo = "https://github.com/${githubSlug}/edit/${githubBranch}/src/main/docs"

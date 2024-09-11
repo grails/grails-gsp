@@ -35,10 +35,9 @@ version project.projectVersion
 apply plugin: 'java-library'
 apply plugin: 'groovy'
 
-ext."signing.keyId" = project.hasProperty("signing.keyId") ?: System.getenv('SIGNING_KEY')
-ext."signing.secretKeyRingFile" = project.hasProperty("signing.secretKeyRingFile") ?: "${System.properties['user.home']}${File.separator}.gnupg${File.separator}secring.gpg"
-ext."signing.password" = project.hasProperty("signing.password") ?: System.getenv('SIGNING_PASSPHRASE')
-
+ext.set('signing.keyId', project.findProperty('signing.keyId') ?: System.getenv('SIGNING_KEY'))
+ext.set('signing.secretKeyRingFile', project.findProperty('signing.secretKeyRingFile') ?: "${System.properties['user.home']}${File.separator}.gnupg${File.separator}secring.gpg")
+ext.set('signing.password', project.findProperty('signing.password') ?: System.getenv('SIGNING_PASSPHRASE'))
 
 apply plugin: 'idea'
 
@@ -258,8 +257,8 @@ subprojects { subproject ->
                 repositories {
                     maven {
                         credentials {
-                            def u = System.getenv("ARTIFACTORY_USERNAME") ?: subproject.hasProperty("artifactoryPublishUsername") ? subproject.artifactoryPublishUsername : ''
-                            def p = System.getenv("ARTIFACTORY_PASSWORD") ?: subproject.hasProperty("artifactoryPublishPassword") ? subproject.artifactoryPublishPassword : ''
+                            def u = System.getenv('ARTIFACTORY_USERNAME') ?: project.findProperty('artifactoryPublishUsername') ?: ''
+                            def p = System.getenv('ARTIFACTORY_PASSWORD') ?: project.findProperty('artifactoryPublishPassword') ?: ''
                             username = u
                             password = p
                         }
@@ -454,9 +453,9 @@ if (isReleaseVersion) {
     nexusPublishing {
         repositories {
             sonatype {
-                def ossUser = System.getenv("SONATYPE_USERNAME") ?: project.hasProperty("sonatypeOssUsername") ? project.sonatypeOssUsername : ''
-                def ossPass = System.getenv("SONATYPE_PASSWORD") ?: project.hasProperty("sonatypeOssPassword") ? project.sonatypeOssPassword : ''
-                def ossStagingProfileId = System.getenv("SONATYPE_STAGING_PROFILE_ID") ?: project.hasProperty("sonatypeOssStagingProfileId") ? project.sonatypeOssStagingProfileId : ''
+                def ossUser = System.getenv('SONATYPE_USERNAME') ?: project.findProperty('sonatypeOssUsername') ?: ''
+                def ossPass = System.getenv('SONATYPE_PASSWORD') ?: project.findProperty('sonatypeOssPassword') ?: ''
+                def ossStagingProfileId = System.getenv('SONATYPE_STAGING_PROFILE_ID') ?: project.findProperty('sonatypeOssStagingProfileId') ?: ''
                 nexusUrl = uri("https://s01.oss.sonatype.org/service/local/")
                 username = ossUser
                 password = ossPass

@@ -19,13 +19,12 @@ import grails.util.Environment
 import grails.util.GrailsMetaClassUtils
 import grails.web.api.WebAttributes
 import groovy.transform.CompileStatic
-import org.grails.taglib.encoder.WithCodecHelper
 import org.grails.taglib.NamespacedTagDispatcher
 import org.grails.taglib.TagLibraryLookup
-import org.grails.taglib.TagOutput
 import org.grails.taglib.TagLibraryMetaUtils
+import org.grails.taglib.TagOutput
+import org.grails.taglib.encoder.WithCodecHelper
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.ApplicationContext
 
 /**
  * A trait that adds the ability invoke tags to any class

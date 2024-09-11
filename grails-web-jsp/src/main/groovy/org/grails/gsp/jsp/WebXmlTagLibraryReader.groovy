@@ -17,7 +17,6 @@ package org.grails.gsp.jsp
 
 import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
-
 import org.grails.io.support.SpringIOUtils
 
 /**

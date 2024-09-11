@@ -121,6 +121,17 @@ function addJsClass() {
 </div>
 </div>
 <div class="paragraph">
+<p>Separate imports with semicolons <code>;</code>. As a convention, you should split larger number of imports into separate lines to improve readability, which requires adding backslash <code>\</code> at the end of each line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="error">&lt;</span>%@ page import=&quot;java.awt.*; \
+your.custom.ComponentA; \
+your.custom.ComponentB;&quot;
+%<span class="error">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>GSP also supports the contentType directive:</p>
 </div>
 <div class="listingblock">

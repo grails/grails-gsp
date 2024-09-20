@@ -91,6 +91,11 @@ public class WebRequestTemplateVariableBinding extends AbstractTemplateVariableB
                 return webRequest.getActionName();
             }
         });
+        m.put("namespace", new LazyRequestBasedValue() {
+            public Object evaluate(GrailsWebRequest webRequest) {
+                return webRequest.getControllerNamespace();
+            }
+        });
         m.put("controllerName", new LazyRequestBasedValue() {
             public Object evaluate(GrailsWebRequest webRequest) {
                 return webRequest.getControllerName();

@@ -28,7 +28,7 @@ jobs:
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
         with:
-          arguments: build
+          arguments: build --refresh-dependencies
       - name: Upload Distribution
         if: success() && matrix.java == '11'
         uses: actions/upload-artifact@v4

@@ -47,6 +47,7 @@ class RenderTagLib implements TagLibrary {
      * &lt;g:render template="atemplate" bean="${user}" /&gt;<br/>
      *
      * @attr template REQUIRED The name of the template to apply
+     * @attr optional if true, this tag will be ignored when the template does not exist.
      * @attr contextPath the context path to use (relative to the application context path). Defaults to "" or path to the plugin for a plugin view or template.
      * @attr bean The bean to apply the template against
      * @attr model The model to apply the template against as a java.util.Map

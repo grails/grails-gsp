@@ -115,6 +115,10 @@ public class GroovyPagesTemplateRenderer implements InitializingBean {
         final Object controller = webRequest.getAttribute(GrailsApplicationAttributes.CONTROLLER, GrailsWebRequest.SCOPE_REQUEST);
         Template t = findAndCacheTemplate(controller, pageScope, templateName, contextPath, pluginName, uri);
         if (t == null) {
+            String optional = getStringValue(attrs, "optional");
+            if (Boolean.parseBoolean(optional.isBlank()? "false" : optional)) {
+                return; // allow missing templates if optional == "true"
+            }
             throw new GrailsTagException("Template not found for name [" + templateName + "] and path [" + uri + "]");
         }
 

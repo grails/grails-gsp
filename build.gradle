@@ -96,7 +96,7 @@ subprojects { subproject ->
             testImplementation "cglib:cglib-nodep:2.2.2"
             testImplementation "org.objenesis:objenesis:3.4"
 
-            documentation "org.fusesource.jansi:jansi:1.14"
+            documentation "org.fusesource.jansi:jansi:2.4.1"
 
         }
 
@@ -179,7 +179,7 @@ subprojects { subproject ->
 
     dependencies {
         if (configurations.find { subproject.name == 'documentation' }) {
-            documentation "org.fusesource.jansi:jansi:1.18"
+            documentation "org.fusesource.jansi:jansi:2.4.1"
             documentation "jline:jline:2.14.6"
             documentation "com.github.javaparser:javaparser-core:3.15.14"
             documentation "org.apache.groovy:groovy:${groovyVersion}"
@@ -352,7 +352,7 @@ configurations {
 dependencies {
     if (configurations.find { it.name == 'documentation' }) {
         documentation 'info.picocli:picocli:3.8.0'
-        documentation "org.fusesource.jansi:jansi:1.18"
+        documentation "org.fusesource.jansi:jansi:2.4.1"
         documentation "jline:jline:2.14.6"
         documentation "com.github.javaparser:javaparser-core:3.15.14"
         documentation "org.apache.groovy:groovy:${groovyVersion}"

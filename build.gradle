@@ -186,6 +186,7 @@ subprojects { subproject ->
             documentation "org.apache.groovy:groovy-ant:$groovyVersion"
             documentation "org.apache.groovy:groovy-dateutil:$groovyVersion"
             documentation "org.apache.groovy:groovy-cli-picocli:$groovyVersion"
+            documentation "org.asciidoctor:asciidoctorj:$asciidoctorjVersion"
         }
     }
 
@@ -358,6 +359,7 @@ dependencies {
         documentation "org.apache.groovy:groovy:${groovyVersion}"
         documentation "org.apache.groovy:groovy-ant:$groovyVersion"
         documentation "org.apache.groovy:groovy-cli-picocli:$groovyVersion"
+        documentation "org.asciidoctor:asciidoctorj:$asciidoctorjVersion"
     }
 }
 

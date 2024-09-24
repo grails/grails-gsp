@@ -26,7 +26,7 @@ jobs:
         id: build
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
-        run: ./gradlew build  --refresh-dependencies
+        run: ./gradlew build --refresh-dependencies
       - name: "📤 Upload Artifact"
         if: success()
         uses: actions/upload-artifact@v4
@@ -75,7 +75,7 @@ jobs:
         id: docs
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
-        run: ./gradlew docs
+        run: ./gradlew docs --refresh-dependencies
       - name: "📤 Publish docs to Github Pages"
         if: steps.docs.outcome == 'success'
         uses: grails/github-pages-deploy-action@v2

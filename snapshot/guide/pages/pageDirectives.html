@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>2.3 Page Directives 6.2.2-SNAPSHOT</title>
+    <title>2.3 Page Directives 7.0.0-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -93,7 +93,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>2.3 Page Directives</h1>
 
-                    <p><strong>Version:</strong> 6.2.2-SNAPSHOT</p>
+                    <p><strong>Version:</strong> 7.0.0-SNAPSHOT</p>
                 </div>
 
                 
@@ -103,7 +103,7 @@ function addJsClass() {
 <h2 id="pageDirectives">2.3 Page Directives</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/GSPBasics/pageDirectives.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/GSPBasics/pageDirectives.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -118,6 +118,17 @@ function addJsClass() {
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="error">&lt;</span>%@ page import=&quot;java.awt.*&quot; %<span class="error">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Separate imports with semicolons <code>;</code>. As a convention, you should split larger number of imports into separate lines to improve readability, which requires adding backslash <code>\</code> at the end of each line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="error">&lt;</span>%@ page import=&quot;java.awt.*; \
+your.custom.ComponentA; \
+your.custom.ComponentB;&quot;
+%<span class="error">&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">

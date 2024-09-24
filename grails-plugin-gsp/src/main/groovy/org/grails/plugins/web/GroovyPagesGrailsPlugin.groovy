@@ -1,11 +1,11 @@
 /*
- * Copyright 2004-2005 the original author or authors.
+ * Copyright 2004-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package org.grails.plugins.web
+
 import grails.config.Config
 import grails.core.gsp.GrailsTagLibClass
 import grails.gsp.PageRenderer
@@ -41,7 +42,6 @@ import org.grails.web.pages.DefaultGroovyPagesUriService
 import org.grails.web.pages.FilteringCodecsByContentTypeSettings
 import org.grails.web.pages.GroovyPagesServlet
 import org.grails.web.servlet.view.GroovyPageViewResolver
-import org.grails.web.sitemesh.GroovyPageLayoutFinder
 import org.grails.web.util.GrailsApplicationAttributes
 import org.springframework.beans.factory.config.PropertiesFactoryBean
 import org.springframework.boot.web.servlet.ServletRegistrationBean
@@ -59,9 +59,6 @@ class GroovyPagesGrailsPlugin extends Plugin {
 
     public static final String GSP_RELOAD_INTERVAL = "grails.gsp.reload.interval"
     public static final String GSP_VIEWS_DIR = 'grails.gsp.view.dir'
-    public static final String GSP_VIEW_LAYOUT_RESOLVER_ENABLED = 'grails.gsp.view.layoutViewResolver'
-    public static final String SITEMESH_DEFAULT_LAYOUT = 'grails.sitemesh.default.layout'
-    public static final String SITEMESH_ENABLE_NONGSP = 'grails.sitemesh.enable.nongsp'
 
     def watchedResources = ["file:./plugins/*/grails-app/taglib/**/*TagLib.groovy",
                             "file:./grails-app/taglib/**/*TagLib.groovy"]
@@ -80,8 +77,7 @@ class GroovyPagesGrailsPlugin extends Plugin {
         RenderTagLib,
         UrlMappingTagLib,
         ValidationTagLib,
-        PluginTagLib,
-        SitemeshTagLib
+        PluginTagLib
     ]
 
 
@@ -113,15 +109,8 @@ class GroovyPagesGrailsPlugin extends Plugin {
         long gspCacheTimeout = config.getProperty(GSP_RELOAD_INTERVAL, Long,  (developmentMode && env == Environment.DEVELOPMENT) ? 0L : 5000L)
         boolean enableCacheResources = !config.getProperty(GroovyPagesTemplateEngine.CONFIG_PROPERTY_DISABLE_CACHING_RESOURCES, Boolean, false)
         String viewsDir = config.getProperty(GSP_VIEWS_DIR, '')
-        boolean enableLayoutViewResolver = config.getProperty(GSP_VIEW_LAYOUT_RESOLVER_ENABLED, Boolean, true)
-        String defaultDecoratorNameSetting = config.getProperty(SITEMESH_DEFAULT_LAYOUT, '')
-        def sitemeshEnableNonGspViews = config.getProperty(SITEMESH_ENABLE_NONGSP, Boolean, false)
-
-
 
         RuntimeSpringConfiguration spring = springConfig
-
-
 
         // resolves JSP tag libraries
         if(ClassUtils.isPresent("org.grails.gsp.jsp.TagLibraryResolverImpl", application.classLoader)) {
@@ -232,7 +221,7 @@ class GroovyPagesGrailsPlugin extends Plugin {
         }
         
         boolean jstlPresent = ClassUtils.isPresent(
-            "javax.servlet.jsp.jstl.core.Config", InternalResourceViewResolver.class.getClassLoader())
+            "jakarta.servlet.jsp.jstl.core.Config", InternalResourceViewResolver.class.getClassLoader())
         
         abstractViewResolver {
             prefix = GrailsApplicationAttributes.PATH_TO_VIEWS
@@ -248,18 +237,6 @@ class GroovyPagesGrailsPlugin extends Plugin {
         jspViewResolver(GroovyPageViewResolver) { bean ->
             bean.lazyInit = true
             bean.parent = "abstractViewResolver"
-        }
-        
-        // "grails.gsp.view.layoutViewResolver=false" can be used to disable GrailsLayoutViewResolver
-        // containsKey check must be made to check existence of boolean false values in ConfigObject
-
-        if (enableLayoutViewResolver) {
-            groovyPageLayoutFinder(GroovyPageLayoutFinder) {
-                gspReloadEnabled = enableReload
-                defaultDecoratorName = defaultDecoratorNameSetting ?: null
-                enableNonGspViews = sitemeshEnableNonGspViews
-            }
-            grailsLayoutViewResolverPostProcessor(GrailsLayoutViewResolverPostProcessor)
         }
 
         // Now go through tag libraries and configure them in Spring too. With AOP proxies and so on

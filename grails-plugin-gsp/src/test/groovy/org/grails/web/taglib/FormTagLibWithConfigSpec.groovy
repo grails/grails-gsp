@@ -1,6 +1,7 @@
 package org.grails.web.taglib
 
 import grails.testing.web.taglib.TagLibUnitTest
+import org.grails.config.PropertySourcesConfig
 import org.grails.plugins.web.taglib.FormTagLib
 import spock.lang.Specification
 
@@ -16,8 +17,16 @@ import spock.lang.Specification
  */
 class FormTagLibWithConfigSpec extends Specification implements TagLibUnitTest<FormTagLib> {
 
-    Closure doWithConfig() {{ config ->
-        config.grails.tags.booleanToAttributes = ['disabled','checked','readonly','required','bogus']
+    Closure doWithConfig() {{ PropertySourcesConfig config ->
+        config.merge(
+            ['grails':
+                 ['tags':
+                      ['booleanToAttributes':
+                           ['disabled', 'checked', 'readonly', 'required', 'bogus']
+                      ]
+                 ]
+            ]
+        )
     }}
 
     def testTextFieldTagWithNonBooleanAttributesAndConfig() {

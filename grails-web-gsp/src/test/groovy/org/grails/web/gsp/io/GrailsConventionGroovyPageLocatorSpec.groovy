@@ -5,6 +5,7 @@ import grails.plugins.DefaultGrailsPluginManager
 import grails.plugins.metadata.GrailsPlugin
 import grails.util.GrailsUtil
 import grails.util.GrailsWebMockUtil
+import groovy.xml.XmlSlurper
 import org.grails.core.io.SimpleMapResourceLoader
 import org.grails.gsp.compiler.GroovyPageParser
 import org.grails.gsp.io.GroovyPageCompiledScriptSource

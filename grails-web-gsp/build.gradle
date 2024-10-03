@@ -1,13 +1,10 @@
 dependencies {
     compileOnly "org.apache.ant:ant:${antVersion}"
-    api "javax.servlet:javax.servlet-api:$servletApiVersion"
+    api "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
     api project(":grails-gsp")
     api "org.grails:grails-web-common:$grailsVersion"
     api project(":grails-web-taglib")
 
-    compileOnly project(":grails-web-sitemesh"), {
-        exclude group:'org.grails', module:'grails-web-common'
-    }
-
+    testImplementation "net.bytebuddy:byte-buddy:$byteBuddyVersion"
     testRuntimeOnly "org.grails:grails-spring:$grailsVersion"
 }

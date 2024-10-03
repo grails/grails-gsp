@@ -2,17 +2,14 @@ package org.grails.gsp.jsp
 
 import grails.core.DefaultGrailsApplication
 import grails.util.GrailsWebMockUtil
-import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
-
-import javax.servlet.jsp.JspException
-import javax.servlet.jsp.JspWriter
-import javax.servlet.jsp.tagext.SimpleTagSupport
-
+import jakarta.servlet.jsp.JspException
+import jakarta.servlet.jsp.JspWriter
+import jakarta.servlet.jsp.tagext.SimpleTagSupport
 import org.grails.web.pages.GroovyPagesServlet
 import org.grails.web.servlet.mvc.GrailsWebRequest
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.springframework.mock.web.MockServletContext
 import org.springframework.web.context.request.RequestContextHolder
 

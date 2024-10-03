@@ -2,9 +2,7 @@ package org.grails.compiler.web.taglib
 
 import grails.artefact.Artefact
 import grails.compiler.ast.ClassInjector
-
 import org.grails.compiler.injection.GrailsAwareClassLoader
-
 import spock.lang.Issue
 import spock.lang.Specification
 

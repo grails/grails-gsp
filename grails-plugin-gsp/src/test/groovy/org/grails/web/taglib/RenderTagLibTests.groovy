@@ -15,21 +15,13 @@
  */
 package org.grails.web.taglib
 
-import com.opensymphony.module.sitemesh.RequestConstants
-import com.opensymphony.module.sitemesh.html.util.CharArray
-import com.opensymphony.module.sitemesh.parser.HTMLPageParser
-import com.opensymphony.module.sitemesh.parser.TokenizedHTMLPage
 import grails.artefact.Artefact
 import grails.testing.web.UrlMappingsUnitTest
 import grails.util.GrailsUtil
-import org.grails.buffer.FastStringWriter
 import org.grails.core.io.MockStringResourceLoader
 import org.grails.gsp.GroovyPageBinding
 import org.grails.plugins.web.taglib.RenderTagLib
 import org.grails.taglib.GrailsTagException
-import org.grails.web.sitemesh.FactoryHolder
-import org.grails.web.sitemesh.GSPSitemeshPage
-import org.grails.web.sitemesh.GrailsLayoutDecoratorMapper
 import org.grails.web.util.GrailsApplicationAttributes
 import org.springframework.web.servlet.support.RequestContextUtils as RCU
 import spock.lang.Specification
@@ -250,44 +242,6 @@ class RenderTagLibTests extends Specification implements UrlMappingsUnitTest<Ren
 
         def template = '<g:sortableColumn property="id" title="ID" id="1" />'
         assertOutputEquals '<th id="1" class="sortable" ><a href="/custompathCustomNamespace/mockcontroller/list?sort=id&amp;order=asc">ID</a></th>', template
-    }
-
-    void testPageProperty() {
-
-        def template = '<g:pageProperty name="foo.bar" />'
-
-        def head = ""
-        TokenizedHTMLPage page = new TokenizedHTMLPage([] as char[], new CharArray(0), new CharArray(0))
-        request[RequestConstants.PAGE] = page
-
-        page.addProperty("foo.bar", "good")
-
-        assertOutputEquals "good", template
-
-        template = '<g:pageProperty name="foo.bar" writeEntireProperty="true" />'
-        assertOutputEquals " bar=\"good\"", template
-    }
-
-    void testIfPageProperty() {
-        def template = '<g:ifPageProperty name="foo.bar">Hello</g:ifPageProperty>'
-
-        TokenizedHTMLPage page = new TokenizedHTMLPage([] as char[], new CharArray(0), new CharArray(0))
-        request[RequestConstants.PAGE] = page
-
-        page.addProperty("foo.bar", "true")
-
-        assertOutputEquals "Hello", template
-
-        template = '<g:ifPageProperty name="page.contentbuffer">Hello 2</g:ifPageProperty>'
-
-        GSPSitemeshPage smpage = new GSPSitemeshPage()
-        request[RequestConstants.PAGE] = smpage
-
-        FastStringWriter sw = new FastStringWriter()
-        sw.write("true")
-        smpage.setContentBuffer("contentbuffer", sw.getBuffer())
-
-        assertOutputEquals "Hello 2", template
     }
 
     void testTemplateNamespace() {
@@ -734,33 +688,6 @@ class RenderTagLibTests extends Specification implements UrlMappingsUnitTest<Ren
         def template = '<%@ page contentType="my/contenttype" %>hello world'
         assertOutputEquals 'hello world', template
         assertEquals 'my/contenttype', response.getContentType()
-    }
-
-    void testApplyLayout() {
-        GrailsLayoutDecoratorMapper decoratorMapper = new GrailsLayoutDecoratorMapper()
-        decoratorMapper.groovyPageLayoutFinder = appCtx.groovyPageLayoutFinder
-        FactoryHolder.setFactory([getDecoratorMapper: { -> decoratorMapper
-        }] as com.opensymphony.module.sitemesh.Factory)
-        def resourceLoader = new MockStringResourceLoader()
-        resourceLoader.registerMockResource('/layouts/layout.gsp', '<layoutapplied><g:layoutTitle /> - <g:layoutBody/></layoutapplied>')
-        appCtx.groovyPagesTemplateEngine.groovyPageLocator.addResourceLoader(resourceLoader)
-        def template = '<g:applyLayout name="layout"><html><head><title>title here</title></head><body>Hello world!</body></html></g:applyLayout>'
-        assertOutputEquals '<layoutapplied>title here - Hello world!</layoutapplied>', template
-    }
-
-    void testApplyLayoutParse() {
-        GrailsLayoutDecoratorMapper decoratorMapper = new GrailsLayoutDecoratorMapper()
-        decoratorMapper.groovyPageLayoutFinder = appCtx.groovyPageLayoutFinder
-        FactoryHolder.setFactory([getDecoratorMapper: { -> decoratorMapper
-        }, getPageParser                            : { String contentType -> new HTMLPageParser() }] as com.opensymphony.module.sitemesh.Factory)
-        def resourceLoader = new MockStringResourceLoader()
-        resourceLoader.registerMockResource('/layouts/layout.gsp', '<layoutapplied><g:layoutTitle /> - <g:layoutBody/></layoutapplied>')
-        appCtx.groovyPagesTemplateEngine.groovyPageLocator.addResourceLoader(resourceLoader)
-        def template = '<g:applyLayout name="layout" parse="${true}"><html><head><${"title"}>title here</${"title"}></head><body>Hello world!</body></html></g:applyLayout>'
-        assertOutputEquals '<layoutapplied>title here - Hello world!</layoutapplied>', template
-
-        template = '<g:applyLayout name="layout" parse="false"><html><head><${"title"}>title here</${"title"}></head><body>Hello world!</body></html></g:applyLayout>'
-        assertOutputEquals '<layoutapplied> - Hello world!</layoutapplied>', template
     }
 
 }

@@ -1,12 +1,13 @@
 package org.grails.web.taglib
 
-import org.junit.jupiter.api.Assertions
 
-import static org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.w3c.dom.Document
 
 import java.text.DateFormat
-import org.w3c.dom.Document
+
+import static org.junit.jupiter.api.Assertions.assertNotNull
+import static org.junit.jupiter.api.Assertions.assertThrows
 
 /**
  * Tests for the FormTagLib.groovy file which contains tags to help with the

@@ -14,9 +14,8 @@ configurations.all {
     }
 }
 dependencies {
-    compileOnly "javax.servlet:javax.servlet-api:$servletApiVersion"
+    compileOnly "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
     api project(":grails-web-gsp-taglib")
-    api project(":grails-plugin-sitemesh2")
 
     runtimeOnly(project(":grails-web-jsp"))
     api "commons-lang:commons-lang:2.6"
@@ -35,9 +34,10 @@ dependencies {
     }
 
     testRuntimeOnly "org.grails.plugins:async"
-    testImplementation "javax.servlet.jsp:jsp-api:${jspApiVersion}"
-    testImplementation "taglibs:standard:${jstlVersion}"
-    testImplementation "javax.servlet:jstl:${jstlVersion}"
+    testImplementation "jakarta.annotation:jakarta.annotation-api:$annotationApiVersion"
+    testImplementation "jakarta.servlet.jsp:jakarta.servlet.jsp-api:${jspApiVersion}"
+    testRuntimeOnly "org.glassfish.web:jakarta.servlet.jsp.jstl:${jstlVersion}"
+    testImplementation "jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:${jstlVersion}"
 
     testRuntimeOnly "org.grails:grails-plugin-url-mappings:$grailsVersion"
 }

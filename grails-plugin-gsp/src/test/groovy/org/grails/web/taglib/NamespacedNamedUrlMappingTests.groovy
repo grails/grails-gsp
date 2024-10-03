@@ -1,7 +1,11 @@
 package org.grails.web.taglib
 
 import grails.artefact.Artefact
+import grails.testing.spock.OnceBefore
 import grails.testing.web.UrlMappingsUnitTest
+import grails.testing.web.taglib.TagLibUnitTest
+import org.grails.core.artefact.UrlMappingsArtefactHandler
+import org.grails.plugins.web.taglib.ApplicationTagLib
 import spock.lang.Specification
 
 class NamespacedNamedUrlMappingTests extends Specification implements UrlMappingsUnitTest<TestUrlMappings> {

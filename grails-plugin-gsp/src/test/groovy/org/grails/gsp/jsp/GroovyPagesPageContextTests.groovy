@@ -1,13 +1,18 @@
 package org.grails.gsp.jsp
 
 import grails.util.GrailsWebMockUtil
-import jakarta.servlet.jsp.PageContext
 import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+
+import javax.servlet.jsp.PageContext
+
 import org.springframework.web.context.request.RequestContextHolder
 
-import static org.junit.jupiter.api.Assertions.*
+import static org.junit.jupiter.api.Assertions.assertEquals
+import static org.junit.jupiter.api.Assertions.assertNull
+import static org.junit.jupiter.api.Assertions.assertTrue
 
 /**
  * @author Graeme Rocher

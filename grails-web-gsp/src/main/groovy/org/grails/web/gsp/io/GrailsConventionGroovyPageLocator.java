@@ -1,11 +1,11 @@
 /*
- * Copyright 2011-2024 the original author or authors.
+ * Copyright 2011 SpringSource
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      https://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,13 +16,13 @@
 package org.grails.web.gsp.io;
 
 import grails.core.GrailsApplication;
+import grails.core.GrailsClass;
 import grails.core.GrailsControllerClass;
 import grails.core.support.GrailsApplicationAware;
 import grails.util.GrailsNameUtils;
 import grails.web.mime.MimeType;
 import grails.web.mime.MimeTypeResolver;
 import grails.web.pages.GroovyPagesUriService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.grails.core.artefact.ControllerArtefactHandler;
 import org.grails.gsp.io.DefaultGroovyPageLocator;
 import org.grails.gsp.io.GroovyPageScriptSource;
@@ -32,6 +32,8 @@ import org.grails.web.pages.DefaultGroovyPagesUriService;
 import org.grails.web.servlet.mvc.GrailsWebRequest;
 import org.grails.web.util.GrailsApplicationAttributes;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Extended GroovyPageLocator that deals with the details of Grails' conventions

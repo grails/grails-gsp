@@ -1,11 +1,11 @@
 /*
- * Copyright 2004-2024 the original author or authors.
+ * Copyright 2004-2005 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      https://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,9 +15,9 @@
  */
 package org.grails.web.pages;
 
+import com.opensymphony.module.sitemesh.RequestConstants;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.grails.buffer.GrailsRoutablePrintWriter;
 import org.grails.buffer.StreamCharBuffer;
 import org.grails.buffer.StreamCharBuffer.LazyInitializingWriter;
 import org.grails.buffer.StreamCharBuffer.StreamCharBufferWriter;
@@ -26,11 +26,13 @@ import org.grails.encoder.EncodedAppenderFactory;
 import org.grails.encoder.Encoder;
 import org.grails.encoder.EncoderAware;
 import org.grails.web.servlet.mvc.GrailsWebRequest;
+import org.grails.web.sitemesh.GrailsContentBufferingResponse;
+import org.grails.web.sitemesh.GrailsRoutablePrintWriter;
 import org.grails.web.util.BoundedCharsAsEncodedBytesCounter;
 import org.springframework.objenesis.ObjenesisStd;
 import org.springframework.objenesis.instantiator.ObjectInstantiator;
 
-import jakarta.servlet.ServletResponse;
+import javax.servlet.ServletResponse;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -87,25 +89,29 @@ public class GSPResponseWriter extends GrailsRoutablePrintWriter implements Enco
 
         final StreamCharBuffer.LazyInitializingWriter lazyResponseWriter = response::getWriter;
 
-        streamBuffer.connectTo(new StreamCharBuffer.LazyInitializingMultipleWriter() {
-            public Writer getWriter() {
-                return null;
-            }
-
-            public LazyInitializingWriter[] initializeMultiple(StreamCharBuffer buffer, boolean autoFlush) {
-                final StreamCharBuffer.LazyInitializingWriter[] lazyWriters;
-                if (CONTENT_LENGTH_COUNTING_ENABLED) {
-                    lazyWriters = new StreamCharBuffer.LazyInitializingWriter[]{() -> {
-                        bytesCounter.setCapacity(max * 2);
-                        bytesCounter.setEncoding(response.getCharacterEncoding());
-                        return bytesCounter.getCountingWriter();
-                    }, lazyResponseWriter};
-                } else {
-                    lazyWriters = new StreamCharBuffer.LazyInitializingWriter[]{lazyResponseWriter};
+        if (!(response instanceof GrailsContentBufferingResponse)) {
+            streamBuffer.connectTo(new StreamCharBuffer.LazyInitializingMultipleWriter() {
+                public Writer getWriter() {
+                    return null;
                 }
-                return lazyWriters;
-            }
-        }, AUTOFLUSH_ENABLED);
+
+                public LazyInitializingWriter[] initializeMultiple(StreamCharBuffer buffer, boolean autoFlush) {
+                    final StreamCharBuffer.LazyInitializingWriter[] lazyWriters;
+                    if (CONTENT_LENGTH_COUNTING_ENABLED) {
+                        lazyWriters = new StreamCharBuffer.LazyInitializingWriter[]{() -> {
+                            bytesCounter.setCapacity(max * 2);
+                            bytesCounter.setEncoding(response.getCharacterEncoding());
+                            return bytesCounter.getCountingWriter();
+                        }, lazyResponseWriter};
+                    } else {
+                        lazyWriters = new StreamCharBuffer.LazyInitializingWriter[]{lazyResponseWriter};
+                    }
+                    return lazyWriters;
+                }
+            }, AUTOFLUSH_ENABLED);
+        } else {
+            streamBuffer.connectTo(lazyResponseWriter);
+        }
 
         if (instantiator != null) {
             GSPResponseWriter instance = instantiator.newInstance();
@@ -203,6 +209,12 @@ public class GSPResponseWriter extends GrailsRoutablePrintWriter implements Enco
                 response.setContentLength(size);
             }
             flushResponse();
+        } else if (!isTrouble()) {
+            GrailsWebRequest webRequest = GrailsWebRequest.lookup();
+            if (webRequest != null && webRequest.getCurrentRequest().getAttribute(RequestConstants.PAGE) != null) {
+                // flush the response if its a layout
+                flushResponse();
+            }
         }
     }
 

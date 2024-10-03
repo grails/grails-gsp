@@ -529,6 +529,21 @@ public abstract class GroovyPage extends Script {
         return outputContext;
     }
 
+    public final void registerSitemeshPreprocessMode() {
+        /*
+        TODO: grails-gsp refactoring
+
+        if (request == null) {
+            return;
+        }
+
+        GSPSitemeshPage page = (GSPSitemeshPage) request.getAttribute(GrailsLayoutView.GSP_SITEMESH_PAGE);
+        if (page != null) {
+            page.setUsed(true);
+        }
+        */
+    }
+
     public final void createTagBody(int bodyClosureIndex, Closure<?> bodyClosure) {
         TagBodyClosure tagBody = new TagBodyClosure(this, outputContext, bodyClosure, true);
         setBodyClosure(bodyClosureIndex, tagBody);

@@ -75,6 +75,7 @@ public class ParseTests {
             "public Object run() {\n" +
             "Writer out = getOut()\n" +
             "Writer expressionOut = getExpressionOut()\n"+
+            "registerSitemeshPreprocessMode()\n" +
             "printHtmlPart(0)\n" +
             "}\n" + GSP_FOOTER;
         Assertions.assertEquals(trimAndRemoveCR(expected), trimAndRemoveCR(result.generatedGsp));
@@ -91,6 +92,7 @@ public class ParseTests {
             "public Object run() {\n" +
             "Writer out = getOut()\n" +
             "Writer expressionOut = getExpressionOut()\n"+
+            "registerSitemeshPreprocessMode()\n" +
 
             "invokeTag('message','g',1,['code':evaluate('\"testing [\"', 1, it) { return \"testing [\" }],-1)\n" +
             "}\n" + GSP_FOOTER;
@@ -128,6 +130,7 @@ public class ParseTests {
             "public Object run() {\n" +
             "Writer out = getOut()\n" +
             "Writer expressionOut = getExpressionOut()\n"+
+            "registerSitemeshPreprocessMode()\n" +
             "printHtmlPart(0)\n" +
             "}\n" + GSP_FOOTER;
         Assertions.assertEquals(trimAndRemoveCR(expected), trimAndRemoveCR(output.generatedGsp));
@@ -163,6 +166,7 @@ public class ParseTests {
             "public Object run() {\n" +
             "Writer out = getOut()\n" +
             "Writer expressionOut = getExpressionOut()\n"+
+            "registerSitemeshPreprocessMode()\n" +
             "printHtmlPart(0)\n" +
             "}\n" + GSP_FOOTER;
         Assertions.assertEquals(trimAndRemoveCR(expected), trimAndRemoveCR(output.generatedGsp));
@@ -221,6 +225,7 @@ public class ParseTests {
             "public Object run() {\n" +
             "Writer out = getOut()\n" +
             "Writer expressionOut = getExpressionOut()\n"+
+            "registerSitemeshPreprocessMode()\n" +
             "printHtmlPart(0)\n" +
             GroovyPage.EXPRESSION_OUT_STATEMENT + ".print(evaluate('uri', 3, it) { return uri })\n" +
             "printHtmlPart(1)\n" +
@@ -239,4 +244,58 @@ public class ParseTests {
          Assertions.assertEquals("\n\n\nThanks", output.htmlParts[1]);
      }
 
+     @Test
+     public void testBodyWithGStringAttribute() throws Exception {
+         ParsedResult result = parseCode("GRAILS5598", "<body class=\"${page.name} ${page.group.name.toLowerCase()}\">text</body>");
+         String expected = makeImports() +
+            "\n" +
+            "class GRAILS5598 extends org.grails.gsp.GroovyPage {\n" +
+            "public String getGroovyPageFileName() { \"GRAILS5598\" }\n" +
+            "public Object run() {\n" +
+            "Writer out = getOut()\n" +
+            "Writer expressionOut = getExpressionOut()\n"+
+            "registerSitemeshPreprocessMode()\n" +
+            "createClosureForHtmlPart(0, 1)\n" +
+            "invokeTag('captureBody','sitemesh',1,['class':evaluate('\"${page.name} ${page.group.name.toLowerCase()}\"', 1, it) { return \"${page.name} ${page.group.name.toLowerCase()}\" }],1)\n" +
+            "}\n" + GSP_FOOTER;
+         Assertions.assertEquals(trimAndRemoveCR(expected), trimAndRemoveCR(result.generatedGsp));
+         Assertions.assertEquals("text", result.htmlParts[0]);
+     }
+
+     @Test
+     public void testBypassSitemeshPreprocess() throws Exception {
+         ParsedResult result = parseCode("SITEMESH_PREPROCESS_TEST", "<%@page sitemeshPreprocess=\"false\"%>\n<body>text</body>");
+         String expected = makeImports() +
+            "\n" +
+            "class SITEMESH_PREPROCESS_TEST extends org.grails.gsp.GroovyPage {\n" +
+            "public String getGroovyPageFileName() { \"SITEMESH_PREPROCESS_TEST\" }\n" +
+            "public Object run() {\n" +
+            "Writer out = getOut()\n" +
+            "Writer expressionOut = getExpressionOut()\n"+
+            "printHtmlPart(0)\n" +
+            "}\n" + GSP_FOOTER;
+        Assertions.assertEquals(trimAndRemoveCR(expected), trimAndRemoveCR(result.generatedGsp));
+        Assertions.assertEquals("\n<body>text</body>", result.htmlParts[0]);
+    }
+
+    @Test
+     public void testMetaWithGStringAttribute() throws Exception {
+         ParsedResult result = parseCode("GRAILS5605", "<html><head><meta name=\"SomeName\" content='${grailsApplication.config.myFirstConfig}/something/${someVar}' /></head></html>");
+         String expected = makeImports() +
+            "\n" +
+            "class GRAILS5605 extends org.grails.gsp.GroovyPage {\n" +
+            "public String getGroovyPageFileName() { \"GRAILS5605\" }\n" +
+            "public Object run() {\n" +
+            "Writer out = getOut()\n" +
+            "Writer expressionOut = getExpressionOut()\n"+
+            "registerSitemeshPreprocessMode()\n" +
+            "printHtmlPart(0)\n" +
+            "createTagBody(1, {->\n" +
+            "invokeTag('captureMeta','sitemesh',1,['gsp_sm_xmlClosingForEmptyTag':evaluate('\"/\"', 1, it) { return \"/\" },'name':evaluate('\"SomeName\"', 1, it) { return \"SomeName\" },'content':evaluate('\"${grailsApplication.config.myFirstConfig}/something/${someVar}\"', 1, it) { return \"${grailsApplication.config.myFirstConfig}/something/${someVar}\" }],-1)\n" +
+            "})\n" +
+            "invokeTag('captureHead','sitemesh',1,[:],1)\n" +
+            "printHtmlPart(1)\n" +
+            "}\n" + GSP_FOOTER;
+        Assertions.assertEquals(trimAndRemoveCR(expected), trimAndRemoveCR(result.generatedGsp));
+    }
 }

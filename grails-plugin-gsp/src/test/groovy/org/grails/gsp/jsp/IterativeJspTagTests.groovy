@@ -41,10 +41,10 @@ class IterativeJspTagTests {
         def resolver = new TagLibraryResolverImpl()
         resolver.servletContext = new MockServletContext()
         resolver.grailsApplication = new DefaultGrailsApplication()
-        resolver.tldScanPatterns = ['classpath*:/META-INF/c.tld'] as String[]
+        resolver.tldScanPatterns = ['classpath*:/META-INF/c-1_0-rt.tld'] as String[]
         resolver.resourceLoader = new DefaultResourceLoader(this.class.classLoader)
 
-        JspTagLib tagLib = resolver.resolveTagLibrary("jakarta.tags.core")
+        JspTagLib tagLib = resolver.resolveTagLibrary("http://java.sun.com/jstl/core_rt")
         assert tagLib
 
         JspTag formatNumberTag = tagLib.getTag("forEach")

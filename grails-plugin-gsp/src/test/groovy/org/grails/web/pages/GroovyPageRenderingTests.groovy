@@ -4,6 +4,7 @@ import grails.testing.web.taglib.TagLibUnitTest
 import grails.util.Environment
 import org.grails.gsp.GroovyPagesException
 import org.grails.plugins.web.taglib.ApplicationTagLib
+import org.grails.web.taglib.AbstractGrailsTagTests
 import spock.lang.Specification
 
 /**

@@ -9,7 +9,7 @@ import org.springframework.web.servlet.View
 import org.springframework.web.servlet.view.InternalResourceView
 import spock.lang.Specification
 
-import jakarta.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletRequest
 
 class GroovyPageViewResolverSpec extends Specification {
     def "should use namespace as part of cache key"() {

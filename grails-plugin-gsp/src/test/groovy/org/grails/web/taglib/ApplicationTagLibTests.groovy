@@ -5,7 +5,7 @@ import grails.util.GrailsUtil
 import grails.util.Holders
 import grails.util.Metadata
 import grails.util.MockRequestDataValueProcessor
-import groovy.test.NotYetImplemented
+import groovy.transform.NotYetImplemented
 import org.grails.gsp.GroovyPageBinding
 import org.grails.plugins.web.taglib.ApplicationTagLib
 import org.grails.plugins.web.taglib.FormTagLib
@@ -14,7 +14,7 @@ import org.grails.web.util.GrailsApplicationAttributes
 import org.grails.web.util.WebUtils
 import spock.lang.Specification
 
-import jakarta.servlet.http.Cookie
+import javax.servlet.http.Cookie
 
 class ApplicationTagLibTests extends Specification implements TagLibUnitTest<ApplicationTagLib> {
 

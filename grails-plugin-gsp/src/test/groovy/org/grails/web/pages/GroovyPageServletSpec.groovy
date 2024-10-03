@@ -1,11 +1,15 @@
 package org.grails.web.pages
 
-import jakarta.servlet.http.HttpServletRequest
-import jakarta.servlet.http.HttpServletResponse
-import org.grails.core.io.SimpleMapResourceLoader
 import org.grails.gsp.GroovyPagesTemplateEngine
-import org.grails.gsp.io.GroovyPageScriptSource
+import org.springframework.context.support.GenericApplicationContext
+import org.springframework.web.context.support.GenericWebApplicationContext
+
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
+
+import org.grails.core.io.SimpleMapResourceLoader
 import org.grails.web.gsp.io.GrailsConventionGroovyPageLocator
+import org.grails.gsp.io.GroovyPageScriptSource
 import org.grails.web.servlet.mvc.GrailsWebRequest
 import org.springframework.core.io.ByteArrayResource
 import org.springframework.mock.web.MockHttpServletRequest
@@ -14,8 +18,8 @@ import org.springframework.mock.web.MockServletConfig
 import org.springframework.mock.web.MockServletContext
 import org.springframework.web.context.WebApplicationContext
 import org.springframework.web.context.request.RequestContextHolder
-import org.springframework.web.context.support.GenericWebApplicationContext
 import org.springframework.web.util.WebUtils
+
 import spock.lang.Specification
 
 /**

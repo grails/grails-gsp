@@ -2,7 +2,7 @@ package grails.util
 
 import org.springframework.web.servlet.support.RequestDataValueProcessor
 
-import jakarta.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletRequest
 
 /**
  * Created by graemerocher on 12/04/2017.

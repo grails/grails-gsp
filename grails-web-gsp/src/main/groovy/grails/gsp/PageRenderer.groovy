@@ -1,11 +1,11 @@
 /*
- * Copyright 2011-2024 the original author or authors.
+ * Copyright 2011 SpringSource
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      https://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 package grails.gsp
-
 import org.grails.buffer.FastStringWriter
 import org.grails.gsp.GroovyPagesTemplateEngine
 import org.grails.web.gsp.io.GrailsConventionGroovyPageLocator
@@ -25,15 +24,14 @@ import org.springframework.context.ApplicationContextAware
 import org.springframework.web.context.ServletContextAware
 import org.springframework.web.context.request.RequestContextHolder
 
-import jakarta.servlet.ServletContext
-import jakarta.servlet.http.Cookie
-import jakarta.servlet.http.HttpServletRequest
-import jakarta.servlet.http.HttpServletResponse
+import javax.servlet.ServletContext
+import javax.servlet.http.Cookie
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
 import java.lang.reflect.Proxy
 import java.util.concurrent.ConcurrentHashMap
-
 /**
  * Simplified API for rendering GSP pages from services, jobs and other non-request classes.
  *

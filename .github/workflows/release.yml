@@ -3,8 +3,8 @@ on:
   release:
     types: [published]
 env:
-  GIT_USER_NAME: 'grails-build'
-  GIT_USER_EMAIL: 'grails-build@users.noreply.github.com'
+  GIT_USER_NAME: puneetbehl
+  GIT_USER_EMAIL: behlp@unityfoundation.io
 jobs:
   publish:
     outputs:
@@ -18,8 +18,8 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: 'adopt'
+          java-version: 11
       - name: Set the current release version
         id: release_version
         run: echo "value=${GITHUB_REF:11}" >> $GITHUB_OUTPUT
@@ -104,8 +104,8 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: 'adopt'
+          java-version: '11'
       - name: Publish Documentation
         id: docs
         uses: gradle/gradle-build-action@v3
@@ -123,4 +123,4 @@ jobs:
           FOLDER: build/docs
           VERSION: ${{ needs.publish.outputs.release_version }}
           COMMIT_EMAIL: ${{ env.GIT_USER_EMAIL }}
-          COMMIT_NAME: ${{ env.GIT_USER_NAME }}
+          COMMIT_NAME: "Puneet Behl"

@@ -2,10 +2,8 @@ dependencies {
     api "org.grails:grails-web-common:$grailsVersion"
     api project(":grails-web-gsp")
 
-
-    compileOnly "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
+    compileOnly "javax.servlet:javax.servlet-api:$servletApiVersion"
     // Required for JSP support
-    compileOnly "jakarta.servlet.jsp:jakarta.servlet.jsp-api:$jspApiVersion"
-    compileOnly "jakarta.el:jakarta.el-api:$elApiVersion"
+    compileOnly "javax.servlet.jsp:jsp-api:${jspApiVersion}"
 
 }

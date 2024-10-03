@@ -2,6 +2,7 @@ package org.grails.web.taglib
 
 import grails.testing.web.taglib.TagLibUnitTest
 import org.grails.plugins.web.taglib.ApplicationTagLib
+import org.junit.Test
 import spock.lang.Specification
 
 /**

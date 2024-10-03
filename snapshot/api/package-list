@@ -24,6 +24,7 @@ org.grails.web.gsp
 org.grails.web.gsp.io
 org.grails.web.pages
 org.grails.web.servlet.view
+org.grails.web.sitemesh
 org.grails.web.taglib
 org.grails.web.taglib.encoder
 org.grails.web.taglib.jsp

@@ -47,6 +47,7 @@ class RenderTagLib implements TagLibrary {
      * &lt;g:render template="atemplate" bean="${user}" /&gt;<br/>
      *
      * @attr template REQUIRED The name of the template to apply
+     * @attr optional if true, this tag will be ignored when the template does not exist.
      * @attr contextPath the context path to use (relative to the application context path). Defaults to "" or path to the plugin for a plugin view or template.
      * @attr bean The bean to apply the template against
      * @attr model The model to apply the template against as a java.util.Map
@@ -75,7 +76,7 @@ class RenderTagLib implements TagLibrary {
         def currentOut = out
         int statusCode = request.getAttribute('jakarta.servlet.error.status_code') as int
         currentOut << """<h1>Error ${prettyPrintStatus(statusCode)}</h1>
-<dl class="error-details">
+<dl class="${attrs['detailsClass'] ?: 'error-details'}">
 <dt>URI</dt><dd>${htmlEncoder.encode(WebUtils.getForwardURI(request) ?: request.getAttribute('jakarta.servlet.error.request_uri'))}</dd>
 """
 
@@ -87,12 +88,12 @@ class RenderTagLib implements TagLibrary {
         }
         currentOut << "</dl>"
 
-        currentOut << errorsViewStackTracePrinter.prettyPrintCodeSnippet(exception)
+        currentOut << errorsViewStackTracePrinter.prettyPrintCodeSnippet(exception, attrs)
 
-        def trace = errorsViewStackTracePrinter.prettyPrint(exception.cause ?: exception)
+        def trace = errorsViewStackTracePrinter.prettyPrint(exception.cause ?: exception, attrs)
         if (StringUtils.hasText(trace.trim())) {
             currentOut << "<h2>Trace</h2>"
-            currentOut << '<pre class="stack">'
+            currentOut << """<pre class="${attrs['stackClass'] ?: 'stack'}">"""
             currentOut << htmlEncoder.encode(trace)
             currentOut << '</pre>'
         }

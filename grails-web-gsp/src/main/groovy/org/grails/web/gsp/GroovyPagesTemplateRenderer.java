@@ -114,6 +114,9 @@ public class GroovyPagesTemplateRenderer implements InitializingBean {
         final Object controller = webRequest.getAttribute(GrailsApplicationAttributes.CONTROLLER, GrailsWebRequest.SCOPE_REQUEST);
         Template t = findAndCacheTemplate(controller, pageScope, templateName, contextPath, pluginName, uri);
         if (t == null) {
+            if (getBooleanValue(attrs, "optional")) {
+                return; // allow missing templates if optional == "true"
+            }
             throw new GrailsTagException("Template not found for name [" + templateName + "] and path [" + uri + "]");
         }
 
@@ -286,6 +289,12 @@ public class GroovyPagesTemplateRenderer implements InitializingBean {
         Object val = attrs.get(key);
         if (val == null) return "";
         return String.valueOf(val);
+    }
+
+    private boolean getBooleanValue(Map<String, Object> attrs, String key) {
+        String val = getStringValue(attrs, key);
+        if (val.isBlank()) return false;
+        return Boolean.parseBoolean(val);
     }
 
     public void setGroovyPageLocator(GrailsConventionGroovyPageLocator locator) {

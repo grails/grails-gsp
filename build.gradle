@@ -12,6 +12,7 @@ buildscript {
 }
 
 repositories {
+    mavenCentral()
     mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
 }

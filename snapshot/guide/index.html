@@ -67,7 +67,7 @@
                     <h1>Groovy Server Pages (GSP)</h1>
                     <p></p>
                     <p>GSP (Groovy Server Pages) - A server-side view rendering technology based on Groovy</p>
-                    <p><strong>Version:</strong> 6.2.4-SNAPSHOT</p>
+                    <p><strong>Version:</strong> 7.0.0-SNAPSHOT</p>
 
                 </div>
                 
@@ -134,7 +134,7 @@
 <h1 id="introduction">1 Introduction</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/introduction.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/introduction.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -151,7 +151,7 @@
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
     //...
-    implementation "org.grails.plugins:gsp:6.2.4-SNAPSHOT"
+    implementation "org.grails.plugins:gsp:7.0.0-SNAPSHOT"
 }</code></pre>
 </div>
 </div>
@@ -165,7 +165,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>GSPs themselves live in the <code>grails-app/views</code> directory and are typically rendered automatically (by convention) or with the <a href="https://docs.grails.org/6.2.1/ref/Controllers/render.html">render</a> method such as:</p>
+<p>GSPs themselves live in the <code>grails-app/views</code> directory and are typically rendered automatically (by convention) or with the <a href="https://docs.grails.org/7.0.0-SNAPSHOT/ref/Controllers/render.html">render</a> method such as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -212,7 +212,7 @@ Although it is possible to have Groovy logic embedded in your GSP and doing this
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Embedding data received from user input has the risk of making your application vulnerable to a Cross Site Scripting (XSS) attack. Please read the documentation on <a href="https://docs.grails.org/6.2.1/guide/security.html#xssPrevention">XSS prevention</a> for information on how to prevent XSS attacks.
+Embedding data received from user input has the risk of making your application vulnerable to a Cross Site Scripting (XSS) attack. Please read the documentation on <a href="https://docs.grails.org/7.0.0-SNAPSHOT/guide/security.html#xssPrevention">XSS prevention</a> for information on how to prevent XSS attacks.
 </td>
 </tr>
 </table>
@@ -222,7 +222,7 @@ Embedding data received from user input has the risk of making your application 
 <h1 id="GSPBasics">2 GSP Basics</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/GSPBasics.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/GSPBasics.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -275,7 +275,7 @@ Embedding data received from user input has the risk of making your application 
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Embedding data received from user input has the risk of making your application vulnerable to an Cross Site Scripting (XSS) attack. Please read the documentation on <a href="https://docs.grails.org/6.2.1/guide/security.html#xssPrevention">XSS prevention</a> for information on how to prevent XSS attacks.
+Embedding data received from user input has the risk of making your application vulnerable to an Cross Site Scripting (XSS) attack. Please read the documentation on <a href="https://docs.grails.org/7.0.0-SNAPSHOT/guide/security.html#xssPrevention">XSS prevention</a> for information on how to prevent XSS attacks.
 </td>
 </tr>
 </table>
@@ -285,7 +285,7 @@ Embedding data received from user input has the risk of making your application 
 <h2 id="variablesAndScopes">2.1 Variables and Scopes</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/GSPBasics/variablesAndScopes.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/GSPBasics/variablesAndScopes.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -319,16 +319,16 @@ Embedding data received from user input has the risk of making your application 
 <p><code>applicationContext</code> The Spring <a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/ApplicationContext.html">ApplicationContext</a> instance</p>
 </li>
 <li>
-<p><code>flash</code> - The <a href="https://docs.grails.org/6.2.1/ref/Controllers/flash.html">flash</a> object</p>
+<p><code>flash</code> - The <a href="https://docs.grails.org/7.0.0-SNAPSHOT/ref/Controllers/flash.html">flash</a> object</p>
 </li>
 <li>
-<p><code>grailsApplication</code> - The <a href="https://docs.grails.org/6.2.1/api/grails/core/GrailsApplication.html">GrailsApplication</a> instance</p>
+<p><code>grailsApplication</code> - The <a href="https://docs.grails.org/7.0.0-SNAPSHOT/api/grails/core/GrailsApplication.html">GrailsApplication</a> instance</p>
 </li>
 <li>
 <p><code>out</code> - The response writer for writing to the output stream</p>
 </li>
 <li>
-<p><code>params</code> - The <a href="https://docs.grails.org/6.2.1/ref/Controllers/params.html">params</a> object for retrieving request parameters</p>
+<p><code>params</code> - The <a href="https://docs.grails.org/7.0.0-SNAPSHOT/ref/Controllers/params.html">params</a> object for retrieving request parameters</p>
 </li>
 <li>
 <p><code>request</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletRequest.html">HttpServletRequest</a> instance</p>
@@ -340,7 +340,7 @@ Embedding data received from user input has the risk of making your application 
 <p><code>session</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpSession.html">HttpSession</a> instance</p>
 </li>
 <li>
-<p><code>webRequest</code> - The <a href="https://docs.grails.org/6.2.1/api/org/grails/web/servlet/mvc/GrailsWebRequest.html">GrailsWebRequest</a> instance</p>
+<p><code>webRequest</code> - The <a href="https://docs.grails.org/7.0.0-SNAPSHOT/api/org/grails/web/servlet/mvc/GrailsWebRequest.html">GrailsWebRequest</a> instance</p>
 </li>
 </ul>
 </div>
@@ -349,7 +349,7 @@ Embedding data received from user input has the risk of making your application 
 <h2 id="logicAndIteration">2.2 Logic and Iteration</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/GSPBasics/logicAndIteration.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/GSPBasics/logicAndIteration.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -389,7 +389,7 @@ Embedding data received from user input has the risk of making your application 
 <h2 id="pageDirectives">2.3 Page Directives</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/GSPBasics/pageDirectives.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/GSPBasics/pageDirectives.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -404,6 +404,17 @@ Embedding data received from user input has the risk of making your application 
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="error">&lt;</span>%@ page import=&quot;java.awt.*&quot; %<span class="error">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Separate imports with semicolons <code>;</code>. As a convention, you should split larger number of imports into separate lines to improve readability, which requires adding backslash <code>\</code> at the end of each line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="error">&lt;</span>%@ page import=&quot;java.awt.*; \
+your.custom.ComponentA; \
+your.custom.ComponentB;&quot;
+%<span class="error">&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -422,7 +433,7 @@ Embedding data received from user input has the risk of making your application 
 <h2 id="expressions">2.4 Expressions</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/GSPBasics/expressions.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/GSPBasics/expressions.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -450,7 +461,7 @@ Embedding data received from user input has the risk of making your application 
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Embedding data received from user input has the risk of making your application vulnerable to a Cross Site Scripting (XSS) attack. Please read the documentation on <a href="https://docs.grails.org/6.2.1/guide/security.html#xssPrevention">XSS prevention</a> for information on how to prevent XSS attacks.
+Embedding data received from user input has the risk of making your application vulnerable to a Cross Site Scripting (XSS) attack. Please read the documentation on <a href="https://docs.grails.org/7.0.0-SNAPSHOT/guide/security.html#xssPrevention">XSS prevention</a> for information on how to prevent XSS attacks.
 </td>
 </tr>
 </table>
@@ -460,7 +471,7 @@ Embedding data received from user input has the risk of making your application 
 <h1 id="tags">3 GSP Tags</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/tags.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/tags.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -537,7 +548,7 @@ The section on <a href="taglibs.html">Tag Libraries</a> covers how to add your o
 <h2 id="tagVariablesAndScopes">3.1 Variables and Scopes</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/tags/tagVariablesAndScopes.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/tags/tagVariablesAndScopes.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -581,7 +592,7 @@ The section on <a href="taglibs.html">Tag Libraries</a> covers how to add your o
 <p><code>request</code> - Scoped to the current request</p>
 </li>
 <li>
-<p><code>flash</code> - Placed within <a href="https://docs.grails.org/6.2.1/ref/Controllers/flash.html">flash</a> scope and hence available for the next request</p>
+<p><code>flash</code> - Placed within <a href="https://docs.grails.org/7.0.0-SNAPSHOT/ref/Controllers/flash.html">flash</a> scope and hence available for the next request</p>
 </li>
 <li>
 <p><code>session</code> - Scoped for the user session</p>
@@ -604,7 +615,7 @@ The section on <a href="taglibs.html">Tag Libraries</a> covers how to add your o
 <h2 id="tagLogicAndIteration">3.2 Logic and Iteration</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/tags/tagLogicAndIteration.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/tags/tagLogicAndIteration.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -643,7 +654,7 @@ The section on <a href="taglibs.html">Tag Libraries</a> covers how to add your o
 <h2 id="searchAndFiltering">3.3 Search and Filtering</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/tags/searchAndFiltering.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/tags/searchAndFiltering.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -688,14 +699,14 @@ The section on <a href="taglibs.html">Tag Libraries</a> covers how to add your o
 <h2 id="linksAndResources">3.4 Links and Resources</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/tags/linksAndResources.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/tags/linksAndResources.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
 
 
 <div class="paragraph">
-<p>GSP also features tags to help you manage linking to controllers and actions. The <a href="../ref/Tags/link.html">link</a> tag lets you specify controller and action name pairing and it will automatically work out the link based on the <a href="https://docs.grails.org/6.2.1/guide/theWebLayer#urlmappings">URL Mappings</a>, even if you change them! For example:</p>
+<p>GSP also features tags to help you manage linking to controllers and actions. The <a href="../ref/Tags/link.html">link</a> tag lets you specify controller and action name pairing and it will automatically work out the link based on the <a href="https://docs.grails.org/7.0.0-SNAPSHOT/guide/theWebLayer#urlmappings">URL Mappings</a>, even if you change them! For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -718,7 +729,7 @@ The section on <a href="taglibs.html">Tag Libraries</a> covers how to add your o
 <h2 id="formsAndFields">3.5 Forms and Fields</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/tags/formsAndFields.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/tags/formsAndFields.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -793,14 +804,14 @@ The section on <a href="taglibs.html">Tag Libraries</a> covers how to add your o
 <h2 id="tagsAsMethodCalls">3.6 Tags as Method Calls</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/tags/tagsAsMethodCalls.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/tags/tagsAsMethodCalls.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
 
 
 <div id="tagsAsMethodCalls" class="paragraph">
-<p>One major different between GSP tags and other tagging technologies is that GSP tags can be called as either regular tags or as method calls from <a href="https://docs.grails.org/6.2.1/guide/theWebLayer.html#controllers">controllers</a>, <a href="taglibs.html">tag libraries</a> or GSP views.</p>
+<p>One major different between GSP tags and other tagging technologies is that GSP tags can be called as either regular tags or as method calls from <a href="https://docs.grails.org/7.0.0-SNAPSHOT/guide/theWebLayer.html#controllers">controllers</a>, <a href="taglibs.html">tag libraries</a> or GSP views.</p>
 </div>
 <div class="sect3">
 <h4 id="_tags_as_method_calls_from_gsps">Tags as method calls from GSPs</h4>
@@ -861,7 +872,7 @@ The section on <a href="taglibs.html">Tag Libraries</a> covers how to add your o
 <h1 id="viewsAndTemplates">4 Views and Templates</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/viewsAndTemplates.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/viewsAndTemplates.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -944,7 +955,7 @@ The section on <a href="taglibs.html">Tag Libraries</a> covers how to add your o
 <div class="sect3">
 <h4 id="_templates_in_controllers_and_tag_libraries">Templates in Controllers and Tag Libraries</h4>
 <div class="paragraph">
-<p>You can also render templates from controllers using the <a href="https://docs.grails.org/6.2.1/ref/Controllers/render.html">render</a> controller method. This is useful for JavaScript heavy applications where you generate small HTML or data responses to partially update the current page instead of performing new request:</p>
+<p>You can also render templates from controllers using the <a href="https://docs.grails.org/7.0.0-SNAPSHOT/ref/Controllers/render.html">render</a> controller method. This is useful for JavaScript heavy applications where you generate small HTML or data responses to partially update the current page instead of performing new request:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -955,7 +966,7 @@ The section on <a href="taglibs.html">Tag Libraries</a> covers how to add your o
 </div>
 </div>
 <div class="paragraph">
-<p>The <a href="https://docs.grails.org/6.2.1/ref/Controllers/render.html">render</a> controller method writes directly to the response, which is the most common behaviour. To instead obtain the result of template as a String you can use the <a href="../ref/Tags/render.html">render</a> tag:</p>
+<p>The <a href="https://docs.grails.org/7.0.0-SNAPSHOT/ref/Controllers/render.html">render</a> controller method writes directly to the response, which is the most common behaviour. To instead obtain the result of template as a String you can use the <a href="../ref/Tags/render.html">render</a> tag:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -967,7 +978,7 @@ The section on <a href="taglibs.html">Tag Libraries</a> covers how to add your o
 </div>
 </div>
 <div class="paragraph">
-<p>Notice the usage of the <code>g</code> namespace which tells Grails we want to use the <a href="#tagsAsMethodCalls">tag as method call</a> instead of the <a href="https://docs.grails.org/6.2.1/ref/Controllers/render.html">render</a> method.</p>
+<p>Notice the usage of the <code>g</code> namespace which tells Grails we want to use the <a href="#tagsAsMethodCalls">tag as method call</a> instead of the <a href="https://docs.grails.org/7.0.0-SNAPSHOT/ref/Controllers/render.html">render</a> method.</p>
 </div>
 </div>
 
@@ -975,7 +986,7 @@ The section on <a href="taglibs.html">Tag Libraries</a> covers how to add your o
 <h1 id="layouts">5 Layouts with Sitemesh</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/layouts.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/layouts.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1180,7 +1191,7 @@ The content to apply a layout to
 <h2 id="sitemeshContentBlocks">5.1 Sitemesh Content Blocks</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/sitemeshContentBlocks.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/sitemeshContentBlocks.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1244,7 +1255,7 @@ The content to apply a layout to
 <h1 id="resources">6 Static Resources</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/resources.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/resources.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1308,7 +1319,7 @@ To have them be cached by the browser, you can set the configuration setting <co
 <h1 id="makingChangesToADeployedApplication">7 Making Changes to a Deployed Application</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/makingChangesToADeployedApplication.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/makingChangesToADeployedApplication.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1402,7 +1413,7 @@ cp -R grails-app/views/* /var/www/grails/my-app/grails-app/views</pre>
 <h1 id="taglibs">8 Tag Libraries</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/taglibs.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/taglibs.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1510,7 +1521,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <h2 id="taglibVariablesAndScopes">8.1 Variables and Scopes</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/taglibs/taglibVariablesAndScopes.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/taglibs/taglibVariablesAndScopes.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1528,10 +1539,10 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <p><code>controllerName</code> - The currently executing controller name</p>
 </li>
 <li>
-<p><code>flash</code> - The <a href="https://docs.grails.org/6.2.1/ref/Controllers/flash.html">flash</a> object</p>
+<p><code>flash</code> - The <a href="https://docs.grails.org/7.0.0-SNAPSHOT/ref/Controllers/flash.html">flash</a> object</p>
 </li>
 <li>
-<p><code>grailsApplication</code> - The <a href="https://docs.grails.org/6.2.1/api/grails/core/GrailsApplication.html">GrailsApplication</a> instance</p>
+<p><code>grailsApplication</code> - The <a href="https://docs.grails.org/7.0.0-SNAPSHOT/api/grails/core/GrailsApplication.html">GrailsApplication</a> instance</p>
 </li>
 <li>
 <p><code>out</code> - The response writer for writing to the output stream</p>
@@ -1540,7 +1551,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <p><code>pageScope</code> - A reference to the <a href="../ref/Tag%20Libraries/pageScope.html">pageScope</a> object used for GSP rendering (i.e. the binding)</p>
 </li>
 <li>
-<p><code>params</code> - The <a href="https://docs.grails.org/6.2.1/ref/Controllers/params.html">params</a> object for retrieving request parameters</p>
+<p><code>params</code> - The <a href="https://docs.grails.org/7.0.0-SNAPSHOT/ref/Controllers/params.html">params</a> object for retrieving request parameters</p>
 </li>
 <li>
 <p><code>pluginContextPath</code> - The context path to the plugin that contains the tag library</p>
@@ -1564,7 +1575,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <h2 id="simpleTags">8.2 Simple Tags</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/taglibs/simpleTags.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/taglibs/simpleTags.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1618,7 +1629,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <h2 id="logicalTags">8.3 Logical Tags</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/taglibs/logicalTags.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/taglibs/logicalTags.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1652,7 +1663,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <h2 id="iterativeTags">8.4 Iterative Tags</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/taglibs/iterativeTags.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/taglibs/iterativeTags.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1739,7 +1750,7 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 <h2 id="namespaces">8.5 Tag Namespaces</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/taglibs/namespaces.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/taglibs/namespaces.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1786,7 +1797,7 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 <h2 id="usingJSPTagLibraries">8.6 Using JSP Tag Libraries</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/taglibs/usingJSPTagLibraries.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/taglibs/usingJSPTagLibraries.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1803,7 +1814,7 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
     //...
-    runtimeOnly "org.grails:grails-web-jsp:6.2.4-SNAPSHOT"
+    runtimeOnly "org.grails:grails-web-jsp:7.0.0-SNAPSHOT"
 }</code></pre>
 </div>
 </div>
@@ -1864,7 +1875,7 @@ This is configured with the <code>grails.gsp.tldScanPattern</code> setting. It a
 <h2 id="tagReturnValue">8.7 Tag return value</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/6.2.x/src/main/docs/guide/taglibs/tagReturnValue.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-gsp/edit/7.0.x/src/main/docs/guide/taglibs/tagReturnValue.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>

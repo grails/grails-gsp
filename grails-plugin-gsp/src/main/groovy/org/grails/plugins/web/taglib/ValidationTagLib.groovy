@@ -19,7 +19,7 @@ import grails.artefact.TagLibrary
 import grails.gsp.TagLib
 import groovy.transform.CompileStatic
 import groovy.xml.MarkupBuilder
-import org.apache.commons.lang.StringEscapeUtils
+import org.apache.commons.text.StringEscapeUtils
 import org.grails.encoder.CodecLookup
 import org.grails.encoder.Encoder
 import org.grails.taglib.GroovyPageAttributes
@@ -265,7 +265,7 @@ class ValidationTagLib implements TagLibrary {
                     error(object: it.objectName,
                             field: it.field,
                             message: message(error: it)?.toString(),
-                            'rejected-value': StringEscapeUtils.escapeXml(it.rejectedValue))
+                            'rejected-value': StringEscapeUtils.escapeXml10(it.rejectedValue))
                 })
             }
         }

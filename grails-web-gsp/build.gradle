@@ -1,6 +1,5 @@
 dependencies {
     compileOnly "org.apache.ant:ant:${antVersion}"
-    api "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
     api project(":grails-gsp")
     api "org.grails:grails-web-common:$grailsVersion"
     api project(":grails-web-taglib")

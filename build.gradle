@@ -90,9 +90,7 @@ subprojects { subproject ->
             api "org.apache.groovy:groovy:$groovyVersion"
             api "org.slf4j:slf4j-api:$slf4jVersion"
 
-            testImplementation "org.spockframework:spock-core:$spockVersion", {
-                exclude module: 'groovy-all'
-            }
+            testImplementation "org.spockframework:spock-core:$spockVersion"
             testImplementation "org.springframework:spring-test:$springVersion"
 
             documentation "org.fusesource.jansi:jansi:$jansiVersion"

@@ -93,8 +93,8 @@ subprojects { subproject ->
             testImplementation "org.spockframework:spock-core:${spockVersion}", {
                 exclude module: 'groovy-all'
             }
-            testImplementation "cglib:cglib-nodep:2.2.2"
             testImplementation "org.objenesis:objenesis:3.4"
+            testImplementation "net.bytebuddy:byte-buddy:$byteBuddyVersion"
             testImplementation "org.springframework:spring-test:$springVersion"
 
             documentation "org.fusesource.jansi:jansi:1.18"

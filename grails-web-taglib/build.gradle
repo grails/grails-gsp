@@ -1,5 +1,5 @@
 dependencies {
-    compileOnly "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
+    compileOnlyApi "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
     api "org.grails:grails-web-common:$grailsVersion"
     api project(":grails-taglib")
 

@@ -118,7 +118,7 @@ function addJsClass() {
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
     //...
-    implementation "org.grails.plugins:gsp:7.0.0-SNAPSHOT"
+    implementation "org.grails.plugins:gsp:{version}"
 }</code></pre>
 </div>
 </div>
@@ -132,7 +132,7 @@ function addJsClass() {
 </div>
 </div>
 <div class="paragraph">
-<p>GSPs themselves live in the <code>grails-app/views</code> directory and are typically rendered automatically (by convention) or with the <a href="https://docs.grails.org/7.0.0-SNAPSHOT/ref/Controllers/render.html">render</a> method such as:</p>
+<p>GSPs themselves live in the <code>grails-app/views</code> directory and are typically rendered automatically (by convention) or with the {controllersRef}/render.html[render] method such as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -146,7 +146,7 @@ function addJsClass() {
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<img src="../img/icons/note.icons" alt="Note">
 </td>
 <td class="content">
 Although it is possible to have Groovy logic embedded in your GSP and doing this will be covered in this document, the practice is strongly discouraged. Mixing mark-up and code is a <strong>bad</strong> thing and most GSP pages contain no code and needn&#8217;t do so.
@@ -176,10 +176,10 @@ Although it is possible to have Groovy logic embedded in your GSP and doing this
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<img src="../img/icons/warning.icons" alt="Warning">
 </td>
 <td class="content">
-Embedding data received from user input has the risk of making your application vulnerable to a Cross Site Scripting (XSS) attack. Please read the documentation on <a href="https://docs.grails.org/7.0.0-SNAPSHOT/guide/security.html#xssPrevention">XSS prevention</a> for information on how to prevent XSS attacks.
+Embedding data received from user input has the risk of making your application vulnerable to a Cross Site Scripting (XSS) attack. Please read the documentation on {grailsdocs}guide/security.html#xssPrevention[XSS prevention] for information on how to prevent XSS attacks.
 </td>
 </tr>
 </table>

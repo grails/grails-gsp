@@ -182,7 +182,7 @@ function addJsClass() {
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<img src="../img/icons/note.icons" alt="Note">
 </td>
 <td class="content">
 To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes, you should add Javadoc comments to your tag closures with <code>@attr</code> descriptions. Since taglibs use Groovy code it can be difficult to reliably detect all usable attributes.
@@ -253,10 +253,10 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <p><code>controllerName</code> - The currently executing controller name</p>
 </li>
 <li>
-<p><code>flash</code> - The <a href="https://docs.grails.org/7.0.0-SNAPSHOT/ref/Controllers/flash.html">flash</a> object</p>
+<p><code>flash</code> - The {controllersRef}/flash.html[flash] object</p>
 </li>
 <li>
-<p><code>grailsApplication</code> - The <a href="https://docs.grails.org/7.0.0-SNAPSHOT/api/grails/core/GrailsApplication.html">GrailsApplication</a> instance</p>
+<p><code>grailsApplication</code> - The {grailsapi}grails/core/GrailsApplication.html[GrailsApplication] instance</p>
 </li>
 <li>
 <p><code>out</code> - The response writer for writing to the output stream</p>
@@ -265,22 +265,22 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <p><code>pageScope</code> - A reference to the <a href="../ref/Tag%20Libraries/pageScope.html">pageScope</a> object used for GSP rendering (i.e. the binding)</p>
 </li>
 <li>
-<p><code>params</code> - The <a href="https://docs.grails.org/7.0.0-SNAPSHOT/ref/Controllers/params.html">params</a> object for retrieving request parameters</p>
+<p><code>params</code> - The {controllersRef}/params.html[params] object for retrieving request parameters</p>
 </li>
 <li>
 <p><code>pluginContextPath</code> - The context path to the plugin that contains the tag library</p>
 </li>
 <li>
-<p><code>request</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletRequest.html">HttpServletRequest</a> instance</p>
+<p><code>request</code> - The {javaee}javax/servlet/http/HttpServletRequest.html[HttpServletRequest] instance</p>
 </li>
 <li>
-<p><code>response</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletResponse.html">HttpServletResponse</a> instance</p>
+<p><code>response</code> - The {javaee}javax/servlet/http/HttpServletResponse.html[HttpServletResponse] instance</p>
 </li>
 <li>
-<p><code>servletContext</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/ServletContext.html">javax.servlet.ServletContext</a> instance</p>
+<p><code>servletContext</code> - The {javaee}javax/servlet/ServletContext.html[javax.servlet.ServletContext] instance</p>
 </li>
 <li>
-<p><code>session</code> - The <a href="https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpSession.html">HttpSession</a> instance</p>
+<p><code>session</code> - The {javaee}javax/servlet/http/HttpSession.html[HttpSession] instance</p>
 </li>
 </ul>
 </div>
@@ -438,7 +438,7 @@ To help IDEs like Spring Tool Suite (STS) and others autocomplete tag attributes
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<img src="../img/icons/note.icons" alt="Note">
 </td>
 <td class="content">
 Note the usage of the parenthesis around the variable name. If you omit these Groovy assumes you are using a String key and not referring to the variable itself.
@@ -528,7 +528,7 @@ Note the usage of the parenthesis around the variable name. If you omit these Gr
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
     //...
-    runtimeOnly "org.grails:grails-web-jsp:7.0.0-SNAPSHOT"
+    runtimeOnly "org.grails:grails-web-jsp:{version}"
 }</code></pre>
 </div>
 </div>

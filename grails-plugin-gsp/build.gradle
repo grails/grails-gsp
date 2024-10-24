@@ -16,6 +16,7 @@ configurations.all {
 dependencies {
     compileOnly "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
     api project(":grails-web-gsp-taglib")
+    api "org.sitemesh:grails-plugin-sitemesh3:$sitemeshVersion"
 
     runtimeOnly(project(":grails-web-jsp"))
     api "org.apache.commons:commons-text:$commonsTextVersion"

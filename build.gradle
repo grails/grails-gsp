@@ -85,8 +85,9 @@ subprojects { subproject ->
         configurations {
             documentation
         }
-
+        
         dependencies {
+            implementation platform("org.grails:grails-bom:$grailsVersion")
             api "org.apache.groovy:groovy:$groovyVersion"
             api "org.slf4j:slf4j-api:$slf4jVersion"
 

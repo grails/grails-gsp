@@ -23,8 +23,5 @@ dependencies {
         exclude group:'org.grails', module:'grails-web-common'
     }
 }
-// disable main class
-bootJar {
-    mainClass.set('dummy.Application')
-}
-findMainClass.onlyIf { false }
+
+apply from: rootProject.layout.projectDirectory.file('gradle/grails-plugin-config.gradle')

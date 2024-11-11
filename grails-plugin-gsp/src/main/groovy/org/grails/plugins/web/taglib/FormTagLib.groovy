@@ -20,7 +20,7 @@ import grails.config.Config
 import grails.core.support.GrailsConfigurationAware
 import grails.gsp.TagLib
 import groovy.transform.CompileStatic
-import groovy.util.logging.Slf4j
+import groovy.util.logging.Log
 import org.grails.plugins.web.GrailsTagDateHelper
 
 import java.text.DateFormat
@@ -48,7 +48,7 @@ import org.springframework.web.servlet.support.RequestDataValueProcessor
  * @author Graeme Rocher
  */
 @TagLib
-@Slf4j
+@Log
 class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrary, GrailsConfigurationAware {
 
     private static final List<String> DEFAULT_CURRENCY_CODES = ['EUR', 'XCD', 'USD', 'XOF', 'NOK', 'AUD',
@@ -523,7 +523,7 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
 
         // Strip out any 'name' attribute, since this tag overrides it.
         if (attrs.name) {
-            log.warn "[actionSubmit] 'name' attribute will be ignored"
+            log.warning "[actionSubmit] 'name' attribute will be ignored"
             attrs.remove('name')
         }
 

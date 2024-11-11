@@ -17,7 +17,6 @@ package org.grails.taglib.encoder
 
 import groovy.transform.CompileStatic
 import grails.core.GrailsApplication
-import groovy.util.logging.Slf4j
 import org.grails.encoder.CodecLookupHelper
 import org.grails.encoder.Encoder
 import org.grails.taglib.encoder.OutputEncodingStackAttributes.Builder
@@ -29,7 +28,6 @@ import org.grails.taglib.encoder.OutputEncodingStackAttributes.Builder
  * @since 2.3
  */
 @CompileStatic
-@Slf4j
 class WithCodecHelper {
 
     /** all is the key to set all codecs at once */

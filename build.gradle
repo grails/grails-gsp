@@ -72,10 +72,9 @@ subprojects { subproject ->
         }
         
         dependencies {
-            api platform("org.grails:grails-bom:$grailsVersion")
+            implementation platform("org.grails:grails-bom:$grailsVersion")
 
             api "org.apache.groovy:groovy:$groovyVersion"
-            api "org.slf4j:slf4j-api"
 
             testImplementation "org.spockframework:spock-core"
             testImplementation "org.springframework:spring-test"

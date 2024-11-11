@@ -25,7 +25,7 @@ import grails.util.GrailsUtil
 import grails.util.Metadata
 import grails.web.pages.GroovyPagesUriService
 import groovy.transform.CompileStatic
-import groovy.util.logging.Slf4j
+import groovy.util.logging.Log
 import org.grails.core.artefact.TagLibArtefactHandler
 import org.grails.gsp.GroovyPageResourceLoader
 import org.grails.gsp.GroovyPagesTemplateEngine
@@ -54,7 +54,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver
  * @author Graeme Rocher
  * @since 1.1
  */
-@Slf4j
+@Log
 class GroovyPagesGrailsPlugin extends Plugin {
 
     public static final String GSP_RELOAD_INTERVAL = "grails.gsp.reload.interval"

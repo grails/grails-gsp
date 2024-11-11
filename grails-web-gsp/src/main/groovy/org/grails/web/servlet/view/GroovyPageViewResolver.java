@@ -24,8 +24,6 @@ import org.grails.gsp.GroovyPagesTemplateEngine;
 import org.grails.gsp.io.GroovyPageScriptSource;
 import org.grails.web.gsp.io.GrailsConventionGroovyPageLocator;
 import org.grails.web.servlet.mvc.GrailsWebRequest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.Ordered;
@@ -39,6 +37,8 @@ import java.util.Locale;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Evaluates the existance of a view for different extensions choosing which one to delegate to.
@@ -47,7 +47,7 @@ import java.util.concurrent.ConcurrentMap;
  * @since 0.1
  */
 public class GroovyPageViewResolver extends InternalResourceViewResolver implements GrailsViewResolver {
-    private static final Logger LOG = LoggerFactory.getLogger(GroovyPageViewResolver.class);
+    private static final Logger LOG = Logger.getLogger(GroovyPageViewResolver.class.getName());
 
     public static final String GSP_SUFFIX = ".gsp";
     public static final String JSP_SUFFIX = ".jsp";
@@ -187,14 +187,14 @@ public class GroovyPageViewResolver extends InternalResourceViewResolver impleme
         
         GroovyPageScriptSource scriptSource;
         if (controller == null) {
-            if(LOG.isDebugEnabled()) {
-                LOG.debug("Locating GSP view for path {}", viewName);
+            if (LOG.isLoggable(Level.FINE)) {
+                LOG.fine(String.format("Locating GSP view for path %s", viewName));
             }
             scriptSource = groovyPageLocator.findViewByPath(viewName);
         }
         else {
-            if(LOG.isDebugEnabled()) {
-                LOG.debug("Locating GSP view for controller {} and path {}",controller, viewName);
+            if (LOG.isLoggable(Level.FINE)) {
+                LOG.fine(String.format("Locating GSP view for controller %s and path %s", controller, viewName));
             }
             scriptSource = groovyPageLocator.findView(controller, viewName);
         }

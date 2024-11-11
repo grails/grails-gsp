@@ -17,13 +17,13 @@ package org.grails.core.artefact.gsp;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import grails.core.ArtefactHandlerAdapter;
 import grails.core.ArtefactInfo;
 import grails.core.GrailsClass;
 import grails.core.gsp.GrailsTagLibClass;
 import org.grails.core.gsp.DefaultGrailsTagLibClass;
-import org.slf4j.LoggerFactory;
 
 /**
  * Configures tag libraries within namespaces in Grails.
@@ -69,9 +69,11 @@ public class TagLibArtefactHandler extends ArtefactHandlerAdapter {
                 else {
                     GrailsTagLibClass current = tag2libMap.get(tagName);
                     if (!taglibClass.equals(current)) {
-                        LoggerFactory.getLogger(TagLibArtefactHandler.class).info("There are conflicting tags: " + taglibClass.getFullName() + "." +
-                                tagName + " vs. " + current.getFullName() + "." + tagName +
-                                ". The former will take precedence.");
+                        Logger.getLogger(TagLibArtefactHandler.class.getName()).info(
+                                "There are conflicting tags: " + taglibClass.getFullName() + "." +
+                                        tagName + " vs. " + current.getFullName() + "." + tagName +
+                                        ". The former will take precedence."
+                        );
                         tag2libMap.put(tagName, taglibClass);
                     }
                 }

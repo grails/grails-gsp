@@ -207,8 +207,8 @@ public class GroovyPageViewResolver extends InternalResourceViewResolver impleme
 
 
     private View createGroovyPageView(String gspView, ScriptSource scriptSource) {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Resolved GSP view at URI [" + gspView + "]");
+        if (LOG.isLoggable(Level.FINE)) {
+            LOG.fine("Resolved GSP view at URI [" + gspView + "]");
         }
         GroovyPageView gspSpringView = new GroovyPageView();
         gspSpringView.setServletContext(getServletContext());
@@ -218,8 +218,8 @@ public class GroovyPageViewResolver extends InternalResourceViewResolver impleme
         gspSpringView.setScriptSource(scriptSource);
         try {
             gspSpringView.afterPropertiesSet();
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("Initialized GSP view for URI [{}]", gspView);
+            if (LOG.isLoggable(Level.FINE)) {
+                LOG.fine(String.format("Initialized GSP view for URI [%s]", gspView));
             }
         } catch (Exception e) {
             throw new RuntimeException("Error initializing GroovyPageView", e);
@@ -228,9 +228,9 @@ public class GroovyPageViewResolver extends InternalResourceViewResolver impleme
     }
 
     protected View createFallbackView(String viewName) throws Exception {
-        if(resolveJspView) {
-            if(LOG.isDebugEnabled()) {
-                LOG.debug("No GSP view found, falling back to locating JSTL view for name [{}]", viewName);
+        if (resolveJspView) {
+            if (LOG.isLoggable(Level.FINE)) {
+                LOG.fine(String.format("No GSP view found, falling back to locating JSTL view for name [%s]", viewName));
             }
             return createJstlView(viewName);
         }

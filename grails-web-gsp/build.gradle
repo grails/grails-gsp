@@ -9,5 +9,6 @@ dependencies {
         exclude group:'org.grails', module:'grails-web-common'
     }
 
+    testRuntimeOnly "net.bytebuddy:byte-buddy:$byteBuddyVersion"
     testRuntimeOnly "org.grails:grails-spring:$grailsVersion"
 }

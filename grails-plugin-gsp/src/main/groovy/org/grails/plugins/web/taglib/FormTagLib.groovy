@@ -77,8 +77,8 @@ class FormTagLib implements ApplicationContextAware, InitializingBean, TagLibrar
             conversionService = applicationContext.getBean('mvcConversionService', ConversionService)
         }
         try {
-            var filterChainProxy = applicationContext.getBean(
-                    Class.forName("org.springframework.security.web.FilterChainProxy"))
+            var filterChainProxy = applicationContext.getBeanProvider(
+                    Class.forName("org.springframework.security.web.FilterChainProxy")).ifAvailable
             var csrfFilterClass =
                     Class.forName("org.springframework.security.web.csrf.CsrfFilter")
             if (filterChainProxy?.filterChains*.filters?.flatten()?.any { csrfFilterClass.isInstance(it) }) {

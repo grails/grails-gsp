@@ -37,9 +37,9 @@ GSP also contains extended helper versions of the above tags such as xref:../ref
 ==== Multiple Submit Buttons
 
 
-The age-old problem of dealing with multiple submit buttons is also handled elegantly with Grails using the xref:../ref/Tags/actionSubmit.adoc[actionSubmit] tag. It is just like a regular submit, but lets you specify an alternative action to submit to:
+The age-old problem of dealing with multiple submit buttons is also handled elegantly with Grails using the xref:../ref/Tags/formActionSubmit.adoc[formActionSubmit] tag. It is just like a regular submit, but lets you specify an alternative controller & action to submit to:
 
 [source,xml]
 ----
-<g:actionSubmit value="Some update label" action="update" />
+<g:formActionSubmit value="Some update label" controller="mycontroller" action="update" />
 ----

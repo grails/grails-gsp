@@ -8,6 +8,8 @@
 
 Generates a submit button that maps to a specific action, which lets you have multiple submit buttons in a single form. JavaScript event handlers can be added using the same parameter names as in HTML.
 
+_Note: this tag is being replaced by the tag formActionSubmit_
+
 
 === Examples
 

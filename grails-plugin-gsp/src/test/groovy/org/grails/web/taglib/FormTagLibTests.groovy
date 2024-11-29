@@ -300,6 +300,51 @@ class FormTagLibTests extends Specification implements TagLibUnitTest<FormTagLib
         output == '<form action="/con/action" method="post" id="formElementId" ><input type="hidden" name="requestDataValueProcessorHiddenName" value="hiddenValue" />\n</form>'
     }
 
+    def testFormActionSubmitWithController() {
+        when:
+        String output = tagLib.formActionSubmit([controller:'con', id:'formElementId', value: 'Submit'])
+
+        then:
+        output == '<input type="submit" formaction="/con" value="Submit" id="formElementId" />'
+    }
+
+    def testFormActionSubmitWithControllerAndAction() {
+        when:
+        String output = tagLib.formActionSubmit([controller:'con', action: 'act', id:'formElementId', value: 'Submit'])
+
+        then:
+        output == '<input type="submit" formaction="/con/act" value="Submit" id="formElementId" />'
+    }
+
+    def testFormActionSubmitWithURLAndNoParams() {
+        when:
+        unRegisterRequestDataValueProcessor()
+        String output = tagLib.formActionSubmit(new TreeMap([url:[controller:'con', action:'action'], id:'formElementId', value: 'Submit']))
+
+        then:
+        output == '<input type="submit" formaction="/con/action" id="formElementId" value="Submit" />'
+    }
+
+    def testFormActionSubmitWithAURLAndRequestDataValueProcessor() {
+
+        when:
+        String output = tagLib.formActionSubmit(new TreeMap([url:[controller:'con', action:'action', params: [requestDataValueProcessorParamName: 'paramValue']], id:'formElementId', value: 'My Button']))
+
+        then:
+        output == '<input type="submit" formaction="/con/action" id="formElementId" value="My Button" />'
+    }
+
+    def testFormActionSubmitWithAURLAndWithoutRequestDataValueProcessor() {
+        given:
+        unRegisterRequestDataValueProcessor()
+
+        when:
+        String output = tagLib.formActionSubmit(new TreeMap([url:[controller:'con', action:'action', params: [requestDataValueProcessorParamName: 'paramValue']], id:'formElementId', value: 'My Button']))
+
+        then:
+        output == '<input type="submit" formaction="/con/action?requestDataValueProcessorParamName=paramValue" id="formElementId" value="My Button" />'
+    }
+
     def testActionSubmitWithoutAction() {
 
         when:

@@ -285,7 +285,12 @@ class FormTagLibTests extends Specification implements TagLibUnitTest<FormTagLib
     def testFormWithURL() {
         when:
         unRegisterRequestDataValueProcessor()
-        String output = tagLib.form(new TreeMap([url:[controller:'con', action:'action'], id: 'formElementId']))
+        String output = tagLib.form(
+                new TreeMap([
+                        url: [controller: 'con', action: 'action'],
+                        id: 'formElementId'
+                ])
+        )
 
         then:
         output == '<form action="/con/action" method="post" id="formElementId" ></form>'
@@ -294,7 +299,12 @@ class FormTagLibTests extends Specification implements TagLibUnitTest<FormTagLib
     def testFormWithURLAndRequestDataValueProcessor() {
 
         when:
-        String output = tagLib.form(new TreeMap([url:[controller:'con', action:'action'], id: 'formElementId']))
+        String output = tagLib.form(
+                new TreeMap([
+                        url: [controller: 'con', action: 'action'],
+                        id: 'formElementId'
+                ])
+        )
 
         then:
         output == '<form action="/con/action" method="post" id="formElementId" ><input type="hidden" name="requestDataValueProcessorHiddenName" value="hiddenValue" />\n</form>'
@@ -302,7 +312,7 @@ class FormTagLibTests extends Specification implements TagLibUnitTest<FormTagLib
 
     def testFormActionSubmitWithController() {
         when:
-        String output = tagLib.formActionSubmit([controller:'con', id: 'formElementId', value: 'Submit'])
+        String output = tagLib.formActionSubmit([controller: 'con', id: 'formElementId', value: 'Submit'])
 
         then:
         output == '<input type="submit" formaction="/con" value="Submit" id="formElementId" />'
@@ -310,7 +320,7 @@ class FormTagLibTests extends Specification implements TagLibUnitTest<FormTagLib
 
     def testFormActionSubmitWithControllerAndAction() {
         when:
-        String output = tagLib.formActionSubmit([controller:'con', action: 'act', id: 'formElementId', value: 'Submit'])
+        String output = tagLib.formActionSubmit([controller: 'con', action: 'act', id: 'formElementId', value: 'Submit'])
 
         then:
         output == '<input type="submit" formaction="/con/act" value="Submit" id="formElementId" />'
@@ -319,7 +329,7 @@ class FormTagLibTests extends Specification implements TagLibUnitTest<FormTagLib
     def testFormActionSubmitWithURLAndNoParams() {
         when:
         unRegisterRequestDataValueProcessor()
-        String output = tagLib.formActionSubmit(new TreeMap([url:[controller:'con', action:'action'], id: 'formElementId', value: 'Submit']))
+        String output = tagLib.formActionSubmit(new TreeMap([url: [controller: 'con', action:'action'], id: 'formElementId', value: 'Submit']))
 
         then:
         output == '<input type="submit" formaction="/con/action" id="formElementId" value="Submit" />'
@@ -328,12 +338,17 @@ class FormTagLibTests extends Specification implements TagLibUnitTest<FormTagLib
     def testFormActionSubmitWithAURLAndRequestDataValueProcessor() {
         when:
         String output = tagLib.formActionSubmit(
-                new TreeMap(
-                        [
-                                url:[controller:'con', action:'action', params: [requestDataValueProcessorParamName: 'paramValue']],
-                                id: 'formElementId', value: 'My Button'
+            new TreeMap([
+                url: [
+                        controller: 'con',
+                        action:'action',
+                        params: [
+                            requestDataValueProcessorParamName: 'paramValue'
                         ]
-                )
+                ],
+                id: 'formElementId',
+                value: 'My Button'
+            ])
         )
 
         then:
@@ -346,12 +361,17 @@ class FormTagLibTests extends Specification implements TagLibUnitTest<FormTagLib
 
         when:
         String output = tagLib.formActionSubmit(
-                new TreeMap(
-                        [
-                                url:[controller:'con', action:'action', params: [requestDataValueProcessorParamName: 'paramValue']],
-                                id: 'formElementId', value: 'My Button'
-                        ]
-                )
+            new TreeMap([
+                    url: [
+                            controller: 'con',
+                            action:'action',
+                            params: [
+                                    requestDataValueProcessorParamName: 'paramValue'
+                            ]
+                    ],
+                    id: 'formElementId',
+                    value: 'My Button'
+            ])
         )
 
         then:

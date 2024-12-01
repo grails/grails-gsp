@@ -85,14 +85,14 @@ Attributes
 
 * `action` (optional) - The name of the action to use in the link; if not specified the default action will be linked
 * `controller` (optional) - The name of the controller to use in the link; if not specified the current controller will be linked
-* `namespace` (optional) - the namespace of the controller to use in the link
-* `plugin` (optional) - the name of the plugin which provides the controller
+* `namespace` (optional) - The namespace of the controller to use in the link
+* `plugin` (optional) - The name of the plugin which provides the controller
 * `id` (optional) - The id to use in the link
 * `fragment` (optional) - The link fragment (often called anchor tag) to use
 * `mapping` (optional) - The {grailsdocs}guide/theWebLayer.html#namedMappings[named URL mapping] to use to rewrite the link
 * `method` (optional) - The HTTP method specified in the corresponding URL mapping
-* `params` (optional) - A Map of request parameters
-* `url` (optional) - A Map containing the action,controller,id etc.
+* `params` (optional) - A map containing URL query parameters for the link
+* `url` (optional) - A Map containing the action, controller, id etc.
 * `uri` (optional) - A string for a relative path in the running app.
 * `relativeUri` (optional) - Used to specify a uri relative to the current path.
 * `absolute` (optional) - If `true` will prefix the link target address with the value of the `grails.serverURL` property from the application configuration, or http://localhost:<port> if there is no setting in the config and not running in production.

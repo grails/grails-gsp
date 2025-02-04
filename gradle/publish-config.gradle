@@ -1,7 +1,6 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-ext.set('isGrailsPlugin', project.group == 'org.grails.plugins')
 ext.set('signing.keyId', project.findProperty('signing.keyId') ?: System.getenv('SIGNING_KEY'))
 ext.set('signing.password', project.findProperty('signing.password') ?: System.getenv('SIGNING_PASSPHRASE'))
 ext.set('signing.secretKeyRingFile', project.findProperty('signing.secretKeyRingFile') ?: "${System.properties['user.home']}${File.separator}.gnupg${File.separator}secring.gpg")
@@ -14,7 +13,7 @@ publishing {
                     username = System.getenv('ARTIFACTORY_USERNAME') ?: project.findProperty('artifactoryPublishUsername') ?: ''
                     password = System.getenv('ARTIFACTORY_PASSWORD') ?: project.findProperty('artifactoryPublishPassword') ?: ''
                 }
-                url = isGrailsPlugin ?
+                url = project.findProperty('isGrailsPlugin') ?
                         'https://repo.grails.org/grails/plugins3-snapshots-local' :
                         'https://repo.grails.org/grails/libs-snapshots-local'
             }

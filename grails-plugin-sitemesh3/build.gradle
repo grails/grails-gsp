@@ -9,13 +9,14 @@ buildscript {
 }
 
 version = projectVersion
-group = 'org.grails.plugins'
+group = 'org.grails'
 
 apply plugin: 'groovy'
 apply plugin: 'java-library'
 apply plugin: 'org.grails.grails-plugin'
 
 ext {
+    isGrailsPlugin = true
     pomTitle = 'SiteMesh 3 Grails Plugin'
     pomDescription = 'SiteMesh is a web-page layout and decoration framework and web- application integration framework to aid in creating sites consisting of many pages for which a consistent look/feel, navigation and layout scheme is required.'
     pomDevelopers = [

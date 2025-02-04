@@ -17,6 +17,7 @@ apply plugin: 'org.grails.grails-plugin'
 
 ext {
     artifactId = 'gsp'
+    isGrailsPlugin = true
     testMaxParallelFork = isCiBuild ? 1 : 4
     testForkEvery = isCiBuild ? 10 : 20
     testJvmArgs = ['-Xmx1536M']
